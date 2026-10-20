@@ -1,0 +1,96 @@
+# Adapted from VBA-SACCR-Toolkit for the K-Risk-Engines website hub.
+# Keep website source, assets, docs, automation and traffic data trackable.
+
+# Temporary, backup and conflict files
+~$*
+.~lock.*#
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.rej
+*.swp
+*.swo
+*~
+
+# Local build and test output (root anchored)
+/build/
+/dist/
+/out/
+/output/
+/outputs/
+/test-output/
+/test-results/
+/coverage/
+/htmlcov/
+/temp/
+/tmp/
+/.cache/
+.coverage
+.coverage.*
+coverage.xml
+
+# Operating-system metadata
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+._*
+.Trashes
+.Spotlight-V100
+.directory
+
+# Personal editor state
+.vscode/
+.idea/
+.vs/
+.history/
+.fleet/
+*.code-workspace
+.cursor/
+.aider*
+.continue/
+
+# Logs and local secrets; sanitized examples stay trackable
+*.log
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pvk
+*.key
+*.pem
+
+# Python tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.hypothesis/
+.tox/
+.nox/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.venv/
+venv/
+
+# Node tooling; manifests and lock files remain trackable
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.yarn/build-state.yml
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Do not ignore assets/, docs/, .github/, data/, CSV or JSON files.

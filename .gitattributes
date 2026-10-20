@@ -1,0 +1,52 @@
+# Adapted from VBA-SACCR-Toolkit for the K-Risk-Engines website hub.
+# Normalize text to LF; keep binary assets opaque to text conversion and merges.
+[attr]opaque binary merge=binary
+* text=auto eol=lf
+
+# Website, documentation, automation and traffic data
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.jsonc text eol=lf
+*.xml text eol=lf
+*.svg text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+.editorconfig text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.gitkeep text eol=lf
+.nojekyll text eol=lf
+LICENSE text eol=lf
+
+# Images, documents, archives and fonts
+*.png opaque
+*.jpg opaque
+*.jpeg opaque
+*.gif opaque
+*.webp opaque
+*.bmp opaque
+*.ico opaque
+*.tif opaque
+*.tiff opaque
+*.avif opaque
+*.pdf opaque
+*.zip opaque
+*.gz opaque
+*.woff opaque
+*.woff2 opaque
+*.ttf opaque
+*.otf opaque
+*.eot opaque
+
+# Keep assets/site.css classified as source, not documentation.
+# Keep configuration and workflows in source archives for reproducibility.

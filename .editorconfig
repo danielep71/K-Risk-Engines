@@ -1,0 +1,20 @@
+# Adapted from VBA-SACCR-Toolkit for the K-Risk-Engines website hub.
+# Editors control formatting; .gitattributes controls Git normalization.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+tab_width = 4
+
+[*.{html,css,js,mjs,cjs,yml,yaml,json,jsonc,xml,svg}]
+indent_size = 2
+tab_width = 2
+
+[*.md]
+# Preserve intentional Markdown hard line breaks.
+trim_trailing_whitespace = false
