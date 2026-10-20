@@ -1,0 +1,65 @@
+{
+  "name": "Hub bug",
+  "description": "Report a broken link, incorrect portfolio information, website defect or automation failure.",
+  "title": "[Hub bug]: ",
+  "labels": [
+    "bug",
+    "repository",
+    "P2"
+  ],
+  "assignees": [
+    "danielep71"
+  ],
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "For this portfolio website, documentation and automation only. Send engine calculation or methodology reports to the engine repository using the links in the issue chooser. Report vulnerabilities privately via [SECURITY.md](https://github.com/danielep71/K-Risk-Engines/blob/main/SECURITY.md). Use synthetic examples; do not include tokens or confidential data. The maintainer assigns a milestone and confirms the priority during triage."
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "location",
+      "attributes": {
+        "label": "Affected page or workflow",
+        "description": "Include the URL or file and commit/run link where available."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "reproduce",
+      "attributes": {
+        "label": "Steps and actual result",
+        "description": "Give minimal steps, what happened, and browser/device details for display problems."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "expected",
+      "attributes": {
+        "label": "Expected result",
+        "description": "Describe the intended behaviour and the impact."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "acceptance",
+      "attributes": {
+        "label": "Acceptance criteria",
+        "description": "List observable checks that would demonstrate the fix."
+      },
+      "validations": {
+        "required": true
+      }
+    }
+  ]
+}

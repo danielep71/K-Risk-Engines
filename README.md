@@ -33,8 +33,8 @@ A single entry point to independent financial risk models and calculation engine
 
 | Project | Purpose | Status at 20 October 2026 |
 | --- | --- | --- |
-| [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit) | SA-CCR calculation and reconciliation | Released workbook; see project-specific validation limits |
-| [K-IRRBB](https://github.com/danielep71/K-IRRBB_Behavioral_Models) | Non-maturity deposit behavioural modelling | In development; draft decay model |
+| [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit) | SA-CCR calculation and reconciliation | Released workbook v1.0.1; published Basel examples, CRR validation limitations |
+| [K-IRRBB](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | In development; draft decay model |
 | [K-FRTB-SA](https://github.com/danielep71/MKT-FTRB-SA) | Standardized market-risk aggregation | Prototype; Excel execution evidence pending |
 | Prepayment models | Behavioural loan prepayment modelling | Planned; no implementation available |
 
@@ -44,7 +44,7 @@ Each repository owns its implementation, methodology, tests, issues and releases
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/). No build or external dependencies are required.
 
-For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The intended URL is `https://danielep71.github.io/K-Risk-Engines/`.
+For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The live website is [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).
 
 ## Website checks
 
@@ -73,7 +73,15 @@ not GitHub Pages visitors.
 
 See [portfolio governance](GOVERNANCE.md) for ownership, project status definitions,
 change checks and issue handling. Report vulnerabilities privately under the
-[security policy](SECURITY.md).
+[security policy](SECURITY.md). For hub defects and improvements, use the
+[issue chooser](https://github.com/danielep71/K-Risk-Engines/issues/new/choose).
+The maintainer assigns a milestone and confirms the priority during triage.
+Engine calculation and methodology reports belong in their own repositories.
+
+## Licensing
+
+The hub licence is pending a maintainer decision in [#1](https://github.com/danielep71/K-Risk-Engines/issues/1).
+No hub-wide reuse licence has been granted. Linked engines retain their own licences.
 
 ## Review approach
 

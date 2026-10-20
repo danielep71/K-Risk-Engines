@@ -1,0 +1,54 @@
+{
+  "name": "Hub improvement or documentation",
+  "description": "Suggest a portfolio presentation, documentation or navigation improvement.",
+  "title": "[Hub improvement]: ",
+  "labels": [
+    "enhancement",
+    "documentation",
+    "P3"
+  ],
+  "assignees": [
+    "danielep71"
+  ],
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "For this portfolio website, documentation and automation only. Send engine calculation or methodology reports to the engine repository using the links in the issue chooser. Report vulnerabilities privately via [SECURITY.md](https://github.com/danielep71/K-Risk-Engines/blob/main/SECURITY.md). Use synthetic examples; do not include tokens or confidential data. The maintainer assigns a milestone and confirms the priority during triage."
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "need",
+      "attributes": {
+        "label": "Problem or user need",
+        "description": "Explain who benefits and identify the affected page or document."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "proposal",
+      "attributes": {
+        "label": "Proposed change and evidence",
+        "description": "Describe the change; link authoritative engine documentation for scope/status corrections."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "acceptance",
+      "attributes": {
+        "label": "Acceptance criteria",
+        "description": "List concrete results that would make this work complete."
+      },
+      "validations": {
+        "required": true
+      }
+    }
+  ]
+}
