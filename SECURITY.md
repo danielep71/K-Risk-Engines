@@ -1,0 +1,43 @@
+# K-Risk-Engines Security Policy
+
+## Scope and supported version
+
+This repository is a portfolio and documentation hub. This policy covers its
+website source and assets, repository tooling, and GitHub Actions workflows.
+Security fixes target the current `main` branch and the website deployed from it;
+older snapshots and modified copies are not maintained separately.
+
+Each linked risk engine is maintained in its own repository. Report vulnerabilities
+in an engine through that repository's security policy. Ordinary calculation
+defects without security impact belong in the engine's issue tracker; broken
+links and other non-security hub defects belong in this repository's issues.
+
+## Report a vulnerability privately
+
+Do not disclose suspected vulnerabilities in public issues, pull requests,
+commit messages, or screenshots.
+
+Email **danielep71@gmail.com** with the subject
+**Private security report — K-Risk-Engines**.
+If GitHub's **Security → Report a vulnerability** option is available in this
+repository, you may use it instead.
+
+Include:
+
+- the affected URL, file or workflow and, where possible, the full commit SHA;
+- the potential security impact and minimal reproduction steps;
+- any tested workaround.
+
+Use synthetic examples. Do not send credentials, tokens, personal information,
+or confidential client or portfolio data. Revoke or rotate any exposed secret
+immediately before reporting the incident.
+
+## Handling reports
+
+Reports are handled on a best-effort basis by the maintainer. Remediation and
+public disclosure timing will be coordinated with the reporter according to
+severity; no guaranteed response time or bug bounty is offered.
+
+This policy does not authorize testing GitHub infrastructure, linked websites,
+or other third-party systems. Report vulnerabilities in those services through
+their own security channels.
