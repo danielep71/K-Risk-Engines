@@ -1,10 +1,33 @@
+<div align="center">
+
 # K-Risk Engines
 
 **Transparent methods. Traceable results.**
 
 A single entry point to independent financial risk models and calculation engines for benchmarking, model challenge, audit, advisory and education.
 
+<br>
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-Financial_risk-1f3a5f?style=for-the-badge)](#explore-the-portfolio)
+[![Website](https://img.shields.io/badge/Website-GitHub_Pages-0078D6?style=for-the-badge&logo=github&logoColor=white)](https://danielep71.github.io/K-Risk-Engines/)
+[![Website checks](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/website-checks.yml?branch=main&style=for-the-badge&label=Website%20checks&color=2ea44f)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/website-checks.yml)
+
+<br>
+
+[![Last commit](https://img.shields.io/github/last-commit/danielep71/K-Risk-Engines/main?style=flat-square&label=last%20commit&color=217346)](https://github.com/danielep71/K-Risk-Engines/commits/main)
+[![Clones](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fclones.json&style=flat-square&label=clones)](https://github.com/danielep71/K-Risk-Engines)
+[![Visitors](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fvisitors.json&style=flat-square&label=visitors%20%2814d%29)](https://github.com/danielep71/K-Risk-Engines)
+[![Visits](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fvisits.json&style=flat-square&label=visits)](https://github.com/danielep71/K-Risk-Engines)
+[![P1 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P1?style=flat-square&label=P1&color=B60205)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP1)
+[![P2 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P2?style=flat-square&label=P2&color=D93F0B)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP2)
+[![P3 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P3?style=flat-square&label=P3&color=FBCA04)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP3)
+[![Stars](https://img.shields.io/github/stars/danielep71/K-Risk-Engines?style=flat-square&color=bf8700)](https://github.com/danielep71/K-Risk-Engines/stargazers)
+
+<br>
+
 ![K-Risk Engines portfolio](assets/K-Risk-Engines-social-preview.png)
+
+</div>
 
 ## Explore the portfolio
 
