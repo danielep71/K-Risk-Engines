@@ -23,6 +23,22 @@ The static landing page is `index.html`; images and styles live in [`assets/`](a
 
 For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The intended URL is `https://danielep71.github.io/K-Risk-Engines/`.
 
+## Website checks
+
+Run `python3 .github/scripts/check-website.py` from the repository root.
+Add `--external` to check external URLs with curl.
+
+The dependency-free check covers explicit HTML tag nesting, document title,
+language and doctype, duplicate IDs, image alt attributes, local assets,
+CSS `url()` references and internal anchors. It is a focused structural
+check, not a full HTML standards or accessibility validator.
+
+GitHub Actions runs local checks on every pull request to `main` and push
+to `main`. External links are checked on pushes, weekly and on manual runs;
+redirects are accepted. Broken links fail the check. Network errors, HTTP
+403/429 and server errors are reported as warnings because availability
+could not be verified. External page fragments are not validated.
+
 ## Review approach
 
 1. Align data, scope, conventions and assumptions.
