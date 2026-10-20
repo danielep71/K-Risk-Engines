@@ -1,0 +1,87 @@
+# Portfolio governance
+
+## Ownership and scope
+
+**Daniele Penza (@danielep71)** maintains K-Risk-Engines and decides portfolio
+scope, inclusion, priorities and publication. Contributors and automation work
+within the scope authorized by the maintainer.
+
+This repository owns the portfolio website, navigation, shared presentation,
+hub documentation and supporting automation. Each engine repository owns its
+methodology, implementation, validation evidence, issues, licences and releases.
+A hub change does not authorize a change or release in an engine repository.
+
+This is an independent project, not an official product of or endorsed by KPMG.
+
+## Portfolio inclusion and status
+
+List a project when its intended risk-management purpose fits the portfolio,
+its scope and ownership are clear, and its status can be stated honestly.
+Implemented projects must link to their authoritative repository and available
+documentation. A planned project may be listed without a repository, provided
+the absence of an implementation is explicit.
+
+| Status | Meaning and minimum evidence |
+| --- | --- |
+| Planned | Intended scope only; no implementation is represented as available. |
+| In development | Implementation work is underway; link to the repository and describe what currently exists and what remains incomplete. |
+| Prototype | An exploratory implementation exists with a documented scope and limitations. State material gaps in execution or validation evidence explicitly. |
+| Released | The project has a published release or distributed artifact identifiable in its own repository. Release availability does not establish independent validation, regulatory compliance or production readiness. |
+
+These labels describe availability and development state, not a certification
+scale. A released project can still have significant limitations. Do not infer
+status from a roadmap, milestone closure, badge or successful static check.
+
+When changing a listing, verify its claims against the project's documentation,
+release and test evidence. Keep the README and website consistent, retain
+material caveats, and date status snapshots. The engine repository remains
+authoritative if a hub snapshot becomes stale. Record the supporting links in
+the change description or relevant issue.
+
+## Changes and publication
+
+- `main` holds the hub source and publishes the GitHub Pages website.
+- `traffic-history` holds generated repository analytics; it is not an engine
+  release branch and must not be merged into `main` as development work.
+- Maintainer-authorized, low-impact hub edits may be committed directly to
+  `main`. Use a pull request for external contributions and changes that
+  benefit from explicit review, particularly workflow or publication changes.
+- Inspect the diff and run applicable checks before publishing. For website
+  changes, run `python3 .github/scripts/check-website.py`; when external links
+  change, also run it with `--external`. Review visual changes in a browser.
+  Apply the relevant label-script checks when changing label configuration.
+- Verify applicable hosted checks and the deployment after publication.
+  Investigate failures and fix or revert through a new commit. Preserve shared
+  history; do not force-push or delete the long-lived branches.
+- Report checks actually performed and remaining limitations. Self-review,
+  automated checks and independent review are different forms of evidence.
+
+These are working rules, not a claim that every step is enforced by GitHub
+settings. No hub version or engine-style release branch is required for routine
+website and documentation updates.
+
+## Issues and decisions
+
+Hub issues cover navigation, presentation, portfolio metadata, documentation
+and automation. Route engine-specific methodology, calculation and validation
+issues to the corresponding repository.
+
+Assign hub issues to **danielep71**, give each exactly one priority
+(`P1`, `P2` or `P3`), appropriate type labels and a relevant milestone.
+Use descriptive hub milestones rather than copying an engine's release number.
+Traffic alerts use the **Traffic monitoring** milestone.
+
+The label catalogue is maintained in
+[.github/labels.json](.github/labels.json). Record the objective and acceptance
+criteria for substantive work. Close completed issues only when those criteria
+are met, with a link to the change and relevant verification; explain other
+closure reasons explicitly. Record material scope or policy decisions in an
+issue, pull request or commit description.
+
+## Security and analytics
+
+Report suspected vulnerabilities privately under [SECURITY.md](SECURITY.md).
+Never include tokens or confidential client data in issues, examples or commits.
+Traffic collection and its operational requirements are documented in
+[docs/TRAFFIC.md](docs/TRAFFIC.md); repository traffic does not measure website
+visitors or model quality.
