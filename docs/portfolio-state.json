@@ -308,8 +308,8 @@
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "open",
-        "open_issues": 6,
-        "closed_issues": 12,
+        "open_issues": 5,
+        "closed_issues": 15,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1"
       }
@@ -317,13 +317,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "7c739e53977978d6c1e6588733d92e45bcc69ce44e0c4d4eb74e0fecefae702c",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c4941cda80e3a4dbd8be8794c403992aeb66f4f0/README.md"
+        "sha256": "85e66773258b0168390b68dbafdd31368539b03ce884481df4a5d8708385cf9d",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/e8f0a07a841e736bb4501ca3f093420b561ee943/README.md"
       },
       {
         "path": "docs/Milestones/v0.1.0.md",
         "sha256": "827dec514b038db611335288c16afbe968654ac18f5061f5a887a51808bd737e",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c4941cda80e3a4dbd8be8794c403992aeb66f4f0/docs/Milestones/v0.1.0.md"
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/e8f0a07a841e736bb4501ca3f093420b561ee943/docs/Milestones/v0.1.0.md"
       }
     ]
   }
