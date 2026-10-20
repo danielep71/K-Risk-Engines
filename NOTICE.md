@@ -12,14 +12,6 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-## Upstream material
-
-The label catalogue, label synchronization and drift tooling/workflows,
-daily traffic workflow, and repository formatting/Git configuration were
-imported or adapted from
-[Daniele Penza's VBA-SACCR-Toolkit](https://github.com/danielep71/VBA-SACCR-Toolkit),
-distributed under MPL-2.0. Existing source and attribution notices are retained.
-
 ## Portfolio artwork exclusion
 
 `assets/K-Risk-Engines-social-preview.png` is AI-generated decorative portfolio
