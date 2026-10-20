@@ -33,12 +33,14 @@ A single entry point to independent financial risk models and calculation engine
 
 ## Explore the portfolio
 
-| Project | Purpose | Status at 20 October 2026 |
-| --- | --- | --- |
-| [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit) | SA-CCR calculation and reconciliation | Released workbook v1.0.1; published Basel examples, CRR validation limitations |
-| [K-IRRBB](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | In development; draft decay model |
-| [K-FRTB-SA](https://github.com/danielep71/MKT-FTRB-SA) | Standardized market-risk aggregation | Prototype; Excel execution evidence pending |
-| [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Repository setup; no model or workbook available yet |
+<!-- portfolio:table:start -->
+| Project | Purpose | Project-reported status | Last closed milestone |
+| --- | --- | --- | --- |
+| [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit) | SA-CCR calculation and reconciliation | Version 1.0.1 is the current release: the 1.0.1 GitHub Release carries the workbook and the user manual. Latest published release: v1.0.1. [Full status and caveats](docs/PORTFOLIO_STATUS.md#saccr) | [v1.0.1 - Post release hardening](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13) (2026-10-18) |
+| [K-IRRBB](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | v0.2.0 – Workbook, data and Excel tests (in progress). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#nmd) | [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1) (2026-10-09) |
+| [K-FRTB-SA](https://github.com/danielep71/MKT-FTRB-SA) | Standardized market-risk aggregation | Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1) (2026-10-18) |
+| [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | None recorded |
+<!-- portfolio:table:end -->
 
 Each repository owns its implementation, methodology, tests, issues and releases. Consult it for current scope, evidence and licensing. This hub contains presentation and portfolio documentation, not calculation code.
 
@@ -63,6 +65,10 @@ to `main`. External links are checked on pushes, weekly and on manual runs;
 redirects are accepted. Broken links fail the check. Network errors, HTTP
 403/429 and server errors are reported as warnings because availability
 could not be verified. External page fragments are not validated.
+
+## Daily portfolio refresh
+
+A daily workflow proposes source-attributed status, release and last-closed-milestone updates in a reusable review PR. See [operation and review rules](docs/PORTFOLIO_AUTOMATION.md).
 
 ## Traffic history
 
