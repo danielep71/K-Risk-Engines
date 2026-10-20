@@ -80,8 +80,10 @@ Engine calculation and methodology reports belong in their own repositories.
 
 ## Licensing
 
-The hub licence is pending a maintainer decision in [#1](https://github.com/danielep71/K-Risk-Engines/issues/1).
-No hub-wide reuse licence has been granted. Linked engines retain their own licences.
+The hub's code and documentation are licensed under [MPL-2.0](LICENSE).
+The portfolio artwork (`assets/K-Risk-Engines-social-preview.png`) is excluded;
+no separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
+Linked engines retain their own licences.
 
 ## Review approach
 
