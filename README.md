@@ -39,6 +39,13 @@ redirects are accepted. Broken links fail the check. Network errors, HTTP
 403/429 and server errors are reported as warnings because availability
 could not be verified. External page fragments are not validated.
 
+## Traffic history
+
+Daily repository analytics are stored on [`traffic-history`](https://github.com/danielep71/K-Risk-Engines/tree/traffic-history).
+See [setup and data definitions](docs/TRAFFIC.md) for the required `analytics`
+environment secret, schedules, badges and alerts. This tracks repository traffic,
+not GitHub Pages visitors.
+
 ## Review approach
 
 1. Align data, scope, conventions and assumptions.
