@@ -38,7 +38,7 @@ A single entry point to independent financial risk models and calculation engine
 | [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit) | SA-CCR calculation and reconciliation | Released workbook v1.0.1; published Basel examples, CRR validation limitations |
 | [K-IRRBB](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | In development; draft decay model |
 | [K-FRTB-SA](https://github.com/danielep71/MKT-FTRB-SA) | Standardized market-risk aggregation | Prototype; Excel execution evidence pending |
-| Prepayment models | Behavioural loan prepayment modelling | Planned; no implementation available |
+| [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Repository setup; no model or workbook available yet |
 
 Each repository owns its implementation, methodology, tests, issues and releases. Consult it for current scope, evidence and licensing. This hub contains presentation and portfolio documentation, not calculation code.
 
@@ -97,6 +97,6 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 ## Portfolio direction
 
-Develop the existing projects on their own validation evidence, define a separate prepayment project, and maintain consistent presentation and documentation across the collection. Detailed milestones remain in each model repository.
+Develop the existing projects on their own validation evidence, develop the new prepayment project, and maintain consistent presentation and documentation across the collection. Detailed milestones remain in each model repository.
 
 An independent project by [Daniele Penza](https://github.com/danielep71). Not an official product of, or endorsed by, KPMG. Individual project licences apply to their respective contents.
