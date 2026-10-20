@@ -4,7 +4,7 @@
 
 **Transparent methods. Traceable results.**
 
-[**Visit the website**](https://danielep71.github.io/K-Risk-Engines/) · [**SA-CCR methodology wiki**](https://github.com/danielep71/VBA-SACCR-Toolkit/wiki)
+[**Visit the website**](https://danielep71.github.io/K-Risk-Engines/) · [**Project wiki**](https://github.com/danielep71/K-Risk-Engines/wiki)
 
 A single entry point to independent financial risk models and calculation engines for benchmarking, model challenge, audit, advisory and education.
 
