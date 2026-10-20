@@ -1,0 +1,65 @@
+name: Daily portfolio refresh
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+      timezone: Europe/Rome
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-portfolio-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Refresh reusable proposal branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          branch='automation/portfolio-refresh'
+          # Recreate after merge/closure; never force-push a shared ref.
+          if git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+            git switch --track "origin/$branch"
+            git merge --no-edit origin/main
+          else
+            git switch -c "$branch"
+          fi
+          python3 .github/scripts/portfolio-refresh.py --body-file "$RUNNER_TEMP/portfolio-pr.md"
+          python3 .github/scripts/check-website.py
+          python3 .github/scripts/check-website.py --external
+          python3 -m unittest discover -s .github/scripts -p 'test_portfolio_refresh.py'
+          git add README.md index.html docs/PORTFOLIO_STATUS.md docs/portfolio-state.json
+          changed=false
+          if ! git diff --cached --quiet; then
+            git commit -m 'docs: refresh portfolio status from project evidence'
+            changed=true
+          fi
+          if git diff --quiet origin/main HEAD -- README.md index.html docs/PORTFOLIO_STATUS.md docs/portfolio-state.json; then
+            echo 'No portfolio changes to propose.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git push origin "HEAD:refs/heads/$branch"
+          pr=$(gh pr list --head "$branch" --base main --state open --json number --jq '.[0].number // empty')
+          if [ -z "$pr" ]; then
+            gh pr create --head "$branch" --base main --title 'docs: refresh portfolio status and milestone progress' --body-file "$RUNNER_TEMP/portfolio-pr.md" --assignee danielep71 --label documentation --label P3
+          elif [ "$changed" = true ]; then
+            gh pr edit "$pr" --body-file "$RUNNER_TEMP/portfolio-pr.md"
+          fi
+          gh pr list --head "$branch" --base main --state open --json url --jq '.[0].url' >> "$GITHUB_STEP_SUMMARY"

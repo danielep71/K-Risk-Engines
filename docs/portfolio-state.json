@@ -1,0 +1,330 @@
+[
+  {
+    "id": "saccr",
+    "repo": "danielep71/VBA-SACCR-Toolkit",
+    "status": "Version 1.0.1 is the current release: the 1.0.1 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.1, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
+    "release": {
+      "tag": "v1.0.1",
+      "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.1",
+      "published_at": "2026-10-18T16:51:06Z",
+      "notes_sha256": "76b68b75b2687d553f59d439d5499ad0d9bf899da27a2d1b4e09ffbe61c89880"
+    },
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.0.1 - Repo setup",
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 26,
+        "closed_at": "2026-10-06T18:50:35Z",
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v1.0.0 - First Supported Excel Release",
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 57,
+        "closed_at": "2026-10-17T10:06:16Z",
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/2"
+      },
+      {
+        "number": 3,
+        "title": "v1.1.0 - CSV Import and Staging",
+        "state": "open",
+        "open_issues": 9,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3"
+      },
+      {
+        "number": 4,
+        "title": "v1.2.0 - Excel Ribbon Interface",
+        "state": "open",
+        "open_issues": 9,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/4"
+      },
+      {
+        "number": 5,
+        "title": "v1.3.0 - Diagnostics and Independent Validation",
+        "state": "open",
+        "open_issues": 6,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/5"
+      },
+      {
+        "number": 6,
+        "title": "v1.4.0 - Advanced Products and FX Provenance",
+        "state": "open",
+        "open_issues": 3,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/6"
+      },
+      {
+        "number": 7,
+        "title": "v1.5.0 - Simplified SA-CCR",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/7"
+      },
+      {
+        "number": 8,
+        "title": "v1.6.0 - Original Exposure Method",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/8"
+      },
+      {
+        "number": 10,
+        "title": "v1.8.0 - Securities Financing Transactions",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/10"
+      },
+      {
+        "number": 11,
+        "title": "v1.9.0 - Regulatory CVA Risk",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/11"
+      },
+      {
+        "number": 12,
+        "title": "v1.10.0 - Risk-Weighted Assets and Capital",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12"
+      },
+      {
+        "number": 13,
+        "title": "v1.0.1 - Post release hardening",
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 9,
+        "closed_at": "2026-10-18T17:23:58Z",
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13"
+      },
+      {
+        "number": 14,
+        "title": "v1.0.2 - Clearing Coverage and CCP Completeness",
+        "state": "open",
+        "open_issues": 6,
+        "closed_issues": 2,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "e130302a53359d97ccc9e9ce0376e4887da16507b0326b68c30f59a72680aee9",
+        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/7ad778c54cc917396b7e690eaf7ddfefb6a56009/README.md"
+      },
+      {
+        "path": "docs/methodology/README.md",
+        "sha256": "2805f4187aa4562250f73f231c81e64bb7ca9bf649e8f2568032fa3e91a8e39f",
+        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/7ad778c54cc917396b7e690eaf7ddfefb6a56009/docs/methodology/README.md"
+      }
+    ]
+  },
+  {
+    "id": "nmd",
+    "repo": "danielep71/K-IRRBB-NMDs",
+    "status": "v0.2.0 – Workbook, data and Excel tests (in progress). The v0.1.0 foundation, closed on 2026-10-09, established source layout, documentation, issue governance, CI and static source checks; v0.2.0 builds the first workbook, data import and Excel test harness. Neither delivers pricing, econometric fitting, a production workbook or certified IRRBB outputs. - Decay model (draft, not validated, milestone v0.3.0): core, public facade IRRBB_Decay, harness cases and example, reviewed on release/v0.3.0 and present here since this branch was levelled with main; built to MODEL_CONTRACTS.md and under review in #36; no Excel evidence is recorded yet. Rate and stable-amount models are not built. - Application profile: an Excel workbook will be the end-user deliverable, assembled from reviewed exported VBA source. - Production calculations live in src/core/ without direct Excel object dependencies; at present the data import's parsing, validation, summaries and fingerprint, and the draft decay calculations. - src/modules/ exposes the documented public facade (the data import and the draft decay model, listed in docs/PUBLIC_API.txt); src/workbook/ contains host glue only. - tests/ holds synthetic fixtures, expected results and the VBA regression harness; evidence from a real Excel run must be separately recorded. - No client data, confidential third-party material, vendor source code or customer-specific models are allowed in Git; the repository and its history are public.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Repository foundation",
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 20,
+        "closed_at": "2026-10-09T15:16:04Z",
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.2.0 - Workbook, data and Excel tests",
+        "state": "open",
+        "open_issues": 4,
+        "closed_issues": 10,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/2"
+      },
+      {
+        "number": 3,
+        "title": "v0.3.0 - Decay model",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/3"
+      },
+      {
+        "number": 4,
+        "title": "v0.4.0 - Interest-rate model",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/4"
+      },
+      {
+        "number": 5,
+        "title": "v0.5.0 - Stable-amount model",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/5"
+      },
+      {
+        "number": 6,
+        "title": "v0.6.0 - Integrated calibration and backtesting",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/6"
+      },
+      {
+        "number": 7,
+        "title": "v0.7.0 - Scenarios and regulatory overlays",
+        "state": "open",
+        "open_issues": 2,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/7"
+      },
+      {
+        "number": 8,
+        "title": "v0.8.0 - User workflow and ALM export",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/8"
+      },
+      {
+        "number": 9,
+        "title": "v0.9.0 - Release candidate",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/9"
+      },
+      {
+        "number": 10,
+        "title": "v1.0.0 - First validated NMD application",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/10"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "f9d21461d714a5238736637e6e312d37e17c4e04889e7453525afde51f97a832",
+        "url": "https://github.com/danielep71/K-IRRBB-NMDs/blob/973501c82f2f9011acfdc9d741ab2af0132cb96c/README.md"
+      },
+      {
+        "path": "docs/EXCEL_EVIDENCE.md",
+        "sha256": "c4e538abb905a34ee27a98cf0ebcee9d6c4e3cb1d359191656499dcc8ff96620",
+        "url": "https://github.com/danielep71/K-IRRBB-NMDs/blob/973501c82f2f9011acfdc9d741ab2af0132cb96c/docs/EXCEL_EVIDENCE.md"
+      }
+    ]
+  },
+  {
+    "id": "frtb",
+    "repo": "danielep71/MKT-FTRB-SA",
+    "status": "Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. It has not yet been compiled or run in Excel, the engine platform decision is still open (scope), and no result is validated for regulatory use (validation).",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.0.1 — Repo setup",
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 32,
+        "closed_at": "2026-10-18T07:43:46Z",
+        "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.1.0 — SA prototype",
+        "state": "open",
+        "open_issues": 8,
+        "closed_issues": 45,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/2"
+      },
+      {
+        "number": 3,
+        "title": "v0.2.0 — Regulatory baseline and certification scope",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/3"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be",
+        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/00cbe7a9206e38bd7d8a8f5c02190ce3a94f56e9/README.md"
+      },
+      {
+        "path": "docs/validation.md",
+        "sha256": "6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6",
+        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/00cbe7a9206e38bd7d8a8f5c02190ce3a94f56e9/docs/validation.md"
+      }
+    ]
+  },
+  {
+    "id": "prepayment",
+    "repo": "danielep71/K-IRRBB-Prepayment_Models",
+    "status": "Current status: repository setup only. No prepayment model, VBA engine, workbook, calibration routine or validated numerical output is delivered. These are development objectives, not implemented features.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Repo setup",
+        "state": "open",
+        "open_issues": 6,
+        "closed_issues": 12,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "7c739e53977978d6c1e6588733d92e45bcc69ce44e0c4d4eb74e0fecefae702c",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c4941cda80e3a4dbd8be8794c403992aeb66f4f0/README.md"
+      },
+      {
+        "path": "docs/Milestones/v0.1.0.md",
+        "sha256": "827dec514b038db611335288c16afbe968654ac18f5061f5a887a51808bd737e",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c4941cda80e3a4dbd8be8794c403992aeb66f4f0/docs/Milestones/v0.1.0.md"
+      }
+    ]
+  }
+]
