@@ -1,6 +1,6 @@
 # Repository traffic history
 
-The daily export follows the SACCR setup. It runs at **06:00 UTC daily**
+The daily export runs at **06:00 UTC daily**
 and can be started manually from **Actions → Daily traffic export** on `main`.
 It measures GitHub repository traffic, not visits to the GitHub Pages website.
 
@@ -39,7 +39,7 @@ Visits sum daily unique visitors; they are **not** distinct people across days.
 
 ## Alerts and permissions
 
-Following SACCR, the exporter opens an alert for a substantial increase in
+The exporter opens an alert for a substantial increase in
 rolling views/clones, additional stars/forks, or a newly observed referrer with
 at least five views. Alerts are deduplicated by date, assigned to `danielep71`,
 labelled `P3` and `repository`, and placed in `Traffic monitoring` (created when
