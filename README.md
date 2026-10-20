@@ -69,6 +69,12 @@ See [setup and data definitions](docs/TRAFFIC.md) for the required `analytics`
 environment secret, schedules, badges and alerts. This tracks repository traffic,
 not GitHub Pages visitors.
 
+## Governance and security
+
+See [portfolio governance](GOVERNANCE.md) for ownership, project status definitions,
+change checks and issue handling. Report vulnerabilities privately under the
+[security policy](SECURITY.md).
+
 ## Review approach
 
 1. Align data, scope, conventions and assumptions.
