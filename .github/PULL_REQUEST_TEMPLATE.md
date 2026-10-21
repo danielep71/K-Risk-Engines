@@ -16,7 +16,7 @@ Resolves #
 
 - [ ] `python3 .github/scripts/check-website.py`
 - [ ] `python3 .github/scripts/check-website.py --external` (when external links change)
-- [ ] `python3 -m unittest discover -s .github/scripts -p 'test_portfolio_refresh.py'` (when portfolio automation changes)
+- [ ] `python3 -m unittest discover -s .github/scripts -p 'test_*.py'` (when site checks or portfolio automation change)
 - [ ] Visual review in a browser (when the website changes)
 
 ## Not validated

@@ -36,6 +36,9 @@ is complete; interim integrations into `main` leave it unreleased.
   `.gitignore`).
 - Pull request template, Dependabot updates for GitHub Actions, this
   changelog and `VERSION` (#14).
+- Website checks also validate links in tracked Markdown files: relative
+  targets, heading and `<a id>` anchors, and external URLs in the external
+  pass, with tests for the checker (#13).
 
 ### Changed
 
@@ -45,9 +48,21 @@ is complete; interim integrations into `main` leave it unreleased.
   `release/1.0.0` as the active release branch (#7).
 - Traffic documentation and `NOTICE.md` no longer cite another repository
   as the origin of the hub's setup (#9).
+- The traffic credential setup states what completes it (a manual run that
+  writes a snapshot) instead of describing how the files were installed (#11).
+- The traffic documentation and workflow header describe `traffic-history` as
+  it is: initialized from `main`, with shared history, a README and the
+  analytics data (#10).
+- Workflow and configuration headers describe each file's purpose instead
+  of naming another repository as its source (#12).
+- The daily portfolio refresh opens its pull request with a GitHub App token,
+  so checks and review run without a manual approval; the refresh itself
+  keeps a read-only token (#23).
 
 ### Fixed
 
+- The README **Stars** badge links to the repository page: the stargazers
+  page returns HTTP 404 to visitors who are not signed in (#13).
 - Traffic alerts are filed even when the **Traffic monitoring** milestone
   has been closed: the workflow reopens it instead of failing on a duplicate
   title (#8).

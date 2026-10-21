@@ -15,21 +15,28 @@ It measures GitHub repository traffic, not visits to the GitHub Pages website.
 4. Run **Daily traffic export** manually on `main` and verify the new snapshot
    on `traffic-history`. Until that succeeds, badge values remain `pending`.
 
-The connector used to install these files cannot inspect or configure environment
-secrets. The installation therefore does not certify that the credential is ready.
+The repository files do not include the credential. Setup is complete only
+when step 4 succeeds: a manual run on `main` that writes a new snapshot.
 Secrets in another repository are not automatically shared with this one.
 
 ## Stored data
 
-The `traffic-history` branch holds only the analytics files:
+The `traffic-history` branch holds the analytics data and a short README:
 
 | File | Contents |
 | --- | --- |
+| `README.md` | Branch description and a link to this page |
 | `data/traffic.csv` | Daily snapshots of rolling 14-day traffic and repository counts |
 | `data/traffic_daily.csv` | Daily views and clones, refreshed within the API window |
 | `data/referrers.csv` | Top referrers per snapshot |
 | `data/popular_paths.csv` | Popular repository paths per snapshot |
 | `data/badges/*.json` | Shields endpoint data for clones, visits and 14-day visitors |
+
+The branch was initialized from `main` at `85159f7` (commit `1b6d86d`), so
+its history shares `main`'s early commits, while its current tree contains
+only the files above. The workflow would create it as an orphan branch only
+if it were missing. It is never merged into `main` or a release branch, and
+its history is not rewritten.
 
 The history is public. It contains aggregate counts, referrers and paths, not
 individual visitor identities. GitHub retains only a short traffic window;
