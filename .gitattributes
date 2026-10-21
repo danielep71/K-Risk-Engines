@@ -47,6 +47,3 @@ LICENSE text eol=lf
 *.ttf opaque
 *.otf opaque
 *.eot opaque
-
-# Keep assets/site.css classified as source, not documentation.
-# Keep configuration and workflows in source archives for reproducibility.
