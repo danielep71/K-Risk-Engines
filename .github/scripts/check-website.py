@@ -2,6 +2,7 @@
 """Small, dependency-free checks for this static site and its Markdown docs (not a full HTML validator)."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor
+import html
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -60,7 +61,9 @@ class Page(HTMLParser):
 def github_slug(heading):
     """Anchor GitHub generates for a Markdown heading (before duplicate suffixes)."""
     text = re.sub(r'!?\[([^\]]*)\]\([^)]*\)', r'\1', heading)
-    text = re.sub(r'<[^>]+>', '', text)
+    # Decode only complete character references (ending in ';'), as Markdown does.
+    text = re.sub(r'&(?:#[0-9]{1,7}|#[xX][0-9a-fA-F]{1,6}|[A-Za-z][A-Za-z0-9]{1,31});',
+                  lambda match: html.unescape(match.group(0)), re.sub(r'<[^>]+>', '', text))
     return re.sub(r'[^\w\- ]', '', text.lower()).replace(' ', '-')
 
 
@@ -97,7 +100,7 @@ def inline_destinations(line):
 
 def markdown_links(text):
     """Return (links, anchors) of a Markdown document, ignoring fenced and inline code."""
-    links, anchors, used, fence = [], set(), {}, None
+    links, anchors, used, fence, paragraph = [], set(), {}, None, []
     for line in text.splitlines():
         match = FENCE.match(line)
         if fence:
@@ -105,11 +108,21 @@ def markdown_links(text):
                 fence = None
             continue
         if match:
-            fence = match.group(1)
+            fence, paragraph = match.group(1), []
+            continue
+        if paragraph and re.match(r' {0,3}(=+|-+)\s*$', line):
+            # Setext heading: the paragraph above an === or --- underline.
+            anchors.add(heading_anchor(github_slug(' '.join(paragraph)), used))
+            paragraph = []
             continue
         heading = re.match(r' {0,3}#{1,6}\s+(.*?)(?:\s+#+)?\s*$', line)
         if heading:
             anchors.add(heading_anchor(github_slug(heading.group(1)), used))
+        if (heading or not line.strip() or re.match(r' {0,3}([-*_])(\s*\1){2,}\s*$', line)
+                or re.match(r' {4}| {0,3}([-*+]\s|\d+[.)]\s|[>|<])', line)):
+            paragraph = []
+        else:
+            paragraph.append(line.strip())
         line = re.sub(r'(`+).*?\1', '', line)
         anchors.update(''.join(value) for value in
                        re.findall(r'<a\s[^>]*?(?<![\w-])(?:id|name)' + ATTRIBUTE, line))
