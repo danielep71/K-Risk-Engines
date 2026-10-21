@@ -271,7 +271,7 @@
         "title": "v0.1.0 — SA prototype",
         "state": "open",
         "open_issues": 8,
-        "closed_issues": 45,
+        "closed_issues": 49,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/2"
       },
@@ -289,41 +289,50 @@
       {
         "path": "README.md",
         "sha256": "d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be",
-        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/00cbe7a9206e38bd7d8a8f5c02190ce3a94f56e9/README.md"
+        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/4eefd3f69fcd16dd395861e520aeb8feb5adfbd3/README.md"
       },
       {
         "path": "docs/validation.md",
         "sha256": "6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6",
-        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/00cbe7a9206e38bd7d8a8f5c02190ce3a94f56e9/docs/validation.md"
+        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/4eefd3f69fcd16dd395861e520aeb8feb5adfbd3/docs/validation.md"
       }
     ]
   },
   {
     "id": "prepayment",
     "repo": "danielep71/K-IRRBB-Prepayment_Models",
-    "status": "Current status: repository setup only. No prepayment model, VBA engine, workbook, calibration routine or validated numerical output is delivered. These are development objectives, not implemented features.",
+    "status": "Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10-21 with accepted data, model and validation contracts; prototype setup (v0.2.0) is the open milestone. No prepayment model, VBA engine, workbook, calibration routine or validated numerical output is delivered. These are development objectives, not implemented features.",
     "release": null,
     "milestones": [
       {
         "number": 1,
         "title": "v0.1.0 - Repo setup",
-        "state": "open",
-        "open_issues": 4,
-        "closed_issues": 16,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 22,
+        "closed_at": "2026-10-21T18:11:27Z",
         "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.2.0 - Prototype setup",
+        "state": "open",
+        "open_issues": 10,
+        "closed_issues": 8,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "996529f3e17f7b02faa4260331b1daf4c78c080d0e7fe828ff35cdd63145ef34",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/3461d891a4e076932c4c21ef30f569d62eafab3e/README.md"
+        "sha256": "e63c8e7edd622492d6e4f92eee039fe4b99bdf196985836aa40d5045eb25f438",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/bc0de740cb0df11ac34673ca9f8b4e1a0a815d89/README.md"
       },
       {
         "path": "docs/Milestones/v0.1.0.md",
-        "sha256": "827dec514b038db611335288c16afbe968654ac18f5061f5a887a51808bd737e",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/3461d891a4e076932c4c21ef30f569d62eafab3e/docs/Milestones/v0.1.0.md"
+        "sha256": "0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/bc0de740cb0df11ac34673ca9f8b4e1a0a815d89/docs/Milestones/v0.1.0.md"
       }
     ]
   }
