@@ -38,27 +38,51 @@ material caveats, and date status snapshots. The engine repository remains
 authoritative if a hub snapshot becomes stale. Record the supporting links in
 the change description or relevant issue.
 
-## Changes and publication
+## Branches and publication
 
-- `main` holds the hub source and publishes the GitHub Pages website.
-- `traffic-history` holds generated repository analytics; it is not an engine
-  release branch and must not be merged into `main` as development work.
-- Maintainer-authorized, low-impact hub edits may be committed directly to
-  `main`. Use a pull request for external contributions and changes that
-  benefit from explicit review, particularly workflow or publication changes.
+| Branch | Role |
+| --- | --- |
+| `main` | Published hub source; GitHub Pages deploys from it. Receives the active release branch through a merge commit, and automated portfolio-status proposals (below). |
+| `release/1.0.0` | **Active release branch.** The single base for task branches and pull requests. |
+| Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
+| `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
+| `traffic-history` | Generated repository analytics. Not a release branch; never merged into `main` or a release branch. |
+
+1. Create a task branch from the active release branch, never from `main` or
+   GitHub's default branch by assumption.
+2. Open a pull request against the active release branch. Website checks run
+   on pull requests and pushes to `main` and `release/**`.
+3. Squash-merge once the checks pass and every review finding is fixed or
+   answered.
+4. Integrate the release branch into `main` with a merge commit, only after
+   maintainer review. Then bring the release branch level with `main`
+   again (fast-forward to the integration commit).
+5. When `main` receives commits that are not on the release branch, bring
+   them in by merging `main` into the release branch. Never rebase or
+   force-push a shared branch.
+
+The daily portfolio refresh is the one routine exception: it proposes dated
+status snapshots as a pull request from `automation/portfolio-refresh`
+directly to `main` (see
+[docs/PORTFOLIO_AUTOMATION.md](docs/PORTFOLIO_AUTOMATION.md)), so that status
+is not held back by a release. Merge `main` into the release branch after
+such a pull request lands.
+
+For every change:
+
 - Inspect the diff and run applicable checks before publishing. For website
   changes, run `python3 .github/scripts/check-website.py`; when external links
   change, also run it with `--external`. Review visual changes in a browser.
   Apply the relevant label-script checks when changing label configuration.
-- Verify applicable hosted checks and the deployment after publication.
-  Investigate failures and fix or revert through a new commit. Preserve shared
-  history; do not force-push or delete the long-lived branches.
+- Verify applicable hosted checks and, after integration into `main`, the
+  deployment. Investigate failures and fix or revert through a new commit.
+  Preserve shared history; do not force-push or delete the long-lived
+  branches.
 - Report checks actually performed and remaining limitations. Self-review,
   automated checks and independent review are different forms of evidence.
 
 These are working rules, not a claim that every step is enforced by GitHub
-settings. No hub version or engine-style release branch is required for routine
-website and documentation updates.
+settings.
 
 ## Issues and decisions
 
@@ -68,8 +92,10 @@ issues to the corresponding repository.
 
 Assign hub issues to **danielep71**, give each exactly one priority
 (`P1`, `P2` or `P3`), appropriate type labels and a relevant milestone.
-Use descriptive hub milestones rather than copying an engine's release number.
-Traffic alerts use the **Traffic monitoring** milestone.
+Release work uses a milestone named `vX.Y.Z - <title>`, matching its release
+branch and numbered independently of any engine. Ongoing work outside a
+release uses a descriptive milestone; traffic alerts use **Traffic
+monitoring**.
 
 The label catalogue is maintained in
 [.github/labels.json](.github/labels.json). Record the objective and acceptance
