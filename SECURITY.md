@@ -1,6 +1,12 @@
-# K-Risk-Engines Security Policy
+# 🔐 K-Risk-Engines security policy
 
-## Scope and supported version
+[![Reporting](https://img.shields.io/badge/Reporting-private_email-B60205?style=flat-square)](#report-a-vulnerability-privately)
+[![Supported](https://img.shields.io/badge/Supported-main-2ea44f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/main)
+[![Response](https://img.shields.io/badge/Response-best_effort-6E7781?style=flat-square)](#handling-reports)
+
+<a id="scope-and-supported-version"></a>
+
+## 🎯 Scope and supported version
 
 This repository is a portfolio and documentation hub. This policy covers its
 website source and assets, repository tooling, and GitHub Actions workflows.
@@ -12,7 +18,9 @@ in an engine through that repository's security policy. Ordinary calculation
 defects without security impact belong in the engine's issue tracker; broken
 links and other non-security hub defects belong in this repository's issues.
 
-## Report a vulnerability privately
+<a id="report-a-vulnerability-privately"></a>
+
+## 📨 Report a vulnerability privately
 
 Do not disclose suspected vulnerabilities in public issues, pull requests,
 commit messages, or screenshots.
@@ -32,7 +40,9 @@ Use synthetic examples. Do not send credentials, tokens, personal information,
 or confidential client or portfolio data. Revoke or rotate any exposed secret
 immediately before reporting the incident.
 
-## Handling reports
+<a id="handling-reports"></a>
+
+## 🧭 Handling reports
 
 Reports are handled on a best-effort basis by the maintainer. Remediation and
 public disclosure timing will be coordinated with the reporter according to
