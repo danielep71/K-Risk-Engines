@@ -47,6 +47,9 @@ is complete; interim integrations into `main` leave it unreleased.
   as the origin of the hub's setup (#9).
 - The traffic credential setup states what completes it (a manual run that
   writes a snapshot) instead of describing how the files were installed (#11).
+- The traffic documentation and workflow header describe `traffic-history` as
+  it is: initialized from `main`, with shared history, a README and the
+  analytics data (#10).
 
 ### Fixed
 

@@ -21,15 +21,22 @@ Secrets in another repository are not automatically shared with this one.
 
 ## Stored data
 
-The `traffic-history` branch holds only the analytics files:
+The `traffic-history` branch holds the analytics data and a short README:
 
 | File | Contents |
 | --- | --- |
+| `README.md` | Branch description and a link to this page |
 | `data/traffic.csv` | Daily snapshots of rolling 14-day traffic and repository counts |
 | `data/traffic_daily.csv` | Daily views and clones, refreshed within the API window |
 | `data/referrers.csv` | Top referrers per snapshot |
 | `data/popular_paths.csv` | Popular repository paths per snapshot |
 | `data/badges/*.json` | Shields endpoint data for clones, visits and 14-day visitors |
+
+The branch was initialized from `main` at `85159f7` (commit `1b6d86d`), so
+its history shares `main`'s early commits, while its current tree contains
+only the files above. The workflow would create it as an orphan branch only
+if it were missing. It is never merged into `main` or a release branch, and
+its history is not rewritten.
 
 The history is public. It contains aggregate counts, referrers and paths, not
 individual visitor identities. GitHub retains only a short traffic window;
