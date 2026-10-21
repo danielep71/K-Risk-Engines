@@ -36,6 +36,9 @@ is complete; interim integrations into `main` leave it unreleased.
   `.gitignore`).
 - Pull request template, Dependabot updates for GitHub Actions, this
   changelog and `VERSION` (#14).
+- Website checks also validate links in tracked Markdown files: relative
+  targets, heading and `<a id>` anchors, and external URLs in the external
+  pass, with tests for the checker (#13).
 
 ### Changed
 
