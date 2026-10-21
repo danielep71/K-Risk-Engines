@@ -60,27 +60,28 @@ Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20
 
 ### Sources
 
-- [README.md](https://github.com/danielep71/MKT-FTRB-SA/blob/00cbe7a9206e38bd7d8a8f5c02190ce3a94f56e9/README.md) — content SHA-256 `d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be`
-- [docs/validation.md](https://github.com/danielep71/MKT-FTRB-SA/blob/00cbe7a9206e38bd7d8a8f5c02190ce3a94f56e9/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
+- [README.md](https://github.com/danielep71/MKT-FTRB-SA/blob/4eefd3f69fcd16dd395861e520aeb8feb5adfbd3/README.md) — content SHA-256 `d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be`
+- [docs/validation.md](https://github.com/danielep71/MKT-FTRB-SA/blob/4eefd3f69fcd16dd395861e520aeb8feb5adfbd3/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
 - No published stable release (drafts and prereleases excluded).
 
 ### Milestones (tracking only)
 
 - [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1): closed; 32 closed / 0 open issues.
-- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 45 closed / 8 open issues.
+- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 49 closed / 8 open issues.
 - [v0.2.0 — Regulatory baseline and certification scope](https://github.com/danielep71/MKT-FTRB-SA/milestone/3): open; 0 closed / 1 open issues.
 
 <a id="prepayment"></a>
 ## K-IRRBB Prepayment Models
 
-Current status: repository setup only. No prepayment model, VBA engine, workbook, calibration routine or validated numerical output is delivered. These are development objectives, not implemented features.
+Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10-21 with accepted data, model and validation contracts; prototype setup (v0.2.0) is the open milestone. No prepayment model, VBA engine, workbook, calibration routine or validated numerical output is delivered. These are development objectives, not implemented features.
 
 ### Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/3461d891a4e076932c4c21ef30f569d62eafab3e/README.md) — content SHA-256 `996529f3e17f7b02faa4260331b1daf4c78c080d0e7fe828ff35cdd63145ef34`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/3461d891a4e076932c4c21ef30f569d62eafab3e/docs/Milestones/v0.1.0.md) — content SHA-256 `827dec514b038db611335288c16afbe968654ac18f5061f5a887a51808bd737e`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/bc0de740cb0df11ac34673ca9f8b4e1a0a815d89/README.md) — content SHA-256 `e63c8e7edd622492d6e4f92eee039fe4b99bdf196985836aa40d5045eb25f438`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/bc0de740cb0df11ac34673ca9f8b4e1a0a815d89/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
 - No published stable release (drafts and prereleases excluded).
 
 ### Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): open; 16 closed / 4 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 8 closed / 10 open issues.
