@@ -55,7 +55,7 @@
     {
       "name": "P1",
       "color": "B60205",
-      "description": "Critical release blocker or serious correctness, data, or application-state risk"
+      "description": "Critical release blocker or serious correctness or data risk"
     },
     {
       "name": "P2",
@@ -107,7 +107,8 @@
     "profile": {
       "application": [],
       "library": [],
-      "ui-component": []
+      "ui-component": [],
+      "website": []
     },
     "domain": {}
   }

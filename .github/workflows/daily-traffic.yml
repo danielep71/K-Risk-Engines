@@ -12,9 +12,10 @@
 #   Data retention
 #     GitHub retains traffic data for 14 days only. This workflow exists to
 #     keep a longer history. The `traffic-history` branch is visible to anyone
-#     who can read this repository, and the data it holds — view counts, clone counts, referrers, popular paths — is
-#     the same aggregate data GitHub already exposes to repository admins. It
-#     contains no identifying information about individual visitors.
+#     who can read this repository, and the data it holds (view counts, clone
+#     counts, referrers, popular paths) is the same aggregate data GitHub
+#     already exposes to repository admins. It contains no identifying
+#     information about individual visitors.
 #
 #   Credentials
 #     TRAFFIC_TOKEN is a fine-grained personal access token with
@@ -27,8 +28,8 @@
 #     modified by someone other than the maintainer. See docs/TRAFFIC.md.
 #
 #   Scope
-#     This is repository analytics. It is not CI. It compiles nothing, runs no
-#     tests, and must never be extended to do so. Software quality is
+#     This is repository analytics. It is not CI. It runs no repository code
+#     or tests, and must never be extended to do so. Software quality is
 #     website-checks.yml, deliberately separate so that a high-privilege
 #     analytics token is never available to a job that executes repository
 #     code. It is the one workflow that persists checkout credentials, because

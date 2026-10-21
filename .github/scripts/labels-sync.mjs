@@ -6,9 +6,9 @@ import process from "node:process";
 
 const EXPECTED_SCHEMA_VERSION = 1;
 const DEFAULT_MANIFEST = ".github/labels.json";
-const DEFAULT_POLICY = ".github/repository-profile.json";
+const DEFAULT_POLICY = ".github/label-policy.json";
 const API_VERSION = "2022-11-28";
-const PROFILE_NAMES = ["application", "library", "ui-component"];
+const PROFILE_NAMES = ["application", "library", "ui-component", "website"];
 const LABELS_PER_PAGE = 100;
 const MAX_LABEL_PAGES = 100;
 const MAX_RATE_LIMIT_RETRIES = 2;
@@ -317,7 +317,7 @@ async function githubRequest(repository, token, method, suffix, body) {
         Accept: "application/vnd.github+json",
         Authorization: `Bearer ${token}`,
         "X-GitHub-Api-Version": API_VERSION,
-        "User-Agent": "canonical-vba-labels-sync"
+        "User-Agent": "k-risk-engines-labels-sync"
       },
       body: body === undefined ? undefined : JSON.stringify(body)
     });
