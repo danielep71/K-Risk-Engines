@@ -29,9 +29,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Test portfolio refresh rules
-        run: python3 -m unittest discover -s .github/scripts -p 'test_portfolio_refresh.py'
-      - name: Check HTML structure, assets and internal links
+      - name: Test website check and portfolio refresh rules
+        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py'
+      - name: Check HTML, Markdown links, assets and internal anchors
         run: python3 .github/scripts/check-website.py
       - name: Check external links on trusted events
         if: github.event_name != 'pull_request'
