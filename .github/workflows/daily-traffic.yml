@@ -689,15 +689,31 @@ jobs:
 
           # Keep analytics alerts assigned, prioritised and grouped separately.
           milestone_title = "Traffic monitoring"
-          # Use --jq so pagination produces a stable list of titles.
-          milestone_names = subprocess.run(
-              ["gh", "api", "--paginate", f"repos/{os.environ['GITHUB_REPOSITORY']}/milestones?state=open&per_page=100",
-               "--jq", ".[].title"], capture_output=True, text=True, check=True
+          milestones_api = f"repos/{os.environ['GITHUB_REPOSITORY']}/milestones"
+          # Look at open and closed milestones: titles are unique across both,
+          # so creating one that exists only as closed would be rejected.
+          # Use --jq so pagination produces one "number<TAB>state<TAB>title" line each.
+          milestone_rows = subprocess.run(
+              ["gh", "api", "--paginate", f"{milestones_api}?state=all&per_page=100",
+               "--jq", ".[] | [.number, .state, .title] | @tsv"],
+              capture_output=True, text=True, check=True
           ).stdout.splitlines()
-          if milestone_title not in milestone_names:
+          milestone = next(
+              (row.split("\t", 2) for row in milestone_rows
+               if row.split("\t", 2)[2:] == [milestone_title]),
+              None
+          )
+          if milestone is None:
               subprocess.run(
-                  ["gh", "api", "--method", "POST", f"repos/{os.environ['GITHUB_REPOSITORY']}/milestones",
+                  ["gh", "api", "--method", "POST", milestones_api,
                    "-f", f"title={milestone_title}", "-f", "description=Review repository traffic alerts and trends."],
+                  capture_output=True, text=True, check=True
+              )
+          elif milestone[1] != "open":
+              # Reopen it: alerts belong in an open milestone, and gh issue
+              # create may not resolve a closed milestone by title.
+              subprocess.run(
+                  ["gh", "api", "--method", "PATCH", f"{milestones_api}/{milestone[0]}", "-f", "state=open"],
                   capture_output=True, text=True, check=True
               )
 
