@@ -73,7 +73,8 @@ Release records:
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in
   progress; every task pull request adds its entry. The release date is set
-  when the release branch is integrated into `main`.
+  when the maintainer publishes the release, after its milestone is complete.
+  Interim integrations of the release branch into `main` leave it unreleased.
 - Pull requests follow
   [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md),
   including what was not validated.
