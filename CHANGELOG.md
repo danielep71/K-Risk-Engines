@@ -64,6 +64,8 @@ is complete; interim integrations into `main` leave it unreleased.
   label scripts default to `.github/label-policy.json`, the label policy
   selects a new `website` profile instead of `application`, and the P1
   label no longer mentions application state (#33).
+- The README carries section glyphs consistent with the engine repositories;
+  the portfolio anchor stays stable (#37).
 
 ### Fixed
 

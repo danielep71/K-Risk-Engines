@@ -1,10 +1,10 @@
 <div align="center">
 
-# K-Risk Engines
+# 🧭 K-Risk Engines
 
 **Transparent methods. Traceable results.**
 
-[**Visit the website**](https://danielep71.github.io/K-Risk-Engines/) · [**Project wiki**](https://github.com/danielep71/K-Risk-Engines/wiki)
+🌐 [**Visit the website**](https://danielep71.github.io/K-Risk-Engines/) · 📚 [**Project wiki**](https://github.com/danielep71/K-Risk-Engines/wiki)
 
 A single entry point to independent financial risk models and calculation engines for benchmarking, model challenge, audit, advisory and education.
 
@@ -31,7 +31,9 @@ A single entry point to independent financial risk models and calculation engine
 
 </div>
 
-## Explore the portfolio
+<a id="explore-the-portfolio"></a>
+
+## 🗂️ Explore the portfolio
 
 <!-- portfolio:table:start -->
 | Project | Purpose | Project-reported status | Last closed milestone |
@@ -44,13 +46,13 @@ A single entry point to independent financial risk models and calculation engine
 
 Each repository owns its implementation, methodology, tests, issues and releases. Consult it for current scope, evidence and licensing. This hub contains presentation and portfolio documentation, not calculation code.
 
-## Website
+## 🌐 Website
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/). No build or external dependencies are required.
 
 For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The live website is [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).
 
-## Website checks
+## ✅ Website checks
 
 Run `python3 .github/scripts/check-website.py` from the repository root.
 Add `--external` to check external URLs with curl.
@@ -72,18 +74,18 @@ errors, HTTP 403/429 and server errors are reported as warnings because
 availability could not be verified. External page fragments are not validated;
 external URLs from Markdown files follow the same rules.
 
-## Daily portfolio refresh
+## 🔄 Daily portfolio refresh
 
 A daily workflow proposes source-attributed status, release and last-closed-milestone updates in a reusable review PR. See [operation and review rules](docs/PORTFOLIO_AUTOMATION.md).
 
-## Traffic history
+## 📈 Traffic history
 
 Daily repository analytics are stored on [`traffic-history`](https://github.com/danielep71/K-Risk-Engines/tree/traffic-history).
 See [setup and data definitions](docs/TRAFFIC.md) for the required `analytics`
 environment secret, schedules, badges and alerts. This tracks repository traffic,
 not GitHub Pages visitors.
 
-## Governance and security
+## 🛡️ Governance and security
 
 See [portfolio governance](GOVERNANCE.md) for ownership, project status definitions,
 change checks and issue handling. Report vulnerabilities privately under the
@@ -92,14 +94,14 @@ change checks and issue handling. Report vulnerabilities privately under the
 The maintainer assigns a milestone and confirms the priority during triage.
 Engine calculation and methodology reports belong in their own repositories.
 
-## Licensing
+## 📄 Licensing
 
 The hub's code and documentation are licensed under [MPL-2.0](LICENSE).
 The portfolio artwork (`assets/K-Risk-Engines-social-preview.png`) is excluded;
 no separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
 Linked engines retain their own licences.
 
-## Review approach
+## 🔍 Review approach
 
 1. Align data, scope, conventions and assumptions.
 2. Compare intermediate calculations and investigate differences.
@@ -107,8 +109,8 @@ Linked engines retain their own licences.
 
 Agreement with a benchmark supports a review; it does not by itself establish model validity or regulatory compliance.
 
-## Portfolio direction
+## 🗺️ Portfolio direction
 
 Develop the existing projects on their own validation evidence, develop the new prepayment project, and maintain consistent presentation and documentation across the collection. Detailed milestones remain in each model repository.
 
-An independent project by [Daniele Penza](https://github.com/danielep71). Not an official product of, or endorsed by, KPMG. Individual project licences apply to their respective contents.
+👤 An independent project by [Daniele Penza](https://github.com/danielep71). Not an official product of, or endorsed by, KPMG. Individual project licences apply to their respective contents.
