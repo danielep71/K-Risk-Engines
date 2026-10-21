@@ -6,7 +6,7 @@
 - `K-Risk-Engines-social-preview.png`: AI-generated portfolio artwork in a blue, light-blue and purple palette. Used by the website, README and social metadata. Its model illustrations are decorative, not model outputs.
 - `site.css`: responsive website styles.
 
-The artwork shows prepayment modelling as planned: that project now has its own repository at the specification stage, with no implemented model. Revisit the image when it delivers an implementation or the portfolio scope changes. The palette does not imply KPMG endorsement.
+The artwork shows prepayment modelling as planned: that project now has its own repository at the specification stage, with no implemented model. Revisit the image when it delivers an implementation or the portfolio scope changes.
 
 To set GitHub's repository social preview, upload the PNG under repository Settings → General → Social preview. Website Open Graph metadata is configured separately in `index.html`.
 

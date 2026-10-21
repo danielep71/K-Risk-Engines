@@ -73,6 +73,8 @@ is complete; interim integrations into `main` leave it unreleased.
 - All Markdown documentation carries heading glyphs and status badges, and
   stale statements about reviews of refresh proposals, traffic alert rules
   and the prepayment artwork are corrected (#40).
+- The README, website footer, governance and notice describe the hub as an
+  independent personal project without naming any firm (#43).
 
 ### 🐛 Fixed
 
