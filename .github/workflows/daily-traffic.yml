@@ -2,10 +2,12 @@
 # Daily traffic export
 #
 #   Reads the GitHub traffic API for this repository and appends a daily
-#   snapshot to CSV files on the data-only `traffic-history` branch. If absent,
-#   the first run creates an orphan branch. It writes data/badges/clones.json, visitors.json
-#   and visits.json there: shields.io endpoints that README badges can use,
-#   since the repository is public.
+#   snapshot to CSV files on the data-only `traffic-history` branch. If the
+#   branch is absent, the first run creates it as an orphan branch. This
+#   repository's branch already existed: it was initialized from `main` at
+#   85159f7 (commit 1b6d86d), so its history is shared with `main`. It writes
+#   data/badges/clones.json, visitors.json and visits.json there: shields.io
+#   endpoints that README badges can use, since the repository is public.
 #
 #   Adapted from VBA-SACCR-Toolkit daily-traffic.yml (2026-10-20).
 #
