@@ -116,4 +116,4 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 Develop the existing projects on their own validation evidence, develop the new prepayment project, and maintain consistent presentation and documentation across the collection. Detailed milestones remain in each model repository.
 
-👤 An independent project by [Daniele Penza](https://github.com/danielep71). Not an official product of, or endorsed by, KPMG. Individual project licences apply to their respective contents.
+👤 An independent project by [Daniele Penza](https://github.com/danielep71). Individual project licences apply to their respective contents.
