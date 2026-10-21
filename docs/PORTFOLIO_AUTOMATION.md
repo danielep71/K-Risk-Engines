@@ -42,28 +42,62 @@ curated stage cannot conflict with new evidence. The snapshot is not a certifica
 
 ## Permissions and checks
 
-Uses the repository's built-in `GITHUB_TOKEN`, with `contents: write` and
-`pull-requests: write` only in the refresh job. No PAT, external AI service,
-engine-repository write access or analytics secret is required. Public engine
-metadata is read using GitHub's API.
+The job runs only from `main`, in the `portfolio-refresh` environment, with two
+tokens that never meet:
 
-GitHub must allow **Actions to create pull requests** in repository Settings →
-Actions → General → Workflow permissions. Keep the default token permissions
-read-only; this job requests its own limited write permissions. If the repository
-setting blocks PR creation, the run fails and the prepared branch remains
-available. Enabling that setting is a separate maintainer action.
+- The refresh, the website checks, the external-link checks and the script
+  tests use the job's read-only `GITHUB_TOKEN` (`contents: read`) to read
+  public engine metadata. They never receive a write token.
+- Only when there is a change to propose does the job mint a short-lived token
+  for the **K-Risk Portfolio Refresh** GitHub App, limited to this repository
+  with `contents: write` and `pull-requests: write`, and use it solely to push
+  `automation/portfolio-refresh` and open or update the pull request.
 
-PR workflows created by `GITHUB_TOKEN` can require a maintainer to approve their
-execution. The refresh job therefore runs HTML/internal-asset checks, external-link checks and the
-portfolio regression tests before pushing without relying on downstream PR CI. External-link warnings remain visible
-in logs and do not establish successful reachability. A normal maintainer merge
-triggers main's website checks and Pages deployment.
+Pull requests opened with `GITHUB_TOKEN` wait for a maintainer to approve their
+workflow runs. Pull requests opened with the App token do not, so **Website
+checks** and code review run on every proposal. The maintainer only reviews
+and merges. No PAT, external AI service, engine-repository write access or
+analytics secret is required.
+
+### One-time App setup (maintainer)
+
+1. **Settings → Developer settings → GitHub Apps → New GitHub App**: name it
+   (for example "K-Risk Portfolio Refresh"), set the homepage to the website,
+   untick **Webhook → Active**, grant only the repository permissions
+   **Contents: Read and write** and **Pull requests: Read and write**, and make
+   it installable **Only on this account**.
+2. In the App, open **Credentials → Key pairs** and generate a private key. The
+   browser downloads a `.pem` file once.
+3. **Install App** on this account for **Only select repositories →
+   K-Risk-Engines**.
+4. In this repository, **Settings → Environments → New environment →
+   `portfolio-refresh`**: restrict deployment branches to `main`, add the
+   variable `PORTFOLIO_APP_CLIENT_ID` (the App's Client ID, not secret) and the
+   secret `PORTFOLIO_APP_PRIVATE_KEY` (the whole `.pem`, including the BEGIN and
+   END lines). Delete the downloaded file afterwards.
+5. Run **Actions → Daily portfolio refresh → Run workflow** on `main`. When
+   there is something to propose, the run summary links the pull request and
+   **Website checks** start on it without an approval prompt. A missing
+   variable, key or installation fails the **Create GitHub App token** step.
+
+Rotate the key by generating a new one, updating the secret, and deleting the
+old key in **Key pairs**. To pause proposals, disable the workflow.
+
+If a proposal pull request stays open while workflow files change on `main`,
+the next run's merge of `main` into the proposal branch touches workflow files,
+which the App is deliberately not allowed to push. Merge or close the pending
+proposal (deleting its branch) and run the workflow again.
+
+The refresh job runs the HTML, Markdown-link, external-link and script tests
+before pushing, and **Website checks** run again on the pull request. External-link
+warnings remain visible in logs and do not establish successful reachability. A
+normal maintainer merge triggers main's website checks and Pages deployment.
 
 Local dry run (writes only local generated files):
 
 ```sh
 python3 .github/scripts/portfolio-refresh.py --body-file /tmp/portfolio-pr.md
-python3 -m unittest discover -s .github/scripts -p 'test_portfolio_refresh.py'
+python3 -m unittest discover -s .github/scripts -p 'test_*.py'
 python3 .github/scripts/check-website.py
 ```
 
@@ -76,4 +110,4 @@ without network access; this does not check for newer project evidence.
 
 GitHub references: [schedule timezones](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule),
 [token-triggered PR workflow approvals](https://docs.github.com/en/actions/concepts/security/github_token),
-and [workflow permission settings](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
+and [GitHub App installation tokens in workflows](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/making-authenticated-api-requests-with-a-github-app-in-a-github-actions-workflow).
