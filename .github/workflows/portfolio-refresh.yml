@@ -17,7 +17,9 @@ jobs:
   refresh:
     # Pull requests opened with GITHUB_TOKEN wait for a maintainer to approve
     # their workflow runs. The proposal is therefore pushed and opened with a
-    # short-lived GitHub App token, so Website checks and review run normally.
+    # short-lived GitHub App token, so Website checks run without approval.
+    # The code-review bot skips bot-authored pull requests; the maintainer's
+    # review before merging is the only review of a proposal.
     # The refresh itself reads public evidence with the read-only GITHUB_TOKEN
     # and never sees the App token. See docs/PORTFOLIO_AUTOMATION.md.
     if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
