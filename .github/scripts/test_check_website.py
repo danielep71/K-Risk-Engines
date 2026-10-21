@@ -22,10 +22,13 @@ class MarkdownParsingTests(unittest.TestCase):
     def test_entities_are_decoded_before_slugging(self):
         self.assertEqual(site.github_slug('Rock &amp; Roll'), 'rock--roll')
         self.assertEqual(site.github_slug('Caf&eacute; &#169; 2026'), 'café--2026')
+        self.assertEqual(site.github_slug('&copy and &amp'), 'copy-and-amp')
 
     def test_setext_headings_get_anchors(self):
         _, anchors = site.markdown_links('Install\n=======\n\nTwo line\nsetext title\n---\n\n- item\n---\n\n---\n')
         self.assertEqual(anchors, {'install', 'two-line-setext-title'})
+        _, anchors = site.markdown_links('---\nTitle\n---\n\n***\nNext\n===\n')
+        self.assertEqual(anchors, {'title', 'next'})
 
     def test_duplicate_headings_get_suffixes(self):
         _, anchors = site.markdown_links('# Notes\n\n## Notes\n\n### Notes\n')

@@ -61,7 +61,9 @@ class Page(HTMLParser):
 def github_slug(heading):
     """Anchor GitHub generates for a Markdown heading (before duplicate suffixes)."""
     text = re.sub(r'!?\[([^\]]*)\]\([^)]*\)', r'\1', heading)
-    text = html.unescape(re.sub(r'<[^>]+>', '', text))
+    # Decode only complete character references (ending in ';'), as Markdown does.
+    text = re.sub(r'&(?:#[0-9]{1,7}|#[xX][0-9a-fA-F]{1,6}|[A-Za-z][A-Za-z0-9]{1,31});',
+                  lambda match: html.unescape(match.group(0)), re.sub(r'<[^>]+>', '', text))
     return re.sub(r'[^\w\- ]', '', text.lower()).replace(' ', '-')
 
 
@@ -116,7 +118,8 @@ def markdown_links(text):
         heading = re.match(r' {0,3}#{1,6}\s+(.*?)(?:\s+#+)?\s*$', line)
         if heading:
             anchors.add(heading_anchor(github_slug(heading.group(1)), used))
-        if heading or not line.strip() or re.match(r' {4}| {0,3}([-*+]\s|\d+[.)]\s|[>|<])', line):
+        if (heading or not line.strip() or re.match(r' {0,3}([-*_])(\s*\1){2,}\s*$', line)
+                or re.match(r' {4}| {0,3}([-*+]\s|\d+[.)]\s|[>|<])', line)):
             paragraph = []
         else:
             paragraph.append(line.strip())
