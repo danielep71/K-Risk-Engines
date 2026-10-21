@@ -153,18 +153,21 @@ def render(projects, snapshot, readme, website):
             block += '<p class="asof">Last closed milestone: none recorded.</p>'
         website = replace_block(website, p['id'], block)
     readme = replace_block(readme, 'table', '\n'.join(rows))
-    report = ['# Portfolio status evidence', '',
+    report = ['# 📊 Portfolio status evidence', '',
+              '[![portfolio refresh](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/'
+              'portfolio-refresh.yml?branch=main&style=flat-square&label=portfolio%20refresh)]'
+              '(https://github.com/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml)', '',
               'Proposed automatically from public project sources; reviewed on merge. Release availability and milestone progress do not establish model validity.', '']
     for p, data in zip(projects, snapshot):
-        report += [f'<a id="{p["id"]}"></a>', f'## {p["name"]}', '', markdown(data['status']), '',
-                   '### Sources', '']
+        report += [f'<a id="{p["id"]}"></a>', f'## 🧩 {p["name"]}', '', markdown(data['status']), '',
+                   '### 🔗 Sources', '']
         report += [f'- [{s["path"]}]({s["url"]}) — content SHA-256 `{s["sha256"]}`' for s in data['sources']]
         if data['release']:
             r = data['release']
             report += [f'- Published release: [{markdown(r["tag"])}]({r["url"]}) ({r["published_at"]})']
         else:
             report += ['- No published stable release (drafts and prereleases excluded).']
-        report += ['', '### Milestones (tracking only)', '']
+        report += ['', '### 🏁 Milestones (tracking only)', '']
         report += [f'- [{markdown(m["title"])}]({m["html_url"]}): {m["state"]}; {m["closed_issues"]} closed / {m["open_issues"]} open issues.' for m in data['milestones']] or ['- No milestones.']
         report += ['']
     return readme, website, '\n'.join(report)

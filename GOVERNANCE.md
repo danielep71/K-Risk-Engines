@@ -1,6 +1,11 @@
-# Portfolio governance
+# 🏛️ Portfolio governance
 
-## Ownership and scope
+[![Active release branch](https://img.shields.io/badge/Active_branch-release%2F1.0.0-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/release/1.0.0)
+[![Milestone](https://img.shields.io/badge/Milestone-v1.0.0_Hub_governance-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/milestone/2)
+[![Priorities](https://img.shields.io/badge/Priorities-P1_·_P2_·_P3-D93F0B?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/labels)
+[![License](https://img.shields.io/badge/License-MPL--2.0-0078D6?style=flat-square)](LICENSE)
+
+## 👤 Ownership and scope
 
 **Daniele Penza (@danielep71)** maintains K-Risk-Engines and decides portfolio
 scope, inclusion, priorities and publication. Contributors and automation work
@@ -13,7 +18,7 @@ A hub change does not authorize a change or release in an engine repository.
 
 This is an independent project, not an official product of or endorsed by KPMG.
 
-## Portfolio inclusion and status
+## 🏷️ Portfolio inclusion and status
 
 List a project when its intended risk-management purpose fits the portfolio,
 its scope and ownership are clear, and its status can be stated honestly.
@@ -38,7 +43,7 @@ material caveats, and date status snapshots. The engine repository remains
 authoritative if a hub snapshot becomes stale. Record the supporting links in
 the change description or relevant issue.
 
-## Branches and publication
+## 🌿 Branches and publication
 
 | Branch | Role |
 | --- | --- |
@@ -66,10 +71,10 @@ status snapshots as a pull request from `automation/portfolio-refresh`
 directly to `main` (see
 [docs/PORTFOLIO_AUTOMATION.md](docs/PORTFOLIO_AUTOMATION.md)), so that status
 is not held back by a release. It opens that pull request with a GitHub App
-token, so its checks run without a manual approval. Merge `main` into the release branch after
-such a pull request lands.
+token, so its checks run without a manual approval. Merge `main` into the
+release branch after such a pull request lands.
 
-Release records:
+### 📦 Release records
 
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in
@@ -79,10 +84,11 @@ Release records:
 - Pull requests follow
   [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md),
   including what was not validated.
-- When a new release branch is opened, update this table, `VERSION`, and
-  `target-branch` in [.github/dependabot.yml](.github/dependabot.yml).
+- When a new release branch is opened, update this table, the badges at the
+  top of this page and of the README, `VERSION`, and `target-branch` in
+  [.github/dependabot.yml](.github/dependabot.yml).
 
-For every change:
+### ✅ For every change
 
 - Inspect the diff and run applicable checks before publishing. For website
   changes, run `python3 .github/scripts/check-website.py`; when external links
@@ -98,7 +104,7 @@ For every change:
 These are working rules, not a claim that every step is enforced by GitHub
 settings.
 
-## Issues and decisions
+## 🗂️ Issues and decisions
 
 Hub issues cover navigation, presentation, portfolio metadata, documentation
 and automation. Route engine-specific methodology, calculation and validation
@@ -118,7 +124,7 @@ are met, with a link to the change and relevant verification; explain other
 closure reasons explicitly. Record material scope or policy decisions in an
 issue, pull request or commit description.
 
-## Security and analytics
+## 🔐 Security and analytics
 
 Report suspected vulnerabilities privately under [SECURITY.md](SECURITY.md).
 Never include tokens or confidential client data in issues, examples or commits.

@@ -1,4 +1,8 @@
-# Changelog
+# 📜 Changelog
+
+[![Keep a Changelog](https://img.shields.io/badge/Keep_a_Changelog-1.1.0-E05735?style=flat-square)](https://keepachangelog.com/en/1.1.0/)
+[![SemVer](https://img.shields.io/badge/SemVer-2.0.0-3F4551?style=flat-square)](https://semver.org/spec/v2.0.0.html)
+[![Version](https://img.shields.io/badge/Version-1.0.0-483698?style=flat-square)](VERSION)
 
 All notable changes to the K-Risk Engines hub are recorded here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
@@ -16,7 +20,7 @@ First hub release, prepared on `release/1.0.0` and tracked in the
 milestone. The date is set when the release is published, after its milestone
 is complete; interim integrations into `main` leave it unreleased.
 
-### Added
+### ✨ Added
 
 - Portfolio landing page and styles (`index.html`, `assets/site.css`) with
   social preview artwork, published through GitHub Pages from `main`.
@@ -40,7 +44,7 @@ is complete; interim integrations into `main` leave it unreleased.
   targets, heading and `<a id>` anchors, and external URLs in the external
   pass, with tests for the checker (#13).
 
-### Changed
+### 🔧 Changed
 
 - Website checks also run on pull requests and pushes to `release/**`
   branches (#6).
@@ -56,8 +60,8 @@ is complete; interim integrations into `main` leave it unreleased.
 - Workflow and configuration headers describe each file's purpose instead
   of naming another repository as its source (#12).
 - The daily portfolio refresh opens its pull request with a GitHub App token,
-  so checks and review run without a manual approval; the refresh itself
-  keeps a read-only token (#23).
+  so its checks run without a manual approval; the refresh itself keeps a
+  read-only token (#23).
 - Configuration, scripts and workflows no longer carry wording from the
   repositories they were adapted from: orphan `.gitattributes` comments,
   template User-Agent names and engine-specific comments are gone, the
@@ -66,8 +70,11 @@ is complete; interim integrations into `main` leave it unreleased.
   label no longer mentions application state (#33).
 - The README carries section glyphs consistent with the engine repositories;
   the portfolio anchor stays stable (#37).
+- All Markdown documentation carries heading glyphs and status badges, and
+  stale statements about reviews of refresh proposals, traffic alert rules
+  and the prepayment artwork are corrected (#40).
 
-### Fixed
+### 🐛 Fixed
 
 - The README **Stars** badge links to the repository page: the stargazers
   page returns HTTP 404 to visitors who are not signed in (#13).

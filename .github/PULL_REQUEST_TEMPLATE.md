@@ -1,16 +1,16 @@
 <!-- Target the active release branch named in GOVERNANCE.md, not main. -->
 
-## Linked issues
+## 🔗 Linked issues
 
 Resolves #
 
-## Changes
+## 🧾 Changes
 
 -
 
-## Why
+## 💡 Why
 
-## Validated
+## ✅ Validated
 
 <!-- Commands and checks actually run, with results. Hosted checks run on this pull request. -->
 
@@ -19,11 +19,11 @@ Resolves #
 - [ ] `python3 -m unittest discover -s .github/scripts -p 'test_*.py'` (when site checks or portfolio automation change)
 - [ ] Visual review in a browser (when the website changes)
 
-## Not validated
+## ⚠️ Not validated
 
 <!-- State plainly what was not checked and why. Write "Nothing" only if that is true. -->
 
-## Checklist
+## ☑️ Checklist
 
 - [ ] The base branch is the active release branch.
 - [ ] Each linked issue has a milestone and exactly one priority label.

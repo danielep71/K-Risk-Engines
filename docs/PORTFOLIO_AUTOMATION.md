@@ -1,4 +1,8 @@
-# Daily portfolio refresh
+# 🔄 Daily portfolio refresh
+
+[![portfolio refresh](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/portfolio-refresh.yml?branch=main&style=flat-square&label=portfolio%20refresh)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml)
+[![Schedule](https://img.shields.io/badge/Schedule-07:00_Europe%2FRome-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml)
+[![Proposals](https://img.shields.io/badge/Proposals-GitHub_App_token-483698?style=flat-square)](#permissions-and-checks)
 
 The `Daily portfolio refresh` Actions workflow runs nominally at **07:00 Europe/Rome**,
 including daylight-saving time, and can be run manually. GitHub schedules may be
@@ -18,7 +22,7 @@ the longer passages in an expandable status-and-limitations section. Existing
 stage badges are replaced by the neutral “Project snapshot” label, so an old
 curated stage cannot conflict with new evidence. The snapshot is not a certification.
 
-## Review and publication
+## 👀 Review and publication
 
 - Changes are proposed on `automation/portfolio-refresh` in one reusable PR,
   assigned to `danielep71` with `documentation` and `P3` labels. Nothing automatically merges or publishes to main.
@@ -40,7 +44,9 @@ curated stage cannot conflict with new evidence. The snapshot is not a certifica
   sources can result in a new proposal on the next run. Disable the workflow to
   pause proposals.
 
-## Permissions and checks
+<a id="permissions-and-checks"></a>
+
+## 🔐 Permissions and checks
 
 The job runs only from `main`, in the `portfolio-refresh` environment, with two
 tokens that never meet:
@@ -55,11 +61,12 @@ tokens that never meet:
 
 Pull requests opened with `GITHUB_TOKEN` wait for a maintainer to approve their
 workflow runs. Pull requests opened with the App token do not, so **Website
-checks** and code review run on every proposal. The maintainer only reviews
-and merges. No PAT, external AI service, engine-repository write access or
-analytics secret is required.
+checks** run on every proposal without an approval prompt. The code-review bot
+does not review pull requests opened by bots, so the maintainer's review before
+merging is the only review of a proposal. No PAT, external AI service,
+engine-repository write access or analytics secret is required.
 
-### One-time App setup (maintainer)
+### 🛠️ One-time App setup (maintainer)
 
 1. **Settings → Developer settings → GitHub Apps → New GitHub App**: name it
    (for example "K-Risk Portfolio Refresh"), set the homepage to the website,
@@ -93,7 +100,9 @@ before pushing, and **Website checks** run again on the pull request. External-l
 warnings remain visible in logs and do not establish successful reachability. A
 normal maintainer merge triggers main's website checks and Pages deployment.
 
-Local dry run (writes only local generated files):
+### 🧪 Local dry run
+
+This writes only local generated files:
 
 ```sh
 python3 .github/scripts/portfolio-refresh.py --body-file /tmp/portfolio-pr.md
