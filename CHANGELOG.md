@@ -13,7 +13,8 @@ No changes yet outside release 1.0.0.
 
 First hub release, prepared on `release/1.0.0` and tracked in the
 [v1.0.0 - Hub governance](https://github.com/danielep71/K-Risk-Engines/milestone/2)
-milestone. The date is set when the release is integrated into `main`.
+milestone. The date is set when the release is published, after its milestone
+is complete; interim integrations into `main` leave it unreleased.
 
 ### Added
 
