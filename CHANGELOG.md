@@ -58,6 +58,8 @@ is complete; interim integrations into `main` leave it unreleased.
 
 ### Fixed
 
+- The README **Stars** badge links to the repository page: the stargazers
+  page returns HTTP 404 to visitors who are not signed in (#13).
 - Traffic alerts are filed even when the **Traffic monitoring** milestone
   has been closed: the workflow reopens it instead of failing on a duplicate
   title (#8).
