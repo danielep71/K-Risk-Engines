@@ -11,6 +11,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[2]
 VOID = set('area base br col embed hr img input link meta param source track wbr'.split())
 FENCE = re.compile(r' {0,3}(`{3,}|~{3,})')
+ATTRIBUTE = r'\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s"\'=<>`]+))'
 
 
 class Page(HTMLParser):
@@ -63,9 +64,40 @@ def github_slug(heading):
     return re.sub(r'[^\w\- ]', '', text.lower()).replace(' ', '-')
 
 
+def heading_anchor(slug, used):
+    """Make a heading slug unique the way GitHub does: -1, -2... until unused."""
+    anchor = slug
+    while anchor in used:
+        used[slug] += 1
+        anchor = f'{slug}-{used[slug]}'
+    used[anchor] = 0
+    return anchor
+
+
+def inline_destinations(line):
+    """Destinations of [text](destination "title"), allowing <...> and balanced parentheses."""
+    found = []
+    for match in re.finditer(r'\]\(', line):
+        rest = line[match.end():].lstrip()
+        if rest.startswith('<'):
+            end = rest.find('>')
+            if end > 1:
+                found.append(rest[1:end])
+            continue
+        depth, destination = 0, ''
+        for char in rest:
+            if char.isspace() or (char == ')' and depth == 0):
+                break
+            depth += {'(': 1, ')': -1}.get(char, 0)
+            destination += char
+        if destination:
+            found.append(destination)
+    return found
+
+
 def markdown_links(text):
     """Return (links, anchors) of a Markdown document, ignoring fenced and inline code."""
-    links, anchors, seen, fence = [], set(), {}, None
+    links, anchors, used, fence = [], set(), {}, None
     for line in text.splitlines():
         match = FENCE.match(line)
         if fence:
@@ -77,15 +109,15 @@ def markdown_links(text):
             continue
         heading = re.match(r' {0,3}#{1,6}\s+(.*?)(?:\s+#+)?\s*$', line)
         if heading:
-            slug = github_slug(heading.group(1))
-            anchors.add(f'{slug}-{seen[slug]}' if slug in seen else slug)
-            seen[slug] = seen.get(slug, 0) + 1
+            anchors.add(heading_anchor(github_slug(heading.group(1)), used))
         line = re.sub(r'(`+).*?\1', '', line)
-        anchors.update(re.findall(r'<a\s[^>]*?\b(?:id|name)="([^"]+)"', line))
-        links += re.findall(r'\]\(\s*<?([^)\s>]+)', line)
-        links += re.findall(r'^ {0,3}\[(?!\^)[^\]]+\]:\s*<?([^\s>]+)', line)
+        anchors.update(''.join(value) for value in
+                       re.findall(r'<a\s[^>]*?(?<![\w-])(?:id|name)' + ATTRIBUTE, line))
+        links += inline_destinations(line)
+        links += [''.join(value) for value in
+                  re.findall(r'^ {0,3}\[(?!\^)[^\]]+\]:\s*(?:<([^>]*)>|(\S+))', line)]
         links += re.findall(r'<(https?://[^>\s]+)>', line)
-        links += re.findall(r'\b(?:href|src)="([^"]+)"', line)
+        links += [''.join(value) for value in re.findall(r'(?<![\w-])(?:href|src)' + ATTRIBUTE, line)]
     return links, anchors
 
 

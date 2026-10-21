@@ -23,6 +23,21 @@ class MarkdownParsingTests(unittest.TestCase):
         _, anchors = site.markdown_links('# Notes\n\n## Notes\n\n### Notes\n')
         self.assertEqual(anchors, {'notes', 'notes-1', 'notes-2'})
 
+    def test_colliding_slugs_follow_github(self):
+        _, anchors = site.markdown_links('# Foo\n# Foo-1\n# Foo\n')
+        self.assertEqual(anchors, {'foo', 'foo-1', 'foo-2'})
+
+    def test_destinations_with_parentheses_and_angle_brackets(self):
+        links, _ = site.markdown_links('[a](guide_(v2).md "T") [b](<my file.md>) [c](x.md)\n'
+                                       '[ref]: <ref file.md>\n')
+        self.assertEqual(links, ['guide_(v2).md', 'my file.md', 'x.md', 'ref file.md'])
+
+    def test_html_attributes_in_any_quoting(self):
+        links, anchors = site.markdown_links(
+            "<a href='single.md' id='one'></a><a name=two href=bare.md></a><img data-src=\"x.png\">\n")
+        self.assertEqual(links, ['single.md', 'bare.md'])
+        self.assertEqual(anchors, {'one', 'two'})
+
     def test_links_ignore_code_and_footnotes(self):
         text = ('[a](one.md) and `[b](two.md)`\n'
                 '```\n[c](three.md)\n```\n'
@@ -49,8 +64,11 @@ class CheckTests(unittest.TestCase):
         errors, external, *_ = self.run_check({
             'index.html': PAGE,
             'README.md': ('# Hub\n\n[Guide](docs/guide.md#install) [Top](#hub) [Docs](docs/)\n'
-                          '[Page](index.html) [Site](https://example.com/page#part)\n'),
-            'docs/guide.md': '# Guide\n\n## Install\n\n[Back](../README.md)\n'})
+                          '[Page](index.html) [Site](https://example.com/page#part)\n'
+                          "[V2](docs/guide_(v2).md) [Spaced](<docs/my guide.md>) <a href='#here' id='here'></a>\n"),
+            'docs/guide.md': '# Guide\n\n## Install\n\n[Back](../README.md)\n',
+            'docs/guide_(v2).md': '# V2\n',
+            'docs/my guide.md': '# Spaced\n'})
         self.assertEqual(errors, [])
         self.assertEqual(external, {'https://example.com/page'})
 
@@ -58,13 +76,15 @@ class CheckTests(unittest.TestCase):
         errors, *_ = self.run_check({
             'index.html': PAGE,
             'README.md': ('[Missing](docs/missing.md) [Anchor](docs/guide.md#nowhere)\n'
-                          '[Root](/docs/guide.md) [Outside](../elsewhere.md)\n'),
+                          '[Root](/docs/guide.md) [Outside](../elsewhere.md)\n'
+                          "<a href='docs/gone.md'>Gone</a>\n"),
             'docs/guide.md': '# Guide\n\n## Install\n'})
         self.assertEqual(errors, [
             'README.md: missing target docs/missing.md',
             'README.md: missing anchor docs/guide.md#nowhere',
             'README.md: root-relative URL breaks project Pages hosting: /docs/guide.md',
-            'README.md: path outside repository: ../elsewhere.md'])
+            'README.md: path outside repository: ../elsewhere.md',
+            'README.md: missing target docs/gone.md'])
 
     def test_html_links_to_markdown_anchors_are_checked(self):
         errors, *_ = self.run_check({'index.html': PAGE, 'docs/guide.md': '# Guide\n'})
