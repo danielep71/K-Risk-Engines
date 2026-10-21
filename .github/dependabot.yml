@@ -1,0 +1,24 @@
+# Proposes updates to the SHA-pinned GitHub Actions used by the workflows.
+# target-branch must name the active release branch in GOVERNANCE.md;
+# update it when a new release branch is opened.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: release/1.0.0
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Europe/Rome
+    labels:
+      - ci
+      - P3
+    assignees:
+      - danielep71
+    commit-message:
+      prefix: ci
+    groups:
+      github-actions:
+        patterns:
+          - "*"
