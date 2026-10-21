@@ -50,6 +50,8 @@ is complete; interim integrations into `main` leave it unreleased.
 - The traffic documentation and workflow header describe `traffic-history` as
   it is: initialized from `main`, with shared history, a README and the
   analytics data (#10).
+- Workflow and configuration headers describe each file's purpose instead
+  of naming another repository as its source (#12).
 
 ### Fixed
 
