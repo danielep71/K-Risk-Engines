@@ -15,8 +15,8 @@ It measures GitHub repository traffic, not visits to the GitHub Pages website.
 4. Run **Daily traffic export** manually on `main` and verify the new snapshot
    on `traffic-history`. Until that succeeds, badge values remain `pending`.
 
-The connector used to install these files cannot inspect or configure environment
-secrets. The installation therefore does not certify that the credential is ready.
+The repository files do not include the credential. Setup is complete only
+when step 4 succeeds: a manual run on `main` that writes a new snapshot.
 Secrets in another repository are not automatically shared with this one.
 
 ## Stored data

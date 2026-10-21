@@ -45,6 +45,8 @@ is complete; interim integrations into `main` leave it unreleased.
   `release/1.0.0` as the active release branch (#7).
 - Traffic documentation and `NOTICE.md` no longer cite another repository
   as the origin of the hub's setup (#9).
+- The traffic credential setup states what completes it (a manual run that
+  writes a snapshot) instead of describing how the files were installed (#11).
 
 ### Fixed
 
