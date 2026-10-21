@@ -16,7 +16,7 @@ hub documentation and supporting automation. Each engine repository owns its
 methodology, implementation, validation evidence, issues, licences and releases.
 A hub change does not authorize a change or release in an engine repository.
 
-This is an independent project, not an official product of or endorsed by KPMG.
+This is an independent personal project.
 
 ## 🏷️ Portfolio inclusion and status
 
