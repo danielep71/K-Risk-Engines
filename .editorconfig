@@ -1,4 +1,4 @@
-# Adapted from VBA-SACCR-Toolkit for the K-Risk-Engines website hub.
+# Editor settings for the K-Risk-Engines website hub.
 # Editors control formatting; .gitattributes controls Git normalization.
 root = true
 
