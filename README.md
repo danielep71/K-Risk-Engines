@@ -23,7 +23,7 @@ A single entry point to independent financial risk models and calculation engine
 [![P1 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P1?style=flat-square&label=P1&color=B60205)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP1)
 [![P2 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P2?style=flat-square&label=P2&color=D93F0B)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP2)
 [![P3 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P3?style=flat-square&label=P3&color=FBCA04)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP3)
-[![Stars](https://img.shields.io/github/stars/danielep71/K-Risk-Engines?style=flat-square&color=bf8700)](https://github.com/danielep71/K-Risk-Engines/stargazers)
+[![Stars](https://img.shields.io/github/stars/danielep71/K-Risk-Engines?style=flat-square&color=bf8700)](https://github.com/danielep71/K-Risk-Engines)
 
 <br>
 
