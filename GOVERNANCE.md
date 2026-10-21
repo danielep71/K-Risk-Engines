@@ -68,6 +68,18 @@ directly to `main` (see
 is not held back by a release. Merge `main` into the release branch after
 such a pull request lands.
 
+Release records:
+
+- [VERSION](VERSION) holds the version of the active release branch.
+- [CHANGELOG.md](CHANGELOG.md) records each change under the release in
+  progress; every task pull request adds its entry. The release date is set
+  when the release branch is integrated into `main`.
+- Pull requests follow
+  [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md),
+  including what was not validated.
+- When a new release branch is opened, update this table, `VERSION`, and
+  `target-branch` in [.github/dependabot.yml](.github/dependabot.yml).
+
 For every change:
 
 - Inspect the diff and run applicable checks before publishing. For website
