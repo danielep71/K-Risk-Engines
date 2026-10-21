@@ -65,7 +65,8 @@ The daily portfolio refresh is the one routine exception: it proposes dated
 status snapshots as a pull request from `automation/portfolio-refresh`
 directly to `main` (see
 [docs/PORTFOLIO_AUTOMATION.md](docs/PORTFOLIO_AUTOMATION.md)), so that status
-is not held back by a release. Merge `main` into the release branch after
+is not held back by a release. It opens that pull request with a GitHub App
+token, so its checks run without a manual approval. Merge `main` into the release branch after
 such a pull request lands.
 
 Release records:

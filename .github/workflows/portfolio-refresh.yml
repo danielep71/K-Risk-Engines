@@ -15,36 +15,47 @@ concurrency:
 
 jobs:
   refresh:
+    # Pull requests opened with GITHUB_TOKEN wait for a maintainer to approve
+    # their workflow runs. The proposal is therefore pushed and opened with a
+    # short-lived GitHub App token, so Website checks and review run normally.
+    # The refresh itself reads public evidence with the read-only GITHUB_TOKEN
+    # and never sees the App token. See docs/PORTFOLIO_AUTOMATION.md.
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    # Holds PORTFOLIO_APP_CLIENT_ID and PORTFOLIO_APP_PRIVATE_KEY; deployment
+    # branches are restricted to main.
+    environment: portfolio-refresh
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
     env:
-      GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
+      BRANCH: automation/portfolio-refresh
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
           fetch-depth: 0
+          persist-credentials: false
       - name: Refresh reusable proposal branch
+        id: refresh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          branch='automation/portfolio-refresh'
           # Recreate after merge/closure; never force-push a shared ref.
-          if git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
-            git switch --track "origin/$branch"
+          if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+            git switch --track "origin/$BRANCH"
             git merge --no-edit origin/main
           else
-            git switch -c "$branch"
+            git switch -c "$BRANCH"
           fi
           python3 .github/scripts/portfolio-refresh.py --body-file "$RUNNER_TEMP/portfolio-pr.md"
           python3 .github/scripts/check-website.py
           python3 .github/scripts/check-website.py --external
-          python3 -m unittest discover -s .github/scripts -p 'test_portfolio_refresh.py'
+          python3 -m unittest discover -s .github/scripts -p 'test_*.py'
           git add README.md index.html docs/PORTFOLIO_STATUS.md docs/portfolio-state.json
           changed=false
           if ! git diff --cached --quiet; then
@@ -53,13 +64,32 @@ jobs:
           fi
           if git diff --quiet origin/main HEAD -- README.md index.html docs/PORTFOLIO_STATUS.md docs/portfolio-state.json; then
             echo 'No portfolio changes to propose.' >> "$GITHUB_STEP_SUMMARY"
-            exit 0
+            echo 'propose=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'propose=true' >> "$GITHUB_OUTPUT"
           fi
-          git push origin "HEAD:refs/heads/$branch"
-          pr=$(gh pr list --head "$branch" --base main --state open --json number --jq '.[0].number // empty')
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+      - name: Create GitHub App token
+        id: app-token
+        if: steps.refresh.outputs.propose == 'true'
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.PORTFOLIO_APP_CLIENT_ID }}
+          private-key: ${{ secrets.PORTFOLIO_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+      - name: Push proposal and open or update its pull request
+        if: steps.refresh.outputs.propose == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          CHANGED: ${{ steps.refresh.outputs.changed }}
+        run: |
+          set -euo pipefail
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "HEAD:refs/heads/$BRANCH"
+          pr=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
           if [ -z "$pr" ]; then
-            gh pr create --head "$branch" --base main --title 'docs: refresh portfolio status and milestone progress' --body-file "$RUNNER_TEMP/portfolio-pr.md" --assignee danielep71 --label documentation --label P3
-          elif [ "$changed" = true ]; then
+            gh pr create --head "$BRANCH" --base main --title 'docs: refresh portfolio status and milestone progress' --body-file "$RUNNER_TEMP/portfolio-pr.md" --assignee danielep71 --label documentation --label P3
+          elif [ "$CHANGED" = true ]; then
             gh pr edit "$pr" --body-file "$RUNNER_TEMP/portfolio-pr.md"
           fi
-          gh pr list --head "$branch" --base main --state open --json url --jq '.[0].url' >> "$GITHUB_STEP_SUMMARY"
+          gh pr list --head "$BRANCH" --base main --state open --json url --jq '.[0].url' >> "$GITHUB_STEP_SUMMARY"

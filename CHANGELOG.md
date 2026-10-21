@@ -55,6 +55,9 @@ is complete; interim integrations into `main` leave it unreleased.
   analytics data (#10).
 - Workflow and configuration headers describe each file's purpose instead
   of naming another repository as its source (#12).
+- The daily portfolio refresh opens its pull request with a GitHub App token,
+  so checks and review run without a manual approval; the refresh itself
+  keeps a read-only token (#23).
 
 ### Fixed
 
