@@ -61,7 +61,8 @@ is complete; interim integrations into `main` leave it unreleased.
   of naming another repository as its source (#12).
 - The daily portfolio refresh opens its pull request with a GitHub App token,
   so its checks run without a manual approval; the refresh itself keeps a
-  read-only token (#23).
+  read-only token. The maintainer's review is the only review of a proposal,
+  because the code-review bot skips bot-authored pull requests (#23).
 - Configuration, scripts and workflows no longer carry wording from the
   repositories they were adapted from: orphan `.gitattributes` comments,
   template User-Agent names and engine-specific comments are gone, the

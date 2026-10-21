@@ -71,8 +71,10 @@ status snapshots as a pull request from `automation/portfolio-refresh`
 directly to `main` (see
 [docs/PORTFOLIO_AUTOMATION.md](docs/PORTFOLIO_AUTOMATION.md)), so that status
 is not held back by a release. It opens that pull request with a GitHub App
-token, so its checks run without a manual approval. Merge `main` into the
-release branch after such a pull request lands.
+token, so its checks run without a manual approval. The code-review bot
+does not review bot-authored pull requests, so the maintainer's review before
+merging is the only review of a proposal. Merge `main` into the release
+branch after such a pull request lands.
 
 ### 📦 Release records
 
