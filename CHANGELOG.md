@@ -58,6 +58,12 @@ is complete; interim integrations into `main` leave it unreleased.
 - The daily portfolio refresh opens its pull request with a GitHub App token,
   so checks and review run without a manual approval; the refresh itself
   keeps a read-only token (#23).
+- Configuration, scripts and workflows no longer carry wording from the
+  repositories they were adapted from: orphan `.gitattributes` comments,
+  template User-Agent names and engine-specific comments are gone, the
+  label scripts default to `.github/label-policy.json`, the label policy
+  selects a new `website` profile instead of `application`, and the P1
+  label no longer mentions application state (#33).
 
 ### Fixed
 

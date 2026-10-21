@@ -53,7 +53,7 @@ def status_excerpt(readme, selector):
         matches = re.findall(r'^## [^\n]*\bStatus\s*\n(.*?)(?=^## |\Z)', readme, re.M | re.S)
         if len(matches) != 1:
             raise ValueError('Expected exactly one Status section')
-        # Include the whole section so the draft-decay / missing Excel caveats cannot be lost.
+        # Include the whole section so status caveats (drafts, missing evidence) cannot be lost.
         text = matches[0]
     elif selector == 'current':
         matches = re.findall(r'^\*\*Current status:[^\n]+', readme, re.M)

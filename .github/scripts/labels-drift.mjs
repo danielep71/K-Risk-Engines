@@ -12,7 +12,7 @@ const execFileAsync = promisify(execFile);
 const TOOL_NAME = "Repository label drift";
 const API_VERSION = "2022-11-28";
 const DEFAULT_MANIFEST = ".github/labels.json";
-const DEFAULT_POLICY = ".github/repository-profile.json";
+const DEFAULT_POLICY = ".github/label-policy.json";
 const RECONCILER = ".github/scripts/labels-sync.mjs";
 const LABELS_PER_PAGE = 100;
 const MAX_LABEL_PAGES = 100;
@@ -123,7 +123,7 @@ async function fetchLabelsPage(repository, token, page) {
         Accept: "application/vnd.github+json",
         Authorization: `Bearer ${token}`,
         "X-GitHub-Api-Version": API_VERSION,
-        "User-Agent": "canonical-vba-label-drift"
+        "User-Agent": "k-risk-engines-label-drift"
       }
     });
     if (response.ok) {
