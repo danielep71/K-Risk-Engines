@@ -77,10 +77,10 @@ Current status: repository setup only. No prepayment model, VBA engine, workbook
 
 ### Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/e8f0a07a841e736bb4501ca3f093420b561ee943/README.md) — content SHA-256 `85e66773258b0168390b68dbafdd31368539b03ce884481df4a5d8708385cf9d`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/e8f0a07a841e736bb4501ca3f093420b561ee943/docs/Milestones/v0.1.0.md) — content SHA-256 `827dec514b038db611335288c16afbe968654ac18f5061f5a887a51808bd737e`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/3461d891a4e076932c4c21ef30f569d62eafab3e/README.md) — content SHA-256 `996529f3e17f7b02faa4260331b1daf4c78c080d0e7fe828ff35cdd63145ef34`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/3461d891a4e076932c4c21ef30f569d62eafab3e/docs/Milestones/v0.1.0.md) — content SHA-256 `827dec514b038db611335288c16afbe968654ac18f5061f5a887a51808bd737e`
 - No published stable release (drafts and prereleases excluded).
 
 ### Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): open; 15 closed / 5 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): open; 16 closed / 4 open issues.
