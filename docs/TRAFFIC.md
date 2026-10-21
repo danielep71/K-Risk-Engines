@@ -1,10 +1,14 @@
-# Repository traffic history
+# 📈 Repository traffic history
+
+[![daily traffic export](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/daily-traffic.yml?branch=main&style=flat-square&label=daily%20traffic%20export)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/daily-traffic.yml)
+[![Schedule](https://img.shields.io/badge/Schedule-06:00_UTC_daily-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/daily-traffic.yml)
+[![Data](https://img.shields.io/badge/Data-traffic--history-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/traffic-history)
 
 The daily export runs at **06:00 UTC daily**
 and can be started manually from **Actions → Daily traffic export** on `main`.
 It measures GitHub repository traffic, not visits to the GitHub Pages website.
 
-## One-time credential setup
+## 🔑 One-time credential setup
 
 1. Open **Settings → Environments**, create `analytics`, and restrict its
    deployment branches to `main` only.
@@ -19,7 +23,7 @@ The repository files do not include the credential. Setup is complete only
 when step 4 succeeds: a manual run on `main` that writes a new snapshot.
 Secrets in another repository are not automatically shared with this one.
 
-## Stored data
+## 🗄️ Stored data
 
 The `traffic-history` branch holds the analytics data and a short README:
 
@@ -44,15 +48,19 @@ missed collection beyond that window cannot be recovered by this workflow.
 Repeated same-day runs replace that day's snapshot rather than adding it twice.
 Visits sum daily unique visitors; they are **not** distinct people across days.
 
-## Alerts and permissions
+## 🚨 Alerts and permissions
 
-The exporter opens an alert for a substantial increase in
-rolling views/clones, additional stars/forks, or a newly observed referrer with
-at least five views. Alerts are deduplicated by date, assigned to `danielep71`,
+The exporter compares the latest snapshot with the previous one and opens an
+alert when 14-day views reach at least twice the previous value and at least
+100 more, when 14-day clones reach at least twice the previous value and at
+least 10 more, when stars or forks increase, or when a referrer not seen before
+has at least five views. Alerts are deduplicated by date, assigned to `danielep71`,
 labelled `P3` and `repository`, and placed in `Traffic monitoring`. The
 milestone is created when first needed and reopened if it has been closed, so
 closing it after a review never blocks the next alert. First-run data
-establishes the baseline without creating an alert.
+establishes the baseline without creating an alert. A zero baseline is easy to
+exceed: the repository's own CI checkouts and maintainer clones can trigger a
+clone alert, as on 2026-10-21 (#30).
 
 `TRAFFIC_TOKEN` is available only to the API-fetch step. The job uses its
 separate `GITHUB_TOKEN` to push history and create alerts. It does not execute
