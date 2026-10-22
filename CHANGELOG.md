@@ -75,6 +75,8 @@ milestone.
   and the prepayment artwork are corrected (#40).
 - The README, website footer, governance and notice describe the hub as an
   independent personal project without naming any firm (#43).
+- `GOVERNANCE.md` describes how a release is dated, integrated into `main`,
+  tagged and published (#48).
 
 ### 🐛 Fixed
 
