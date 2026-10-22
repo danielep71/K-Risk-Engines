@@ -1,6 +1,6 @@
 # 🔐 K-Risk-Engines security policy
 
-[![Reporting](https://img.shields.io/badge/Reporting-private_email-B60205?style=flat-square)](#report-a-vulnerability-privately)
+[![Reporting](https://img.shields.io/badge/Reporting-private_GitHub_form-B60205?style=flat-square)](#report-a-vulnerability-privately)
 [![Supported](https://img.shields.io/badge/Supported-main-2ea44f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/main)
 [![Response](https://img.shields.io/badge/Response-best_effort-6E7781?style=flat-square)](#handling-reports)
 
@@ -25,10 +25,10 @@ links and other non-security hub defects belong in this repository's issues.
 Do not disclose suspected vulnerabilities in public issues, pull requests,
 commit messages, or screenshots.
 
-Email **danielep71@gmail.com** with the subject
+Use GitHub's [private vulnerability reporting form](https://github.com/danielep71/K-Risk-Engines/security/advisories/new)
+(**Security → Report a vulnerability**) as the primary route.
+If you cannot use the form, email **danielep71@gmail.com** with the subject
 **Private security report — K-Risk-Engines**.
-If GitHub's **Security → Report a vulnerability** option is available in this
-repository, you may use it instead.
 
 Include:
 
