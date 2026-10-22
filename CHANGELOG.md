@@ -11,7 +11,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ## [Unreleased]
 
-No changes yet.
+### 🔧 Changed
+
+- The changelog links each version to its release and comparison, and
+  `GOVERNANCE.md` states that the tag is created by publishing the GitHub
+  Release.
 
 ## [1.0.0] - 2026-10-22
 
@@ -85,3 +89,6 @@ milestone.
 - Traffic alerts are filed even when the **Traffic monitoring** milestone
   has been closed: the workflow reopens it instead of failing on a duplicate
   title (#8).
+
+[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/danielep71/K-Risk-Engines/releases/tag/v1.0.0
