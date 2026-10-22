@@ -11,14 +11,13 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ## [Unreleased]
 
-No changes yet outside release 1.0.0.
+No changes yet.
 
-## [1.0.0] - not yet released
+## [1.0.0] - 2026-10-22
 
 First hub release, prepared on `release/1.0.0` and tracked in the
 [v1.0.0 - Hub governance](https://github.com/danielep71/K-Risk-Engines/milestone/2)
-milestone. The date is set when the release is published, after its milestone
-is complete; interim integrations into `main` leave it unreleased.
+milestone.
 
 ### ✨ Added
 
@@ -76,6 +75,8 @@ is complete; interim integrations into `main` leave it unreleased.
   and the prepayment artwork are corrected (#40).
 - The README, website footer, governance and notice describe the hub as an
   independent personal project without naming any firm (#43).
+- `GOVERNANCE.md` describes how a release is dated, integrated into `main`,
+  tagged and published (#48).
 
 ### 🐛 Fixed
 
