@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Update the portfolio refresh GitHub App token action from v3.2.0 to the
+  pinned v3.3.0 release, reapplying the update proposed in #55 under maintainer
+  authorship. Live proposal-path verification remains pending.
+
 - Open `release/1.0.1`, update the development version and badges, and retarget
   Dependabot version updates to the active release branch (#52).
 - Require the GitHub Actions `HTML and links` check on `main` and `release/**`,
