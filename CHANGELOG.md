@@ -2,7 +2,7 @@
 
 [![Keep a Changelog](https://img.shields.io/badge/Keep_a_Changelog-1.1.0-E05735?style=flat-square)](https://keepachangelog.com/en/1.1.0/)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-3F4551?style=flat-square)](https://semver.org/spec/v2.0.0.html)
-[![Version](https://img.shields.io/badge/Version-1.0.0-483698?style=flat-square)](VERSION)
+[![Development](https://img.shields.io/badge/Development-1.0.1-483698?style=flat-square)](VERSION)
 
 All notable changes to the K-Risk Engines hub are recorded here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
@@ -13,6 +13,13 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Open `release/1.0.1`, update the development version and badges, and retarget
+  Dependabot version updates to the active release branch (#52).
+- Require the GitHub Actions `HTML and links` check on `main` and `release/**`,
+  preserving fast-forward synchronization after the integration commit passes.
+  Traffic history retains deletion and force-push protection without website CI (#52).
+- Enable private vulnerability reporting and make its GitHub form the primary
+  reporting route; enable Dependabot security updates and prerequisites (#52).
 - The changelog links each version to its release and comparison, and
   `GOVERNANCE.md` states that the tag is created by publishing the GitHub
   Release.
