@@ -1,7 +1,7 @@
 # 🏛️ Portfolio governance
 
-[![Active release branch](https://img.shields.io/badge/Active_branch-release%2F1.0.0-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/release/1.0.0)
-[![Milestone](https://img.shields.io/badge/Milestone-v1.0.0_Hub_governance-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/milestone/2)
+[![Active release branch](https://img.shields.io/badge/Active_branch-release%2F1.0.1-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/release/1.0.1)
+[![Milestone](https://img.shields.io/badge/Milestone-v1.0.1_Hub_maintenance_and_security-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/milestone/4)
 [![Priorities](https://img.shields.io/badge/Priorities-P1_·_P2_·_P3-D93F0B?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/labels)
 [![License](https://img.shields.io/badge/License-MPL--2.0-0078D6?style=flat-square)](LICENSE)
 
@@ -48,7 +48,7 @@ the change description or relevant issue.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Receives the active release branch through a merge commit, and automated portfolio-status proposals (below). |
-| `release/1.0.0` | **Active release branch.** The single base for task branches and pull requests. |
+| `release/1.0.1` | **Active release branch.** The single base for task branches and pull requests. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
 | `traffic-history` | Generated repository analytics. Not a release branch; never merged into `main` or a release branch. |
@@ -61,7 +61,8 @@ the change description or relevant issue.
    answered.
 4. Integrate the release branch into `main` with a merge commit, only after
    maintainer review. Then bring the release branch level with `main`
-   again (fast-forward to the integration commit).
+   again (fast-forward to the integration commit after its `HTML and links`
+   check on `main` succeeds).
 5. When `main` receives commits that are not on the release branch, bring
    them in by merging `main` into the release branch. Never rebase or
    force-push a shared branch.
@@ -107,8 +108,13 @@ branch after such a pull request lands.
 - Report checks actually performed and remaining limitations. Self-review,
   automated checks and independent review are different forms of evidence.
 
-These are working rules, not a claim that every step is enforced by GitHub
-settings.
+GitHub requires the `HTML and links` check from GitHub Actions on `main`
+and `release/**`. The CI rule excludes `traffic-history`, which does not run
+website checks. Deletion and force-push protection still covers all three
+branch families. No bypass is needed for a fast-forward to a commit whose
+required check has already passed. If the branches diverge, integrate through
+a pull request and wait for its checks; do not create an unchecked merge commit
+and push it directly. Other review steps remain maintainer responsibilities.
 
 ## 🗂️ Issues and decisions
 
