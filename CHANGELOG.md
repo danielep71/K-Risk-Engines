@@ -11,14 +11,13 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ## [Unreleased]
 
-No changes yet outside release 1.0.0.
+No changes yet.
 
-## [1.0.0] - not yet released
+## [1.0.0] - 2026-10-22
 
 First hub release, prepared on `release/1.0.0` and tracked in the
 [v1.0.0 - Hub governance](https://github.com/danielep71/K-Risk-Engines/milestone/2)
-milestone. The date is set when the release is published, after its milestone
-is complete; interim integrations into `main` leave it unreleased.
+milestone.
 
 ### ✨ Added
 
