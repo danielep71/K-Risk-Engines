@@ -79,11 +79,11 @@ Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/bc0de740cb0df11ac34673ca9f8b4e1a0a815d89/README.md) — content SHA-256 `e63c8e7edd622492d6e4f92eee039fe4b99bdf196985836aa40d5045eb25f438`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/bc0de740cb0df11ac34673ca9f8b4e1a0a815d89/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/590250e6f9cb6071a44828179d8fcbab56ad5277/README.md) — content SHA-256 `d9a8ea46b5d2f987697dba000995b62aed3ab26286781acd2f09824f47bce78f`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/590250e6f9cb6071a44828179d8fcbab56ad5277/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 8 closed / 10 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 9 closed / 9 open issues.
