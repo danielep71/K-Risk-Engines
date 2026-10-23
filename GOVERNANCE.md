@@ -11,6 +11,14 @@
 scope, inclusion, priorities and publication. Contributors and automation work
 within the scope authorized by the maintainer.
 
+Commits may be authored by Daniele Penza or by bots acting within authorized
+repository workflows, including Dependabot and the portfolio refresh. Preserve
+truthful author attribution; a bot-authored change does not need to be recreated
+under the maintainer's name solely for authorship. This supersedes the previous
+Daniele-only authorship instruction, as approved on 2026-10-23. Bot-authored pull
+requests remain subject to the applicable checks and maintainer review; bot
+authorship does not authorize automatic merging or bypass branch protections.
+
 This repository owns the portfolio website, navigation, shared presentation,
 hub documentation and supporting automation. Each engine repository owns its
 methodology, implementation, validation evidence, issues, licences and releases.
