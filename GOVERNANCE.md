@@ -56,6 +56,7 @@ the change description or relevant issue.
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Receives the active release branch through a merge commit, and automated portfolio-status proposals (below). |
 | `release/1.0.1` | **Active release branch.** The single base for task branches and pull requests. |
+| `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
 | `traffic-history` | Generated repository analytics. Not a release branch; never merged into `main` or a release branch. |
@@ -81,8 +82,10 @@ directly to `main` (see
 is not held back by a release. It opens that pull request with a GitHub App
 token, so its checks run without a manual approval. The code-review bot
 does not review bot-authored pull requests, so the maintainer's review before
-merging is the only review of a proposal. Merge `main` into the release
-branch after such a pull request lands.
+merging is the only review of a proposal. Squash-merge the proposal, so `main`
+receives one commit per refresh. Then bring the release branch up to date
+with `main` (step 5, or a fast-forward when the release branch has no commits
+of its own).
 
 ### 📦 Release records
 
@@ -99,8 +102,8 @@ branch after such a pull request lands.
   [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md),
   including what was not validated.
 - When a new release branch is opened, update this table, the badges at the
-  top of this page and of the README, `VERSION`, and `target-branch` in
-  [.github/dependabot.yml](.github/dependabot.yml).
+  top of this page, of the README and of the changelog, `VERSION`, and
+  `target-branch` in [.github/dependabot.yml](.github/dependabot.yml).
 
 ### ✅ For every change
 
