@@ -2,12 +2,12 @@
   {
     "id": "saccr",
     "repo": "danielep71/VBA-SACCR-Toolkit",
-    "status": "Version 1.0.1 is the current release: the 1.0.1 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.1, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
+    "status": "Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.2, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
     "release": {
-      "tag": "v1.0.1",
-      "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.1",
-      "published_at": "2026-10-18T16:51:06Z",
-      "notes_sha256": "76b68b75b2687d553f59d439d5499ad0d9bf899da27a2d1b4e09ffbe61c89880"
+      "tag": "v1.0.2",
+      "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.2",
+      "published_at": "2026-10-22T21:46:09Z",
+      "notes_sha256": "1ea841c227372ce61626a27869df3d3792c1ab9885385c03ddf202ca69b6f067"
     },
     "milestones": [
       {
@@ -30,10 +30,10 @@
       },
       {
         "number": 3,
-        "title": "v1.1.0 - CSV Import and Staging",
+        "title": "v1.1.0 - CSV Import, Staging and Workbook Protection",
         "state": "open",
-        "open_issues": 9,
-        "closed_issues": 0,
+        "open_issues": 10,
+        "closed_issues": 8,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3"
       },
@@ -104,7 +104,7 @@
         "number": 12,
         "title": "v1.10.0 - Risk-Weighted Assets and Capital",
         "state": "open",
-        "open_issues": 1,
+        "open_issues": 2,
         "closed_issues": 0,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12"
@@ -121,23 +121,23 @@
       {
         "number": 14,
         "title": "v1.0.2 - Clearing Coverage and CCP Completeness",
-        "state": "open",
-        "open_issues": 6,
-        "closed_issues": 2,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 9,
+        "closed_at": "2026-10-23T05:53:41Z",
         "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "e130302a53359d97ccc9e9ce0376e4887da16507b0326b68c30f59a72680aee9",
-        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/7ad778c54cc917396b7e690eaf7ddfefb6a56009/README.md"
+        "sha256": "b13c96748c6eb81719826c7dcb3d60560be85670a1f9ad9be4575ff545c61a00",
+        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "2805f4187aa4562250f73f231c81e64bb7ca9bf649e8f2568032fa3e91a8e39f",
-        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/7ad778c54cc917396b7e690eaf7ddfefb6a56009/docs/methodology/README.md"
+        "sha256": "74c8bc32e3b7a961197686a32cfbf4a7c3d89678f4837c511fc4085069e4dc30",
+        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/docs/methodology/README.md"
       }
     ]
   },
@@ -317,7 +317,7 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 9,
+        "open_issues": 10,
         "closed_issues": 9,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2"
