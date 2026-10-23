@@ -1,4 +1,6 @@
-<!-- Target the active release branch named in GOVERNANCE.md, not main. -->
+<!-- Task PRs target the active release branch named in GOVERNANCE.md.
+Release-to-main integrations and automation/portfolio-refresh proposals target main.
+State which route applies below. -->
 
 ## 🔗 Linked issues
 
@@ -42,7 +44,7 @@ manual review and explicitly state that Codex was skipped. -->
 
 ## ☑️ Checklist
 
-- [ ] The base branch is the active release branch.
+- [ ] The base follows GOVERNANCE.md: active release branch for tasks; main for release integration or portfolio-refresh proposals.
 - [ ] Each linked issue has a milestone and exactly one priority label.
 - [ ] Portfolio claims match each engine repository's own evidence (GOVERNANCE.md, Portfolio inclusion and status).
 - [ ] No tokens, credentials or confidential data.
