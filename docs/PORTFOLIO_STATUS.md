@@ -7,19 +7,19 @@ Proposed automatically from public project sources; reviewed on merge. Release a
 <a id="saccr"></a>
 ## 🧩 K-SACCR
 
-Version 1.0.1 is the current release: the 1.0.1 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.1, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
+Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.2, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/7ad778c54cc917396b7e690eaf7ddfefb6a56009/README.md) — content SHA-256 `e130302a53359d97ccc9e9ce0376e4887da16507b0326b68c30f59a72680aee9`
-- [docs/methodology/README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/7ad778c54cc917396b7e690eaf7ddfefb6a56009/docs/methodology/README.md) — content SHA-256 `2805f4187aa4562250f73f231c81e64bb7ca9bf649e8f2568032fa3e91a8e39f`
-- Published release: [v1.0.1](https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.1) (2026-10-18T16:51:06Z)
+- [README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/README.md) — content SHA-256 `b13c96748c6eb81719826c7dcb3d60560be85670a1f9ad9be4575ff545c61a00`
+- [docs/methodology/README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/docs/methodology/README.md) — content SHA-256 `74c8bc32e3b7a961197686a32cfbf4a7c3d89678f4837c511fc4085069e4dc30`
+- Published release: [v1.0.2](https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.2) (2026-10-22T21:46:09Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/1): closed; 26 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import and Staging](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3): open; 0 closed / 9 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3): open; 8 closed / 10 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/4): open; 0 closed / 9 open issues.
 - [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/5): open; 0 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/6): open; 0 closed / 3 open issues.
@@ -27,9 +27,9 @@ Version 1.0.1 is the current release: the 1.0.1 GitHub Release carries the workb
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/8): open; 0 closed / 0 open issues.
 - [v1.8.0 - Securities Financing Transactions](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/10): open; 0 closed / 1 open issues.
 - [v1.9.0 - Regulatory CVA Risk](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/11): open; 0 closed / 1 open issues.
-- [v1.10.0 - Risk-Weighted Assets and Capital](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12): open; 0 closed / 1 open issues.
+- [v1.10.0 - Risk-Weighted Assets and Capital](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12): open; 0 closed / 2 open issues.
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13): closed; 9 closed / 0 open issues.
-- [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14): open; 2 closed / 6 open issues.
+- [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14): closed; 9 closed / 0 open issues.
 
 <a id="nmd"></a>
 ## 🧩 K-IRRBB
@@ -86,4 +86,4 @@ Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 9 closed / 9 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 9 closed / 10 open issues.
