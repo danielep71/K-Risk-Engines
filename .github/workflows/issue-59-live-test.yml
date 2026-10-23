@@ -1,0 +1,87 @@
+name: Issue 59 isolated live traffic test
+on:
+  push:
+    branches: [fix/59-live-traffic-test]
+    paths: [.github/workflows/issue-59-live-test.yml]
+permissions:
+  contents: read
+concurrency:
+  group: daily-traffic-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  live-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Exercise production alert and restore state
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          python3 <<'PY'
+          import csv, json, os, pathlib, subprocess, tempfile, time
+          repo = os.environ["GITHUB_REPOSITORY"]
+          def gh(*args):
+              p = subprocess.run(["gh", *args], text=True, capture_output=True, check=True)
+              return p.stdout
+          def api(path, *args):
+              return json.loads(gh("api", path, *args))
+          root = "repos/" + repo
+          title = "Traffic alert: TEST-issue-59-" + os.environ["GITHUB_RUN_ID"]
+          marker = title.split(": ", 1)[1]
+          def issues():
+              return json.loads(gh("issue", "list", "--repo", repo, "--state", "all", "--limit", "100", "--json", "number,title,state,milestone,labels,assignees,url"))
+          assert not any(x["title"] == title for x in issues()), "test title already exists"
+          milestone = api(root + "/milestones/3")
+          assert milestone["title"] == "Traffic monitoring"
+          before_ref = api(root + "/git/ref/heads/traffic-history")["object"]["sha"]
+          print("BASELINE", json.dumps({"milestone": milestone["number"], "state": milestone["state"], "open_issues":milestone["open_issues"], "closed_issues":milestone["closed_issues"], "traffic_head":before_ref}), flush=True)
+          source = "import csv\nimport os\nimport subprocess\nimport sys\n\ndef read_csv(path):\n    if not os.path.exists(path):\n        return []\n\n    with open(path, \"r\", newline=\"\", encoding=\"utf-8\") as f:\n        return list(csv.DictReader(f))\n\ndef to_int(value, default=0):\n    try:\n        return int(value)\n    except Exception:\n        return default\n\ndef top_by_count(rows, limit=10):\n    return sorted(\n        rows,\n        key=lambda row: to_int(row.get(\"count\", 0)),\n        reverse=True\n    )[:limit]\n\ntraffic = [\n    row for row in read_csv(\"data/traffic.csv\")\n    if row.get(\"snapshot_date\")\n]\n\ntraffic.sort(key=lambda row: row.get(\"snapshot_date\", \"\"))\n\nif len(traffic) < 2:\n    sys.exit(0)\n\nprevious = traffic[-2]\ncurrent = traffic[-1]\n\ncurrent_date = current[\"snapshot_date\"]\nprevious_date = previous[\"snapshot_date\"]\n\nviews_spike = to_int(current[\"views_14d\"]) >= max(\n    to_int(previous[\"views_14d\"]) * 2,\n    to_int(previous[\"views_14d\"]) + 100\n)\n\nclones_spike = to_int(current[\"clones_14d\"]) >= max(\n    to_int(previous[\"clones_14d\"]) * 2,\n    to_int(previous[\"clones_14d\"]) + 10\n)\n\nstars_up = to_int(current[\"stars\"]) > to_int(previous[\"stars\"])\nforks_up = to_int(current[\"forks\"]) > to_int(previous[\"forks\"])\n\nreferrers = read_csv(\"data/referrers.csv\")\npaths = read_csv(\"data/popular_paths.csv\")\n\ncurrent_referrers = [\n    row for row in referrers\n    if row.get(\"snapshot_date\") == current_date\n]\n\ncurrent_paths = [\n    row for row in paths\n    if row.get(\"snapshot_date\") == current_date\n]\n\nknown_referrers_before_today = {\n    row.get(\"referrer\", \"\")\n    for row in referrers\n    if row.get(\"snapshot_date\", \"\") < current_date\n}\n\nnew_referrers = [\n    row for row in current_referrers\n    if row.get(\"referrer\", \"\")\n    and row.get(\"referrer\", \"\") not in known_referrers_before_today\n    and to_int(row.get(\"count\", 0)) >= 5\n]\n\nif not (views_spike or clones_spike or stars_up or forks_up or new_referrers):\n    sys.exit(0)\n\nreasons = []\n\nif views_spike:\n    reasons.append(\"Views spike\")\n\nif clones_spike:\n    reasons.append(\"Clones spike\")\n\nif stars_up:\n    reasons.append(\"Stars increased\")\n\nif forks_up:\n    reasons.append(\"Forks increased\")\n\nif new_referrers:\n    reasons.append(\"New referrer detected\")\n\nreferrer_lines = \"\\n\".join(\n    f\"- {row.get('referrer', '')}: {row.get('count', '0')} views, {row.get('uniques', '0')} unique\"\n    for row in top_by_count(current_referrers)\n) or \"- No referrers available\"\n\npath_lines = \"\\n\".join(\n    f\"- {row.get('path', '')}: {row.get('count', '0')} views, {row.get('uniques', '0')} unique\"\n    for row in top_by_count(current_paths)\n) or \"- No popular paths available\"\n\nnew_referrer_lines = \"\\n\".join(\n    f\"- {row.get('referrer', '')}: {row.get('count', '0')} views, {row.get('uniques', '0')} unique\"\n    for row in top_by_count(new_referrers)\n) or \"- No new referrer above threshold\"\n\ntitle = f\"Traffic alert: {current_date}\"\n\nexisting_issue = subprocess.run(\n    [\n        \"gh\",\n        \"issue\",\n        \"list\",\n        \"--state\",\n        \"all\",\n        \"--search\",\n        f'\"{title}\" in:title',\n        \"--limit\",\n        \"10\"\n    ],\n    capture_output=True,\n    text=True,\n    check=False\n)\n\nif existing_issue.returncode != 0:\n    print(\"::error::Could not determine whether an alert issue already exists\")\n    print(existing_issue.stderr.strip())\n    sys.exit(1)\n\nif existing_issue.stdout.strip():\n    print(f\"Alert issue already exists for {current_date}\")\n    sys.exit(0)\n\n# Built line by line: multi-line lists inside a dedented f-string\n# would defeat textwrap.dedent and indent most of the body.\nbody = \"\\n\".join([\n    \"Automated traffic alert for **K-Risk-Engines**.\",\n    \"\",\n    \"Trigger reason:\",\n    \", \".join(reasons),\n    \"\",\n    \"Current 14-day snapshot:\",\n    f\"- Views: {current['views_14d']} vs {previous['views_14d']} on {previous_date}\",\n    f\"- Unique views: {current['unique_views_14d']} vs {previous['unique_views_14d']} on {previous_date}\",\n    f\"- Clones: {current['clones_14d']} vs {previous['clones_14d']} on {previous_date}\",\n    f\"- Unique clones: {current['unique_clones_14d']} vs {previous['unique_clones_14d']} on {previous_date}\",\n    f\"- Stars: {current['stars']} vs {previous['stars']} on {previous_date}\",\n    f\"- Forks: {current['forks']} vs {previous['forks']} on {previous_date}\",\n    \"\",\n    \"New referrers:\",\n    new_referrer_lines,\n    \"\",\n    \"Current top referrers:\",\n    referrer_lines,\n    \"\",\n    \"Current popular paths:\",\n    path_lines,\n    \"\",\n    \"Suggested checks:\",\n    \"1. Go to **Insights → Traffic**\",\n    \"2. Check whether one of the referrers is a blog, forum, Reddit, StackOverflow, GitHub project, or newsletter\",\n    \"3. Check which page, release, screenshot, source file, or README section is attracting traffic\",\n    \"4. Consider adding a short README CTA asking users to star the repository if they are using the project\",\n])\n\n# Keep analytics alerts assigned, prioritised and grouped separately.\nmilestone_title = \"Traffic monitoring\"\nmilestones_api = f\"repos/{os.environ['GITHUB_REPOSITORY']}/milestones\"\n# Look at open and closed milestones: titles are unique across both,\n# so creating one that exists only as closed would be rejected.\n# Use --jq so pagination produces one \"number<TAB>state<TAB>title\" line each.\nmilestone_rows = subprocess.run(\n    [\"gh\", \"api\", \"--paginate\", f\"{milestones_api}?state=all&per_page=100\",\n     \"--jq\", \".[] | [.number, .state, .title] | @tsv\"],\n    capture_output=True, text=True, check=True\n).stdout.splitlines()\nmilestone = next(\n    (row.split(\"\\t\", 2) for row in milestone_rows\n     if row.split(\"\\t\", 2)[2:] == [milestone_title]),\n    None\n)\nif milestone is None:\n    subprocess.run(\n        [\"gh\", \"api\", \"--method\", \"POST\", milestones_api,\n         \"-f\", f\"title={milestone_title}\", \"-f\", \"description=Review repository traffic alerts and trends.\"],\n        capture_output=True, text=True, check=True\n    )\nelif milestone[1] != \"open\":\n    # Reopen it: alerts belong in an open milestone, and gh issue\n    # create may not resolve a closed milestone by title.\n    subprocess.run(\n        [\"gh\", \"api\", \"--method\", \"PATCH\", f\"{milestones_api}/{milestone[0]}\", \"-f\", \"state=open\"],\n        capture_output=True, text=True, check=True\n    )\n\ncreated = subprocess.run(\n    [\n        \"gh\",\n        \"issue\",\n        \"create\",\n        \"--title\",\n        title,\n        \"--assignee\",\n        \"danielep71\",\n        \"--label\",\n        \"P3\",\n        \"--label\",\n        \"repository\",\n        \"--milestone\",\n        milestone_title,\n        \"--body\",\n        body\n    ],\n    capture_output=True,\n    text=True,\n    check=False\n)\n\nif created.returncode != 0:\n    print(\"::error::Traffic alert triggered but the issue could not be created\")\n    print(created.stderr.strip())\n    sys.exit(1)\n\nprint(created.stdout.strip())"
+          with tempfile.TemporaryDirectory() as tmp:
+              os.chdir(tmp)
+              pathlib.Path("data").mkdir()
+              pathlib.Path("alert.py").write_text(source)
+              fields = ["snapshot_date","views_14d","unique_views_14d","clones_14d","unique_clones_14d","stars","forks"]
+              with open("data/traffic.csv", "w") as f:
+                  w=csv.writer(f); w.writerow(fields)
+                  w.writerow(["TEST-issue-58-baseline",1,1,0,0,0,0])
+                  w.writerow([marker,200,20,0,0,0,0])
+              try:
+                  api(root + "/milestones/3", "--method", "PATCH", "-f", "state=closed")
+                  assert api(root + "/milestones/3")["state"] == "closed"
+                  print("SETUP milestone 3 closed; executing unchanged production alert Python from a4c5c1", flush=True)
+                  subprocess.run(["python3","alert.py"], check=True)
+                  found = [x for x in issues() if x["title"] == title]
+                  assert len(found)==1, found
+                  alert=found[0]
+                  assert alert["milestone"]["title"] == "Traffic monitoring"
+                  assert {x["name"] for x in alert["labels"]} >= {"P3","repository"}
+                  assert {x["login"] for x in alert["assignees"]} == {"danielep71"}
+                  assert api(root + "/milestones/3")["state"] == "open"
+                  print("PASS reopen/reuse and metadata", json.dumps(alert), flush=True)
+                  for attempt in range(12):
+                      result=gh("issue","list","--state","all","--search",'"'+title+'" in:title',"--limit","10")
+                      if result.strip(): break
+                      time.sleep(5)
+                  else: raise RuntimeError("Search index did not expose test alert; refusing duplicate attempt")
+                  subprocess.run(["python3","alert.py"], check=True)
+                  assert len([x for x in issues() if x["title"]==title]) == 1
+                  print("PASS deduplication: exactly one test alert", flush=True)
+              finally:
+                  try:
+                      for item in issues():
+                          if item["title"] == title:
+                              api(root + "/issues/" + str(item["number"]), "--method","PATCH","-f","state=closed","-f","body=TEST ONLY — synthetic traffic fixture for #59, not a real traffic alert. Evidence: https://github.com/"+repo+"/actions/runs/"+os.environ["GITHUB_RUN_ID"])
+                              print("CLEANUP closed test issue", item["url"], flush=True)
+                  finally:
+                      api(root + "/milestones/3", "--method","PATCH","-f","state="+milestone["state"])
+                      assert api(root + "/milestones/3")["state"] == milestone["state"]
+                      print("CLEANUP restored milestone state", milestone["state"], flush=True)
+              assert api(root + "/git/ref/heads/traffic-history")["object"]["sha"] == before_ref
+              print("PASS traffic-history unchanged", flush=True)
+          
+          PY
