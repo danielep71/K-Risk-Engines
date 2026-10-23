@@ -19,6 +19,23 @@ Resolves #
 - [ ] `python3 -m unittest discover -s .github/scripts -p 'test_*.py'` (when site checks or portfolio automation change)
 - [ ] Visual review in a browser (when the website changes)
 
+## 🔎 Final-head review
+
+<!-- After fix pushes, wait for any earlier review to finish, then post
+@codex review as a top-level conversation comment. Check the completed review
+SHA against the current PR head. See GOVERNANCE.md, Review after fix pushes.
+For bot-authored PRs skipped by Codex, record the maintainer's final-head
+manual review and explicitly state that Codex was skipped. -->
+
+- Final PR head SHA:
+- Review type (Codex / maintainer manual review for a skipped bot PR):
+- Reviewed commit SHA and review permalink:
+- Required CI result and run link:
+
+- [ ] Review covers the current PR head; all findings are fixed or answered and applicable threads resolved.
+- [ ] Required CI passes for the current revision and GitHub merge requirements are satisfied.
+- [ ] Any push after this record is followed by renewed review and CI verification.
+
 ## ⚠️ Not validated
 
 <!-- State plainly what was not checked and why. Write "Nothing" only if that is true. -->
