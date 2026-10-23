@@ -14,8 +14,7 @@ repositories keep their own changelogs; this file covers the hub only.
 ### 🔧 Changed
 
 - Permit bot-authored commits from authorized repository workflows, preserving
-  their attribution and existing review and CI requirements.
-
+  their attribution and existing review and CI requirements (#66).
 - Open `release/1.0.1`, update the development version and badges, and retarget
   Dependabot version updates to the active release branch (#52).
 - Require the GitHub Actions `HTML and links` check on `main` and `release/**`,
@@ -25,10 +24,14 @@ repositories keep their own changelogs; this file covers the hub only.
   reporting route; enable Dependabot security updates and prerequisites (#52).
 - Update the portfolio refresh GitHub App token action from v3.2.0 to the
   pinned v3.3.0 release, reapplying the update proposed in #55 under maintainer
-  authorship (#56). Live proposal-path verification is tracked in #60.
+  authorship (#56). Scheduled refresh runs on `main` verified it live
+  (#60).
 - The changelog links each version to its release and comparison, and
   `GOVERNANCE.md` states that the tag is created by publishing the GitHub
-  Release.
+  Release (#50).
+- The issue chooser links all four engine repositories, including K-IRRBB
+  Prepayment Models; the authorship rule in `GOVERNANCE.md` states the policy
+  without referring to an instruction outside the repository.
 
 ## [1.0.0] - 2026-10-22
 

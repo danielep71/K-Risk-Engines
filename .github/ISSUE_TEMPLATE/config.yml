@@ -17,6 +17,11 @@
       "about": "Market-risk aggregation, methodology, workbook and validation."
     },
     {
+      "name": "K-IRRBB Prepayment Models issues",
+      "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/issues",
+      "about": "Loan prepayment model specifications, methodology and validation."
+    },
+    {
       "name": "Private security reporting",
       "url": "https://github.com/danielep71/K-Risk-Engines/blob/main/SECURITY.md",
       "about": "Read the private reporting instructions; do not disclose vulnerabilities in public issues."
