@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Permit bot-authored commits from authorized repository workflows, preserving
+  their attribution and existing review and CI requirements.
+
 - Open `release/1.0.1`, update the development version and badges, and retarget
   Dependabot version updates to the active release branch (#52).
 - Require the GitHub Actions `HTML and links` check on `main` and `release/**`,
