@@ -16,7 +16,9 @@ It measures GitHub repository traffic, not visits to the GitHub Pages website.
 2. Create or update a fine-grained personal access token that includes
    `danielep71/K-Risk-Engines` with **Administration: read**.
 3. Store that token as the environment secret **TRAFFIC_TOKEN** in `analytics`.
-   Do not put the token in files, issues or chat. Rotate it every 90 days.
+   Do not put the token in files, issues or chat. Rotate it before expiry and
+   at least every 90 days; verify the actual date in GitHub token settings.
+   Track the current rotation and reminder in [#57](https://github.com/danielep71/K-Risk-Engines/issues/57).
 4. Run **Daily traffic export** manually on `main` and verify the new snapshot
    on `traffic-history`. Until that succeeds, badge values remain `pending`.
 
@@ -60,12 +62,21 @@ least 10 more, when stars or forks increase, or when a referrer not seen before
 has at least five views. Alerts are deduplicated by date, assigned to `danielep71`,
 labelled `P3` and `repository`, and placed in `Traffic monitoring`. The
 milestone is created when first needed and reopened if it has been closed, so
-closing it after a review never blocks the next alert. First-run data
+closing it does not cause a duplicate-milestone-title failure when a new alert
+is needed. If an alert for that date already exists (open or closed), the run
+exits without updating it or reopening its milestone. First-run data
 establishes the baseline without creating an alert. A zero baseline is easy to
 exceed: the repository's own CI checkouts and maintainer clones can trigger a
 clone alert, as on 2026-10-21 (#30).
 
-`TRAFFIC_TOKEN` is available only to the API-fetch step. The job uses its
+The closed-milestone path was verified against live GitHub in
+[#59](https://github.com/danielep71/K-Risk-Engines/issues/59): a synthetic local
+fixture reopened the existing milestone and created one alert; a second run
+created no duplicate. Cleanup restored the original milestone state and a
+subsequent normal export succeeded. The test did not write synthetic traffic
+history.
+
+`TRAFFIC_TOKEN` is passed only to the API-fetch step. The job uses its
 separate `GITHUB_TOKEN` to push history and create alerts. It does not execute
 repository scripts or run website checks. Environment branch restrictions are
 required protection; the environment name alone is not a security boundary.

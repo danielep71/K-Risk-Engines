@@ -55,7 +55,7 @@ the change description or relevant issue.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Receives the active release branch through a merge commit, and automated portfolio-status proposals (below). |
-| `release/1.0.1` | **Active release branch.** The single base for task branches and pull requests. |
+| `release/1.0.1` | **Active maintenance branch.** Base for task branches and task pull requests; integration PRs target `main`. |
 | `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
@@ -71,9 +71,10 @@ the change description or relevant issue.
    maintainer review. Then bring the release branch level with `main`
    again (fast-forward to the integration commit after its `HTML and links`
    check on `main` succeeds).
-5. When `main` receives commits that are not on the release branch, bring
-   them in by merging `main` into the release branch. Never rebase or
-   force-push a shared branch.
+5. When `main` receives commits that are not on the release branch, fast-forward
+   the release branch to the checked `main` commit if possible. If the branches
+   diverge, open a PR from `main` to the release branch and verify its checks.
+   Never rebase or force-push a shared branch.
 
 The daily portfolio refresh is the one routine exception: it proposes dated
 status snapshots as a pull request from `automation/portfolio-refresh`
@@ -88,6 +89,12 @@ with `main` (step 5, or a fast-forward when the release branch has no commits
 of its own).
 
 ### 📦 Release records
+
+The current **v1.0.1 - Hub maintenance and security** milestone is an open
+maintenance work queue. Its name and the `release/1.0.1` branch do not imply
+that another release must be created. Keep maintenance follow-ups there;
+publication happens only on an explicit maintainer decision. The procedure
+below applies if a release is requested.
 
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in

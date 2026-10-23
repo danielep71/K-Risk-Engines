@@ -157,7 +157,7 @@ def render(projects, snapshot, readme, website):
               '[![portfolio refresh](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/'
               'portfolio-refresh.yml?branch=main&style=flat-square&label=portfolio%20refresh)]'
               '(https://github.com/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml)', '',
-              'Proposed automatically from public project sources; reviewed on merge. Release availability and milestone progress do not establish model validity.', '']
+              'Proposed automatically from public project sources; reviewed on merge. Release availability and milestone progress do not establish model validity. This is a snapshot, not a live dashboard; follow the pinned source links for the captured revision and the project repository for newer evidence. Status paragraphs quote the source project: paths, issue numbers and references to “this repository” belong to that engine, not K-Risk-Engines. Presentation changes belong in the portfolio-refresh renderer; do not edit generated quotations or counts by hand.', '']
     for p, data in zip(projects, snapshot):
         report += [f'<a id="{p["id"]}"></a>', f'## 🧩 {p["name"]}', '', markdown(data['status']), '',
                    '### 🔗 Sources', '']

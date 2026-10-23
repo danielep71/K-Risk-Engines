@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Audit hub Markdown: clarify maintenance scope, valid PR targets, security-fix
+  routing, shared-runner credential boundaries, traffic alert deduplication and
+  attribution of generated engine status quotations (#73).
+
 - Require review evidence for the final PR head after fix pushes, with an
   explicit Codex rerun procedure and manual review for skipped bot PRs (#58).
 - Permit bot-authored commits from authorized repository workflows, preserving

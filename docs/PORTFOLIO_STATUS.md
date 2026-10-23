@@ -2,7 +2,7 @@
 
 [![portfolio refresh](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/portfolio-refresh.yml?branch=main&style=flat-square&label=portfolio%20refresh)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml)
 
-Proposed automatically from public project sources; reviewed on merge. Release availability and milestone progress do not establish model validity.
+Proposed automatically from public project sources; reviewed on merge. Release availability and milestone progress do not establish model validity. This is a snapshot, not a live dashboard; follow the pinned source links for the captured revision and the project repository for newer evidence. Status paragraphs quote the source project: paths, issue numbers and references to “this repository” belong to that engine, not K-Risk-Engines. Presentation changes belong in the portfolio-refresh renderer; do not edit generated quotations or counts by hand.
 
 <a id="saccr"></a>
 ## 🧩 K-SACCR
@@ -11,15 +11,15 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/README.md) — content SHA-256 `b13c96748c6eb81719826c7dcb3d60560be85670a1f9ad9be4575ff545c61a00`
-- [docs/methodology/README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/docs/methodology/README.md) — content SHA-256 `74c8bc32e3b7a961197686a32cfbf4a7c3d89678f4837c511fc4085069e4dc30`
+- [README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/README.md) — content SHA-256 `5e2778a87cad44a4ab24bde62003011c5ac95c397958b43257c173891a5da21d`
+- [docs/methodology/README.md](https://github.com/danielep71/VBA-SACCR-Toolkit/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/docs/methodology/README.md) — content SHA-256 `66818374518624eed01db9112c15b45f69c967b00115b26f124f6c64d24521ab`
 - Published release: [v1.0.2](https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.2) (2026-10-22T21:46:09Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/1): closed; 26 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3): open; 8 closed / 10 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3): open; 11 closed / 11 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/4): open; 0 closed / 9 open issues.
 - [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/5): open; 0 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/6): open; 0 closed / 3 open issues.

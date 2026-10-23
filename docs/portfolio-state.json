@@ -32,8 +32,8 @@
         "number": 3,
         "title": "v1.1.0 - CSV Import, Staging and Workbook Protection",
         "state": "open",
-        "open_issues": 10,
-        "closed_issues": 8,
+        "open_issues": 11,
+        "closed_issues": 11,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3"
       },
@@ -131,13 +131,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "b13c96748c6eb81719826c7dcb3d60560be85670a1f9ad9be4575ff545c61a00",
-        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/README.md"
+        "sha256": "5e2778a87cad44a4ab24bde62003011c5ac95c397958b43257c173891a5da21d",
+        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "74c8bc32e3b7a961197686a32cfbf4a7c3d89678f4837c511fc4085069e4dc30",
-        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/acea4fea61e82111bd1f6a215e4d3c9a289f918f/docs/methodology/README.md"
+        "sha256": "66818374518624eed01db9112c15b45f69c967b00115b26f124f6c64d24521ab",
+        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/docs/methodology/README.md"
       }
     ]
   },
