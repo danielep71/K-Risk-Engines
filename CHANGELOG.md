@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Audit non-Markdown files: correct generated proposal CI guidance, workflow
+  credential/rotation comments, website source attribution and the prepayment
+  roadmap link (#76).
+
 - Audit hub Markdown: clarify maintenance scope, valid PR targets, security-fix
   routing, shared-runner credential boundaries, traffic alert deduplication and
   attribution of generated engine status quotations (#73).

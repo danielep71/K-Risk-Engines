@@ -200,7 +200,7 @@ def main():
             'Changed source records: ' + (', '.join(changed) or 'none since the previous proposal') + '.', '',
             'Review the diff in `docs/PORTFOLIO_STATUS.md` for status wording, limitations and pinned evidence links.',
             'No engine files are changed. Milestone completion and CI are not treated as validation. No automatic merge.', '',
-            'The refresh workflow runs its own HTML and external-link checks; downstream PR CI may require maintainer approval.', '']
+            'The refresh workflow runs HTML, external-link and unit-test checks. Its App-token proposal triggers PR CI without manual approval; bot-authored proposals still require maintainer review before merge.', '']
     body += [f'- {p["name"]}: {data["sources"][0]["url"]}' for p, data in zip(projects, snapshot)]
     args.body_file.write_text('\n'.join(body) + '\n', encoding='utf-8')
     print(('Rendered stored snapshot' if args.render_only else 'Collected all configured repositories') + '; changed records: ' + ', '.join(changed))
