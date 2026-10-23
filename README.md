@@ -48,11 +48,17 @@ A single entry point to independent financial risk models and calculation engine
 | [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: specifications only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1) (2026-10-21) |
 <!-- portfolio:table:end -->
 
+The table and [full evidence report](docs/PORTFOLIO_STATUS.md) are generated
+snapshots, not live project dashboards. Pinned source links identify the evidence
+used; consult the source repositories for changes since the last refresh.
+
 Each repository owns its implementation, methodology, tests, issues and releases. Consult it for current scope, evidence and licensing. This hub contains presentation and portfolio documentation, not calculation code.
 
 ## 🌐 Website
 
-The static landing page is `index.html`; images and styles live in [`assets/`](assets/). No build or external dependencies are required.
+The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
+Serving it requires no build step or application dependencies. Repository checks
+and automation use Python, curl and GitHub Actions as documented below.
 
 For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The live website is [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).
 
