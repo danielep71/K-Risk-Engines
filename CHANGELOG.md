@@ -31,7 +31,12 @@ repositories keep their own changelogs; this file covers the hub only.
   Release (#50).
 - The issue chooser links all four engine repositories, including K-IRRBB
   Prepayment Models; the authorship rule in `GOVERNANCE.md` states the policy
-  without referring to an instruction outside the repository.
+  without referring to an instruction outside the repository (#67).
+- Governance records the finished `release/1.0.0` branch, squash merges for
+  portfolio-refresh proposals and the changelog badge in the release-branch
+  checklist. The README adds a latest-release badge and labels the clones badge
+  as including CI; the traffic documentation states that schedules can run late
+  and that clone counts include the repository's own checkouts.
 
 ## [1.0.0] - 2026-10-22
 

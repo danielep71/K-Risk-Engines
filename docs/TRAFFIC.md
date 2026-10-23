@@ -1,11 +1,12 @@
 # 📈 Repository traffic history
 
 [![daily traffic export](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/daily-traffic.yml?branch=main&style=flat-square&label=daily%20traffic%20export)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/daily-traffic.yml)
-[![Schedule](https://img.shields.io/badge/Schedule-06:00_UTC_daily-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/daily-traffic.yml)
+[![Schedule](https://img.shields.io/badge/Schedule-06:00_UTC_nominal-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/daily-traffic.yml)
 [![Data](https://img.shields.io/badge/Data-traffic--history-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/traffic-history)
 
-The daily export runs at **06:00 UTC daily**
-and can be started manually from **Actions → Daily traffic export** on `main`.
+The daily export is scheduled for **06:00 UTC** and can be started manually
+from **Actions → Daily traffic export** on `main`. GitHub may start scheduled
+runs hours late; each snapshot records the time it was actually taken.
 It measures GitHub repository traffic, not visits to the GitHub Pages website.
 
 ## 🔑 One-time credential setup
@@ -47,6 +48,8 @@ individual visitor identities. GitHub retains only a short traffic window;
 missed collection beyond that window cannot be recovered by this workflow.
 Repeated same-day runs replace that day's snapshot rather than adding it twice.
 Visits sum daily unique visitors; they are **not** distinct people across days.
+The clones badge totals all recorded clones, including this repository's own CI
+checkouts and maintainer clones, so it does not measure outside interest.
 
 ## 🚨 Alerts and permissions
 
