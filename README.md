@@ -14,13 +14,14 @@ A single entry point to independent financial risk models and calculation engine
 [![Website](https://img.shields.io/badge/Website-GitHub_Pages-0078D6?style=for-the-badge&logo=github&logoColor=white)](https://danielep71.github.io/K-Risk-Engines/)
 [![Website checks](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/website-checks.yml?branch=main&style=for-the-badge&label=Website%20checks&color=2ea44f)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/website-checks.yml)
 [![License](https://img.shields.io/badge/License-MPL--2.0-1f3a5f?style=for-the-badge)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/danielep71/K-Risk-Engines?style=for-the-badge&label=Release&color=2ea44f)](https://github.com/danielep71/K-Risk-Engines/releases/latest)
 [![Development](https://img.shields.io/badge/Development-1.0.1-483698?style=for-the-badge)](CHANGELOG.md)
 
 <br>
 
 [![portfolio refresh](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/portfolio-refresh.yml?branch=main&style=flat-square&label=portfolio%20refresh)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml)
 [![Last commit](https://img.shields.io/github/last-commit/danielep71/K-Risk-Engines/main?style=flat-square&label=last%20commit&color=217346)](https://github.com/danielep71/K-Risk-Engines/commits/main)
-[![Clones](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fclones.json&style=flat-square&label=clones)](https://github.com/danielep71/K-Risk-Engines)
+[![Clones](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fclones.json&style=flat-square&label=clones%20%28incl.%20CI%29)](https://github.com/danielep71/K-Risk-Engines)
 [![Visitors](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fvisitors.json&style=flat-square&label=visitors%20%2814d%29)](https://github.com/danielep71/K-Risk-Engines)
 [![Visits](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielep71%2FK-Risk-Engines%2Ftraffic-history%2Fdata%2Fbadges%2Fvisits.json&style=flat-square&label=visits)](https://github.com/danielep71/K-Risk-Engines)
 [![P1 issues](https://img.shields.io/github/issues/danielep71/K-Risk-Engines/P1?style=flat-square&label=P1&color=B60205)](https://github.com/danielep71/K-Risk-Engines/issues?q=is%3Aissue%20is%3Aopen%20label%3AP1)
@@ -86,7 +87,8 @@ A daily workflow proposes source-attributed status, release and last-closed-mile
 Daily repository analytics are stored on [`traffic-history`](https://github.com/danielep71/K-Risk-Engines/tree/traffic-history).
 See [setup and data definitions](docs/TRAFFIC.md) for the required `analytics`
 environment secret, schedules, badges and alerts. This tracks repository traffic,
-not GitHub Pages visitors.
+not GitHub Pages visitors. Clone counts include this repository's own CI
+checkouts and maintainer clones, so they do not measure outside interest.
 
 ## 🛡️ Governance and security
 

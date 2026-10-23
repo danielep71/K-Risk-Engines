@@ -26,6 +26,8 @@ curated stage cannot conflict with new evidence. The snapshot is not a certifica
 
 - Changes are proposed on `automation/portfolio-refresh` in one reusable PR,
   assigned to `danielep71` with `documentation` and `P3` labels. Nothing automatically merges or publishes to main.
+  The maintainer squash-merges an accepted proposal, so `main` receives one
+  commit per refresh (see [GOVERNANCE.md](../GOVERNANCE.md)).
 - The proposal includes pinned README/evidence links, hashes, release data and
   milestone records. Changes to evidence files trigger review even if the status
   wording itself is unchanged. Evidence is read, never executed.
