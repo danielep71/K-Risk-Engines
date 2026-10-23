@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Require review evidence for the final PR head after fix pushes, with an
+  explicit Codex rerun procedure and manual review for skipped bot PRs (#58).
 - Permit bot-authored commits from authorized repository workflows, preserving
   their attribution and existing review and CI requirements (#66).
 - Open `release/1.0.1`, update the development version and badges, and retarget

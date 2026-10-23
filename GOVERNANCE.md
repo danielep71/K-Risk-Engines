@@ -126,6 +126,36 @@ required check has already passed. If the branches diverge, integrate through
 a pull request and wait for its checks; do not create an unchecked merge commit
 and push it directly. Other review steps remain maintainer responsibilities.
 
+### 🔎 Review after fix pushes
+
+For maintainer-authored pull requests, Codex review must cover the final PR
+head before merge. Opening a PR or marking a draft ready triggers review;
+do not assume a later push reruns it.
+
+1. Push the fixes and record the current PR head commit SHA.
+2. Once any earlier review has finished, post `@codex review` as a new
+   top-level PR conversation comment.
+3. Wait for the Codex Review Summary to show **Completed** for that head SHA.
+   A running review, a reaction, or a completed review of an older commit is
+   insufficient. Open the referenced commit if the summary shows a shortened
+   SHA and compare it with the current head.
+4. Fix or explicitly answer every finding and resolve the applicable review
+   threads. Any further push, including a branch update, requires this check
+   again and a new review if the reviewed SHA no longer matches.
+5. Verify the required `HTML and links` check passes for the current PR
+   revision and that GitHub's merge requirements are satisfied. Record the
+   reviewed SHA, review permalink and CI result in the PR before merging.
+
+If review fails, is unavailable or remains incomplete, leave the PR open and
+record the blocker. A clean review of an older revision does not cover fixes
+pushed afterward.
+
+Bot-authored proposals skipped by Codex require a documented maintainer review
+of the final diff and head SHA, with required CI passing. Do not claim Codex
+coverage when it was skipped. Self-review, automated Codex review and CI are
+separate evidence: this procedure is a maintainer-enforced merge requirement,
+not an additional GitHub required status check.
+
 ## 🗂️ Issues and decisions
 
 Hub issues cover navigation, presentation, portfolio metadata, documentation
