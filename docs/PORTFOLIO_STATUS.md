@@ -30,6 +30,7 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 - [v1.10.0 - Risk-Weighted Assets and Capital](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12): open; 0 closed / 2 open issues.
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13): closed; 9 closed / 0 open issues.
 - [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14): closed; 9 closed / 0 open issues.
+- [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/15): open; 0 closed / 10 open issues.
 
 <a id="nmd"></a>
 ## 🧩 K-IRRBB
