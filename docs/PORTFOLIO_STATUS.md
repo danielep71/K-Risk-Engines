@@ -70,7 +70,7 @@ Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1): closed; 32 closed / 0 open issues.
-- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 49 closed / 8 open issues.
+- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 49 closed / 9 open issues.
 - [v0.2.0 — Regulatory baseline and certification scope](https://github.com/danielep71/MKT-FTRB-SA/milestone/3): open; 0 closed / 1 open issues.
 
 <a id="prepayment"></a>
