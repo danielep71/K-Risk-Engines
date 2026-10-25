@@ -13,7 +13,7 @@
     {
       "id": "nmd",
       "repo": "danielep71/K-IRRBB-NMDs",
-      "name": "K-IRRBB",
+      "name": "K-IRRBB NMDs",
       "purpose": "Non-maturity deposit behavioural modelling",
       "selector": "status",
       "evidence": [
