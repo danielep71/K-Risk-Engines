@@ -46,7 +46,11 @@ A single entry point to independent financial risk models and calculation engine
 | [K-IRRBB](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | v0.2.0 – Workbook, data and Excel tests (in progress). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#nmd) | [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1) (2026-10-09) |
 | [K-FRTB-SA](https://github.com/danielep71/MKT-FTRB-SA) | Standardized market-risk aggregation | Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1) (2026-10-18) |
 | [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: specifications only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1) (2026-10-21) |
+| [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | None recorded |
 <!-- portfolio:table:end -->
+
+**K-CVA** is also part of the portfolio. Its repository is currently private;
+public scope, implementation status and validation evidence are not available here.
 
 The table and [full evidence report](docs/PORTFOLIO_STATUS.md) are generated
 snapshots, not live project dashboards. Pinned source links identify the evidence

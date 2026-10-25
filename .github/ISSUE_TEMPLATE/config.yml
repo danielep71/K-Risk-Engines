@@ -22,6 +22,11 @@
       "about": "Loan prepayment model specifications, methodology and validation."
     },
     {
+      "name": "K-SFTs engine issues",
+      "url": "https://github.com/danielep71/K-SFTs/issues",
+      "about": "Securities financing transaction methodology, workbook and validation."
+    },
+    {
       "name": "Private security reporting",
       "url": "https://github.com/danielep71/K-Risk-Engines/blob/main/SECURITY.md",
       "about": "Read the private reporting instructions; do not disclose vulnerabilities in public issues."
