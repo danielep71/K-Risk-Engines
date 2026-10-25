@@ -30,6 +30,7 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 - [v1.10.0 - Risk-Weighted Assets and Capital](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12): open; 0 closed / 2 open issues.
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13): closed; 9 closed / 0 open issues.
 - [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14): closed; 9 closed / 0 open issues.
+- [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/15): open; 0 closed / 10 open issues.
 
 <a id="nmd"></a>
 ## 🧩 K-IRRBB
@@ -69,7 +70,7 @@ Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1): closed; 32 closed / 0 open issues.
-- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 49 closed / 8 open issues.
+- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 49 closed / 9 open issues.
 - [v0.2.0 — Regulatory baseline and certification scope](https://github.com/danielep71/MKT-FTRB-SA/milestone/3): open; 0 closed / 1 open issues.
 
 <a id="prepayment"></a>
@@ -87,3 +88,18 @@ Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
 - [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 9 closed / 10 open issues.
+
+<a id="sfts"></a>
+## 🧩 K-SFTs
+
+Status: repository setup only. There is no calculation engine, public API, production workbook or validated method yet. Nothing here should be used to compute exposure. The regulatory basis is chosen: the EU CRR controls, with the Basel Framework as the methodological reference. The first scope is bilateral SFTs under the Financial Collateral Comprehensive Method; products, collateral and outputs are still open decisions.
+
+### 🔗 Sources
+
+- [README.md](https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/README.md) — content SHA-256 `c1ddc82b7b897917048ffc214f490c2bee647aec42b34146f5f328afb8e7f34e`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/docs/methodology/README.md) — content SHA-256 `0aaf917e00377e03d6d079f909b183a972f2c1f872c20f6801bbdb7bfc5ddfb5`
+- No published stable release (drafts and prereleases excluded).
+
+### 🏁 Milestones (tracking only)
+
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): open; 31 closed / 1 open issues.
