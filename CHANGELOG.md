@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Show the counterparty credit risk framework the calculators belong to, in
+  the README and on the website: a diagram from the K-SACCR and K-SFTs
+  exposures to the ordinary and CCP capital branches and their aggregation,
+  with CVA risk as a separate market-risk memo item, shared with those
+  repositories (`assets/CCR_framework.svg`, `.png`; #89).
 - Name the non-maturity deposit project K-IRRBB NMDs consistently in the
   website, portfolio configuration and generated documentation (#81).
 - Include K-SFTs in the website, portfolio evidence and automatic refresh;
