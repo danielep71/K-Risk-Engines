@@ -19,7 +19,7 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/1): closed; 26 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3): open; 11 closed / 11 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3): open; 11 closed / 12 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/4): open; 0 closed / 9 open issues.
 - [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/5): open; 0 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/6): open; 0 closed / 3 open issues.
@@ -29,7 +29,7 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 - [v1.9.0 - Regulatory CVA Risk](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/11): open; 0 closed / 1 open issues.
 - [v1.10.0 - Risk-Weighted Assets and Capital](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12): open; 0 closed / 2 open issues.
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13): closed; 9 closed / 0 open issues.
-- [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14): closed; 9 closed / 0 open issues.
+- [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14): closed; 10 closed / 0 open issues.
 - [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/15): open; 0 closed / 10 open issues.
 
 <a id="nmd"></a>
@@ -63,14 +63,14 @@ Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/MKT-FTRB-SA/blob/4eefd3f69fcd16dd395861e520aeb8feb5adfbd3/README.md) — content SHA-256 `d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be`
-- [docs/validation.md](https://github.com/danielep71/MKT-FTRB-SA/blob/4eefd3f69fcd16dd395861e520aeb8feb5adfbd3/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
+- [README.md](https://github.com/danielep71/MKT-FTRB-SA/blob/a1705b9877177f7a22facaed81ff157545cd7426/README.md) — content SHA-256 `d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be`
+- [docs/validation.md](https://github.com/danielep71/MKT-FTRB-SA/blob/a1705b9877177f7a22facaed81ff157545cd7426/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1): closed; 32 closed / 0 open issues.
-- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 49 closed / 9 open issues.
+- [v0.1.0 — SA prototype](https://github.com/danielep71/MKT-FTRB-SA/milestone/2): open; 52 closed / 9 open issues.
 - [v0.2.0 — Regulatory baseline and certification scope](https://github.com/danielep71/MKT-FTRB-SA/milestone/3): open; 0 closed / 1 open issues.
 
 <a id="prepayment"></a>
@@ -80,14 +80,14 @@ Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/590250e6f9cb6071a44828179d8fcbab56ad5277/README.md) — content SHA-256 `d9a8ea46b5d2f987697dba000995b62aed3ab26286781acd2f09824f47bce78f`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/590250e6f9cb6071a44828179d8fcbab56ad5277/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/907db926f501759863d44a9ea8bdfa8333a731be/README.md) — content SHA-256 `adf9b493d5c30c6d54fcb39b8ce5cdc3991de3c823acacb46b792fcd64f0a1ef`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/907db926f501759863d44a9ea8bdfa8333a731be/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 9 closed / 10 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 13 closed / 7 open issues.
 
 <a id="sfts"></a>
 ## 🧩 K-SFTs
@@ -96,10 +96,12 @@ Status: repository setup only. There is no calculation engine, public API, produ
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/README.md) — content SHA-256 `c1ddc82b7b897917048ffc214f490c2bee647aec42b34146f5f328afb8e7f34e`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/docs/methodology/README.md) — content SHA-256 `0aaf917e00377e03d6d079f909b183a972f2c1f872c20f6801bbdb7bfc5ddfb5`
+- [README.md](https://github.com/danielep71/K-SFTs/blob/94fcd3bea472dce41872e2ee74a63294f73b2b5b/README.md) — content SHA-256 `0638126bb305e8dc7c4950921042a3d872c818b8048019fa1b83742e87b69174`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/94fcd3bea472dce41872e2ee74a63294f73b2b5b/docs/methodology/README.md) — content SHA-256 `0aaf917e00377e03d6d079f909b183a972f2c1f872c20f6801bbdb7bfc5ddfb5`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): open; 31 closed / 1 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 31 closed / 1 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 4 closed / 4 open issues.
+- [v0.2.1](https://github.com/danielep71/K-SFTs/milestone/3): open; 0 closed / 1 open issues.
