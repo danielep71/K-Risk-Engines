@@ -58,6 +58,25 @@ used; consult the source repositories for changes since the last refresh.
 
 Each repository owns its implementation, methodology, tests, issues and releases. Consult it for current scope, evidence and licensing. This hub contains presentation and portfolio documentation, not calculation code.
 
+<a id="counterparty-credit-risk-framework"></a>
+
+### 🏛️ Where the counterparty credit risk calculators belong
+
+The counterparty credit risk calculators of the portfolio fit one framework,
+from exposures to capital requirements. [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit)
+produces the exposure value of derivatives and [K-SFTs](https://github.com/danielep71/K-SFTs)
+that of securities financing transactions (step 1). The ordinary and CCP
+capital branches and their aggregation follow (steps 2 to 4). K-CVA covers CVA
+risk, a separate market-risk requirement, shown as a memo item.
+
+[![Counterparty credit risk from exposures to capital requirements: two exposure engines, ordinary and CCP capital branches, aggregation, and CVA as a separate market-risk memo item](assets/CCR_framework.svg)](assets/CCR_framework.svg)
+
+[Editable SVG](assets/CCR_framework.svg) · [High-resolution PNG](assets/CCR_framework.png)
+
+This is an architecture diagram, not a status report: it does not certify
+implemented functionality. Each engine's repository is the source for its scope
+and status, summarised in the table above.
+
 ## 🌐 Website
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
