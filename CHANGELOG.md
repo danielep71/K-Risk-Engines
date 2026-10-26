@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Describe portfolio refresh inputs by configuration rather than a stale
+  fixed repository count (#83).
 - Show the counterparty credit risk framework the calculators belong to, in
   the README and on the website: a diagram from the K-SACCR and K-SFTs
   exposures to the ordinary and CCP capital branches and their aggregation,
