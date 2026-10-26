@@ -55,7 +55,7 @@ the change description or relevant issue.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Receives the active release branch through a merge commit, and automated portfolio-status proposals (below). |
-| `release/1.0.1` | **Active maintenance branch.** Base for task branches and task pull requests; integration PRs target `main`. |
+| `release/1.0.1` | **Active release branch**, currently used as the maintenance queue (see Release records). Base for task branches and task pull requests; integration PRs target `main`. |
 | `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
@@ -66,7 +66,9 @@ the change description or relevant issue.
 2. Open a pull request against the active release branch. Website checks run
    on pull requests and pushes to `main` and `release/**`.
 3. Squash-merge once the checks pass and every review finding is fixed or
-   answered.
+   answered. The squash commit title is the PR title followed by `(#PR)`;
+   cite the issue in the body (`Refs #issue`), not as a second number in the
+   title.
 4. Integrate the release branch into `main` with a merge commit, only after
    maintainer review. Then bring the release branch level with `main`
    again (fast-forward to the integration commit after its `HTML and links`
@@ -85,8 +87,7 @@ token, so its checks run without a manual approval. The code-review bot
 does not review bot-authored pull requests, so the maintainer's review before
 merging is the only review of a proposal. Squash-merge the proposal, so `main`
 receives one commit per refresh. Then bring the release branch up to date
-with `main` (step 5, or a fast-forward when the release branch has no commits
-of its own).
+with `main` as in step 5.
 
 ### 📦 Release records
 

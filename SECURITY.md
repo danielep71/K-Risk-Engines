@@ -12,7 +12,7 @@ This repository is a portfolio and documentation hub. This policy covers its
 website source and assets, repository tooling, and GitHub Actions workflows.
 The supported version is the current `main` branch and the website deployed
 from it; older snapshots and modified copies are not maintained separately.
-Implement fixes through the active maintenance branch and integrate them into
+Implement fixes through the active release branch and integrate them into
 `main` under [GOVERNANCE.md](GOVERNANCE.md). Coordinate disclosure privately
 before opening a public remediation PR.
 
