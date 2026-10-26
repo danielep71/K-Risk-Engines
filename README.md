@@ -105,7 +105,9 @@ or a `release/**` branch. External links are checked on pushes, weekly and
 on manual runs; redirects are accepted. Broken links fail the check. Network
 errors, HTTP 403/429 and server errors are reported as warnings because
 availability could not be verified. External page fragments are not validated;
-external URLs from Markdown files follow the same rules.
+external URLs from Markdown files follow the same rules. Links to this site's own
+Pages URLs (`https://danielep71.github.io/K-Risk-Engines/…`) are checked against
+the repository files instead, because Pages publishes `main` only.
 
 ## 🔄 Daily portfolio refresh
 
