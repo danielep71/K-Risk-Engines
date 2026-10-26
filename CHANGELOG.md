@@ -13,6 +13,14 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Track the next `TRAFFIC_TOKEN` rotation in #94 instead of the closed #57;
+  list K-SFTs and K-CVA in the website description and portfolio direction;
+  name the K-IRRBB NMDs issue link consistently; order `[Unreleased]` newest
+  first, as `GOVERNANCE.md` now states (#96).
+- `GOVERNANCE.md` and `SECURITY.md` call `release/1.0.1` the active release
+  branch throughout, used as the maintenance queue; squash commit titles carry
+  only the PR number; the portfolio-refresh paragraph refers to step 5 for
+  synchronization; the `[Unreleased]` list is one list again (#85).
 - Describe portfolio refresh inputs by configuration rather than a stale
   fixed repository count (#83).
 - Show the counterparty credit risk framework the calculators belong to, in
@@ -32,8 +40,20 @@ repositories keep their own changelogs; this file covers the hub only.
   attribution of generated engine status quotations (#73).
 - Require review evidence for the final PR head after fix pushes, with an
   explicit Codex rerun procedure and manual review for skipped bot PRs (#58).
+- Governance records the finished `release/1.0.0` branch, squash merges for
+  portfolio-refresh proposals and the changelog badge in the release-branch
+  checklist. The README adds a latest-release badge and labels the clones badge
+  as including CI; the traffic documentation states that schedules can run late
+  and that clone counts include the repository's own checkouts (#68).
+- The issue chooser links all four engine repositories, including K-IRRBB
+  Prepayment Models; the authorship rule in `GOVERNANCE.md` states the policy
+  without referring to an instruction outside the repository (#67).
 - Permit bot-authored commits from authorized repository workflows, preserving
   their attribution and existing review and CI requirements (#66).
+- Update the portfolio refresh GitHub App token action from v3.2.0 to the
+  pinned v3.3.0 release, reapplying the update proposed in #55 under maintainer
+  authorship (#56). Scheduled refresh runs on `main` verified it live
+  (#60).
 - Open `release/1.0.1`, update the development version and badges, and retarget
   Dependabot version updates to the active release branch (#52).
 - Require the GitHub Actions `HTML and links` check on `main` and `release/**`,
@@ -41,25 +61,9 @@ repositories keep their own changelogs; this file covers the hub only.
   Traffic history retains deletion and force-push protection without website CI (#52).
 - Enable private vulnerability reporting and make its GitHub form the primary
   reporting route; enable Dependabot security updates and prerequisites (#52).
-- Update the portfolio refresh GitHub App token action from v3.2.0 to the
-  pinned v3.3.0 release, reapplying the update proposed in #55 under maintainer
-  authorship (#56). Scheduled refresh runs on `main` verified it live
-  (#60).
 - The changelog links each version to its release and comparison, and
   `GOVERNANCE.md` states that the tag is created by publishing the GitHub
   Release (#50).
-- The issue chooser links all four engine repositories, including K-IRRBB
-  Prepayment Models; the authorship rule in `GOVERNANCE.md` states the policy
-  without referring to an instruction outside the repository (#67).
-- Governance records the finished `release/1.0.0` branch, squash merges for
-  portfolio-refresh proposals and the changelog badge in the release-branch
-  checklist. The README adds a latest-release badge and labels the clones badge
-  as including CI; the traffic documentation states that schedules can run late
-  and that clone counts include the repository's own checkouts (#68).
-- `GOVERNANCE.md` and `SECURITY.md` call `release/1.0.1` the active release
-  branch throughout, used as the maintenance queue; squash commit titles carry
-  only the PR number; the portfolio-refresh paragraph refers to step 5 for
-  synchronization; the `[Unreleased]` list is one list again.
 
 ## [1.0.0] - 2026-10-22
 

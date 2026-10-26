@@ -26,7 +26,7 @@
 #
 #     Rotate it before expiry and at least every 90 days, and immediately
 #     if this workflow is modified by someone other than the maintainer.
-#     See docs/TRAFFIC.md and the tracked rotation in issue #57.
+#     See docs/TRAFFIC.md; the next rotation is tracked in issue #94.
 #
 #   Scope
 #     This is repository analytics. It is not CI. It runs no repository code
