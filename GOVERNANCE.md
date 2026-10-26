@@ -99,8 +99,9 @@ below applies if a release is requested.
 
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in
-  progress; every task pull request adds its entry. Interim integrations of
-  the release branch into `main` leave it unreleased.
+  progress; every task pull request adds its entry, newest first, citing its
+  pull request or issue. Interim integrations of the release branch into
+  `main` leave it unreleased.
 - When its milestone is complete and the maintainer approves publication, a
   release commit on the release branch sets the date. That commit is
   integrated into `main`, and the maintainer publishes a GitHub Release
