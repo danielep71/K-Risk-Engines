@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Refresh portfolio artwork for six projects, adding K-SFTs and K-CVA with
+  explicit NMD naming and the navy/teal repository-family palette; the
+  original artwork is kept and both images stay excluded from MPL-2.0
+  (#100, #95).
 - Portfolio-refresh proposals carry no milestone, as `GOVERNANCE.md` and
   `docs/PORTFOLIO_AUTOMATION.md` now state (#86). The README and changelog
   badges read "Maintenance: release/1.0.1" instead of "Development 1.0.1",
