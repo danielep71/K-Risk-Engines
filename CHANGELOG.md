@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Describe portfolio refresh inputs by configuration rather than a stale
+  fixed repository count.
+
 - Name the non-maturity deposit project K-IRRBB NMDs consistently in the
   website, portfolio configuration and generated documentation.
 
