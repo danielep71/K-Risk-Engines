@@ -8,7 +8,7 @@ The `Daily portfolio refresh` Actions workflow runs nominally at **07:00 Europe/
 including daylight-saving time, and can be run manually. GitHub schedules may be
 delayed. The schedule uses GitHub's native `Europe/Rome` timezone support.
 
-It reads the four public repositories in `.github/portfolio.json`: their default
+It reads the public repositories configured in `.github/portfolio.json`: their default
 branch README, selected evidence documents, published stable releases, and all
 milestones. It chooses the last closed milestone by `closed_at`, not version
 number, issue count or last modification date. A reopened milestone is excluded.
