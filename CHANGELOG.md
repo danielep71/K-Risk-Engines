@@ -13,20 +13,21 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Show the counterparty credit risk framework the calculators belong to, in
+  the README and on the website: a diagram from the K-SACCR and K-SFTs
+  exposures to the ordinary and CCP capital branches and their aggregation,
+  with CVA risk as a separate market-risk memo item, shared with those
+  repositories (`assets/CCR_framework.svg`, `.png`; #89).
 - Name the non-maturity deposit project K-IRRBB NMDs consistently in the
-  website, portfolio configuration and generated documentation.
-
+  website, portfolio configuration and generated documentation (#81).
 - Include K-SFTs in the website, portfolio evidence and automatic refresh;
-  list K-CVA as private without exposing private source content.
-
+  list K-CVA as private without exposing private source content (#79).
 - Audit non-Markdown files: correct generated proposal CI guidance, workflow
   credential/rotation comments, website source attribution and the prepayment
   roadmap link (#76).
-
 - Audit hub Markdown: clarify maintenance scope, valid PR targets, security-fix
   routing, shared-runner credential boundaries, traffic alert deduplication and
   attribution of generated engine status quotations (#73).
-
 - Require review evidence for the final PR head after fix pushes, with an
   explicit Codex rerun procedure and manual review for skipped bot PRs (#58).
 - Permit bot-authored commits from authorized repository workflows, preserving
@@ -52,7 +53,11 @@ repositories keep their own changelogs; this file covers the hub only.
   portfolio-refresh proposals and the changelog badge in the release-branch
   checklist. The README adds a latest-release badge and labels the clones badge
   as including CI; the traffic documentation states that schedules can run late
-  and that clone counts include the repository's own checkouts.
+  and that clone counts include the repository's own checkouts (#68).
+- `GOVERNANCE.md` and `SECURITY.md` call `release/1.0.1` the active release
+  branch throughout, used as the maintenance queue; squash commit titles carry
+  only the PR number; the portfolio-refresh paragraph refers to step 5 for
+  synchronization; the `[Unreleased]` list is one list again.
 
 ## [1.0.0] - 2026-10-22
 
