@@ -87,7 +87,8 @@ token, so its checks run without a manual approval. The code-review bot
 does not review bot-authored pull requests, so the maintainer's review before
 merging is the only review of a proposal. Squash-merge the proposal, so `main`
 receives one commit per refresh. Then bring the release branch up to date
-with `main` as in step 5.
+with `main` as in step 5. Proposals carry no milestone: they are not release
+work and are not tracked in the release milestone.
 
 ### 📦 Release records
 

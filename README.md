@@ -15,7 +15,7 @@ A single entry point to independent financial risk models and calculation engine
 [![Website checks](https://img.shields.io/github/actions/workflow/status/danielep71/K-Risk-Engines/website-checks.yml?branch=main&style=for-the-badge&label=Website%20checks&color=2ea44f)](https://github.com/danielep71/K-Risk-Engines/actions/workflows/website-checks.yml)
 [![License](https://img.shields.io/badge/License-MPL--2.0-1f3a5f?style=for-the-badge)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/danielep71/K-Risk-Engines?style=for-the-badge&label=Release&color=2ea44f)](https://github.com/danielep71/K-Risk-Engines/releases/latest)
-[![Development](https://img.shields.io/badge/Development-1.0.1-483698?style=for-the-badge)](CHANGELOG.md)
+[![Maintenance](https://img.shields.io/badge/Maintenance-release%2F1.0.1-483698?style=for-the-badge)](GOVERNANCE.md#-release-records)
 
 <br>
 
