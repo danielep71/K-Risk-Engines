@@ -28,7 +28,8 @@ quoted statuses or milestone counts; the next run would overwrite them.
 ## 👀 Review and publication
 
 - Changes are proposed on `automation/portfolio-refresh` in one reusable PR,
-  assigned to `danielep71` with `documentation` and `P3` labels. Nothing automatically merges or publishes to main.
+  assigned to `danielep71` with `documentation` and `P3` labels and no milestone,
+  because a proposal is not release work. Nothing automatically merges or publishes to main.
   The maintainer squash-merges an accepted proposal, so `main` receives one
   commit per refresh (see [GOVERNANCE.md](../GOVERNANCE.md)).
 - The proposal includes pinned README/evidence links, hashes, release data and
