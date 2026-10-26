@@ -17,3 +17,5 @@ To set GitHub's repository social preview, upload the PNG under repository Setti
 are covered by [MPL-2.0](../LICENSE).
 `K-Risk-Engines-social-preview.png` is excluded; no separate reuse licence is
 granted for the artwork. See [licensing and attribution](../NOTICE.md).
+
+- `K-Risk-Engines-social-preview-v2.jpg`: six-project AI-generated artwork in dark navy, teal and electric blue, matching the K-SFTs visual family. Used by the README and website social metadata. Decorative illustrations, not model outputs. Excluded from MPL-2.0 on the same terms as the original artwork.
