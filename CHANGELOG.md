@@ -2,7 +2,7 @@
 
 [![Keep a Changelog](https://img.shields.io/badge/Keep_a_Changelog-1.1.0-E05735?style=flat-square)](https://keepachangelog.com/en/1.1.0/)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-3F4551?style=flat-square)](https://semver.org/spec/v2.0.0.html)
-[![Development](https://img.shields.io/badge/Development-1.0.1-483698?style=flat-square)](VERSION)
+[![Maintenance](https://img.shields.io/badge/Maintenance-release%2F1.0.1-483698?style=flat-square)](GOVERNANCE.md#-release-records)
 
 All notable changes to the K-Risk Engines hub are recorded here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Portfolio-refresh proposals carry no milestone, as `GOVERNANCE.md` and
+  `docs/PORTFOLIO_AUTOMATION.md` now state (#86). The README and changelog
+  badges read "Maintenance: release/1.0.1" instead of "Development 1.0.1",
+  which suggested a planned 1.0.1 release (#87).
 - Track the next `TRAFFIC_TOKEN` rotation in #94 instead of the closed #57;
   list K-SFTs and K-CVA in the website description and portfolio direction;
   name the K-IRRBB NMDs issue link consistently; order `[Unreleased]` newest
