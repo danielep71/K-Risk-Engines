@@ -18,7 +18,9 @@ It measures GitHub repository traffic, not visits to the GitHub Pages website.
 3. Store that token as the environment secret **TRAFFIC_TOKEN** in `analytics`.
    Do not put the token in files, issues or chat. Rotate it before expiry and
    at least every 90 days; verify the actual date in GitHub token settings.
-   Track the current rotation and reminder in [#57](https://github.com/danielep71/K-Risk-Engines/issues/57).
+   Track each rotation and its reminder in an open issue: currently
+   [#94](https://github.com/danielep71/K-Risk-Engines/issues/94), due before 24 January 2027.
+   [#57](https://github.com/danielep71/K-Risk-Engines/issues/57) records the October 2026 rotation.
 4. Run **Daily traffic export** manually on `main` and verify the new snapshot
    on `traffic-history`. Until that succeeds, badge values remain `pending`.
 
