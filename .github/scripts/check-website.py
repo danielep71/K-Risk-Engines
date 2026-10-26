@@ -10,6 +10,7 @@ import subprocess
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
+SITE = 'https://danielep71.github.io/K-Risk-Engines/'
 VOID = set('area base br col embed hr img input link meta param source track wbr'.split())
 FENCE = re.compile(r' {0,3}(`{3,}|~{3,})')
 ATTRIBUTE = r'\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s"\'=<>`]+))'
@@ -192,6 +193,15 @@ def check(root=ROOT):
     for source, link in references:
         url = urlsplit(link)
         where = source.relative_to(root)
+        if link.startswith(SITE):
+            # Pages publishes main only, so check this site's own URLs against the files.
+            target = (root / unquote(url.path)[len(urlsplit(SITE).path):]).resolve()
+            if target.is_dir():
+                target /= 'index.html'
+            if not target.is_relative_to(root.resolve()) or not target.is_file() \
+                    or target.stat().st_size == 0:
+                errors.append(f'{where}: missing site target {link}')
+            continue
         if url.scheme in ('http', 'https') or url.netloc:
             external.add(('https:' + link if link.startswith('//') else link).split('#')[0])
             continue

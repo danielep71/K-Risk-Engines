@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Website checks verify links to this site's own GitHub Pages URLs against the
+  repository files instead of fetching them: Pages publishes `main` only, so a
+  new asset on the release branch returned HTTP 404 and failed the push check
+  after #100 (#101).
 - Refresh portfolio artwork for six projects, adding K-SFTs and K-CVA with
   explicit NMD naming and the navy/teal repository-family palette; the
   original artwork is kept and both images stay excluded from MPL-2.0
