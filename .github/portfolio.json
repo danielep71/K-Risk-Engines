@@ -1,8 +1,54 @@
 {
   "projects": [
-    {"id":"saccr","repo":"danielep71/VBA-SACCR-Toolkit","name":"K-SACCR","purpose":"SA-CCR calculation and reconciliation","selector":"important","evidence":["docs/methodology/README.md"]},
-    {"id":"nmd","repo":"danielep71/K-IRRBB-NMDs","name":"K-IRRBB","purpose":"Non-maturity deposit behavioural modelling","selector":"status","evidence":["docs/EXCEL_EVIDENCE.md"]},
-    {"id":"frtb","repo":"danielep71/MKT-FTRB-SA","name":"K-FRTB-SA","purpose":"Standardized market-risk aggregation","selector":"important","evidence":["docs/validation.md"]},
-    {"id":"prepayment","repo":"danielep71/K-IRRBB-Prepayment_Models","name":"K-IRRBB Prepayment Models","purpose":"Behavioural loan prepayment modelling","selector":"current","evidence":["docs/Milestones/v0.1.0.md"]}
+    {
+      "id": "saccr",
+      "repo": "danielep71/VBA-SACCR-Toolkit",
+      "name": "K-SACCR",
+      "purpose": "SA-CCR calculation and reconciliation",
+      "selector": "important",
+      "evidence": [
+        "docs/methodology/README.md"
+      ]
+    },
+    {
+      "id": "nmd",
+      "repo": "danielep71/K-IRRBB-NMDs",
+      "name": "K-IRRBB NMDs",
+      "purpose": "Non-maturity deposit behavioural modelling",
+      "selector": "status",
+      "evidence": [
+        "docs/EXCEL_EVIDENCE.md"
+      ]
+    },
+    {
+      "id": "frtb",
+      "repo": "danielep71/MKT-FTRB-SA",
+      "name": "K-FRTB-SA",
+      "purpose": "Standardized market-risk aggregation",
+      "selector": "important",
+      "evidence": [
+        "docs/validation.md"
+      ]
+    },
+    {
+      "id": "prepayment",
+      "repo": "danielep71/K-IRRBB-Prepayment_Models",
+      "name": "K-IRRBB Prepayment Models",
+      "purpose": "Behavioural loan prepayment modelling",
+      "selector": "current",
+      "evidence": [
+        "docs/Milestones/v0.1.0.md"
+      ]
+    },
+    {
+      "id": "sfts",
+      "repo": "danielep71/K-SFTs",
+      "name": "K-SFTs",
+      "purpose": "Counterparty credit risk for securities financing transactions",
+      "selector": "important",
+      "evidence": [
+        "docs/methodology/README.md"
+      ]
+    }
   ]
 }

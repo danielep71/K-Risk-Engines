@@ -344,5 +344,34 @@
         "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/590250e6f9cb6071a44828179d8fcbab56ad5277/docs/Milestones/v0.1.0.md"
       }
     ]
+  },
+  {
+    "id": "sfts",
+    "repo": "danielep71/K-SFTs",
+    "status": "Status: repository setup only. There is no calculation engine, public API, production workbook or validated method yet. Nothing here should be used to compute exposure. The regulatory basis is chosen: the EU CRR controls, with the Basel Framework as the methodological reference. The first scope is bilateral SFTs under the Financial Collateral Comprehensive Method; products, collateral and outputs are still open decisions.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Repo setup",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 31,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-SFTs/milestone/1"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "c1ddc82b7b897917048ffc214f490c2bee647aec42b34146f5f328afb8e7f34e",
+        "url": "https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/README.md"
+      },
+      {
+        "path": "docs/methodology/README.md",
+        "sha256": "0aaf917e00377e03d6d079f909b183a972f2c1f872c20f6801bbdb7bfc5ddfb5",
+        "url": "https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/docs/methodology/README.md"
+      }
+    ]
   }
 ]

@@ -33,7 +33,7 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 - [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/15): open; 0 closed / 10 open issues.
 
 <a id="nmd"></a>
-## 🧩 K-IRRBB
+## 🧩 K-IRRBB NMDs
 
 v0.2.0 – Workbook, data and Excel tests (in progress). The v0.1.0 foundation, closed on 2026-10-09, established source layout, documentation, issue governance, CI and static source checks; v0.2.0 builds the first workbook, data import and Excel test harness. Neither delivers pricing, econometric fitting, a production workbook or certified IRRBB outputs. - Decay model (draft, not validated, milestone v0.3.0): core, public facade IRRBB_Decay, harness cases and example, reviewed on release/v0.3.0 and present here since this branch was levelled with main; built to MODEL_CONTRACTS.md and under review in #36; no Excel evidence is recorded yet. Rate and stable-amount models are not built. - Application profile: an Excel workbook will be the end-user deliverable, assembled from reviewed exported VBA source. - Production calculations live in src/core/ without direct Excel object dependencies; at present the data import&#x27;s parsing, validation, summaries and fingerprint, and the draft decay calculations. - src/modules/ exposes the documented public facade (the data import and the draft decay model, listed in docs/PUBLIC_API.txt); src/workbook/ contains host glue only. - tests/ holds synthetic fixtures, expected results and the VBA regression harness; evidence from a real Excel run must be separately recorded. - No client data, confidential third-party material, vendor source code or customer-specific models are allowed in Git; the repository and its history are public.
 
@@ -88,3 +88,18 @@ Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
 - [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 9 closed / 10 open issues.
+
+<a id="sfts"></a>
+## 🧩 K-SFTs
+
+Status: repository setup only. There is no calculation engine, public API, production workbook or validated method yet. Nothing here should be used to compute exposure. The regulatory basis is chosen: the EU CRR controls, with the Basel Framework as the methodological reference. The first scope is bilateral SFTs under the Financial Collateral Comprehensive Method; products, collateral and outputs are still open decisions.
+
+### 🔗 Sources
+
+- [README.md](https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/README.md) — content SHA-256 `c1ddc82b7b897917048ffc214f490c2bee647aec42b34146f5f328afb8e7f34e`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/3fc2c977039e1a07f45abf8d0942c02f14b858e2/docs/methodology/README.md) — content SHA-256 `0aaf917e00377e03d6d079f909b183a972f2c1f872c20f6801bbdb7bfc5ddfb5`
+- No published stable release (drafts and prereleases excluded).
+
+### 🏁 Milestones (tracking only)
+
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): open; 31 closed / 1 open issues.
