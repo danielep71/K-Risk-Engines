@@ -77,10 +77,29 @@ This is an architecture diagram, not a status report: it does not certify
 implemented functionality. Each engine's repository is the source for its scope
 and status, summarised in the table above.
 
+<a id="market-risk-framework"></a>
+
+### 📉 Market risk and CVA risk
+
+Market risk and CVA risk are two separate capital requirements, each with its
+own approaches. [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) addresses
+the standardised approach for market risk; K-CVA, developed in a private
+repository, addresses CVA risk. The method map below shows both frameworks and
+the earlier Basel rules they replace, without project names.
+
+[![Market risk and CVA risk as two separate capital requirements, with their approaches and the earlier Basel rules](assets/Market_risk_framework.svg)](assets/Market_risk_framework.svg)
+
+[Editable SVG](assets/Market_risk_framework.svg) · [High-resolution PNG](assets/Market_risk_framework.png)
+
+It is a method map: it does not certify implemented functionality or the scope
+of K-FRTB-SA or K-CVA.
+
 ## 🌐 Website
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
-Serving it requires no build step or application dependencies. Repository checks
+It presents the portfolio by risk category (Counterparty Credit Risk, Market
+Risk and IRRBB), with each project's status card and its framework, usage and
+aggregation diagrams. Serving it requires no build step or application dependencies. Repository checks
 and automation use Python, curl and GitHub Actions as documented below.
 
 For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The live website is [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).

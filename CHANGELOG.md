@@ -13,6 +13,16 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Review the Markdown documentation: the README shows the market risk and CVA
+  framework and describes the website's risk-category layout; `docs/TRAFFIC.md`
+  adds a token rotation checklist; `docs/PORTFOLIO_AUTOMATION.md` explains which
+  links follow a repository rename; `GOVERNANCE.md` and the PR template record
+  identical reviewed content and maintainer-authorized merge exceptions;
+  `assets/README.md` names the website hero; `[Unreleased]` is in merge order.
+  Stale code comments are updated: `website-checks.yml` gains a header,
+  `daily-traffic.yml` names the README badges it feeds and that clone counts
+  include CI, and `portfolio-refresh.py` notes what `--render-only` reuses
+  (#112).
 - Show market risk and CVA diagrams in the Market Risk section: the framework
   of approaches, without project names, below the introduction; the FRTB-SA
   usage and aggregation diagrams from K-FRTB-SA below its card; and the CVA
@@ -40,10 +50,6 @@ repositories keep their own changelogs; this file covers the hub only.
   list K-SFTs and K-CVA in the website description and portfolio direction;
   name the K-IRRBB NMDs issue link consistently; order `[Unreleased]` newest
   first, as `GOVERNANCE.md` now states (#96).
-- `GOVERNANCE.md` and `SECURITY.md` call `release/1.0.1` the active release
-  branch throughout, used as the maintenance queue; squash commit titles carry
-  only the PR number; the portfolio-refresh paragraph refers to step 5 for
-  synchronization; the `[Unreleased]` list is one list again (#85).
 - Describe portfolio refresh inputs by configuration rather than a stale
   fixed repository count (#83).
 - Show the counterparty credit risk framework the calculators belong to, in
@@ -51,6 +57,10 @@ repositories keep their own changelogs; this file covers the hub only.
   exposures to the ordinary and CCP capital branches and their aggregation,
   with CVA risk as a separate market-risk memo item, shared with those
   repositories (`assets/CCR_framework.svg`, `.png`; #89).
+- `GOVERNANCE.md` and `SECURITY.md` call `release/1.0.1` the active release
+  branch throughout, used as the maintenance queue; squash commit titles carry
+  only the PR number; the portfolio-refresh paragraph refers to step 5 for
+  synchronization; the `[Unreleased]` list is one list again (#85).
 - Name the non-maturity deposit project K-IRRBB NMDs consistently in the
   website, portfolio configuration and generated documentation (#81).
 - Include K-SFTs in the website, portfolio evidence and automatic refresh;

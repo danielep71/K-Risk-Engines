@@ -1,5 +1,10 @@
 name: Website checks
 
+# "HTML and links" is a required check on main and release/**. Every event runs
+# the script tests and the local HTML, Markdown, asset and anchor checks.
+# External links are fetched only on trusted events (pushes, the weekly schedule
+# and manual runs), not on pull requests. Read-only token; no secrets.
+
 on:
   pull_request:
     branches:

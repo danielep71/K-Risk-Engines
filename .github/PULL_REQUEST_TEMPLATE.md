@@ -27,10 +27,11 @@ Resolves #
 @codex review as a top-level conversation comment. Check the completed review
 SHA against the current PR head. See GOVERNANCE.md, Review after fix pushes.
 For bot-authored PRs skipped by Codex, record the maintainer's final-head
-manual review and explicitly state that Codex was skipped. -->
+manual review and explicitly state that Codex was skipped. For identical
+reviewed content or a maintainer-authorized exception, follow GOVERNANCE.md. -->
 
 - Final PR head SHA:
-- Review type (Codex / maintainer manual review for a skipped bot PR):
+- Review type (Codex / identical reviewed content / maintainer manual review for a skipped bot PR / maintainer-authorized exception):
 - Reviewed commit SHA and review permalink:
 - Required CI result and run link:
 

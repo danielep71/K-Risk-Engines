@@ -182,7 +182,8 @@ def main():
     snapshot_file = ROOT / 'docs/portfolio-state.json'
     old = json.loads(snapshot_file.read_text()) if snapshot_file.exists() else []
     by_id = {p['id']: p for p in old}
-    # Collect every source before touching outputs. Any missing source / API error aborts the run.
+    # Collect every source before touching outputs (--render-only reuses the stored snapshot).
+    # Any missing source / API error aborts the run.
     if args.render_only:
         if [p['id'] for p in projects] != [p['id'] for p in old]:
             raise ValueError('Stored snapshot does not match configured projects')

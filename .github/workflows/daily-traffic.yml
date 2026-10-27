@@ -6,8 +6,8 @@
 #   branch is absent, the first run creates it as an orphan branch. This
 #   repository's branch already existed: it was initialized from `main` at
 #   85159f7 (commit 1b6d86d), so its history is shared with `main`. It writes
-#   data/badges/clones.json, visitors.json and visits.json there: shields.io
-#   endpoints that README badges can use, since the repository is public.
+#   data/badges/clones.json, visitors.json and visits.json there: the shields.io
+#   endpoints behind the README's clones, visitors and visits badges.
 #
 #   Data retention
 #     GitHub retains traffic data for 14 days only. This workflow exists to
@@ -366,7 +366,7 @@ jobs:
 
           # README badges: shields.io endpoint JSON files.
           #   clones   total clones recorded in the daily history since
-          #            tracking began
+          #            tracking began, including CI and maintainer clones
           #   visitors unique visitors over GitHub's rolling 14-day window,
           #            from today's snapshot (daily uniques cannot be summed
           #            into a unique count)
