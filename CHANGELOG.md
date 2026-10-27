@@ -18,7 +18,10 @@ repositories keep their own changelogs; this file covers the hub only.
   adds a token rotation checklist; `docs/PORTFOLIO_AUTOMATION.md` explains which
   links follow a repository rename; `GOVERNANCE.md` and the PR template record
   identical reviewed content and maintainer-authorized merge exceptions;
-  `assets/README.md` names the website hero; `[Unreleased]` is in merge order
+  `assets/README.md` names the website hero; `[Unreleased]` is in merge order.
+  Stale code comments are updated: `website-checks.yml` gains a header,
+  `daily-traffic.yml` names the README badges it feeds and that clone counts
+  include CI, and `portfolio-refresh.py` notes what `--render-only` reuses
   (#112).
 - Show market risk and CVA diagrams in the Market Risk section: the framework
   of approaches, without project names, below the introduction; the FRTB-SA
