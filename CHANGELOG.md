@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Correct K-CVA visibility to public in the website and README, link its
+  repository and state its documented repository-setup limitations.
+
 - Simplify project-card navigation to the project website alone when available,
   completing the website-link update (#119); record the rule in governance.
 
