@@ -98,8 +98,11 @@ of K-FRTB-SA or K-CVA.
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
 It presents the portfolio by risk category (Counterparty Credit Risk, Market
-Risk and IRRBB), with each project's status card and its framework, usage and
-aggregation diagrams. Serving it requires no build step or application dependencies. Repository checks
+Risk and IRRBB), with the counterparty credit risk and market risk framework
+diagrams and a status card for each project. Each card links to the project's
+own website where it has one (K-SACCR), otherwise to its repository; detailed
+documentation and diagrams stay in each project's repository. Serving it
+requires no build step or application dependencies. Repository checks
 and automation use Python, curl and GitHub Actions as documented below.
 
 For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The live website is [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).

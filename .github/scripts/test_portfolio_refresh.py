@@ -64,6 +64,20 @@ class PortfolioTests(unittest.TestCase):
         self.assertIn('&lt;script&gt;', website)
         self.assertIn('none recorded', website)
 
+    def test_website_status_has_no_links(self):
+        project = {'id': 'one', 'name': 'One', 'purpose': 'Purpose'}
+        data = {'id': 'one', 'repo': 'owner/repo', 'status': 'Prototype.',
+                'sources': [{'path': 'README.md', 'url': 'https://github.com/owner/repo/blob/abc/README.md', 'sha256': 'abc'}],
+                'release': None, 'milestones': [{'number': 1, 'state': 'closed', 'title': 'v0.1.0',
+                'closed_at': '2026-10-01T00:00:00Z', 'html_url': 'https://github.com/owner/repo/milestone/1',
+                'closed_issues': 3, 'open_issues': 0}]}
+        readme, website, report = refresh.render([project], [data],
+            '<!-- portfolio:table:start --><!-- portfolio:table:end -->',
+            '<!-- portfolio:one:start --><!-- portfolio:one:end -->')
+        self.assertNotIn('<a ', website)
+        self.assertIn('Last closed milestone: v0.1.0 (2026-10-01).', website)
+        self.assertIn('https://github.com/owner/repo/milestone/1', readme)
+
 
 if __name__ == '__main__':
     unittest.main()
