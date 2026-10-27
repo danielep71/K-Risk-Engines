@@ -50,6 +50,12 @@ material caveats, and date status snapshots. The engine repository remains
 authoritative if a hub snapshot becomes stale. Record the supporting links in
 the change description or relevant issue.
 
+Project cards with a published project website show only the **Project website**
+link in their navigation row. Repository, roadmap, methodology and validation
+navigation belong on the project website. Cards without a project website may
+link directly to those resources. Evidence citations inside status details remain
+available for traceability.
+
 ## 🌿 Branches and publication
 
 | Branch | Role |
