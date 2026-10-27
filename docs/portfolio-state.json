@@ -271,7 +271,7 @@
         "title": "v0.1.0 — Repo setup",
         "state": "closed",
         "open_issues": 0,
-        "closed_issues": 32,
+        "closed_issues": 10,
         "closed_at": "2026-10-18T07:43:46Z",
         "html_url": "https://github.com/danielep71/K-FRTB-SA/milestone/1"
       },
@@ -279,8 +279,8 @@
         "number": 2,
         "title": "v0.2.0 — SA prototype",
         "state": "open",
-        "open_issues": 11,
-        "closed_issues": 60,
+        "open_issues": 10,
+        "closed_issues": 18,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-FRTB-SA/milestone/2"
       },
@@ -298,12 +298,12 @@
       {
         "path": "README.md",
         "sha256": "a4c930b58db30d2df14f98ce1c568eb0edcc1087987e67706efaf505cbe6159b",
-        "url": "https://github.com/danielep71/K-FRTB-SA/blob/6dc80ad97a3be679500c9efeaa636ac730f53601/README.md"
+        "url": "https://github.com/danielep71/K-FRTB-SA/blob/df4f3d67ff6f9ea8c566bac6651b7c4f142fcd23/README.md"
       },
       {
         "path": "docs/validation.md",
         "sha256": "6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6",
-        "url": "https://github.com/danielep71/K-FRTB-SA/blob/6dc80ad97a3be679500c9efeaa636ac730f53601/docs/validation.md"
+        "url": "https://github.com/danielep71/K-FRTB-SA/blob/df4f3d67ff6f9ea8c566bac6651b7c4f142fcd23/docs/validation.md"
       }
     ]
   },
