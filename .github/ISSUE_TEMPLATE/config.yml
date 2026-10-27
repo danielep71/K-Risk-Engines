@@ -3,7 +3,7 @@
   "contact_links": [
     {
       "name": "K-SACCR engine issues",
-      "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/issues",
+      "url": "https://github.com/danielep71/K-SACCR/issues",
       "about": "SA-CCR calculations, methodology, workbook and validation."
     },
     {
@@ -13,7 +13,7 @@
     },
     {
       "name": "K-FRTB-SA engine issues",
-      "url": "https://github.com/danielep71/MKT-FTRB-SA/issues",
+      "url": "https://github.com/danielep71/K-FRTB-SA/issues",
       "about": "Market-risk aggregation, methodology, workbook and validation."
     },
     {
