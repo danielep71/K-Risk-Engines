@@ -28,6 +28,22 @@ The repository files do not include the credential. Setup is complete only
 when step 4 succeeds: a manual run on `main` that writes a new snapshot.
 Secrets in another repository are not automatically shared with this one.
 
+### 🔁 Rotating the token
+
+1. Create the new fine-grained token under a **new name** (for example with
+   the month), with the same access: this repository only, **Administration:
+   read**, an expiry of at most 90 days.
+2. Replace `TRAFFIC_TOKEN` in **Settings → Environments → `analytics`**. The
+   environment secret takes precedence over a repository secret of the same
+   name, so a repository secret does not take effect.
+3. Run **Daily traffic export** manually on `main` and confirm that **Fetch
+   GitHub traffic API data** succeeds and a new snapshot is written. HTTP 401
+   "Bad credentials" means the secret does not hold a valid token.
+4. Only then revoke the old token, checking its name and expiry first, and run
+   the export once more.
+5. Record the new name and listed expiry in the rotation issue, and open the
+   issue for the next rotation.
+
 ## 🗄️ Stored data
 
 The `traffic-history` branch holds the analytics data and a short README:
