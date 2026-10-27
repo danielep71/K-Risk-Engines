@@ -14,12 +14,14 @@ milestones. It chooses the last closed milestone by `closed_at`, not version
 number, issue count or last modification date. A reopened milestone is excluded.
 Closure dates are displayed as the GitHub API's UTC calendar date.
 
-Repository names in the generated files come from GitHub's API, so a renamed
-engine repository appears under its new name at the next refresh. Hand-written
-links do not follow automatically: after a rename, update the `repo` field in
-`.github/portfolio.json`, the issue chooser in
-`.github/ISSUE_TEMPLATE/config.yml`, the README and the website's card and
-diagram links.
+Repository paths in the generated files come from GitHub's API, so after an
+engine repository is renamed the generated links point to its new name at the
+next refresh. Displayed project names come from the `name` field in
+`.github/portfolio.json` and do not follow a rename. After a rename, update the
+`repo` field, and the `name` field if the displayed name should change, in
+`.github/portfolio.json`; the issue chooser in
+`.github/ISSUE_TEMPLATE/config.yml`; and the README and the website's
+hand-written card, heading and diagram links.
 
 The workflow updates only the hub's marked README table and website status
 blocks, plus `docs/PORTFOLIO_STATUS.md` and `docs/portfolio-state.json`. Project
