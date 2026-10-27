@@ -160,6 +160,17 @@ If review fails, is unavailable or remains incomplete, leave the PR open and
 record the blocker. A clean review of an older revision does not cover fixes
 pushed afterward.
 
+Two further cases are recorded in the PR in the same place:
+
+- **Identical reviewed content.** An integration PR whose head has the same
+  tree as a commit already reviewed by Codex against the same base may cite
+  that review when the integration PR's own review reports no commit. Record
+  both SHAs and the shared tree, and do not claim a review of the head itself.
+- **Maintainer-authorized exception.** The maintainer may decide to merge
+  without a completed final-head review. Record the decision verbatim under
+  "Explicitly authorized merge exception", what changed after the last
+  reviewed commit, and that no Codex coverage of the final head is claimed.
+
 Bot-authored proposals skipped by Codex require a documented maintainer review
 of the final diff and head SHA, with required CI passing. Do not claim Codex
 coverage when it was skipped. Self-review, automated Codex review and CI are
