@@ -2,7 +2,7 @@
   "projects": [
     {
       "id": "saccr",
-      "repo": "danielep71/VBA-SACCR-Toolkit",
+      "repo": "danielep71/K-SACCR",
       "name": "K-SACCR",
       "purpose": "SA-CCR calculation and reconciliation",
       "selector": "important",
@@ -22,7 +22,7 @@
     },
     {
       "id": "frtb",
-      "repo": "danielep71/MKT-FTRB-SA",
+      "repo": "danielep71/K-FRTB-SA",
       "name": "K-FRTB-SA",
       "purpose": "Standardized market-risk aggregation",
       "selector": "important",
