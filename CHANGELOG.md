@@ -13,6 +13,14 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The website links each project only from its card: K-SACCR to its project
+  website, the other projects to their repositories as before. The usage and
+  aggregation diagrams of K-SACCR, K-SFTs, K-FRTB-SA and K-CVA are removed
+  (they are documented in the project repositories, and the CVA copies are
+  deleted from `assets/`); the counterparty credit risk and market risk
+  framework diagrams stay. The refreshed status snapshots on the website no
+  longer link the source README or milestones; the README table and
+  `docs/PORTFOLIO_STATUS.md` keep those links (#116).
 - The README ends with **Maintainer** and **License** sections, like the engine
   repositories; the licensing text, including the artwork exclusion, moves
   into the License section (#114).

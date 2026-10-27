@@ -137,18 +137,17 @@ def render(projects, snapshot, readme, website):
         # Details retain the complete source status, including qualifications, without oversized cards.
         status = data['status']
         summary = re.split(r'(?<=[.!?])\s+', status, maxsplit=1)[0]
-        source = data['sources'][0]['url']
         milestone = latest_closed(data['milestones'])
         milestone_md = (f"[{markdown(milestone['title'])}]({milestone['html_url']}) ({milestone['closed_at'][:10]})" if milestone else 'None recorded')
         rows.append(f"| [{p['name']}]({url}) | {p['purpose']} | {markdown(summary)} {markdown(release)}. [Full status and caveats](docs/PORTFOLIO_STATUS.md#{p['id']}) | {milestone_md} |")
         block = ('<p class="evidence"><strong>Project-reported status.</strong> ' + html.escape(summary) +
                  '</p><p class="asof">' + html.escape(release) +
                  '.</p><details><summary>Full status and limitations</summary><p>' +
-                 html.escape(status) + '</p><p><a href="' + html.escape(source, quote=True) +
-                 '">Read the source README ↗</a></p></details>')
+                 html.escape(status) + '</p></details>')
+        # The website links each project only from its card; sources stay in the README table and status report.
         if milestone:
-            block += ('<p class="asof">Last closed milestone: <a href="' + html.escape(milestone['html_url'], quote=True) + '">' +
-                      html.escape(milestone['title']) + '</a> (' + milestone['closed_at'][:10] + ').</p>')
+            block += ('<p class="asof">Last closed milestone: ' + html.escape(milestone['title']) +
+                      ' (' + milestone['closed_at'][:10] + ').</p>')
         else:
             block += '<p class="asof">Last closed milestone: none recorded.</p>'
         website = replace_block(website, p['id'], block)
