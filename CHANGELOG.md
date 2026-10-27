@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The README ends with **Maintainer** and **License** sections, like the engine
+  repositories; the licensing text, including the artwork exclusion, moves
+  into the License section (#114).
 - Review the Markdown documentation: the README shows the market risk and CVA
   framework and describes the website's risk-category layout; `docs/TRAFFIC.md`
   adds a token rotation checklist; `docs/PORTFOLIO_AUTOMATION.md` explains which
