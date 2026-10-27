@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Remove dead links to three deleted K-SACCR milestones from the historical
+  portfolio report, unblocking the website-link integration (#122).
+
 - Link the K-SFTs and K-FRTB-SA project websites from their hub cards and
   the root README (#119).
 

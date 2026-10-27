@@ -25,9 +25,9 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.
-- [v1.8.0 - Securities Financing Transactions](https://github.com/danielep71/K-SACCR/milestone/10): open; 0 closed / 1 open issues.
-- [v1.9.0 - Regulatory CVA Risk](https://github.com/danielep71/K-SACCR/milestone/11): open; 0 closed / 1 open issues.
-- [v1.10.0 - Risk-Weighted Assets and Capital](https://github.com/danielep71/K-SACCR/milestone/12): open; 0 closed / 2 open issues.
+- v1.8.0 - Securities Financing Transactions: historical snapshot recorded open; 0 closed / 1 open issues. Milestone URL no longer available as of 2026-10-27.
+- v1.9.0 - Regulatory CVA Risk: historical snapshot recorded open; 0 closed / 1 open issues. Milestone URL no longer available as of 2026-10-27.
+- v1.10.0 - Risk-Weighted Assets and Capital: historical snapshot recorded open; 0 closed / 2 open issues. Milestone URL no longer available as of 2026-10-27.
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/K-SACCR/milestone/13): closed; 9 closed / 0 open issues.
 - [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/K-SACCR/milestone/14): closed; 10 closed / 0 open issues.
 - [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/K-SACCR/milestone/15): open; 0 closed / 10 open issues.
