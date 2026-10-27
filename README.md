@@ -149,14 +149,6 @@ change checks and issue handling. Report vulnerabilities privately under the
 The maintainer assigns a milestone and confirms the priority during triage.
 Engine calculation and methodology reports belong in their own repositories.
 
-## 📄 Licensing
-
-The hub's code and documentation are licensed under [MPL-2.0](LICENSE).
-The portfolio artwork (`assets/K-Risk-Engines-social-preview-v2.jpg`, and the
-retained original `assets/K-Risk-Engines-social-preview.png`) is excluded; no
-separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
-Linked engines retain their own licences.
-
 ## 🔍 Review approach
 
 1. Align data, scope, conventions and assumptions.
@@ -169,4 +161,17 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA is developed in a private repository. Detailed milestones remain in each model repository.
 
-👤 An independent project by [Daniele Penza](https://github.com/danielep71). Individual project licences apply to their respective contents.
+---
+
+## 👤 Maintainer
+
+**Daniele Penza** — [@danielep71](https://github.com/danielep71). This is an
+independent personal project.
+
+## 📄 License
+
+[Mozilla Public License 2.0](LICENSE) for the hub's code and documentation.
+The portfolio artwork (`assets/K-Risk-Engines-social-preview-v2.jpg`, and the
+retained original `assets/K-Risk-Engines-social-preview.png`) is excluded; no
+separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
+Each linked engine is licensed separately in its own repository.
