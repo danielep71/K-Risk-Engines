@@ -31,7 +31,7 @@ A single entry point to independent financial risk models and calculation engine
 
 <br>
 
-![K-Risk Engines portfolio](assets/K-Risk-Engines-social-preview.png)
+![K-Risk Engines: K-SACCR, K-SFTs, K-CVA, K-FRTB-SA, K-IRRBB NMDs and Prepayment](assets/K-Risk-Engines-social-preview-v2.jpg)
 
 </div>
 
@@ -105,7 +105,9 @@ or a `release/**` branch. External links are checked on pushes, weekly and
 on manual runs; redirects are accepted. Broken links fail the check. Network
 errors, HTTP 403/429 and server errors are reported as warnings because
 availability could not be verified. External page fragments are not validated;
-external URLs from Markdown files follow the same rules.
+external URLs from Markdown files follow the same rules. Links to this site's own
+Pages URLs (`https://danielep71.github.io/K-Risk-Engines/…`) are checked against
+the repository files instead, because Pages publishes `main` only.
 
 ## 🔄 Daily portfolio refresh
 
@@ -131,8 +133,9 @@ Engine calculation and methodology reports belong in their own repositories.
 ## 📄 Licensing
 
 The hub's code and documentation are licensed under [MPL-2.0](LICENSE).
-The portfolio artwork (`assets/K-Risk-Engines-social-preview.png`) is excluded;
-no separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
+The portfolio artwork (`assets/K-Risk-Engines-social-preview-v2.jpg`, and the
+retained original `assets/K-Risk-Engines-social-preview.png`) is excluded; no
+separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
 Linked engines retain their own licences.
 
 ## 🔍 Review approach

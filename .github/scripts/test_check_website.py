@@ -97,6 +97,16 @@ class CheckTests(unittest.TestCase):
             'README.md: path outside repository: ../elsewhere.md',
             'README.md: missing target docs/gone.md'])
 
+    def test_own_site_urls_are_checked_locally(self):
+        errors, external, *_ = self.run_check({
+            'index.html': PAGE,
+            'assets/art.jpg': 'image',
+            'README.md': (f'[Site]({site.SITE}) [Art]({site.SITE}assets/art.jpg)\n'
+                          f'[Gone]({site.SITE}assets/gone.jpg) [Other](https://example.com/)\n'),
+            'docs/guide.md': '# Guide\n\n## Install\n'})
+        self.assertEqual(errors, [f'README.md: missing site target {site.SITE}assets/gone.jpg'])
+        self.assertEqual(external, {'https://example.com/'})
+
     def test_html_links_to_markdown_anchors_are_checked(self):
         errors, *_ = self.run_check({'index.html': PAGE, 'docs/guide.md': '# Guide\n'})
         self.assertEqual(errors, ['index.html: missing anchor docs/guide.md#install'])

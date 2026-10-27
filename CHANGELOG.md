@@ -15,7 +15,14 @@ repositories keep their own changelogs; this file covers the hub only.
 
 - Organize the website by Counterparty Credit Risk, Market Risk and IRRBB,
   with brief explanations and SA-CCR/SFT usage and aggregation diagrams (#101).
-
+- Website checks verify links to this site's own GitHub Pages URLs against the
+  repository files instead of fetching them: Pages publishes `main` only, so a
+  new asset on the release branch returned HTTP 404 and failed the push check
+  after #100 (#102).
+- Refresh portfolio artwork for six projects, adding K-SFTs and K-CVA with
+  explicit NMD naming and the navy/teal repository-family palette; the
+  original artwork is kept and both images stay excluded from MPL-2.0
+  (#100, #95).
 - Portfolio-refresh proposals carry no milestone, as `GOVERNANCE.md` and
   `docs/PORTFOLIO_AUTOMATION.md` now state (#86). The README and changelog
   badges read "Maintenance: release/1.0.1" instead of "Development 1.0.1",
