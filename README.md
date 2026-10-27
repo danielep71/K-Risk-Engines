@@ -63,7 +63,7 @@ Each repository owns its implementation, methodology, tests, issues and releases
 ### 🏛️ Where the counterparty credit risk calculators belong
 
 The counterparty credit risk calculators of the portfolio fit one framework,
-from exposures to capital requirements. [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit)
+from exposures to capital requirements. [K-SACCR](https://github.com/danielep71/K-SACCR)
 produces the exposure value of derivatives and [K-SFTs](https://github.com/danielep71/K-SFTs)
 that of securities financing transactions (step 1). The ordinary and CCP
 capital branches and their aggregation follow (steps 2 to 4). K-CVA covers CVA
