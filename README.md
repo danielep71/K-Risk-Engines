@@ -96,6 +96,9 @@ of K-FRTB-SA or K-CVA.
 
 ## 🌐 Website
 
+Project websites: [K-SFTs](https://danielep71.github.io/K-SFTs/) ·
+[K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/).
+
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
 It presents the portfolio by risk category (Counterparty Credit Risk, Market
 Risk and IRRBB), with the counterparty credit risk and market risk framework

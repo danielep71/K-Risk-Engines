@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Link the K-SFTs and K-FRTB-SA project websites from their hub cards and
+  the root README (#119).
+
 - The website links each project only from its card: K-SACCR to its project
   website, the other projects to their repositories as before. The usage and
   aggregation diagrams of K-SACCR, K-SFTs, K-FRTB-SA and K-CVA are removed
@@ -184,3 +187,4 @@ milestone.
 
 [Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/danielep71/K-Risk-Engines/releases/tag/v1.0.0
+
