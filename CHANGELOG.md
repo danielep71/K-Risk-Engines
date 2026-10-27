@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Simplify project-card navigation to the project website alone when available,
+  completing the website-link update (#119); record the rule in governance.
+
 - Remove dead links to three deleted K-SACCR milestones from the historical
   portfolio report, unblocking the website-link integration (#122).
 
