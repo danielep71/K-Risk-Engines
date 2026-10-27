@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Show market risk and CVA diagrams in the Market Risk section: the framework
+  diagram below the introduction, the FRTB-SA usage and aggregation diagrams
+  from K-FRTB-SA below its card, and the CVA usage and aggregation diagrams,
+  kept here because K-CVA is private, below its card (#105).
 - Organize the website by Counterparty Credit Risk, Market Risk and IRRBB,
   with brief explanations and SA-CCR/SFT usage and aggregation diagrams (#101).
 - Website checks verify links to this site's own GitHub Pages URLs against the
