@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Organize the website by Counterparty Credit Risk, Market Risk and IRRBB,
+  with brief explanations and SA-CCR/SFT usage and aggregation diagrams (#101).
 - Website checks verify links to this site's own GitHub Pages URLs against the
   repository files instead of fetching them: Pages publishes `main` only, so a
   new asset on the release branch returned HTTP 404 and failed the push check
