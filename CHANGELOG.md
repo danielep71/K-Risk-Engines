@@ -18,6 +18,10 @@ repositories keep their own changelogs; this file covers the hub only.
   usage and aggregation diagrams from K-FRTB-SA below its card; and the CVA
   usage and aggregation diagrams, kept here because K-CVA is private, below
   its card (#105).
+- The engine repositories renamed to `K-SACCR` (from `VBA-SACCR-Toolkit`)
+  and `K-FRTB-SA` (from `MKT-FTRB-SA`) are linked by their current names in
+  `.github/portfolio.json`, the issue chooser, the README and the website;
+  the generated files already use them since #107 (#108).
 - Organize the website by Counterparty Credit Risk, Market Risk and IRRBB,
   with brief explanations and SA-CCR/SFT usage and aggregation diagrams (#101).
 - Website checks verify links to this site's own GitHub Pages URLs against the

@@ -42,11 +42,11 @@ A single entry point to independent financial risk models and calculation engine
 <!-- portfolio:table:start -->
 | Project | Purpose | Project-reported status | Last closed milestone |
 | --- | --- | --- | --- |
-| [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit) | SA-CCR calculation and reconciliation | Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. Latest published release: v1.0.2. [Full status and caveats](docs/PORTFOLIO_STATUS.md#saccr) | [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14) (2026-10-23) |
+| [K-SACCR](https://github.com/danielep71/K-SACCR) | SA-CCR calculation and reconciliation | Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. Latest published release: v1.0.2. [Full status and caveats](docs/PORTFOLIO_STATUS.md#saccr) | [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/K-SACCR/milestone/14) (2026-10-23) |
 | [K-IRRBB NMDs](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | v0.2.0 – Workbook, data and Excel tests (in progress). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#nmd) | [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1) (2026-10-09) |
-| [K-FRTB-SA](https://github.com/danielep71/MKT-FTRB-SA) | Standardized market-risk aggregation | Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.0.1 — Repo setup](https://github.com/danielep71/MKT-FTRB-SA/milestone/1) (2026-10-18) |
+| [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) | Standardized market-risk aggregation | Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1) (2026-10-18) |
 | [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: specifications only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1) (2026-10-21) |
-| [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1) (2026-10-25) |
+| [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: working prototype, not a validated method. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1) (2026-10-25) |
 <!-- portfolio:table:end -->
 
 **K-CVA** is also part of the portfolio. Its repository is currently private;
@@ -63,7 +63,7 @@ Each repository owns its implementation, methodology, tests, issues and releases
 ### 🏛️ Where the counterparty credit risk calculators belong
 
 The counterparty credit risk calculators of the portfolio fit one framework,
-from exposures to capital requirements. [K-SACCR](https://github.com/danielep71/VBA-SACCR-Toolkit)
+from exposures to capital requirements. [K-SACCR](https://github.com/danielep71/K-SACCR)
 produces the exposure value of derivatives and [K-SFTs](https://github.com/danielep71/K-SFTs)
 that of securities financing transactions (step 1). The ordinary and CCP
 capital branches and their aggregation follow (steps 2 to 4). K-CVA covers CVA

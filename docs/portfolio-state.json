@@ -1,11 +1,11 @@
 [
   {
     "id": "saccr",
-    "repo": "danielep71/VBA-SACCR-Toolkit",
+    "repo": "danielep71/K-SACCR",
     "status": "Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.2, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
     "release": {
       "tag": "v1.0.2",
-      "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/releases/tag/v1.0.2",
+      "url": "https://github.com/danielep71/K-SACCR/releases/tag/v1.0.2",
       "published_at": "2026-10-22T21:46:09Z",
       "notes_sha256": "1ea841c227372ce61626a27869df3d3792c1ab9885385c03ddf202ca69b6f067"
     },
@@ -17,7 +17,7 @@
         "open_issues": 0,
         "closed_issues": 26,
         "closed_at": "2026-10-06T18:50:35Z",
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/1"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/1"
       },
       {
         "number": 2,
@@ -26,16 +26,16 @@
         "open_issues": 0,
         "closed_issues": 57,
         "closed_at": "2026-10-17T10:06:16Z",
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/2"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/2"
       },
       {
         "number": 3,
         "title": "v1.1.0 - CSV Import, Staging and Workbook Protection",
         "state": "open",
-        "open_issues": 12,
-        "closed_issues": 11,
+        "open_issues": 14,
+        "closed_issues": 12,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/3"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/3"
       },
       {
         "number": 4,
@@ -44,7 +44,7 @@
         "open_issues": 9,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/4"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/4"
       },
       {
         "number": 5,
@@ -53,7 +53,7 @@
         "open_issues": 6,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/5"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/5"
       },
       {
         "number": 6,
@@ -62,7 +62,7 @@
         "open_issues": 3,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/6"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/6"
       },
       {
         "number": 7,
@@ -71,7 +71,7 @@
         "open_issues": 0,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/7"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/7"
       },
       {
         "number": 8,
@@ -80,7 +80,7 @@
         "open_issues": 0,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/8"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/8"
       },
       {
         "number": 10,
@@ -89,7 +89,7 @@
         "open_issues": 1,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/10"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/10"
       },
       {
         "number": 11,
@@ -98,7 +98,7 @@
         "open_issues": 1,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/11"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/11"
       },
       {
         "number": 12,
@@ -107,7 +107,7 @@
         "open_issues": 2,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/12"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/12"
       },
       {
         "number": 13,
@@ -116,7 +116,7 @@
         "open_issues": 0,
         "closed_issues": 9,
         "closed_at": "2026-10-18T17:23:58Z",
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/13"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/13"
       },
       {
         "number": 14,
@@ -125,7 +125,7 @@
         "open_issues": 0,
         "closed_issues": 10,
         "closed_at": "2026-10-23T05:53:41Z",
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/14"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/14"
       },
       {
         "number": 15,
@@ -134,19 +134,19 @@
         "open_issues": 10,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/VBA-SACCR-Toolkit/milestone/15"
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/15"
       }
     ],
     "sources": [
       {
         "path": "README.md",
         "sha256": "5e2778a87cad44a4ab24bde62003011c5ac95c397958b43257c173891a5da21d",
-        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/README.md"
+        "url": "https://github.com/danielep71/K-SACCR/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/README.md"
       },
       {
         "path": "docs/methodology/README.md",
         "sha256": "66818374518624eed01db9112c15b45f69c967b00115b26f124f6c64d24521ab",
-        "url": "https://github.com/danielep71/VBA-SACCR-Toolkit/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/docs/methodology/README.md"
+        "url": "https://github.com/danielep71/K-SACCR/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/docs/methodology/README.md"
       }
     ]
   },
@@ -262,48 +262,48 @@
   },
   {
     "id": "frtb",
-    "repo": "danielep71/MKT-FTRB-SA",
+    "repo": "danielep71/K-FRTB-SA",
     "status": "Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. It has not yet been compiled or run in Excel, the engine platform decision is still open (scope), and no result is validated for regulatory use (validation).",
     "release": null,
     "milestones": [
       {
         "number": 1,
-        "title": "v0.0.1 — Repo setup",
+        "title": "v0.1.0 — Repo setup",
         "state": "closed",
         "open_issues": 0,
         "closed_issues": 32,
         "closed_at": "2026-10-18T07:43:46Z",
-        "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/1"
+        "html_url": "https://github.com/danielep71/K-FRTB-SA/milestone/1"
       },
       {
         "number": 2,
-        "title": "v0.1.0 — SA prototype",
+        "title": "v0.2.0 — SA prototype",
         "state": "open",
-        "open_issues": 9,
-        "closed_issues": 52,
+        "open_issues": 11,
+        "closed_issues": 60,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/2"
+        "html_url": "https://github.com/danielep71/K-FRTB-SA/milestone/2"
       },
       {
         "number": 3,
-        "title": "v0.2.0 — Regulatory baseline and certification scope",
+        "title": "v0.3.0 — Regulatory baseline and certification scope",
         "state": "open",
         "open_issues": 1,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/MKT-FTRB-SA/milestone/3"
+        "html_url": "https://github.com/danielep71/K-FRTB-SA/milestone/3"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "d2d19957af77132a62a616bcf170e0eeb135adc81660aa8811d44694af5e98be",
-        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/a1705b9877177f7a22facaed81ff157545cd7426/README.md"
+        "sha256": "a4c930b58db30d2df14f98ce1c568eb0edcc1087987e67706efaf505cbe6159b",
+        "url": "https://github.com/danielep71/K-FRTB-SA/blob/6dc80ad97a3be679500c9efeaa636ac730f53601/README.md"
       },
       {
         "path": "docs/validation.md",
         "sha256": "6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6",
-        "url": "https://github.com/danielep71/MKT-FTRB-SA/blob/a1705b9877177f7a22facaed81ff157545cd7426/docs/validation.md"
+        "url": "https://github.com/danielep71/K-FRTB-SA/blob/6dc80ad97a3be679500c9efeaa636ac730f53601/docs/validation.md"
       }
     ]
   },
@@ -335,20 +335,20 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "adf9b493d5c30c6d54fcb39b8ce5cdc3991de3c823acacb46b792fcd64f0a1ef",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/907db926f501759863d44a9ea8bdfa8333a731be/README.md"
+        "sha256": "cbf5e6e4599343f4d4b27ebab56d29b58e3c32b252226f2207219c2985b87a12",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c6fd342e4b9de70e0a44222fe8a560ed8e3b4b31/README.md"
       },
       {
         "path": "docs/Milestones/v0.1.0.md",
         "sha256": "0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/907db926f501759863d44a9ea8bdfa8333a731be/docs/Milestones/v0.1.0.md"
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c6fd342e4b9de70e0a44222fe8a560ed8e3b4b31/docs/Milestones/v0.1.0.md"
       }
     ]
   },
   {
     "id": "sfts",
     "repo": "danielep71/K-SFTs",
-    "status": "Status: repository setup only. There is no calculation engine, public API, production workbook or validated method yet. Nothing here should be used to compute exposure. The regulatory basis is chosen: the EU CRR controls, with the Basel Framework as the methodological reference. The first scope is bilateral SFTs under the Financial Collateral Comprehensive Method; products, collateral and outputs are still open decisions.",
+    "status": "Status: working prototype, not a validated method. The repository holds a prototype that calculates E\\*, RWA and own funds of SFT netting sets (PROTOTYPE.md). It runs in Excel and reproduces an independent reference, but it is not the methodology of record and departs from recorded decisions. Nothing here should be used to compute regulatory exposure. The regulatory basis is chosen: the EU CRR controls, with the Basel Framework as the methodological reference; products, collateral and outputs are still open decisions.",
     "release": null,
     "milestones": [
       {
@@ -364,8 +364,8 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 4,
-        "closed_issues": 4,
+        "open_issues": 3,
+        "closed_issues": 9,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/2"
       },
@@ -382,13 +382,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "0638126bb305e8dc7c4950921042a3d872c818b8048019fa1b83742e87b69174",
-        "url": "https://github.com/danielep71/K-SFTs/blob/94fcd3bea472dce41872e2ee74a63294f73b2b5b/README.md"
+        "sha256": "96ca0c91a7b59a9d0eb7c79bb78cac16f4a666327dfb22011574d1805a30cc27",
+        "url": "https://github.com/danielep71/K-SFTs/blob/8fd55b9cbc09dc7234c7d5e4b30d3a25abef9cd4/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "0aaf917e00377e03d6d079f909b183a972f2c1f872c20f6801bbdb7bfc5ddfb5",
-        "url": "https://github.com/danielep71/K-SFTs/blob/94fcd3bea472dce41872e2ee74a63294f73b2b5b/docs/methodology/README.md"
+        "sha256": "61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372",
+        "url": "https://github.com/danielep71/K-SFTs/blob/8fd55b9cbc09dc7234c7d5e4b30d3a25abef9cd4/docs/methodology/README.md"
       }
     ]
   }
