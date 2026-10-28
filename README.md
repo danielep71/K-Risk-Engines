@@ -49,8 +49,10 @@ A single entry point to independent financial risk models and calculation engine
 | [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: working prototype, not a validated method. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1) (2026-10-25) |
 <!-- portfolio:table:end -->
 
-**K-CVA** is also part of the portfolio. Its repository is currently private;
-public scope, implementation status and validation evidence are not available here.
+**[K-CVA](https://github.com/danielep71/K-CVA)** is a public project for CVA
+risk capital under EU CRR3: BA-CVA first, then SA-CVA. As of 2026-10-27,
+its [README](https://github.com/danielep71/K-CVA#project-status) reports repository
+setup only: no calculation engine, public API, workbook or validated method.
 
 The table and [full evidence report](docs/PORTFOLIO_STATUS.md) are generated
 snapshots, not live project dashboards. Pinned source links identify the evidence
@@ -83,8 +85,7 @@ and status, summarised in the table above.
 
 Market risk and CVA risk are two separate capital requirements, each with its
 own approaches. [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) addresses
-the standardised approach for market risk; K-CVA, developed in a private
-repository, addresses CVA risk. The method map below shows both frameworks and
+the standardised approach for market risk; [K-CVA](https://github.com/danielep71/K-CVA) addresses CVA risk. The method map below shows both frameworks and
 the earlier Basel rules they replace, without project names.
 
 [![Market risk and CVA risk as two separate capital requirements, with their approaches and the earlier Basel rules](assets/Market_risk_framework.svg)](assets/Market_risk_framework.svg)
@@ -165,7 +166,7 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 ## 🗺️ Portfolio direction
 
-Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA is developed in a private repository. Detailed milestones remain in each model repository.
+Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA is a public project at the repository-setup stage. Detailed milestones remain in each model repository.
 
 ---
 
