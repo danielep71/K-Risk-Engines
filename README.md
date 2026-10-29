@@ -125,7 +125,9 @@ documentation and diagrams stay in each project's repository. Serving it
 requires no build step or application dependencies. Repository checks
 and automation use Python, curl and GitHub Actions as documented below.
 
-For GitHub Pages, select **Settings → Pages → Deploy from a branch → main → / (root)**. The live website is [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).
+GitHub Pages publishes `main` from the repository root (see
+[repository settings](docs/REPOSITORY_SETTINGS.md)). The live website is
+[danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).
 
 ## ✅ Website checks
 
@@ -166,7 +168,8 @@ checkouts and maintainer clones, so they do not measure outside interest.
 ## 🛡️ Governance and security
 
 See [portfolio governance](GOVERNANCE.md) for ownership, project status definitions,
-change checks and issue handling. Report vulnerabilities privately under the
+change checks and issue handling, and [repository settings](docs/REPOSITORY_SETTINGS.md)
+for the rulesets and other non-default settings. Report vulnerabilities privately under the
 [security policy](SECURITY.md). For hub defects and improvements, use the
 [issue chooser](https://github.com/danielep71/K-Risk-Engines/issues/new/choose).
 The maintainer assigns a milestone and confirms the priority during triage.

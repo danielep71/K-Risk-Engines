@@ -49,8 +49,9 @@ quoted statuses or milestone counts; the next run would overwrite them.
 - Changes are proposed on `automation/portfolio-refresh` in one reusable PR,
   assigned to `danielep71` with `documentation` and `P3` labels and no milestone,
   because a proposal is not release work. Nothing automatically merges or publishes to main.
-  The maintainer squash-merges an accepted proposal, so `main` receives one
-  commit per refresh (see [GOVERNANCE.md](../GOVERNANCE.md)).
+  The maintainer merges an accepted proposal with a merge commit, the only
+  method `main` accepts (see [GOVERNANCE.md](../GOVERNANCE.md)). GitHub then
+  deletes the proposal branch, and the next refresh recreates it from `main`.
 - The proposal includes pinned README/evidence links, hashes, release data and
   milestone records. Changes to evidence files trigger review even if the status
   wording itself is unchanged. Evidence is read, never executed.

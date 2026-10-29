@@ -19,6 +19,15 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Record the repository's non-default settings and rulesets in
+  `docs/REPOSITORY_SETTINGS.md`, a portable comparison with GitHub's defaults,
+  and link it from `GOVERNANCE.md`, the README and `website-checks.yml` instead
+  of describing the settings there. `GOVERNANCE.md` and
+  `docs/PORTFOLIO_AUTOMATION.md` follow the rulesets of 2026-10-29: `main` and
+  `release/**` change only through pull requests; `main` accepts only merge
+  commits, so portfolio-refresh proposals are merged with a merge commit; the
+  release branch is brought level with `main` through a pull request instead of
+  a fast-forward push (#140).
 - Link the K-LCR card to its project website, live since 2026-10-29 (#131).
 
 - Correct K-CVA visibility to public in the website and README, link its

@@ -60,7 +60,7 @@ available for traceability.
 
 | Branch | Role |
 | --- | --- |
-| `main` | Published hub source; GitHub Pages deploys from it. Receives the active release branch through a merge commit, and automated portfolio-status proposals (below). |
+| `main` | Published hub source; GitHub Pages deploys from it. Changes arrive only through pull requests merged with a merge commit: integrations of the active release branch and automated portfolio-status proposals (below). |
 | `release/1.0.1` | **Active release branch**, currently used as the maintenance queue (see Release records). Base for task branches and task pull requests; integration PRs target `main`. |
 | `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
@@ -75,14 +75,16 @@ available for traceability.
    answered. The squash commit title is the PR title followed by `(#PR)`;
    cite the issue in the body (`Refs #issue`), not as a second number in the
    title.
-4. Integrate the release branch into `main` with a merge commit, only after
-   maintainer review. Then bring the release branch level with `main`
-   again (fast-forward to the integration commit after its `HTML and links`
-   check on `main` succeeds).
-5. When `main` receives commits that are not on the release branch, fast-forward
-   the release branch to the checked `main` commit if possible. If the branches
-   diverge, open a PR from `main` to the release branch and verify its checks.
-   Never rebase or force-push a shared branch.
+4. Integrate the release branch into `main` through a pull request merged
+   with a merge commit, only after maintainer review. Then bring the release
+   branch level with `main` again as in step 5, once the `HTML and links`
+   check on `main` succeeds.
+5. When `main` has commits that are not on the release branch, open a pull
+   request from `main` to the release branch, wait for its checks and review,
+   and merge it with a merge commit. The rulesets refuse a direct push, even a
+   fast-forward, so the release branch gains a merge commit whose files equal
+   `main`; the next integration carries it back without file changes. Never
+   rebase or force-push a shared branch.
 
 The daily portfolio refresh is the one routine exception: it proposes dated
 status snapshots as a pull request from `automation/portfolio-refresh`
@@ -91,10 +93,12 @@ directly to `main` (see
 is not held back by a release. It opens that pull request with a GitHub App
 token, so its checks run without a manual approval. The code-review bot
 does not review bot-authored pull requests, so the maintainer's review before
-merging is the only review of a proposal. Squash-merge the proposal, so `main`
-receives one commit per refresh. Then bring the release branch up to date
-with `main` as in step 5. Proposals carry no milestone: they are not release
-work and are not tracked in the release milestone.
+merging is the only review of a proposal. Merge the proposal with a merge
+commit, the only method `main` accepts. GitHub then deletes
+`automation/portfolio-refresh`, and the next refresh recreates it from `main`.
+Then bring the release branch up to date with `main` as in step 5. Proposals
+carry no milestone: they are not release work and are not tracked in the
+release milestone.
 
 ### 📦 Release records
 
@@ -134,13 +138,10 @@ below applies if a release is requested.
 - Report checks actually performed and remaining limitations. Self-review,
   automated checks and independent review are different forms of evidence.
 
-GitHub requires the `HTML and links` check from GitHub Actions on `main`
-and `release/**`. The CI rule excludes `traffic-history`, which does not run
-website checks. Deletion and force-push protection still covers all three
-branch families. No bypass is needed for a fast-forward to a commit whose
-required check has already passed. If the branches diverge, integrate through
-a pull request and wait for its checks; do not create an unchecked merge commit
-and push it directly. Other review steps remain maintainer responsibilities.
+The rulesets and other repository settings that enforce this flow are
+recorded in [docs/REPOSITORY_SETTINGS.md](docs/REPOSITORY_SETTINGS.md); GitHub's
+live settings remain authoritative. Nothing is pushed directly to `main` or
+`release/**`. Other review steps remain maintainer responsibilities.
 
 ### 🔎 Review after fix pushes
 
