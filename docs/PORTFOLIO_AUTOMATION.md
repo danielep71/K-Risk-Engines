@@ -46,8 +46,8 @@ quoted statuses or milestone counts; the next run would overwrite them.
 
 ## 👀 Review and publication
 
-- Changes are proposed on `automation/portfolio-refresh` in one reusable PR,
-  assigned to `danielep71` with `documentation` and `P3` labels and no milestone,
+- Changes are proposed on `automation/portfolio-refresh` in one PR, updated
+  by later runs while it stays open, assigned to `danielep71` with `documentation` and `P3` labels and no milestone,
   because a proposal is not release work. Nothing automatically merges or publishes to main.
   The maintainer merges an accepted proposal with a merge commit, the only
   method `main` accepts (see [GOVERNANCE.md](../GOVERNANCE.md)). GitHub then
@@ -65,9 +65,12 @@ quoted statuses or milestone counts; the next run would overwrite them.
 - Review the source wording and any contradictions between release and current
   development status before merging. A closed milestone or passing CI does not
   prove Excel execution, numerical validation or regulatory readiness.
-- Treat the proposal branch as generated content. Merge conflicts stop the run
-  for review; it never force-pushes. Closing an unmerged PR without changing the
-  sources can result in a new proposal on the next run. Disable the workflow to
+- Treat the proposal branch as generated content. While its PR is open, each
+  run merges `main` into the branch; a merge conflict stops the run for review.
+  When no proposal PR is open, the run rebuilds the branch from `main`: a branch
+  left by a closed, unmerged proposal is deleted and pushed again, never
+  force-pushed. Closing an unmerged PR without changing the sources can
+  therefore result in a new proposal on the next run. Disable the workflow to
   pause proposals.
 
 <a id="permissions-and-checks"></a>
@@ -124,7 +127,8 @@ old key in **Key pairs**. To pause proposals, disable the workflow.
 If a proposal pull request stays open while workflow files change on `main`,
 the next run's merge of `main` into the proposal branch touches workflow files,
 which the App is deliberately not allowed to push. Merge or close the pending
-proposal (deleting its branch) and run the workflow again.
+proposal and run the workflow again; the next run rebuilds the branch from
+`main`.
 
 The refresh job runs the HTML, Markdown-link, external-link and script tests
 before pushing, and **Website checks** run again on the pull request. External-link

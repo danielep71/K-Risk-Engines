@@ -95,7 +95,8 @@ token, so its checks run without a manual approval. The code-review bot
 does not review bot-authored pull requests, so the maintainer's review before
 merging is the only review of a proposal. Merge the proposal with a merge
 commit, the only method `main` accepts. GitHub then deletes
-`automation/portfolio-refresh`, and the next refresh recreates it from `main`.
+`automation/portfolio-refresh`; the next refresh recreates it from `main`, as it
+also does after a proposal is closed without merging.
 Then bring the release branch up to date with `main` as in step 5. Proposals
 carry no milestone: they are not release work and are not tracked in the
 release milestone.

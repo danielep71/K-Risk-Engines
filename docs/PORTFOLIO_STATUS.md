@@ -107,3 +107,34 @@ Status: working prototype, not a validated method. The repository holds a protot
 - v0.2.1: historical snapshot recorded open; 0 closed / 1 open issues. Milestone URL no longer available as of 2026-10-29.
 - [v0.3.0 - Methodology and numerical assurance](https://github.com/danielep71/K-SFTs/milestone/4): open; 0 closed / 5 open issues.
 - [v1.0.0 - First supported release](https://github.com/danielep71/K-SFTs/milestone/5): open; 0 closed / 5 open issues.
+
+<a id="cva"></a>
+## 🧩 K-CVA
+
+Repository setup only. There is no calculation engine, public API, workbook or validated method yet. Nothing here should be used to compute capital. Repository CI checks infrastructure; it does not establish numerical correctness or regulatory compliance.
+
+### 🔗 Sources
+
+- [README.md](https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/README.md) — content SHA-256 `f35e2cc035a59ec769099383dd0e9a738b73d5a41bde5bde6bfb5b0a1f8a94fa`
+- [docs/methodology/README.md](https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/docs/methodology/README.md) — content SHA-256 `318fd173082af0b4351d349e61d9d0e515cbd5f7ed576638989307cb0deec32f`
+- No published stable release (drafts and prereleases excluded).
+
+### 🏁 Milestones (tracking only)
+
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-CVA/milestone/1): open; 27 closed / 4 open issues.
+- [v0.2.0 - BA-CVA](https://github.com/danielep71/K-CVA/milestone/2): open; 0 closed / 1 open issues.
+
+<a id="lcr"></a>
+## 🧩 K-LCR
+
+Repository setup. There is no LCR calculation engine, validated workbook, Excel import/compile run or supported host claim yet. Windows desktop Excel 64-bit is an engineering target, not a tested configuration. This project is intended for reference and independent validation, not operational reporting or production use.
+
+### 🔗 Sources
+
+- [README.md](https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/README.md) — content SHA-256 `439a86a3426144bcde07fcc493ffe9d644df08db59f0eb883ea89a60a5791c65`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/docs/DECISIONS.md) — content SHA-256 `98b2a89c3f387fcdf0758a67cfb507cc4ce29e24aea15f5de917780a7ac2dc05`
+- No published stable release (drafts and prereleases excluded).
+
+### 🏁 Milestones (tracking only)
+
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 49 closed / 18 open issues.
