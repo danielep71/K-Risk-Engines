@@ -138,21 +138,10 @@ below applies if a release is requested.
 - Report checks actually performed and remaining limitations. Self-review,
   automated checks and independent review are different forms of evidence.
 
-Repository rulesets enforce the flow above, with no bypass:
-
-- `main`: changes only through pull requests, merged with a merge commit.
-  The `HTML and links` check from GitHub Actions must pass on a branch that is
-  up to date with `main`, and review threads must be resolved. Deletion and
-  force-push are blocked.
-- `release/**`: changes only through pull requests, merged with squash or a
-  merge commit, under the same check, up-to-date and thread rules. Deletion
-  and force-push are blocked.
-- `traffic-history`: deletion and force-push are blocked. The traffic workflow
-  pushes to it directly; it runs no website checks.
-- `v*` tags: cannot be deleted, moved or force-updated.
-
-Nothing is pushed directly to `main` or `release/**`. Other review steps
-remain maintainer responsibilities.
+The rulesets and other repository settings that enforce this flow are
+recorded in [docs/REPOSITORY_SETTINGS.md](docs/REPOSITORY_SETTINGS.md); GitHub's
+live settings remain authoritative. Nothing is pushed directly to `main` or
+`release/**`. Other review steps remain maintainer responsibilities.
 
 ### 🔎 Review after fix pushes
 
