@@ -54,6 +54,11 @@ risk capital under EU CRR3: BA-CVA first, then SA-CVA. As of 2026-10-27,
 its [README](https://github.com/danielep71/K-CVA#project-status) reports repository
 setup only: no calculation engine, public API, workbook or validated method.
 
+**[K-LCR](https://github.com/danielep71/K-LCR)** is a public project for the
+Liquidity Coverage Ratio, with separate EU and Basel profiles. As of 2026-10-28,
+its [README](https://github.com/danielep71/K-LCR#-status) reports repository
+setup only: no LCR calculation engine, validated workbook or supported Excel host.
+
 The table and [full evidence report](docs/PORTFOLIO_STATUS.md) are generated
 snapshots, not live project dashboards. Pinned source links identify the evidence
 used; consult the source repositories for changes since the last refresh.
@@ -95,10 +100,21 @@ the earlier Basel rules they replace, without project names.
 It is a method map: it does not certify implemented functionality or the scope
 of K-FRTB-SA or K-CVA.
 
+<a id="liquidity-risk"></a>
+
+### 💧 Liquidity risk
+
+Liquidity risk is the risk that a bank cannot meet its obligations as they fall
+due. [K-LCR](https://github.com/danielep71/K-LCR) addresses the Liquidity
+Coverage Ratio, which compares the stock of high-quality liquid assets with the
+net cash outflows of a 30-day stress period, under separate EU and Basel
+profiles. It is at the repository-setup stage: no calculation exists yet.
+
 ## 🌐 Website
 
 Project websites: [K-SFTs](https://danielep71.github.io/K-SFTs/) ·
-[K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/).
+[K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/) ·
+[K-LCR](https://danielep71.github.io/K-LCR/).
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
 It presents the portfolio by risk category (Counterparty Credit Risk, Market
@@ -166,7 +182,7 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 ## 🗺️ Portfolio direction
 
-Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA is a public project at the repository-setup stage. Detailed milestones remain in each model repository.
+Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA and K-LCR are public projects at the repository-setup stage. Detailed milestones remain in each model repository.
 
 ---
 
