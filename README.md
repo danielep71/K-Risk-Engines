@@ -113,7 +113,8 @@ profiles. It is at the repository-setup stage: no calculation exists yet.
 ## 🌐 Website
 
 Project websites: [K-SFTs](https://danielep71.github.io/K-SFTs/) ·
-[K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/).
+[K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/) ·
+[K-LCR](https://danielep71.github.io/K-LCR/).
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
 It presents the portfolio by risk category (Counterparty Credit Risk, Market
