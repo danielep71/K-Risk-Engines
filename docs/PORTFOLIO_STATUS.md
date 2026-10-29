@@ -96,12 +96,14 @@ Status: working prototype, not a validated method. The repository holds a protot
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SFTs/blob/e6bae6df272083ba596c9eb866b14e6f9152bc15/README.md) — content SHA-256 `07b863eb4fa23fea4ad7cbd83c3a4118e4d01ef186eba520d3a6d0aa6693e0a7`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/e6bae6df272083ba596c9eb866b14e6f9152bc15/docs/methodology/README.md) — content SHA-256 `61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372`
+- [README.md](https://github.com/danielep71/K-SFTs/blob/1a23d11fe6356600cfe0c7b2ee5e6dd47f02627c/README.md) — content SHA-256 `588596ec43f5ab81b11208b682593fbb8eb8315b53c662354c6eeca6c1cf5f13`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/1a23d11fe6356600cfe0c7b2ee5e6dd47f02627c/docs/methodology/README.md) — content SHA-256 `61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 31 closed / 1 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 10 closed / 5 open issues.
-- [v0.2.1](https://github.com/danielep71/K-SFTs/milestone/3): open; 0 closed / 1 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 32 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 17 closed / 4 open issues.
+- v0.2.1: historical snapshot recorded open; 0 closed / 1 open issues. Milestone URL no longer available as of 2026-10-29.
+- [v0.3.0 - Methodology and numerical assurance](https://github.com/danielep71/K-SFTs/milestone/4): open; 0 closed / 5 open issues.
+- [v1.0.0 - First supported release](https://github.com/danielep71/K-SFTs/milestone/5): open; 0 closed / 5 open issues.

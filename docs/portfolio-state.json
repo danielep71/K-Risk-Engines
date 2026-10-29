@@ -358,8 +358,8 @@
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "closed",
-        "open_issues": 1,
-        "closed_issues": 31,
+        "open_issues": 0,
+        "closed_issues": 32,
         "closed_at": "2026-10-25T19:14:22Z",
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/1"
       },
@@ -367,8 +367,8 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 5,
-        "closed_issues": 10,
+        "open_issues": 4,
+        "closed_issues": 17,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/2"
       },
@@ -379,19 +379,38 @@
         "open_issues": 1,
         "closed_issues": 0,
         "closed_at": null,
-        "html_url": "https://github.com/danielep71/K-SFTs/milestone/3"
+        "html_url": null,
+        "removed_on": "2026-10-29"
+      },
+      {
+        "number": 4,
+        "title": "v0.3.0 - Methodology and numerical assurance",
+        "state": "open",
+        "open_issues": 5,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-SFTs/milestone/4"
+      },
+      {
+        "number": 5,
+        "title": "v1.0.0 - First supported release",
+        "state": "open",
+        "open_issues": 5,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-SFTs/milestone/5"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "07b863eb4fa23fea4ad7cbd83c3a4118e4d01ef186eba520d3a6d0aa6693e0a7",
-        "url": "https://github.com/danielep71/K-SFTs/blob/e6bae6df272083ba596c9eb866b14e6f9152bc15/README.md"
+        "sha256": "588596ec43f5ab81b11208b682593fbb8eb8315b53c662354c6eeca6c1cf5f13",
+        "url": "https://github.com/danielep71/K-SFTs/blob/1a23d11fe6356600cfe0c7b2ee5e6dd47f02627c/README.md"
       },
       {
         "path": "docs/methodology/README.md",
         "sha256": "61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372",
-        "url": "https://github.com/danielep71/K-SFTs/blob/e6bae6df272083ba596c9eb866b14e6f9152bc15/docs/methodology/README.md"
+        "url": "https://github.com/danielep71/K-SFTs/blob/1a23d11fe6356600cfe0c7b2ee5e6dd47f02627c/docs/methodology/README.md"
       }
     ]
   }
