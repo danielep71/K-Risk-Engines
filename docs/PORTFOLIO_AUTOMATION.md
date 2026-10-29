@@ -14,6 +14,13 @@ milestones. It chooses the last closed milestone by `closed_at`, not version
 number, issue count or last modification date. A reopened milestone is excluded.
 Closure dates are displayed as the GitHub API's UTC calendar date.
 
+A milestone that the source repository deletes stays in `docs/portfolio-state.json`
+with its last recorded state and counts, no URL and a `removed_on` date (UTC) set
+by the refresh that first misses it. The status report lists it as a historical
+snapshot without a link, and it is never chosen as the last closed milestone. Do
+not edit `docs/PORTFOLIO_STATUS.md` for this: change the stored state or the
+renderer, so that `--render-only` reproduces the report.
+
 Repository paths in the generated files come from GitHub's API, so after an
 engine repository is renamed the generated links point to its new name at the
 next refresh. Displayed project names come from the `name` field in

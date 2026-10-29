@@ -129,6 +129,14 @@ repositories keep their own changelogs; this file covers the hub only.
   `GOVERNANCE.md` states that the tag is created by publishing the GitHub
   Release (#50).
 
+### 🐛 Fixed
+
+- The portfolio refresh keeps a milestone deleted in its source repository as
+  a dated historical entry without a link, instead of restoring its dead URL
+  or dropping it; the three deleted K-SACCR milestones are recorded that way,
+  so `--render-only` reproduces `docs/PORTFOLIO_STATUS.md` again (#134,
+  fixes #130).
+
 ## [1.0.0] - 2026-10-22
 
 First hub release, prepared on `release/1.0.0` and tracked in the
