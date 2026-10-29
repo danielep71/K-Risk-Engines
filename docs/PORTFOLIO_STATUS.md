@@ -11,15 +11,15 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/a950f36e8fae8a70b7ba3520437219c626b4abda/README.md) — content SHA-256 `ae25e07c7adddcf8dadd70075594088a0e13af08c1b43730edfd8f159a0a7888`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/a950f36e8fae8a70b7ba3520437219c626b4abda/docs/methodology/README.md) — content SHA-256 `89bd913615783122d370aed2c62362033749101843615f31a3c1140bab40bfa8`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/599e40b283dd3783ca69c9305e170633819ea5c1/README.md) — content SHA-256 `db85e8a1714643c867f6a80acfc22ebbc090218d8c0b3b449056b77be35e7468`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/599e40b283dd3783ca69c9305e170633819ea5c1/docs/methodology/README.md) — content SHA-256 `18d345f0d3f1e28a066a63b0aa0b59c1b84bd612903f4d0d24e01438a98e905a`
 - Published release: [v1.0.2](https://github.com/danielep71/K-SACCR/releases/tag/v1.0.2) (2026-10-22T21:46:09Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 26 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 15 closed / 12 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 15 closed / 13 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 0 closed / 9 open issues.
 - [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
@@ -103,5 +103,5 @@ Status: working prototype, not a validated method. The repository holds a protot
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 31 closed / 1 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 10 closed / 3 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 10 closed / 5 open issues.
 - [v0.2.1](https://github.com/danielep71/K-SFTs/milestone/3): open; 0 closed / 1 open issues.

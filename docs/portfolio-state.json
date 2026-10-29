@@ -32,7 +32,7 @@
         "number": 3,
         "title": "v1.1.0 - CSV Import, Staging and Workbook Protection",
         "state": "open",
-        "open_issues": 12,
+        "open_issues": 13,
         "closed_issues": 15,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/3"
@@ -143,13 +143,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "ae25e07c7adddcf8dadd70075594088a0e13af08c1b43730edfd8f159a0a7888",
-        "url": "https://github.com/danielep71/K-SACCR/blob/a950f36e8fae8a70b7ba3520437219c626b4abda/README.md"
+        "sha256": "db85e8a1714643c867f6a80acfc22ebbc090218d8c0b3b449056b77be35e7468",
+        "url": "https://github.com/danielep71/K-SACCR/blob/599e40b283dd3783ca69c9305e170633819ea5c1/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "89bd913615783122d370aed2c62362033749101843615f31a3c1140bab40bfa8",
-        "url": "https://github.com/danielep71/K-SACCR/blob/a950f36e8fae8a70b7ba3520437219c626b4abda/docs/methodology/README.md"
+        "sha256": "18d345f0d3f1e28a066a63b0aa0b59c1b84bd612903f4d0d24e01438a98e905a",
+        "url": "https://github.com/danielep71/K-SACCR/blob/599e40b283dd3783ca69c9305e170633819ea5c1/docs/methodology/README.md"
       }
     ]
   },
@@ -367,7 +367,7 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 3,
+        "open_issues": 5,
         "closed_issues": 10,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/2"
