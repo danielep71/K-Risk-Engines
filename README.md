@@ -47,17 +47,9 @@ A single entry point to independent financial risk models and calculation engine
 | [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) | Standardized market-risk aggregation | Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1) (2026-10-18) |
 | [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: specifications only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1) (2026-10-21) |
 | [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: working prototype, not a validated method. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1) (2026-10-25) |
+| [K-CVA](https://github.com/danielep71/K-CVA) | Regulatory CVA risk capital (BA-CVA, then SA-CVA) | Repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#cva) | None recorded |
+| [K-LCR](https://github.com/danielep71/K-LCR) | Liquidity Coverage Ratio (EU and Basel profiles) | Repository setup. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#lcr) | None recorded |
 <!-- portfolio:table:end -->
-
-**[K-CVA](https://github.com/danielep71/K-CVA)** is a public project for CVA
-risk capital under EU CRR3: BA-CVA first, then SA-CVA. As of 2026-10-27,
-its [README](https://github.com/danielep71/K-CVA#project-status) reports repository
-setup only: no calculation engine, public API, workbook or validated method.
-
-**[K-LCR](https://github.com/danielep71/K-LCR)** is a public project for the
-Liquidity Coverage Ratio, with separate EU and Basel profiles. As of 2026-10-28,
-its [README](https://github.com/danielep71/K-LCR#-status) reports repository
-setup only: no LCR calculation engine, validated workbook or supported Excel host.
 
 The table and [full evidence report](docs/PORTFOLIO_STATUS.md) are generated
 snapshots, not live project dashboards. Pinned source links identify the evidence
@@ -108,7 +100,7 @@ Liquidity risk is the risk that a bank cannot meet its obligations as they fall
 due. [K-LCR](https://github.com/danielep71/K-LCR) addresses the Liquidity
 Coverage Ratio, which compares the stock of high-quality liquid assets with the
 net cash outflows of a 30-day stress period, under separate EU and Basel
-profiles. It is at the repository-setup stage: no calculation exists yet.
+profiles. Its current status is in the portfolio table above.
 
 ## 🌐 Website
 
@@ -187,7 +179,7 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 ## 🗺️ Portfolio direction
 
-Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA and K-LCR are public projects at the repository-setup stage. Detailed milestones remain in each model repository.
+Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA and K-LCR are the newest public projects. Detailed milestones remain in each model repository.
 
 ---
 
