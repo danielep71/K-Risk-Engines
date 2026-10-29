@@ -28,7 +28,9 @@ repositories keep their own changelogs; this file covers the hub only.
   corrected. The portfolio refresh reuses its proposal branch only while the
   proposal PR is open and otherwise rebuilds it from `main`, replacing a branch
   left by a closed proposal instead of failing on a merge conflict as on
-  2026-10-28 (#143).
+  2026-10-28. The label tooling drops its unused profile, domain and template
+  scaffolding: `.github/labels.json` (schema 2) lists the labels directly and
+  `.github/label-policy.json` is removed (#143).
 - Record the repository's non-default settings and rulesets in
   `docs/REPOSITORY_SETTINGS.md`, a portable comparison with GitHub's defaults,
   and link it from `GOVERNANCE.md`, the README and `website-checks.yml` instead
