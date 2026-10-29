@@ -3,6 +3,7 @@
 import argparse
 import base64
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
 import hashlib
 import html
 import json
@@ -75,6 +76,18 @@ def file_at(repo, path, ref):
     return base64.b64decode(data['content']).decode('utf-8')
 
 
+def today():
+    return datetime.now(timezone.utc).date().isoformat()
+
+
+def keep_removed(current, previous):
+    # A milestone deleted in the source keeps its last recorded counts as a dated historical entry, without its dead URL.
+    numbers = {m['number'] for m in current}
+    removed = [dict(m, html_url=None, removed_on=m.get('removed_on') or today())
+               for m in previous if m['number'] not in numbers]
+    return sorted(current + removed, key=lambda m: m['number'])
+
+
 def collect(project, old=None):
     repo = project['repo']
     meta = api('repos/' + repo)
@@ -100,7 +113,7 @@ def collect(project, old=None):
                          'published_at': release['published_at'],
                          'notes_sha256': hashlib.sha256((release['body'] or '').encode()).hexdigest()}
                         if release else None),
-            'milestones': sorted(milestones, key=lambda m: m['number']), 'sources': sources}
+            'milestones': keep_removed(milestones, old['milestones'] if old else []), 'sources': sources}
     # A commit elsewhere in the source repository must not create a daily timestamp-only PR.
     def meaningful(item):
         item = json.loads(json.dumps(item))
@@ -125,8 +138,16 @@ def markdown(text):
 
 
 def latest_closed(milestones):
-    closed = [m for m in milestones if m['state'] == 'closed' and m['closed_at']]
+    closed = [m for m in milestones if m['state'] == 'closed' and m['closed_at'] and not m.get('removed_on')]
     return max(closed, key=lambda m: (m['closed_at'], m['number'])) if closed else None
+
+
+def milestone_line(m):
+    counts = f'{m["closed_issues"]} closed / {m["open_issues"]} open issues.'
+    if m.get('removed_on'):
+        return (f'- {markdown(m["title"])}: historical snapshot recorded {m["state"]}; {counts} '
+                f'Milestone URL no longer available as of {m["removed_on"]}.')
+    return f'- [{markdown(m["title"])}]({m["html_url"]}): {m["state"]}; {counts}'
 
 
 def render(projects, snapshot, readme, website):
@@ -167,7 +188,7 @@ def render(projects, snapshot, readme, website):
         else:
             report += ['- No published stable release (drafts and prereleases excluded).']
         report += ['', '### 🏁 Milestones (tracking only)', '']
-        report += [f'- [{markdown(m["title"])}]({m["html_url"]}): {m["state"]}; {m["closed_issues"]} closed / {m["open_issues"]} open issues.' for m in data['milestones']] or ['- No milestones.']
+        report += [milestone_line(m) for m in data['milestones']] or ['- No milestones.']
         report += ['']
     return readme, website, '\n'.join(report)
 
