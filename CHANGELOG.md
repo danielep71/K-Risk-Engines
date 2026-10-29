@@ -19,6 +19,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Link the K-LCR card to its project website, live since 2026-10-29 (#131).
+
 - Correct K-CVA visibility to public in the website and README, link its
   repository and state its documented repository-setup limitations.
 
