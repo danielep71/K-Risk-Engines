@@ -32,6 +32,7 @@ jobs:
     environment: portfolio-refresh
     permissions:
       contents: read
+      pull-requests: read
     env:
       GH_REPO: ${{ github.repository }}
       BRANCH: automation/portfolio-refresh
@@ -41,7 +42,7 @@ jobs:
           ref: main
           fetch-depth: 0
           persist-credentials: false
-      - name: Refresh reusable proposal branch
+      - name: Refresh proposal branch
         id: refresh
         env:
           GH_TOKEN: ${{ github.token }}
@@ -49,11 +50,18 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # Recreate after merge/closure; never force-push a shared ref.
-          if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+          # Reuse the branch only while its proposal PR is open. Otherwise rebuild it
+          # from main: a branch left by a closed, unmerged proposal is replaced in
+          # the push step (deleted, then pushed again), never force-pushed.
+          open_pr=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
+          stale=false
+          if [ -n "$open_pr" ] && git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
             git switch --track "origin/$BRANCH"
             git merge --no-edit origin/main
           else
+            if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+              stale=true
+            fi
             git switch -c "$BRANCH"
           fi
           python3 .github/scripts/portfolio-refresh.py --body-file "$RUNNER_TEMP/portfolio-pr.md"
@@ -73,6 +81,7 @@ jobs:
             echo 'propose=true' >> "$GITHUB_OUTPUT"
           fi
           echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "stale=$stale" >> "$GITHUB_OUTPUT"
       - name: Create GitHub App token
         id: app-token
         if: steps.refresh.outputs.propose == 'true'
@@ -87,8 +96,12 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           CHANGED: ${{ steps.refresh.outputs.changed }}
+          STALE: ${{ steps.refresh.outputs.stale }}
         run: |
           set -euo pipefail
+          if [ "$STALE" = true ]; then
+            git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" --delete "$BRANCH"
+          fi
           git push "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "HEAD:refs/heads/$BRANCH"
           pr=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // empty')
           if [ -z "$pr" ]; then

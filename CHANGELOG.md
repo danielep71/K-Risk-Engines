@@ -15,10 +15,22 @@ repositories keep their own changelogs; this file covers the hub only.
 
 - List K-LCR, the public Liquidity Coverage Ratio project at the
   repository-setup stage, in a new Liquidity Risk section of the website and
-  README, the website description and the portfolio direction.
+  README, the website description and the portfolio direction (#129).
 
 ### 🔧 Changed
 
+- Review all files after the website and settings changes: the README
+  describes the four risk categories and lists every project website; the
+  website numbers its sections in order and gives the K-SFTs and K-CVA cards
+  a category and question like the others; the issue chooser links K-CVA and
+  K-LCR; the PR template covers synchronization from `main`; unused CSS and
+  the superseded four-project artwork are removed; changelog references are
+  corrected. The portfolio refresh reuses its proposal branch only while the
+  proposal PR is open and otherwise rebuilds it from `main`, replacing a branch
+  left by a closed proposal instead of failing on a merge conflict as on
+  2026-10-28. The label tooling drops its unused profile, domain and template
+  scaffolding: `.github/labels.json` (schema 2) lists the labels directly and
+  `.github/label-policy.json` is removed (#143).
 - Record the repository's non-default settings and rulesets in
   `docs/REPOSITORY_SETTINGS.md`, a portable comparison with GitHub's defaults,
   and link it from `GOVERNANCE.md`, the README and `website-checks.yml` instead
@@ -28,20 +40,16 @@ repositories keep their own changelogs; this file covers the hub only.
   commits, so portfolio-refresh proposals are merged with a merge commit; the
   release branch is brought level with `main` through a pull request instead of
   a fast-forward push (#140).
-- Link the K-LCR card to its project website, live since 2026-10-29 (#131).
-
+- Link the K-LCR card to its project website, live since 2026-10-29 (#132).
 - Correct K-CVA visibility to public in the website and README, link its
-  repository and state its documented repository-setup limitations.
-
+  repository and state its documented repository-setup limitations (#126).
 - Simplify project-card navigation to the project website alone when available,
-  completing the website-link update (#119); record the rule in governance.
-
+  completing the website-link update of #119; record the rule in governance
+  (#124).
 - Remove dead links to three deleted K-SACCR milestones from the historical
-  portfolio report, unblocking the website-link integration (#122).
-
+  portfolio report, unblocking the website-link integration (#123).
 - Link the K-SFTs and K-FRTB-SA project websites from their hub cards and
   the root README (#119).
-
 - The website links each project only from its card: K-SACCR to its project
   website, the other projects to their repositories as before. The usage and
   aggregation diagrams of K-SACCR, K-SFTs, K-FRTB-SA and K-CVA are removed
