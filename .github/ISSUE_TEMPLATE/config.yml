@@ -27,6 +27,16 @@
       "about": "Securities financing transaction methodology, workbook and validation."
     },
     {
+      "name": "K-CVA engine issues",
+      "url": "https://github.com/danielep71/K-CVA/issues",
+      "about": "CVA risk capital (BA-CVA, SA-CVA) methodology, workbook and validation."
+    },
+    {
+      "name": "K-LCR engine issues",
+      "url": "https://github.com/danielep71/K-LCR/issues",
+      "about": "Liquidity Coverage Ratio methodology, workbook and validation."
+    },
+    {
       "name": "Private security reporting",
       "url": "https://github.com/danielep71/K-Risk-Engines/blob/main/SECURITY.md",
       "about": "Read the private reporting instructions; do not disclose vulnerabilities in public issues."

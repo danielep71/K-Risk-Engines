@@ -112,16 +112,18 @@ profiles. It is at the repository-setup stage: no calculation exists yet.
 
 ## 🌐 Website
 
-Project websites: [K-SFTs](https://danielep71.github.io/K-SFTs/) ·
+Project websites: [K-SACCR](https://danielep71.github.io/K-SACCR/) ·
+[K-SFTs](https://danielep71.github.io/K-SFTs/) ·
 [K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/) ·
 [K-LCR](https://danielep71.github.io/K-LCR/).
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
 It presents the portfolio by risk category (Counterparty Credit Risk, Market
-Risk and IRRBB), with the counterparty credit risk and market risk framework
-diagrams and a status card for each project. Each card links to the project's
-own website where it has one (K-SACCR), otherwise to its repository; detailed
-documentation and diagrams stay in each project's repository. Serving it
+Risk, IRRBB and Liquidity Risk), with the counterparty credit risk and market
+risk framework diagrams and a status card for each project. A card links only
+to the project's website where it has one (K-SACCR, K-SFTs, K-FRTB-SA, K-LCR),
+otherwise to its repository and documentation; detailed documentation and
+diagrams stay in each project's repository. Serving it
 requires no build step or application dependencies. Repository checks
 and automation use Python, curl and GitHub Actions as documented below.
 
@@ -155,7 +157,7 @@ the repository files instead, because Pages publishes `main` only.
 
 ## 🔄 Daily portfolio refresh
 
-A daily workflow proposes source-attributed status, release and last-closed-milestone updates in a reusable review PR. See [operation and review rules](docs/PORTFOLIO_AUTOMATION.md).
+A daily workflow proposes source-attributed status, release and last-closed-milestone updates in a review PR, reused while it stays open. See [operation and review rules](docs/PORTFOLIO_AUTOMATION.md).
 
 ## 📈 Traffic history
 
@@ -197,7 +199,6 @@ independent personal project.
 ## 📄 License
 
 [Mozilla Public License 2.0](LICENSE) for the hub's code and documentation.
-The portfolio artwork (`assets/K-Risk-Engines-social-preview-v2.jpg`, and the
-retained original `assets/K-Risk-Engines-social-preview.png`) is excluded; no
-separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
+The portfolio artwork (`assets/K-Risk-Engines-social-preview-v2.jpg`) is
+excluded; no separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
 Each linked engine is licensed separately in its own repository.
