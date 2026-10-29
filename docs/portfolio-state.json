@@ -413,5 +413,72 @@
         "url": "https://github.com/danielep71/K-SFTs/blob/1a23d11fe6356600cfe0c7b2ee5e6dd47f02627c/docs/methodology/README.md"
       }
     ]
+  },
+  {
+    "id": "cva",
+    "repo": "danielep71/K-CVA",
+    "status": "Repository setup only. There is no calculation engine, public API, workbook or validated method yet. Nothing here should be used to compute capital. Repository CI checks infrastructure; it does not establish numerical correctness or regulatory compliance.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Repo setup",
+        "state": "open",
+        "open_issues": 4,
+        "closed_issues": 27,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-CVA/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.2.0 - BA-CVA",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-CVA/milestone/2"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "f35e2cc035a59ec769099383dd0e9a738b73d5a41bde5bde6bfb5b0a1f8a94fa",
+        "url": "https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/README.md"
+      },
+      {
+        "path": "docs/methodology/README.md",
+        "sha256": "318fd173082af0b4351d349e61d9d0e515cbd5f7ed576638989307cb0deec32f",
+        "url": "https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/docs/methodology/README.md"
+      }
+    ]
+  },
+  {
+    "id": "lcr",
+    "repo": "danielep71/K-LCR",
+    "status": "Repository setup. There is no LCR calculation engine, validated workbook, Excel import/compile run or supported host claim yet. Windows desktop Excel 64-bit is an engineering target, not a tested configuration. This project is intended for reference and independent validation, not operational reporting or production use.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Repo setup",
+        "state": "open",
+        "open_issues": 18,
+        "closed_issues": 49,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-LCR/milestone/1"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "439a86a3426144bcde07fcc493ffe9d644df08db59f0eb883ea89a60a5791c65",
+        "url": "https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/README.md"
+      },
+      {
+        "path": "docs/DECISIONS.md",
+        "sha256": "98b2a89c3f387fcdf0758a67cfb507cc4ce29e24aea15f5de917780a7ac2dc05",
+        "url": "https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/docs/DECISIONS.md"
+      }
+    ]
   }
 ]

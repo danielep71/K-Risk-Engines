@@ -19,6 +19,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The daily portfolio refresh also tracks K-CVA and K-LCR: their README
+  status blocks, an evidence document each, releases and milestones feed the
+  README table, the website cards and `docs/PORTFOLIO_STATUS.md`, replacing the
+  dated hand-written snapshots (#144).
 - Review all files after the website and settings changes: the README
   describes the four risk categories and lists every project website; the
   website numbers its sections in order and gives the K-SFTs and K-CVA cards

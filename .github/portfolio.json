@@ -49,6 +49,26 @@
       "evidence": [
         "docs/methodology/README.md"
       ]
+    },
+    {
+      "id": "cva",
+      "repo": "danielep71/K-CVA",
+      "name": "K-CVA",
+      "purpose": "Regulatory CVA risk capital (BA-CVA, then SA-CVA)",
+      "selector": "important",
+      "evidence": [
+        "docs/methodology/README.md"
+      ]
+    },
+    {
+      "id": "lcr",
+      "repo": "danielep71/K-LCR",
+      "name": "K-LCR",
+      "purpose": "Liquidity Coverage Ratio (EU and Basel profiles)",
+      "selector": "important",
+      "evidence": [
+        "docs/DECISIONS.md"
+      ]
     }
   ]
 }
