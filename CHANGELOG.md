@@ -11,6 +11,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ## [Unreleased]
 
+### ✨ Added
+
+- List K-LCR, the public Liquidity Coverage Ratio project at the
+  repository-setup stage, in a new Liquidity Risk section of the website and
+  README, the website description and the portfolio direction.
+
 ### 🔧 Changed
 
 - Correct K-CVA visibility to public in the website and README, link its
