@@ -11,15 +11,15 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/README.md) — content SHA-256 `5e2778a87cad44a4ab24bde62003011c5ac95c397958b43257c173891a5da21d`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/00bb72d1bf5ec9252b8ca5ba3adc567d948be15d/docs/methodology/README.md) — content SHA-256 `66818374518624eed01db9112c15b45f69c967b00115b26f124f6c64d24521ab`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/a950f36e8fae8a70b7ba3520437219c626b4abda/README.md) — content SHA-256 `ae25e07c7adddcf8dadd70075594088a0e13af08c1b43730edfd8f159a0a7888`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/a950f36e8fae8a70b7ba3520437219c626b4abda/docs/methodology/README.md) — content SHA-256 `89bd913615783122d370aed2c62362033749101843615f31a3c1140bab40bfa8`
 - Published release: [v1.0.2](https://github.com/danielep71/K-SACCR/releases/tag/v1.0.2) (2026-10-22T21:46:09Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 26 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 12 closed / 14 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 15 closed / 12 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 0 closed / 9 open issues.
 - [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
@@ -59,19 +59,19 @@ v0.2.0 – Workbook, data and Excel tests (in progress). The v0.1.0 foundation, 
 <a id="frtb"></a>
 ## 🧩 K-FRTB-SA
 
-Version 0.1.0 is a prototype of the v0.1.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. It has not yet been compiled or run in Excel, the engine platform decision is still open (scope), and no result is validated for regulatory use (validation).
+Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. It has not yet been compiled or run in Excel, the engine platform decision is still open (scope), and no result is validated for regulatory use (validation).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/df4f3d67ff6f9ea8c566bac6651b7c4f142fcd23/README.md) — content SHA-256 `a4c930b58db30d2df14f98ce1c568eb0edcc1087987e67706efaf505cbe6159b`
-- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/df4f3d67ff6f9ea8c566bac6651b7c4f142fcd23/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
+- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/69e3df35781fc2e8a13bb523059d596d9da08150/README.md) — content SHA-256 `bad269cf918a7834d6f3c258c798bd37bb6a448e42bb15391c7e9302a4eaa9ff`
+- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/69e3df35781fc2e8a13bb523059d596d9da08150/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1): closed; 10 closed / 0 open issues.
-- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-SA/milestone/2): open; 18 closed / 10 open issues.
-- [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-SA/milestone/3): open; 0 closed / 1 open issues.
+- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-SA/milestone/2): open; 29 closed / 8 open issues.
+- [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-SA/milestone/3): open; 6 closed / 1 open issues.
 
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
@@ -80,14 +80,14 @@ Current status: specifications only. Repository setup (v0.1.0) closed on 2026-10
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c6fd342e4b9de70e0a44222fe8a560ed8e3b4b31/README.md) — content SHA-256 `cbf5e6e4599343f4d4b27ebab56d29b58e3c32b252226f2207219c2985b87a12`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/c6fd342e4b9de70e0a44222fe8a560ed8e3b4b31/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/5cc8b146863f202ee38a7a3efb25d2d29d450b56/README.md) — content SHA-256 `cbf5e6e4599343f4d4b27ebab56d29b58e3c32b252226f2207219c2985b87a12`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/5cc8b146863f202ee38a7a3efb25d2d29d450b56/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 22 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 13 closed / 7 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 13 closed / 8 open issues.
 
 <a id="sfts"></a>
 ## 🧩 K-SFTs
@@ -96,12 +96,12 @@ Status: working prototype, not a validated method. The repository holds a protot
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SFTs/blob/8fd55b9cbc09dc7234c7d5e4b30d3a25abef9cd4/README.md) — content SHA-256 `96ca0c91a7b59a9d0eb7c79bb78cac16f4a666327dfb22011574d1805a30cc27`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/8fd55b9cbc09dc7234c7d5e4b30d3a25abef9cd4/docs/methodology/README.md) — content SHA-256 `61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372`
+- [README.md](https://github.com/danielep71/K-SFTs/blob/e6bae6df272083ba596c9eb866b14e6f9152bc15/README.md) — content SHA-256 `07b863eb4fa23fea4ad7cbd83c3a4118e4d01ef186eba520d3a6d0aa6693e0a7`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/e6bae6df272083ba596c9eb866b14e6f9152bc15/docs/methodology/README.md) — content SHA-256 `61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 31 closed / 1 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 9 closed / 3 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 10 closed / 3 open issues.
 - [v0.2.1](https://github.com/danielep71/K-SFTs/milestone/3): open; 0 closed / 1 open issues.
