@@ -43,6 +43,31 @@ class PortfolioTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertIs(first, second)
 
+    def test_deleted_milestone_becomes_dated_history(self):
+        project = {'id': 'one', 'name': 'One', 'purpose': 'Purpose', 'repo': 'owner/repo', 'selector': 'current', 'evidence': []}
+        metadata = {'private': False, 'full_name': 'owner/repo', 'default_branch': 'main'}
+        source = '**Current status: repository setup only.** No model is delivered.'
+        kept = {'number': 1, 'title': 'v0.1.0', 'state': 'closed', 'open_issues': 0, 'closed_issues': 4,
+                'closed_at': '2026-10-01T00:00:00Z', 'html_url': 'https://github.com/owner/repo/milestone/1'}
+        deleted = {'number': 2, 'title': 'v0.2.0', 'state': 'closed', 'open_issues': 1, 'closed_issues': 2,
+                   'closed_at': '2026-10-20T00:00:00Z', 'html_url': 'https://github.com/owner/repo/milestone/2'}
+        api = [metadata, {'sha': 'a' * 40}] * 3
+        pages = [[], [kept, deleted], [], [kept], [], [kept]]
+        with patch.object(refresh, 'api', side_effect=api), patch.object(refresh, 'pages', side_effect=pages), \
+                patch.object(refresh, 'file_at', return_value=source), patch.object(refresh, 'today', side_effect=['2026-10-27', '2026-10-28']):
+            first = refresh.collect(project)
+            second = refresh.collect(project, first)
+            third = refresh.collect(project, second)
+        self.assertEqual(second['milestones'][1], dict(deleted, html_url=None, removed_on='2026-10-27'))
+        self.assertIs(third, second)
+        readme, website, report = refresh.render([project], [second],
+            '<!-- portfolio:table:start --><!-- portfolio:table:end -->',
+            '<!-- portfolio:one:start --><!-- portfolio:one:end -->')
+        self.assertIn('- v0.2.0: historical snapshot recorded closed; 2 closed / 1 open issues. '
+                      'Milestone URL no longer available as of 2026-10-27.', report)
+        self.assertNotIn('milestone/2', report + readme + website)
+        self.assertIn('Last closed milestone: v0.1.0 (2026-10-01).', website)
+
     def test_private_source_is_rejected(self):
         with patch.object(refresh, 'api', return_value={'private': True}):
             with self.assertRaises(ValueError):
