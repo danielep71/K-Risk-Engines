@@ -96,17 +96,17 @@ Status: working prototype, not a validated method. The repository holds a protot
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/README.md) — content SHA-256 `ed16c9644f0b7789d6dd6782fe24daaba74becc44d7a75494d522c20f2e609da`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/docs/methodology/README.md) — content SHA-256 `af72da1ace6034887fc8f3699dc18477dbdcd4fc845e92f72c6b8bde4332a77d`
-- No published stable release (drafts and prereleases excluded).
+- [README.md](https://github.com/danielep71/K-SFTs/blob/ff18bc9ea6736fb7de6a8f16ffd32266b1975baa/README.md) — content SHA-256 `2a5803ac272002cd1b0ea9b896b373889b2778f9c103fdcabec289def3babfb0`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/ff18bc9ea6736fb7de6a8f16ffd32266b1975baa/docs/methodology/README.md) — content SHA-256 `af72da1ace6034887fc8f3699dc18477dbdcd4fc845e92f72c6b8bde4332a77d`
+- Published release: [v0.2.0](https://github.com/danielep71/K-SFTs/releases/tag/v0.2.0) (2026-10-30T15:40:16Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 32 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 26 closed / 1 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): closed; 29 closed / 0 open issues.
 - v0.2.1: historical snapshot recorded open; 0 closed / 1 open issues. Milestone URL no longer available as of 2026-10-29.
-- [v0.3.0 - Methodology and numerical assurance](https://github.com/danielep71/K-SFTs/milestone/4): open; 0 closed / 5 open issues.
-- [v1.0.0 - First supported release](https://github.com/danielep71/K-SFTs/milestone/5): open; 0 closed / 5 open issues.
+- [v0.3.0 - Methodology and numerical assurance](https://github.com/danielep71/K-SFTs/milestone/4): open; 5 closed / 7 open issues.
+- [v1.0.0 - First supported release](https://github.com/danielep71/K-SFTs/milestone/5): open; 0 closed / 6 open issues.
 
 <a id="cva"></a>
 ## 🧩 K-CVA
