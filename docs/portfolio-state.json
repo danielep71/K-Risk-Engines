@@ -352,7 +352,12 @@
     "id": "sfts",
     "repo": "danielep71/K-SFTs",
     "status": "Status: working prototype, not a validated method. The repository holds a prototype that calculates E\\*, RWA and own funds of SFT netting sets (PROTOTYPE.md). It runs in Excel and reproduces an independent reference, but it is not the methodology of record and departs from recorded decisions. Nothing here should be used to compute regulatory exposure. The regulatory basis is chosen: the EU CRR controls, with the Basel Framework as the methodological reference; products, collateral and outputs are still open decisions.",
-    "release": null,
+    "release": {
+      "tag": "v0.2.0",
+      "url": "https://github.com/danielep71/K-SFTs/releases/tag/v0.2.0",
+      "published_at": "2026-10-30T15:40:16Z",
+      "notes_sha256": "0f98f40cb3107076689d56c2080a89204b282921587154880dda21821c583df8"
+    },
     "milestones": [
       {
         "number": 1,
@@ -366,10 +371,10 @@
       {
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
-        "state": "open",
-        "open_issues": 1,
-        "closed_issues": 26,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 29,
+        "closed_at": "2026-10-30T17:02:19Z",
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/2"
       },
       {
@@ -386,8 +391,8 @@
         "number": 4,
         "title": "v0.3.0 - Methodology and numerical assurance",
         "state": "open",
-        "open_issues": 5,
-        "closed_issues": 0,
+        "open_issues": 7,
+        "closed_issues": 5,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/4"
       },
@@ -395,7 +400,7 @@
         "number": 5,
         "title": "v1.0.0 - First supported release",
         "state": "open",
-        "open_issues": 5,
+        "open_issues": 6,
         "closed_issues": 0,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/5"
@@ -404,13 +409,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "ed16c9644f0b7789d6dd6782fe24daaba74becc44d7a75494d522c20f2e609da",
-        "url": "https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/README.md"
+        "sha256": "2a5803ac272002cd1b0ea9b896b373889b2778f9c103fdcabec289def3babfb0",
+        "url": "https://github.com/danielep71/K-SFTs/blob/ff18bc9ea6736fb7de6a8f16ffd32266b1975baa/README.md"
       },
       {
         "path": "docs/methodology/README.md",
         "sha256": "af72da1ace6034887fc8f3699dc18477dbdcd4fc845e92f72c6b8bde4332a77d",
-        "url": "https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/docs/methodology/README.md"
+        "url": "https://github.com/danielep71/K-SFTs/blob/ff18bc9ea6736fb7de6a8f16ffd32266b1975baa/docs/methodology/README.md"
       }
     ]
   },
