@@ -19,7 +19,7 @@ Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workb
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 26 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 15 closed / 13 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 15 closed / 14 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 0 closed / 9 open issues.
 - [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
@@ -63,8 +63,8 @@ Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/69e3df35781fc2e8a13bb523059d596d9da08150/README.md) — content SHA-256 `bad269cf918a7834d6f3c258c798bd37bb6a448e42bb15391c7e9302a4eaa9ff`
-- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/69e3df35781fc2e8a13bb523059d596d9da08150/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
+- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/0540f892614ac0479591c78b648e7f808ea4a8c0/README.md) — content SHA-256 `3acaa98e5c248cff49111ca8d7afeea2ddee8a4a006551eac58ce2884892a668`
+- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/0540f892614ac0479591c78b648e7f808ea4a8c0/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
@@ -96,14 +96,14 @@ Status: working prototype, not a validated method. The repository holds a protot
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SFTs/blob/8c6444373b042e0701458b5b176fe1a332aeceb9/README.md) — content SHA-256 `588596ec43f5ab81b11208b682593fbb8eb8315b53c662354c6eeca6c1cf5f13`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/8c6444373b042e0701458b5b176fe1a332aeceb9/docs/methodology/README.md) — content SHA-256 `61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372`
+- [README.md](https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/README.md) — content SHA-256 `ed16c9644f0b7789d6dd6782fe24daaba74becc44d7a75494d522c20f2e609da`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/docs/methodology/README.md) — content SHA-256 `af72da1ace6034887fc8f3699dc18477dbdcd4fc845e92f72c6b8bde4332a77d`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-SFTs/milestone/1): closed; 32 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 19 closed / 3 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2): open; 26 closed / 1 open issues.
 - v0.2.1: historical snapshot recorded open; 0 closed / 1 open issues. Milestone URL no longer available as of 2026-10-29.
 - [v0.3.0 - Methodology and numerical assurance](https://github.com/danielep71/K-SFTs/milestone/4): open; 0 closed / 5 open issues.
 - [v1.0.0 - First supported release](https://github.com/danielep71/K-SFTs/milestone/5): open; 0 closed / 5 open issues.

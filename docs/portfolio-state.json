@@ -32,7 +32,7 @@
         "number": 3,
         "title": "v1.1.0 - CSV Import, Staging and Workbook Protection",
         "state": "open",
-        "open_issues": 13,
+        "open_issues": 14,
         "closed_issues": 15,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/3"
@@ -300,13 +300,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "bad269cf918a7834d6f3c258c798bd37bb6a448e42bb15391c7e9302a4eaa9ff",
-        "url": "https://github.com/danielep71/K-FRTB-SA/blob/69e3df35781fc2e8a13bb523059d596d9da08150/README.md"
+        "sha256": "3acaa98e5c248cff49111ca8d7afeea2ddee8a4a006551eac58ce2884892a668",
+        "url": "https://github.com/danielep71/K-FRTB-SA/blob/0540f892614ac0479591c78b648e7f808ea4a8c0/README.md"
       },
       {
         "path": "docs/validation.md",
         "sha256": "6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6",
-        "url": "https://github.com/danielep71/K-FRTB-SA/blob/69e3df35781fc2e8a13bb523059d596d9da08150/docs/validation.md"
+        "url": "https://github.com/danielep71/K-FRTB-SA/blob/0540f892614ac0479591c78b648e7f808ea4a8c0/docs/validation.md"
       }
     ]
   },
@@ -367,8 +367,8 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 3,
-        "closed_issues": 19,
+        "open_issues": 1,
+        "closed_issues": 26,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SFTs/milestone/2"
       },
@@ -404,13 +404,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "588596ec43f5ab81b11208b682593fbb8eb8315b53c662354c6eeca6c1cf5f13",
-        "url": "https://github.com/danielep71/K-SFTs/blob/8c6444373b042e0701458b5b176fe1a332aeceb9/README.md"
+        "sha256": "ed16c9644f0b7789d6dd6782fe24daaba74becc44d7a75494d522c20f2e609da",
+        "url": "https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "61356e4069a6679961c327d7b0603a3743820563f46539444c23d2f1a623f372",
-        "url": "https://github.com/danielep71/K-SFTs/blob/8c6444373b042e0701458b5b176fe1a332aeceb9/docs/methodology/README.md"
+        "sha256": "af72da1ace6034887fc8f3699dc18477dbdcd4fc845e92f72c6b8bde4332a77d",
+        "url": "https://github.com/danielep71/K-SFTs/blob/e352259038ecd65548d5de120f67031458d7bf7b/docs/methodology/README.md"
       }
     ]
   },
