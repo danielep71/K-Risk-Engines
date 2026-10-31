@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Issue triage adapted from MyTemplate: a read-only workflow checks every
+  open issue's assignee, single priority, open milestone, target end date
+  before the milestone's due date, dependency section, `blocked` consistency
+  and catalogue labels. The hub forms ask for the target end date and the
+  dependencies; `P1` is not reserved for calculation bugs (#163).
 - List K-LCR, the public Liquidity Coverage Ratio project at the
   repository-setup stage, in a new Liquidity Risk section of the website and
   README, the website description and the portfolio direction (#129).
