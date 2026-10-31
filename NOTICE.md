@@ -41,7 +41,7 @@ project.
 
 `.github/workflows/pr-milestones.yml` was adapted from
 [danielep71/K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA), through
-[danielep71/MyTemplate](https://github.com/danielep71/MyTemplate), under the
+danielep71/MyTemplate (a private template repository), under the
 MIT License below. Its tests in `.github/scripts/test_pr_milestones.py` were
 adapted from MyTemplate. Modifications: pushes and manual runs use only the
 default branch's copy, the job has `issues: read` so the script can read pull
