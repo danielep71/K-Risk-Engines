@@ -17,12 +17,28 @@ repositories keep their own changelogs; this file covers the hub only.
   under the MIT License: milestones belong to issues, and the workflow removes
   any milestone set on a pull request; `GOVERNANCE.md`, the PR template and
   `NOTICE.md` record the rule and the attribution (#164).
+- Issue triage adapted from MyTemplate: a read-only workflow checks every
+  open issue's assignee, single priority, open milestone, target end date
+  before the milestone's due date, dependency section, `blocked` consistency
+  and catalogue labels. The hub forms ask for the target end date and the
+  dependencies; `P1` is not reserved for calculation bugs (#163).
+- Quality gates adapted from MyTemplate in the required `HTML and links`
+  check: Ruff and mypy strict on `.github/scripts` (the scripts are now fully
+  annotated, and the site check is split into smaller functions with
+  unchanged results), hash-locked tools, checksum-verified actionlint, and
+  tests of the workflow rules. Every job that runs node sets up Node.js 24
+  with a SHA-pinned `actions/setup-node`; Dependabot also covers the two pip
+  requirement files. The check now runs on every pull request and push,
+  without branch filters (#165).
 - List K-LCR, the public Liquidity Coverage Ratio project at the
   repository-setup stage, in a new Liquidity Risk section of the website and
   README, the website description and the portfolio direction (#129).
 
 ### 🔧 Changed
 
+- Six label descriptions follow MyTemplate: `documentation`, `help wanted`,
+  `question`, `wontfix`, `ci` and `P3`; `P1` keeps the hub's broader
+  definition, since the hub has no calculations (#162).
 - `GOVERNANCE.md` step 5 covers a release branch that is ahead of `main`: the
   synchronization then comes from a short-lived branch that merges `main` into
   the release branch, since a pull request from `main` itself cannot pass the

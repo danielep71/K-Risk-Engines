@@ -70,7 +70,7 @@ available for traceability.
 1. Create a task branch from the active release branch, never from `main` or
    GitHub's default branch by assumption.
 2. Open a pull request against the active release branch. Website checks run
-   on pull requests and pushes to `main` and `release/**`.
+   on every pull request and push.
 3. Squash-merge once the checks pass and every review finding is fixed or
    answered. The squash commit title is the PR title followed by `(#PR)`;
    cite the issue in the body (`Refs #issue`), not as a second number in the
@@ -141,6 +141,14 @@ below applies if a release is requested.
   changes, run `python3 .github/scripts/check-website.py`; when external links
   change, also run it with `--external`. Review visual changes in a browser.
   Apply the relevant label-script checks when changing label configuration.
+  For script or workflow changes, run the gates of the required `HTML and
+  links` check: `ruff check .github/scripts`, `mypy` (strict, configured in
+  [pyproject.toml](pyproject.toml)), `actionlint` and the tests, with the
+  hash-locked tools from [tools/requirements-quality-ci.txt](tools/requirements-quality-ci.txt)
+  and the parser from [.github/requirements.txt](.github/requirements.txt).
+  The workflow tests require SHA-pinned actions, explicit permissions and
+  timeouts, Node.js 24 before any node use, and write permissions only in the
+  jobs they list.
 - Verify applicable hosted checks and, after integration into `main`, the
   deployment. Investigate failures and fix or revert through a new commit.
   Preserve shared history; do not force-push or delete the long-lived
@@ -205,13 +213,29 @@ Assign hub issues to **danielep71**, give each exactly one priority
 Release work uses a milestone named `vX.Y.Z - <title>`, matching its release
 branch and numbered independently of any engine. Ongoing work outside a
 release uses a descriptive milestone; traffic alerts use **Traffic
-monitoring**. Milestones belong to issues only: a pull request carries the
-labels of the work it delivers and no milestone, and the **Keep milestones
-issue-only** workflow
+monitoring**. Each milestone has a due date. Milestones belong to issues
+only: a pull request carries the labels of the work it delivers and no
+milestone, and the **Keep milestones issue-only** workflow
 ([.github/workflows/pr-milestones.yml](.github/workflows/pr-milestones.yml))
 removes any milestone set on a pull request. Link each pull request, including
 one opened by Dependabot or another bot, to an issue that carries the
 milestone.
+
+Every open issue also has:
+
+- a target end date: an ISO `YYYY-MM-DD` calendar date (Europe/Rome) before
+  its milestone's due date. The issue forms ask for it; on other issues add a
+  line `- Target end date: YYYY-MM-DD (Europe/Rome)`, which takes precedence
+  over the form field;
+- a dependencies section naming each prerequisite as an issue link (`#12`) or
+  on a line starting `External condition:`, or `None`. Use `blocked` exactly
+  while a named prerequisite is open or an external condition holds.
+
+The **Issue triage** workflow
+([.github/workflows/issue-triage.yml](.github/workflows/issue-triage.yml))
+checks these rules, the assignee, exactly one priority, an open milestone and
+catalogue labels on every issue and milestone event. It is read-only: a failed
+run lists the findings, and the maintainer resolves them by hand.
 
 The label catalogue is maintained in
 [.github/labels.json](.github/labels.json). Record the objective and acceptance
