@@ -41,7 +41,7 @@ project.
 
 `pyproject.toml`, `tools/requirements-quality-ci.txt`,
 `.github/requirements.txt` and `.github/scripts/test_workflow_controls.py`
-were adapted from [danielep71/MyTemplate](https://github.com/danielep71/MyTemplate)
+were adapted from danielep71/MyTemplate (a private template repository)
 under the Mozilla Public License 2.0; MyTemplate adapted the first three from
 [danielep71/K-SFTs](https://github.com/danielep71/K-SFTs) under the same
 licence. Modifications: the checks cover `.github/scripts`, PyYAML is treated
