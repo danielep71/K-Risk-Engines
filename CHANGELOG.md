@@ -19,6 +19,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- `docs/REPOSITORY_SETTINGS.md` records the security features as in
+  MyTemplate (private vulnerability reporting, Dependabot alerts and security
+  updates, secret scanning and push protection) and states that direct pushes
+  stay allowed for the Daily traffic export workflow (#167).
 - `GOVERNANCE.md` step 5 covers a release branch that is ahead of `main`: the
   synchronization then comes from a short-lived branch that merges `main` into
   the release branch, since a pull request from `main` itself cannot pass the
