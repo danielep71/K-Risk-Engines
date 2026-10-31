@@ -1,30 +1,40 @@
+from __future__ import annotations
+
 import importlib.util
 import json
-from pathlib import Path
 import unittest
+from pathlib import Path
+from typing import Any
 from unittest.mock import patch
 
-spec = importlib.util.spec_from_file_location('refresh', Path(__file__).with_name('portfolio-refresh.py'))
-refresh = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(refresh)
+
+def load_module(label: str, filename: str) -> Any:
+    spec = importlib.util.spec_from_file_location(label, Path(__file__).with_name(filename))
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+refresh = load_module('refresh', 'portfolio-refresh.py')
 
 
 class PortfolioTests(unittest.TestCase):
-    def test_status_preserves_negative_evidence(self):
+    def test_status_preserves_negative_evidence(self) -> None:
         source = '> [!IMPORTANT]\n> **Version 1 is a prototype.**\n> Not run in Excel. No result is validated.\n\n## More\n'
         result = refresh.status_excerpt(source, 'important')
         self.assertIn('Not run in Excel. No result is validated.', result)
 
-    def test_status_section_keeps_draft_caveats(self):
+    def test_status_section_keeps_draft_caveats(self) -> None:
         source = '## 🧭 Status\n\n**In progress.**\n\n- Decay draft, not validated.\n- No Excel evidence.\n\n## Next\n'
         self.assertIn('No Excel evidence.', refresh.status_excerpt(source, 'status'))
 
-    def test_missing_or_ambiguous_status_fails(self):
+    def test_missing_or_ambiguous_status_fails(self) -> None:
         for source in ['no status here', '> [!IMPORTANT]\n> One status is not sufficient.\n\n> [!IMPORTANT]\n> Another status has appeared.\n']:
             with self.assertRaises(ValueError):
                 refresh.status_excerpt(source, 'important')
 
-    def test_latest_closed_uses_closure_date_not_number(self):
+    def test_latest_closed_uses_closure_date_not_number(self) -> None:
         milestones = [
             {'number': 12, 'state': 'closed', 'closed_at': '2026-01-01T00:00:00Z'},
             {'number': 2, 'state': 'closed', 'closed_at': '2026-10-20T00:00:00Z'},
@@ -34,7 +44,7 @@ class PortfolioTests(unittest.TestCase):
         self.assertEqual(refresh.latest_closed(milestones)['number'], 12)
         self.assertIsNone(refresh.latest_closed([]))
 
-    def test_unrelated_commit_does_not_change_snapshot(self):
+    def test_unrelated_commit_does_not_change_snapshot(self) -> None:
         project = {'id': 'test', 'repo': 'owner/repo', 'selector': 'current', 'evidence': []}
         metadata = {'private': False, 'full_name': 'owner/repo', 'default_branch': 'main'}
         source = '**Current status: repository setup only.** No model is delivered.'
@@ -44,7 +54,7 @@ class PortfolioTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertIs(first, second)
 
-    def test_deleted_milestone_becomes_dated_history(self):
+    def test_deleted_milestone_becomes_dated_history(self) -> None:
         project = {'id': 'one', 'name': 'One', 'purpose': 'Purpose', 'repo': 'owner/repo', 'selector': 'current', 'evidence': []}
         metadata = {'private': False, 'full_name': 'owner/repo', 'default_branch': 'main'}
         source = '**Current status: repository setup only.** No model is delivered.'
@@ -69,7 +79,7 @@ class PortfolioTests(unittest.TestCase):
         self.assertNotIn('milestone/2', report + readme + website)
         self.assertIn('Last closed milestone: v0.1.0 (2026-10-01).', website)
 
-    def test_only_significant_changes_replace_a_record(self):
+    def test_only_significant_changes_replace_a_record(self) -> None:
         old = {'id': 'one', 'repo': 'owner/repo', 'status': 'Prototype.',
                'sources': [{'path': 'README.md', 'url': 'https://github.com/owner/repo/blob/a/README.md', 'sha256': 'a'},
                            {'path': 'docs/evidence.md', 'url': 'https://github.com/owner/repo/blob/a/docs/evidence.md', 'sha256': 'e'}],
@@ -100,16 +110,16 @@ class PortfolioTests(unittest.TestCase):
         evidence['sources'][1].update(sha256='f')
         self.assertTrue(refresh.significant(evidence, old))
 
-    def test_private_source_is_rejected(self):
+    def test_private_source_is_rejected(self) -> None:
         with patch.object(refresh, 'api', return_value={'private': True}):
             with self.assertRaises(ValueError):
                 refresh.collect({'repo': 'owner/private'})
 
-    def test_marker_loss_fails_instead_of_overwriting(self):
+    def test_marker_loss_fails_instead_of_overwriting(self) -> None:
         with self.assertRaises(ValueError):
             refresh.replace_block('handwritten document', 'table', 'generated')
 
-    def test_source_text_cannot_inject_html(self):
+    def test_source_text_cannot_inject_html(self) -> None:
         project = {'id': 'one', 'name': 'One', 'purpose': 'Purpose'}
         data = {'id': 'one', 'repo': 'owner/repo', 'status': '<script>bad()</script> & caveat',
                 'sources': [{'path': 'README.md', 'url': 'https://github.com/owner/repo/blob/abc/README.md', 'sha256': 'abc'}],
@@ -121,7 +131,7 @@ class PortfolioTests(unittest.TestCase):
         self.assertIn('&lt;script&gt;', website)
         self.assertIn('none recorded', website)
 
-    def test_website_status_has_no_links(self):
+    def test_website_status_has_no_links(self) -> None:
         project = {'id': 'one', 'name': 'One', 'purpose': 'Purpose'}
         data = {'id': 'one', 'repo': 'owner/repo', 'status': 'Prototype.',
                 'sources': [{'path': 'README.md', 'url': 'https://github.com/owner/repo/blob/abc/README.md', 'sha256': 'abc'}],

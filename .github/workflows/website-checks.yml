@@ -1,20 +1,17 @@
 name: Website checks
 
 # Provides "HTML and links", the check required by the rulesets in
-# docs/REPOSITORY_SETTINGS.md. Every event runs the script tests and the local
-# HTML, Markdown, asset and anchor checks.
-# External links are fetched only on trusted events (pushes, the weekly schedule
-# and manual runs), not on pull requests. Read-only token; no secrets.
+# docs/REPOSITORY_SETTINGS.md. It runs on every pull request and push, without
+# branch or path filters, so the required check always reports. Every event
+# runs the quality gates (Ruff, mypy strict, actionlint), the script and
+# workflow tests, the label self-tests and the local HTML, Markdown, asset and
+# anchor checks. External links are fetched only on trusted events (pushes,
+# the weekly schedule and manual runs), not on pull requests.
+# Read-only token; no secrets.
 
 on:
   pull_request:
-    branches:
-      - main
-      - "release/**"
   push:
-    branches:
-      - main
-      - "release/**"
   schedule:
     - cron: '43 6 * * 1'
   workflow_dispatch:
@@ -26,19 +23,78 @@ concurrency:
   group: website-checks-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   website:
     name: HTML and links
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      # actionlint release and the SHA-256 of its Linux x86_64 archive.
+      ACTIONLINT_VERSION: "1.7.12"
+      ACTIONLINT_LINUX_AMD64_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+      PYTHONDONTWRITEBYTECODE: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Test website check and portfolio refresh rules
-        run: python3 -m unittest discover -s .github/scripts -p 'test_*.py'
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      # The tests run the label scripts.
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+      - name: Install the pinned configuration parser and quality tools
+        run: |
+          python -m pip install \
+            --disable-pip-version-check \
+            --only-binary=:all: \
+            --require-hashes \
+            -r .github/requirements.txt \
+            -r tools/requirements-quality-ci.txt
+      - name: Install checksum-verified actionlint
+        run: |
+          validator_dir="${RUNNER_TEMP}/actionlint-${ACTIONLINT_VERSION}"
+          archive="${validator_dir}/actionlint.tar.gz"
+          mkdir -p "$validator_dir"
+          curl \
+            --fail \
+            --location \
+            --proto '=https' \
+            --retry 3 \
+            --retry-all-errors \
+            --show-error \
+            --silent \
+            --tlsv1.2 \
+            --output "$archive" \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          printf '%s  %s\n' "$ACTIONLINT_LINUX_AMD64_SHA256" "$archive" \
+            | sha256sum --check --strict
+          tar --no-same-owner -xzf "$archive" -C "$validator_dir" actionlint
+          echo "$validator_dir" >> "$GITHUB_PATH"
+      - name: Lint Python scripts (ruff)
+        run: ruff check --no-cache .github/scripts
+      - name: Type-check Python scripts (mypy, strict)
+        run: mypy --no-incremental
+      - name: Lint workflows (actionlint)
+        run: actionlint -no-color
+      - name: Test scripts, workflow rules and portfolio refresh
+        run: python -m unittest discover -s .github/scripts -p 'test_*.py'
+      - name: Test label automation
+        run: |
+          node .github/scripts/labels-sync.mjs --self-test
+          node .github/scripts/labels-sync.mjs --mode validate
+          node .github/scripts/labels-drift.mjs --self-test
       - name: Check HTML, Markdown links, assets and internal anchors
-        run: python3 .github/scripts/check-website.py
+        run: python .github/scripts/check-website.py
       - name: Check external links on trusted events
         if: github.event_name != 'pull_request'
-        run: python3 .github/scripts/check-website.py --external
+        run: python .github/scripts/check-website.py --external

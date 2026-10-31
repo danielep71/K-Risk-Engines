@@ -70,7 +70,7 @@ available for traceability.
 1. Create a task branch from the active release branch, never from `main` or
    GitHub's default branch by assumption.
 2. Open a pull request against the active release branch. Website checks run
-   on pull requests and pushes to `main` and `release/**`.
+   on every pull request and push.
 3. Squash-merge once the checks pass and every review finding is fixed or
    answered. The squash commit title is the PR title followed by `(#PR)`;
    cite the issue in the body (`Refs #issue`), not as a second number in the
@@ -141,6 +141,14 @@ below applies if a release is requested.
   changes, run `python3 .github/scripts/check-website.py`; when external links
   change, also run it with `--external`. Review visual changes in a browser.
   Apply the relevant label-script checks when changing label configuration.
+  For script or workflow changes, run the gates of the required `HTML and
+  links` check: `ruff check .github/scripts`, `mypy` (strict, configured in
+  [pyproject.toml](pyproject.toml)), `actionlint` and the tests, with the
+  hash-locked tools from [tools/requirements-quality-ci.txt](tools/requirements-quality-ci.txt)
+  and the parser from [.github/requirements.txt](.github/requirements.txt).
+  The workflow tests require SHA-pinned actions, explicit permissions and
+  timeouts, Node.js 24 before any node use, and write permissions only in the
+  jobs they list.
 - Verify applicable hosted checks and, after integration into `main`, the
   deployment. Investigate failures and fix or revert through a new commit.
   Preserve shared history; do not force-push or delete the long-lived

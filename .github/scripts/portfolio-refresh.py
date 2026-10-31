@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
 """Propose source-attributed portfolio updates. Never infer validation or execute source code."""
+from __future__ import annotations
+
 import argparse
 import base64
-from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
 import hashlib
 import html
 import json
 import os
-from pathlib import Path
 import re
 import urllib.error
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
+# JSON records from the GitHub API, .github/portfolio.json and docs/portfolio-state.json.
+Record = dict[str, Any]
 
 
-def api(path):
+def api(path: str) -> Any:
     headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'K-Risk-Engines-portfolio'}
     if os.environ.get('GH_TOKEN'):
         headers['Authorization'] = 'Bearer ' + os.environ['GH_TOKEN']
@@ -26,8 +31,8 @@ def api(path):
         return json.load(response)
 
 
-def pages(path):
-    result = []
+def pages(path: str) -> list[Record]:
+    result: list[Record] = []
     for page in range(1, 101):
         batch = api(path + ('&' if '?' in path else '?') + f'per_page=100&page={page}')
         result.extend(batch)
@@ -36,7 +41,7 @@ def pages(path):
     raise ValueError('Pagination exceeded safe limit')
 
 
-def plain(text):
+def plain(text: str) -> str:
     # Preserve link labels, sentences and caveats; render as escaped text, never source HTML.
     text = re.sub(r'\[([^\]]+)\]\([^\n]+?\)', r'\1', text)
     text = re.sub(r'<[^>]+>', '', text)
@@ -44,7 +49,7 @@ def plain(text):
     return ' '.join(text.split())
 
 
-def status_excerpt(readme, selector):
+def status_excerpt(readme: str, selector: str) -> str:
     if selector == 'important':
         matches = re.findall(r'^> \[!IMPORTANT\]\n((?:>[^\n]*(?:\n|$))+)', readme, re.M)
         if len(matches) != 1:
@@ -69,18 +74,18 @@ def status_excerpt(readme, selector):
     return value
 
 
-def file_at(repo, path, ref):
+def file_at(repo: str, path: str, ref: str) -> str:
     data = api(f'repos/{repo}/contents/{urllib.parse.quote(path)}?ref={ref}')
     if data.get('encoding') != 'base64':
         raise ValueError('Expected a readable source file: ' + path)
-    return base64.b64decode(data['content']).decode('utf-8')
+    return base64.b64decode(str(data['content'])).decode('utf-8')
 
 
-def today():
+def today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
-def keep_removed(current, previous):
+def keep_removed(current: list[Record], previous: list[Record]) -> list[Record]:
     # A milestone deleted in the source keeps its last recorded counts as a dated historical entry, without its dead URL.
     numbers = {m['number'] for m in current}
     removed = [dict(m, html_url=None, removed_on=m.get('removed_on') or today())
@@ -88,16 +93,16 @@ def keep_removed(current, previous):
     return sorted(current + removed, key=lambda m: m['number'])
 
 
-def collect(project, old=None):
-    repo = project['repo']
+def collect(project: Record, old: Record | None = None) -> Record:
+    repo = str(project['repo'])
     meta = api('repos/' + repo)
     if meta['private']:
         raise ValueError('Portfolio sources must be public')
-    repo = meta['full_name']
+    repo = str(meta['full_name'])
     branch = urllib.parse.quote(meta['default_branch'], safe='')
     head = api(f'repos/{repo}/commits/{branch}')['sha']
-    sources = []
-    readme = None
+    sources: list[Record] = []
+    readme = ''
     for path in ['README.md'] + project['evidence']:
         content = file_at(repo, path, head)
         if path == 'README.md':
@@ -115,16 +120,16 @@ def collect(project, old=None):
                         if release else None),
             'milestones': keep_removed(milestones, old['milestones'] if old else []), 'sources': sources}
     # A commit elsewhere in the source repository must not create a daily timestamp-only PR.
-    def meaningful(item):
-        item = json.loads(json.dumps(item))
-        for source in item['sources']:
+    def meaningful(item: Record) -> Record:
+        copy: Record = json.loads(json.dumps(item))
+        for source in copy['sources']:
             source.pop('url', None)
-        return item
+        return copy
     print('Collected ' + repo, flush=True)
     return old if old and meaningful(data) == meaningful(old) else data
 
 
-def replace_block(text, key, value):
+def replace_block(text: str, key: str, value: str) -> str:
     start, end = f'<!-- portfolio:{key}:start -->', f'<!-- portfolio:{key}:end -->'
     if text.count(start) != 1 or text.count(end) != 1:
         raise ValueError('Missing or duplicate generated markers: ' + key)
@@ -133,22 +138,22 @@ def replace_block(text, key, value):
     return before + start + '\n' + value + '\n' + end + after
 
 
-def markdown(text):
+def markdown(text: str) -> str:
     return html.escape(text).replace('|', '&#124;').replace('[', '&#91;').replace(']', '&#93;')
 
 
-def latest_closed(milestones):
+def latest_closed(milestones: list[Record]) -> Record | None:
     closed = [m for m in milestones if m['state'] == 'closed' and m['closed_at'] and not m.get('removed_on')]
     return max(closed, key=lambda m: (m['closed_at'], m['number'])) if closed else None
 
 
-def significant(new, old):
+def significant(new: Record, old: Record | None) -> bool:
     # Propose only changes a reader would notice; issue counts and newer source pins ride along with the next one.
     # Evidence documents count by content; the README counts through its status passage only.
     if old is None:
         return True
 
-    def summary(item):
+    def summary(item: Record) -> tuple[Any, ...]:
         closed = latest_closed(item['milestones'])
         release = item['release']
         sources = [(s['path'], None if s['path'] == 'README.md' else s['sha256']) for s in item['sources']]
@@ -159,7 +164,7 @@ def significant(new, old):
     return summary(new) != summary(old)
 
 
-def milestone_line(m):
+def milestone_line(m: Record) -> str:
     counts = f'{m["closed_issues"]} closed / {m["open_issues"]} open issues.'
     if m.get('removed_on'):
         return (f'- {markdown(m["title"])}: historical snapshot recorded {m["state"]}; {counts} '
@@ -167,7 +172,8 @@ def milestone_line(m):
     return f'- [{markdown(m["title"])}]({m["html_url"]}): {m["state"]}; {counts}'
 
 
-def render(projects, snapshot, readme, website):
+def render(projects: list[Record], snapshot: list[Record], readme: str,
+           website: str) -> tuple[str, str, str]:
     rows = ['| Project | Purpose | Project-reported status | Last closed milestone |', '| --- | --- | --- | --- |']
     for p, data in zip(projects, snapshot):
         release = ('Latest published release: ' + data['release']['tag']) if data['release'] else 'No published stable release'
@@ -210,14 +216,14 @@ def render(projects, snapshot, readme, website):
     return readme, website, '\n'.join(report)
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--body-file', type=Path, required=True)
     parser.add_argument('--render-only', action='store_true', help='Render the stored snapshot without network access')
     args = parser.parse_args()
-    projects = json.loads((ROOT / '.github/portfolio.json').read_text())['projects']
+    projects: list[Record] = json.loads((ROOT / '.github/portfolio.json').read_text())['projects']
     snapshot_file = ROOT / 'docs/portfolio-state.json'
-    old = json.loads(snapshot_file.read_text()) if snapshot_file.exists() else []
+    old: list[Record] = json.loads(snapshot_file.read_text()) if snapshot_file.exists() else []
     by_id = {p['id']: p for p in old}
     # Collect every source before touching outputs (--render-only reuses the stored snapshot).
     # Any missing source / API error aborts the run.
