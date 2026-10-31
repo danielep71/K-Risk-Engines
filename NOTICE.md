@@ -108,3 +108,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+<a id="traffic-history-merge"></a>
+
+## 📈 Traffic history merge
+
+The merge rules of `.github/scripts/traffic_history.py` (newest observation
+of each date, idempotent merge, validation before writing), its alert's
+dependencies and planning sections, and the split of
+`.github/workflows/daily-traffic.yml` into collection and alert jobs were
+adapted from danielep71/MyTemplate (a private template repository)
+under the Mozilla Public License 2.0. Modifications: this repository's CSV
+layout and badge files, its alert thresholds and labels, and the GitHub App
+credential of the collection job.
