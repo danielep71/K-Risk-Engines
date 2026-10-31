@@ -28,9 +28,6 @@
 #     That environment is not a workflow-identity boundary: any job declaring
 #     it may request access, subject to the configured environment protections.
 #
-#     Until TRAFFIC_APP_CLIENT_ID is set, the step falls back to TRAFFIC_TOKEN,
-#     the fine-grained personal access token used before the App. The
-#     migration and the removal of that fallback are tracked in issue #94.
 #     Rotate the App's private key immediately if this workflow is modified
 #     by someone other than the maintainer. See docs/TRAFFIC.md.
 #
@@ -109,7 +106,6 @@ jobs:
 
       - name: Create traffic App token
         id: app-token
-        if: vars.TRAFFIC_APP_CLIENT_ID != ''
         # v3.3.0 - pinned to a full commit SHA so a moved tag cannot change what runs
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
         with:
@@ -120,17 +116,9 @@ jobs:
       - name: Fetch GitHub traffic API data
         shell: bash
         env:
-          # The App token when the App is configured; otherwise the legacy
-          # personal access token, until it is removed (issue #94).
-          TRAFFIC_TOKEN: ${{ steps.app-token.outputs.token || secrets.TRAFFIC_TOKEN }}
+          TRAFFIC_API_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           set -euo pipefail
-
-          if [ -z "${TRAFFIC_TOKEN:-}" ]; then
-            echo "::error::No traffic credential in the analytics environment"
-            echo "Set TRAFFIC_APP_CLIENT_ID and TRAFFIC_APP_PRIVATE_KEY for a GitHub App with Administration: read on this repository; see docs/TRAFFIC.md."
-            exit 1
-          fi
 
           API_VERSION="2026-03-10"
           REPO="${{ github.repository }}"
@@ -145,7 +133,7 @@ jobs:
             status=$(curl -sS -L \
               -o "$output" \
               -w "%{http_code}" \
-              -H "Authorization: Bearer $TRAFFIC_TOKEN" \
+              -H "Authorization: Bearer $TRAFFIC_API_TOKEN" \
               -H "Accept: application/vnd.github+json" \
               -H "X-GitHub-Api-Version: $API_VERSION" \
               "$url")
