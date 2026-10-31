@@ -35,17 +35,14 @@ The repository files do not include the credential. Setup is complete only
 when step 5 succeeds: a manual run on `main` that writes a new snapshot.
 Secrets in another repository are not automatically shared with this one.
 
-### 🔄 Migration from the personal access token
+### 🗓️ Credential history
 
-Until `TRAFFIC_APP_CLIENT_ID` is set, the export falls back to
-**TRAFFIC_TOKEN**, the fine-grained personal access token used before the App.
-Once a manual run with the App succeeds (the log shows **Create traffic App
-token** running), revoke that token, delete `TRAFFIC_TOKEN` from `analytics`,
-and run the export once more. The fallback is then removed from the workflow.
-[#94](https://github.com/danielep71/K-Risk-Engines/issues/94) tracks the
-migration in place of the token rotation due before 24 January 2027;
-[#57](https://github.com/danielep71/K-Risk-Engines/issues/57) records the
-October 2026 rotation.
+Until 31 October 2026 the export used **TRAFFIC_TOKEN**, a fine-grained
+personal access token with the same permission and a 90-day expiry, rotated by
+hand ([#57](https://github.com/danielep71/K-Risk-Engines/issues/57)).
+[#94](https://github.com/danielep71/K-Risk-Engines/issues/94) records the
+migration to the App: after a run with the App succeeded, the token was revoked
+and the secret deleted.
 
 ### 🔁 Rotating the private key
 

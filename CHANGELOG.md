@@ -19,6 +19,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The traffic export uses only the GitHub App token: the `TRAFFIC_TOKEN`
+  fallback is removed now that the App runs and the personal access token has
+  been revoked; `docs/TRAFFIC.md` keeps a short credential history (#94).
 - The daily traffic export reads the traffic API with a short-lived
   installation token of a dedicated GitHub App that has only Administration:
   read, instead of a 90-day personal access token that needed manual rotation.
