@@ -59,9 +59,16 @@ quoted statuses or milestone counts; the next run would overwrite them.
   status passages, missing evidence files, rate limits and API/network failures
   abort collection before writing any proposal files. Inspect the failed run;
   do not reinterpret a failed lookup as “no release” or “no milestone”.
-- A source commit with no changes to tracked content does not trigger a PR.
-  No daily timestamp-only commits are made. Issue-count changes within a
-  milestone are recorded as tracking progress, not model readiness.
+- A project's record is replaced only by a significant change: its status
+  passage, its latest stable release, its last closed milestone, a deleted
+  milestone, its repository name, its configured evidence files or their
+  content. Issue counts, new open milestones and newer source revisions whose
+  status passage and evidence content are unchanged wait for the next
+  significant change, so they can lag in the generated
+  files; the source repositories hold the current counts. A run with no
+  significant change opens no PR, and no daily timestamp-only commits are made.
+  Issue-count changes within a milestone are tracking progress, not model
+  readiness.
 - Review the source wording and any contradictions between release and current
   development status before merging. A closed milestone or passing CI does not
   prove Excel execution, numerical validation or regulatory readiness.
