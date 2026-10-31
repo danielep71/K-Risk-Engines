@@ -34,3 +34,16 @@ Linked engine repositories retain their own licences. This hub's licence
 does not relicense their code, documentation or assets, or grant rights to
 third-party names, trademarks or logos. This is an independent personal
 project.
+
+<a id="traffic-history-merge"></a>
+
+## 📈 Traffic history merge
+
+The merge rules of `.github/scripts/traffic_history.py` (newest observation
+of each date, idempotent merge, validation before writing), its alert's
+dependencies and planning sections, and the split of
+`.github/workflows/daily-traffic.yml` into collection and alert jobs were
+adapted from [danielep71/MyTemplate](https://github.com/danielep71/MyTemplate)
+under the Mozilla Public License 2.0. Modifications: this repository's CSV
+layout and badge files, its alert thresholds and labels, and the GitHub App
+credential of the collection job.

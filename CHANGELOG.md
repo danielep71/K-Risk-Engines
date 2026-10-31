@@ -19,6 +19,16 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The daily traffic export keeps the GitHub App and is restructured after
+  MyTemplate: a tested script merges each collection (the newest observation
+  of a date wins, a repeated merge changes nothing, and everything is
+  validated before writing; `traffic_daily.csv` gains `observed_at`, and
+  older files are still read); collection (`analytics`, `contents: write`)
+  and alerting (`issues: write`, no environment) are separate jobs; alerts
+  carry a target end date and a dependencies section for issue triage; the
+  schedule moves to 06:17 UTC and the API version to 2022-11-28;
+  `traffic-history` keeps its history shared with `main`, now documented as
+  an exception (#166).
 - `GOVERNANCE.md` step 5 covers a release branch that is ahead of `main`: the
   synchronization then comes from a short-lived branch that merges `main` into
   the release branch, since a pull request from `main` itself cannot pass the
