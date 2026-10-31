@@ -1,55 +1,65 @@
+from __future__ import annotations
+
 import contextlib
 import importlib.util
 import io
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
+from typing import Any
 
-spec = importlib.util.spec_from_file_location('site', Path(__file__).with_name('check-website.py'))
-site = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(site)
+
+def load_module(label: str, filename: str) -> Any:
+    spec = importlib.util.spec_from_file_location(label, Path(__file__).with_name(filename))
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+site = load_module('site', 'check-website.py')
 
 PAGE = ('<!doctype html><html lang="en"><head><title>T</title></head>'
         '<body><a href="docs/guide.md#install">Guide</a></body></html>')
 
 
 class MarkdownParsingTests(unittest.TestCase):
-    def test_github_slugs(self):
+    def test_github_slugs(self) -> None:
         self.assertEqual(site.github_slug('Branches and publication'), 'branches-and-publication')
         self.assertEqual(site.github_slug('🧭 Status'), '-status')
         self.assertEqual(site.github_slug('Run `check-website.py` [now](x.md)'), 'run-check-websitepy-now')
 
-    def test_entities_are_decoded_before_slugging(self):
+    def test_entities_are_decoded_before_slugging(self) -> None:
         self.assertEqual(site.github_slug('Rock &amp; Roll'), 'rock--roll')
         self.assertEqual(site.github_slug('Caf&eacute; &#169; 2026'), 'café--2026')
         self.assertEqual(site.github_slug('&copy and &amp'), 'copy-and-amp')
 
-    def test_setext_headings_get_anchors(self):
+    def test_setext_headings_get_anchors(self) -> None:
         _, anchors = site.markdown_links('Install\n=======\n\nTwo line\nsetext title\n---\n\n- item\n---\n\n---\n')
         self.assertEqual(anchors, {'install', 'two-line-setext-title'})
         _, anchors = site.markdown_links('---\nTitle\n---\n\n***\nNext\n===\n')
         self.assertEqual(anchors, {'title', 'next'})
 
-    def test_duplicate_headings_get_suffixes(self):
+    def test_duplicate_headings_get_suffixes(self) -> None:
         _, anchors = site.markdown_links('# Notes\n\n## Notes\n\n### Notes\n')
         self.assertEqual(anchors, {'notes', 'notes-1', 'notes-2'})
 
-    def test_colliding_slugs_follow_github(self):
+    def test_colliding_slugs_follow_github(self) -> None:
         _, anchors = site.markdown_links('# Foo\n# Foo-1\n# Foo\n')
         self.assertEqual(anchors, {'foo', 'foo-1', 'foo-2'})
 
-    def test_destinations_with_parentheses_and_angle_brackets(self):
+    def test_destinations_with_parentheses_and_angle_brackets(self) -> None:
         links, _ = site.markdown_links('[a](guide_(v2).md "T") [b](<my file.md>) [c](x.md)\n'
                                        '[ref]: <ref file.md>\n')
         self.assertEqual(links, ['guide_(v2).md', 'my file.md', 'x.md', 'ref file.md'])
 
-    def test_html_attributes_in_any_quoting(self):
+    def test_html_attributes_in_any_quoting(self) -> None:
         links, anchors = site.markdown_links(
             "<a href='single.md' id='one'></a><a name=two href=bare.md></a><img data-src=\"x.png\">\n")
         self.assertEqual(links, ['single.md', 'bare.md'])
         self.assertEqual(anchors, {'one', 'two'})
 
-    def test_links_ignore_code_and_footnotes(self):
+    def test_links_ignore_code_and_footnotes(self) -> None:
         text = ('[a](one.md) and `[b](two.md)`\n'
                 '```\n[c](three.md)\n```\n'
                 '[ref]: four.md "Title"\n'
@@ -61,7 +71,7 @@ class MarkdownParsingTests(unittest.TestCase):
 
 
 class CheckTests(unittest.TestCase):
-    def run_check(self, files):
+    def run_check(self, files: dict[str, str]) -> Any:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve()
             for name, text in files.items():
@@ -71,7 +81,7 @@ class CheckTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 return site.check(root)
 
-    def test_valid_markdown_links_pass(self):
+    def test_valid_markdown_links_pass(self) -> None:
         errors, external, *_ = self.run_check({
             'index.html': PAGE,
             'README.md': ('# Hub\n\n[Guide](docs/guide.md#install) [Top](#hub) [Docs](docs/)\n'
@@ -83,7 +93,7 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(external, {'https://example.com/page'})
 
-    def test_broken_markdown_links_fail(self):
+    def test_broken_markdown_links_fail(self) -> None:
         errors, *_ = self.run_check({
             'index.html': PAGE,
             'README.md': ('[Missing](docs/missing.md) [Anchor](docs/guide.md#nowhere)\n'
@@ -97,7 +107,7 @@ class CheckTests(unittest.TestCase):
             'README.md: path outside repository: ../elsewhere.md',
             'README.md: missing target docs/gone.md'])
 
-    def test_own_site_urls_are_checked_locally(self):
+    def test_own_site_urls_are_checked_locally(self) -> None:
         errors, external, *_ = self.run_check({
             'index.html': PAGE,
             'assets/art.jpg': 'image',
@@ -107,7 +117,7 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(errors, [f'README.md: missing site target {site.SITE}assets/gone.jpg'])
         self.assertEqual(external, {'https://example.com/'})
 
-    def test_html_links_to_markdown_anchors_are_checked(self):
+    def test_html_links_to_markdown_anchors_are_checked(self) -> None:
         errors, *_ = self.run_check({'index.html': PAGE, 'docs/guide.md': '# Guide\n'})
         self.assertEqual(errors, ['index.html: missing anchor docs/guide.md#install'])
 

@@ -1,6 +1,9 @@
-# Proposes updates to the SHA-pinned GitHub Actions used by the workflows.
-# target-branch must name the active release branch in GOVERNANCE.md;
-# update it when a new release branch is opened.
+# Proposes updates to the SHA-pinned GitHub Actions used by the workflows,
+# the pinned configuration parser in .github/requirements.txt and the
+# hash-locked quality tools in tools/requirements-quality-ci.txt. Every update
+# arrives as a pull request for maintainer review; nothing merges
+# automatically. target-branch must name the active release branch in
+# GOVERNANCE.md; update it when a new release branch is opened.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -20,5 +23,43 @@ updates:
       prefix: ci
     groups:
       github-actions:
+        patterns:
+          - "*"
+  - package-ecosystem: pip
+    directory: /.github
+    target-branch: release/1.0.1
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Europe/Rome
+    labels:
+      - ci
+      - P3
+    assignees:
+      - danielep71
+    commit-message:
+      prefix: ci
+    groups:
+      configuration-parser:
+        patterns:
+          - "*"
+  - package-ecosystem: pip
+    directory: /tools
+    target-branch: release/1.0.1
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Europe/Rome
+    labels:
+      - ci
+      - P3
+    assignees:
+      - danielep71
+    commit-message:
+      prefix: ci
+    groups:
+      python-quality-tools:
         patterns:
           - "*"
