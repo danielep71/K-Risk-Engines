@@ -19,6 +19,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The daily traffic export reads the traffic API with a short-lived
+  installation token of a dedicated GitHub App that has only Administration:
+  read, instead of a 90-day personal access token that needed manual rotation.
+  Until the App is configured in the `analytics` environment it falls back to
+  `TRAFFIC_TOKEN`; `docs/TRAFFIC.md` describes setup, migration and key
+  rotation (#152, #94).
 - Fewer maintenance pull requests: the portfolio refresh replaces a project's
   record only for a significant change (status passage, latest release, last
   closed milestone, deleted milestone, repository, evidence files or their
