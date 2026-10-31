@@ -19,6 +19,13 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Fewer maintenance pull requests: the portfolio refresh replaces a project's
+  record only for a significant change (status passage, latest release, last
+  closed milestone, deleted milestone, repository, evidence files or their
+  content), so issue counts and newer source pins alone no longer open a
+  proposal; and the release branch is synchronized with `main` only before an
+  integration or task work that needs `main`'s changes, not after every
+  refresh (#151).
 - The daily portfolio refresh also tracks K-CVA and K-LCR: their README
   status blocks, an evidence document each, releases and milestones feed the
   README table, the website cards and `docs/PORTFOLIO_STATUS.md`, replacing the
