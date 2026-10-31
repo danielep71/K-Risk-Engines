@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- **Keep milestones issue-only**, adapted from K-FRTB-SA through MyTemplate
+  under the MIT License: milestones belong to issues, and the workflow removes
+  any milestone set on a pull request; `GOVERNANCE.md`, the PR template and
+  `NOTICE.md` record the rule and the attribution (#164).
 - Issue triage adapted from MyTemplate: a read-only workflow checks every
   open issue's assignee, single priority, open milestone, target end date
   before the milestone's due date, dependency section, `blocked` consistency

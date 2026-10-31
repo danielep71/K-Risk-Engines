@@ -70,3 +70,41 @@ Modifications: file locations; hub form names; no rule reserving `P1` for
 calculation bugs, since the hub has no calculations; the hub's JSON-formatted
 issue forms are read as JSON; references to this repository's
 [GOVERNANCE.md](GOVERNANCE.md).
+
+<a id="mit-licensed-files"></a>
+
+## 🧾 MIT-licensed file
+
+`.github/workflows/pr-milestones.yml` was adapted from
+[danielep71/K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA), through
+danielep71/MyTemplate (a private template repository), under the
+MIT License below. Its tests in `.github/scripts/test_pr_milestones.py` were
+adapted from MyTemplate. Modifications: pushes and manual runs use only the
+default branch's copy, the job has `issues: read` so the script can read pull
+requests on a private repository, and the comments refer to this repository's
+[GOVERNANCE.md](GOVERNANCE.md). This notice applies to that file, not to
+unrelated project files.
+
+```text
+MIT License
+
+Copyright (c) 2026 Daniele Penza
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
