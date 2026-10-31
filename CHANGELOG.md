@@ -27,6 +27,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Six label descriptions follow MyTemplate: `documentation`, `help wanted`,
+  `question`, `wontfix`, `ci` and `P3`; `P1` keeps the hub's broader
+  definition, since the hub has no calculations (#162).
 - `GOVERNANCE.md` step 5 covers a release branch that is ahead of `main`: the
   synchronization then comes from a short-lived branch that merges `main` into
   the release branch, since a pull request from `main` itself cannot pass the
