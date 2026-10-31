@@ -142,6 +142,21 @@ def latest_closed(milestones):
     return max(closed, key=lambda m: (m['closed_at'], m['number'])) if closed else None
 
 
+def significant(new, old):
+    # Propose only changes a reader would notice; issue counts and newer source pins ride along with the next one.
+    if old is None:
+        return True
+
+    def summary(item):
+        closed = latest_closed(item['milestones'])
+        release = item['release']
+        return (item['repo'], item['status'], [s['path'] for s in item['sources']],
+                release and (release['tag'], release['published_at']),
+                closed and (closed['number'], closed['title'], closed['closed_at']),
+                sorted(m['number'] for m in item['milestones'] if m.get('removed_on')))
+    return summary(new) != summary(old)
+
+
 def milestone_line(m):
     counts = f'{m["closed_issues"]} closed / {m["open_issues"]} open issues.'
     if m.get('removed_on'):
@@ -210,7 +225,9 @@ def main():
         snapshot = old
     else:
         with ThreadPoolExecutor(max_workers=4) as pool:
-            snapshot = list(pool.map(lambda p: collect(p, by_id.get(p['id'])), projects))
+            collected = list(pool.map(lambda p: collect(p, by_id.get(p['id'])), projects))
+        snapshot = [data if significant(data, by_id.get(p['id'])) else by_id[p['id']]
+                    for p, data in zip(projects, collected)]
     readme, website, report = render(projects, snapshot, (ROOT / 'README.md').read_text(), (ROOT / 'index.html').read_text())
     outputs = {'README.md': readme, 'index.html': website, 'docs/PORTFOLIO_STATUS.md': report,
                'docs/portfolio-state.json': json.dumps(snapshot, indent=2, ensure_ascii=False) + '\n'}
