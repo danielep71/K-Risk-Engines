@@ -48,3 +48,25 @@ licence. Modifications: the checks cover `.github/scripts`, PyYAML is treated
 as untyped by mypy, and the workflow rules name this repository's jobs, its
 required check `HTML and links` and the traffic push as the one checkout that
 keeps credentials.
+
+<a id="adapted-files"></a>
+
+## 🧩 Adapted files
+
+The following files were adapted from
+danielep71/MyTemplate, a private template repository, under the
+Mozilla Public License 2.0. MyTemplate in turn adapted them from
+[danielep71/K-SFTs](https://github.com/danielep71/K-SFTs), with the target end
+date rule from danielep71/K-NSFR, both
+under the Mozilla Public License 2.0:
+
+- `.github/scripts/check_issues.py`
+- `.github/scripts/test_check_issues.py`
+- `.github/workflows/issue-triage.yml`
+- the target end date and dependency fields of `.github/ISSUE_TEMPLATE/hub-bug.yml`
+  and `.github/ISSUE_TEMPLATE/hub-improvement.yml`
+
+Modifications: file locations; hub form names; no rule reserving `P1` for
+calculation bugs, since the hub has no calculations; the hub's JSON-formatted
+issue forms are read as JSON; references to this repository's
+[GOVERNANCE.md](GOVERNANCE.md).

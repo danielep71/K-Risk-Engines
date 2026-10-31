@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Issue triage adapted from MyTemplate: a read-only workflow checks every
+  open issue's assignee, single priority, open milestone, target end date
+  before the milestone's due date, dependency section, `blocked` consistency
+  and catalogue labels. The hub forms ask for the target end date and the
+  dependencies; `P1` is not reserved for calculation bugs (#163).
 - Quality gates adapted from MyTemplate in the required `HTML and links`
   check: Ruff and mypy strict on `.github/scripts` (the scripts are now fully
   annotated, and the site check is split into smaller functions with
