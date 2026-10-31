@@ -11,38 +11,56 @@ It measures GitHub repository traffic, not visits to the GitHub Pages website.
 
 ## 🔑 One-time credential setup
 
+The traffic API requires **Administration: read** on this repository. The
+export obtains it from a dedicated GitHub App, as an installation token that
+expires after an hour and is revoked when the job ends, so no long-lived token
+needs rotating.
+
 1. Open **Settings → Environments**, create `analytics`, and restrict its
    deployment branches to `main` only.
-2. Create or update a fine-grained personal access token that includes
-   `danielep71/K-Risk-Engines` with **Administration: read**.
-3. Store that token as the environment secret **TRAFFIC_TOKEN** in `analytics`.
-   Do not put the token in files, issues or chat. Rotate it before expiry and
-   at least every 90 days; verify the actual date in GitHub token settings.
-   Track each rotation and its reminder in an open issue: currently
-   [#94](https://github.com/danielep71/K-Risk-Engines/issues/94), due before 24 January 2027.
-   [#57](https://github.com/danielep71/K-Risk-Engines/issues/57) records the October 2026 rotation.
-4. Run **Daily traffic export** manually on `main` and verify the new snapshot
+2. Under **Settings → Developer settings → GitHub Apps**, create an App for
+   this export only. Disable its webhook, grant only the repository permission
+   **Administration: read** (Metadata: read is added automatically) and allow
+   installation only on this account.
+3. Install the App on `danielep71/K-Risk-Engines` only.
+4. In `analytics`, store the App's **Client ID** as the environment variable
+   **TRAFFIC_APP_CLIENT_ID**, then generate a private key and store the whole
+   `.pem` content as the environment secret **TRAFFIC_APP_PRIVATE_KEY**.
+   Delete the downloaded `.pem` afterwards. Do not put the key in files, issues
+   or chat.
+5. Run **Daily traffic export** manually on `main` and verify the new snapshot
    on `traffic-history`. Until that succeeds, badge values remain `pending`.
 
 The repository files do not include the credential. Setup is complete only
-when step 4 succeeds: a manual run on `main` that writes a new snapshot.
+when step 5 succeeds: a manual run on `main` that writes a new snapshot.
 Secrets in another repository are not automatically shared with this one.
 
-### 🔁 Rotating the token
+### 🔄 Migration from the personal access token
 
-1. Create the new fine-grained token under a **new name** (for example with
-   the month), with the same access: this repository only, **Administration:
-   read**, an expiry of at most 90 days.
-2. Replace `TRAFFIC_TOKEN` in **Settings → Environments → `analytics`**. The
-   environment secret takes precedence over a repository secret of the same
-   name, so a repository secret does not take effect.
+Until `TRAFFIC_APP_CLIENT_ID` is set, the export falls back to
+**TRAFFIC_TOKEN**, the fine-grained personal access token used before the App.
+Once a manual run with the App succeeds (the log shows **Create traffic App
+token** running), revoke that token, delete `TRAFFIC_TOKEN` from `analytics`,
+and run the export once more. The fallback is then removed from the workflow.
+[#94](https://github.com/danielep71/K-Risk-Engines/issues/94) tracks the
+migration in place of the token rotation due before 24 January 2027;
+[#57](https://github.com/danielep71/K-Risk-Engines/issues/57) records the
+October 2026 rotation.
+
+### 🔁 Rotating the private key
+
+The installation tokens need no rotation. Rotate the App's private key if it
+may have been exposed, or if this workflow is modified by someone other than
+the maintainer:
+
+1. Generate a new private key in the App's settings.
+2. Replace `TRAFFIC_APP_PRIVATE_KEY` in **Settings → Environments →
+   `analytics`**. The environment secret takes precedence over a repository
+   secret of the same name, so a repository secret does not take effect.
 3. Run **Daily traffic export** manually on `main` and confirm that **Fetch
-   GitHub traffic API data** succeeds and a new snapshot is written. HTTP 401
-   "Bad credentials" means the secret does not hold a valid token.
-4. Only then revoke the old token, checking its name and expiry first, and run
-   the export once more.
-5. Record the new name and listed expiry in the rotation issue, and open the
-   issue for the next rotation.
+   GitHub traffic API data** succeeds and a new snapshot is written.
+4. Only then delete the old key in the App's settings, checking its
+   fingerprint first, and run the export once more.
 
 ## 🗄️ Stored data
 
@@ -94,7 +112,7 @@ created no duplicate. Cleanup restored the original milestone state and a
 subsequent normal export succeeded. The test did not write synthetic traffic
 history.
 
-`TRAFFIC_TOKEN` is passed only to the API-fetch step. The job uses its
+The App token is passed only to the API-fetch step. The job uses its
 separate `GITHUB_TOKEN` to push history and create alerts. It does not execute
 repository scripts or run website checks. Environment branch restrictions are
 required protection; the environment name alone is not a security boundary.

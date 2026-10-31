@@ -19,6 +19,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The daily traffic export reads the traffic API with a short-lived
+  installation token of a dedicated GitHub App that has only Administration:
+  read, instead of a 90-day personal access token that needed manual rotation.
+  Until the App is configured in the `analytics` environment it falls back to
+  `TRAFFIC_TOKEN`; `docs/TRAFFIC.md` describes setup, migration and key
+  rotation (#94).
 - The daily portfolio refresh also tracks K-CVA and K-LCR: their README
   status blocks, an evidence document each, releases and milestones feed the
   README table, the website cards and `docs/PORTFOLIO_STATUS.md`, replacing the
