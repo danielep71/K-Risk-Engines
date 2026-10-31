@@ -85,6 +85,13 @@ class TargetDateTests(unittest.TestCase):
         self.assertEqual(rules([issue(1, body="### 🗓️ Target end date (Europe/Rome)\n\n_No response_\n\n"
                                        + READY, target=None)]), [(1, "target-date")])
 
+    def test_crlf_bodies_are_read_like_lf_bodies(self) -> None:
+        form = "### 🗓️ Target end date (Europe/Rome)\r\n\r\n2026-11-04\r\n\r\n" + READY
+        self.assertEqual(check_issues.target_end_date(form), "2026-11-04")
+        planned = "## Planning\r\n- Target end date: 2026-11-04 (Europe/Rome)\r\n\r\n" + READY
+        self.assertEqual(check_issues.target_end_date(planned), "2026-11-04")
+        self.assertEqual(rules([issue(1, body=planned, target=None)]), [])
+
     def test_planning_line_takes_precedence_even_when_invalid(self) -> None:
         form = "### 🗓️ Target end date (Europe/Rome)\n\n2026-11-04\n\n" + READY
         self.assertEqual(rules([issue(1, body=form, target="2026-11-10")]), [])

@@ -103,6 +103,8 @@ def references(lines: Iterable[str], repository: str, own: int) -> set[int]:
 
 def target_end_date(body: str) -> str | None:
     """Read the planning line or the issue-form field without guessing a date."""
+    # Bodies edited in a browser can use CRLF; a stray CR would end up in the value.
+    body = body.replace("\r\n", "\n").replace("\r", "\n")
     match = PLANNED_TARGET.search(body) or FORM_TARGET.search(body)
     return ROME_SUFFIX.sub("", match.group(1)) if match else None
 

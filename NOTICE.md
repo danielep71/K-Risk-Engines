@@ -40,10 +40,10 @@ project.
 ## 🧩 Adapted files
 
 The following files were adapted from
-[danielep71/MyTemplate](https://github.com/danielep71/MyTemplate) under the
+danielep71/MyTemplate, a private template repository, under the
 Mozilla Public License 2.0. MyTemplate in turn adapted them from
 [danielep71/K-SFTs](https://github.com/danielep71/K-SFTs), with the target end
-date rule from [danielep71/K-NSFR](https://github.com/danielep71/K-NSFR), both
+date rule from danielep71/K-NSFR, both
 under the Mozilla Public License 2.0:
 
 - `.github/scripts/check_issues.py`
