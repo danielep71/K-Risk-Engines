@@ -81,12 +81,19 @@ available for traceability.
    bring it level as in step 5 if `main` has moved on.
 5. Bring the release branch level with `main` only when needed: before an
    integration (step 4), or before task work that touches files `main` has
-   changed, such as the generated portfolio files. Open a pull request from
-   `main` to the release branch, wait for its checks and review, and merge it
-   with a merge commit. The rulesets refuse a direct push, even a fast-forward,
-   so the release branch gains a merge commit whose files equal `main`; the
-   next integration carries it back without file changes. Never rebase or
-   force-push a shared branch.
+   changed, such as the generated portfolio files. The rulesets refuse a
+   direct push, even a fast-forward, so the update arrives as a pull request
+   merged with a merge commit, after its checks and review:
+   - If the release branch has no commits missing from `main`, open the pull
+     request from `main` itself.
+   - Otherwise, the required check must pass on a head that already contains
+     the release branch, which `main` does not. Create a short-lived branch
+     from the release branch (for example `docs/sync-main`), merge `main` into
+     it, and open the pull request from that branch (as in #157). Updating
+     `main` as the head instead would mean pushing to `main`.
+
+   The next integration carries the merge commit back to `main`. Never rebase
+   or force-push a shared branch.
 
 The daily portfolio refresh is the one routine exception: it proposes dated
 status snapshots as a pull request from `automation/portfolio-refresh`

@@ -19,6 +19,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- `GOVERNANCE.md` step 5 covers a release branch that is ahead of `main`: the
+  synchronization then comes from a short-lived branch that merges `main` into
+  the release branch, since a pull request from `main` itself cannot pass the
+  up-to-date check (#156, #157).
 - The traffic export uses only the GitHub App token: the `TRAFFIC_TOKEN`
   fallback is removed now that the App runs and the personal access token has
   been revoked; `docs/TRAFFIC.md` keeps a short credential history (#94).
