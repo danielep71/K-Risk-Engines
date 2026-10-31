@@ -71,7 +71,8 @@ class PortfolioTests(unittest.TestCase):
 
     def test_only_significant_changes_replace_a_record(self):
         old = {'id': 'one', 'repo': 'owner/repo', 'status': 'Prototype.',
-               'sources': [{'path': 'README.md', 'url': 'https://github.com/owner/repo/blob/a/README.md', 'sha256': 'a'}],
+               'sources': [{'path': 'README.md', 'url': 'https://github.com/owner/repo/blob/a/README.md', 'sha256': 'a'},
+                           {'path': 'docs/evidence.md', 'url': 'https://github.com/owner/repo/blob/a/docs/evidence.md', 'sha256': 'e'}],
                'release': None,
                'milestones': [{'number': 1, 'title': 'v0.1.0', 'state': 'closed', 'open_issues': 0, 'closed_issues': 4,
                                'closed_at': '2026-10-01T00:00:00Z', 'html_url': 'https://github.com/owner/repo/milestone/1'},
@@ -81,6 +82,7 @@ class PortfolioTests(unittest.TestCase):
         counts = json.loads(json.dumps(old))
         counts['milestones'][1].update(open_issues=3, closed_issues=3)
         counts['sources'][0].update(url='https://github.com/owner/repo/blob/b/README.md', sha256='b')
+        counts['sources'][1].update(url='https://github.com/owner/repo/blob/b/docs/evidence.md')
         counts['milestones'].append({'number': 3, 'title': 'v0.3.0', 'state': 'open', 'open_issues': 1,
                                      'closed_issues': 0, 'closed_at': None, 'html_url': 'https://github.com/owner/repo/milestone/3'})
         self.assertFalse(refresh.significant(counts, old))
@@ -94,6 +96,9 @@ class PortfolioTests(unittest.TestCase):
         removed = json.loads(json.dumps(counts))
         removed['milestones'][1].update(html_url=None, removed_on='2026-10-30')
         self.assertTrue(refresh.significant(removed, old))
+        evidence = json.loads(json.dumps(counts))
+        evidence['sources'][1].update(sha256='f')
+        self.assertTrue(refresh.significant(evidence, old))
 
     def test_private_source_is_rejected(self):
         with patch.object(refresh, 'api', return_value={'private': True}):

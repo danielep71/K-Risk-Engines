@@ -61,9 +61,10 @@ quoted statuses or milestone counts; the next run would overwrite them.
   do not reinterpret a failed lookup as “no release” or “no milestone”.
 - A project's record is replaced only by a significant change: its status
   passage, its latest stable release, its last closed milestone, a deleted
-  milestone, its repository name or its configured evidence files. Issue
-  counts, new open milestones and newer source revisions with the same status
-  wait for the next significant change, so they can lag in the generated
+  milestone, its repository name, its configured evidence files or their
+  content. Issue counts, new open milestones and newer source revisions whose
+  status passage and evidence content are unchanged wait for the next
+  significant change, so they can lag in the generated
   files; the source repositories hold the current counts. A run with no
   significant change opens no PR, and no daily timestamp-only commits are made.
   Issue-count changes within a milestone are tracking progress, not model

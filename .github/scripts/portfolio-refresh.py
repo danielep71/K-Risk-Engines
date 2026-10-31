@@ -144,13 +144,15 @@ def latest_closed(milestones):
 
 def significant(new, old):
     # Propose only changes a reader would notice; issue counts and newer source pins ride along with the next one.
+    # Evidence documents count by content; the README counts through its status passage only.
     if old is None:
         return True
 
     def summary(item):
         closed = latest_closed(item['milestones'])
         release = item['release']
-        return (item['repo'], item['status'], [s['path'] for s in item['sources']],
+        sources = [(s['path'], None if s['path'] == 'README.md' else s['sha256']) for s in item['sources']]
+        return (item['repo'], item['status'], sources,
                 release and (release['tag'], release['published_at']),
                 closed and (closed['number'], closed['title'], closed['closed_at']),
                 sorted(m['number'] for m in item['milestones'] if m.get('removed_on')))
