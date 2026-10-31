@@ -47,6 +47,6 @@ reviewed content or a maintainer-authorized exception, follow GOVERNANCE.md. -->
 ## ☑️ Checklist
 
 - [ ] The base follows GOVERNANCE.md: active release branch for tasks and for synchronization from main; main for release integration or portfolio-refresh proposals.
-- [ ] Each linked issue has a milestone and exactly one priority label.
+- [ ] Each linked issue has a milestone and exactly one priority label; the pull request itself carries no milestone.
 - [ ] Portfolio claims match each engine repository's own evidence (GOVERNANCE.md, Portfolio inclusion and status).
 - [ ] No tokens, credentials or confidential data.

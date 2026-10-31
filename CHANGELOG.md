@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- **Keep milestones issue-only**, adapted from K-FRTB-SA through MyTemplate
+  under the MIT License: milestones belong to issues, and the workflow removes
+  any milestone set on a pull request; `GOVERNANCE.md`, the PR template and
+  `NOTICE.md` record the rule and the attribution (#164).
 - List K-LCR, the public Liquidity Coverage Ratio project at the
   repository-setup stage, in a new Liquidity Risk section of the website and
   README, the website description and the portfolio direction (#129).

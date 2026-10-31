@@ -107,8 +107,8 @@ commit, the only method `main` accepts. GitHub then deletes
 `automation/portfolio-refresh`; the next refresh recreates it from `main`, as it
 also does after a proposal is closed without merging.
 A merged proposal does not by itself require synchronizing the release branch
-(step 5). Proposals carry no milestone: they are not release work and are not tracked in the
-release milestone.
+(step 5). Like every pull request, proposals carry no milestone (see Issues and
+decisions).
 
 ### 📦 Release records
 
@@ -205,7 +205,13 @@ Assign hub issues to **danielep71**, give each exactly one priority
 Release work uses a milestone named `vX.Y.Z - <title>`, matching its release
 branch and numbered independently of any engine. Ongoing work outside a
 release uses a descriptive milestone; traffic alerts use **Traffic
-monitoring**.
+monitoring**. Milestones belong to issues only: a pull request carries the
+labels of the work it delivers and no milestone, and the **Keep milestones
+issue-only** workflow
+([.github/workflows/pr-milestones.yml](.github/workflows/pr-milestones.yml))
+removes any milestone set on a pull request. Link each pull request, including
+one opened by Dependabot or another bot, to an issue that carries the
+milestone.
 
 The label catalogue is maintained in
 [.github/labels.json](.github/labels.json). Record the objective and acceptance
