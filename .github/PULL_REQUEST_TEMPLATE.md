@@ -19,7 +19,8 @@ Resolves #
 
 - [ ] `python3 .github/scripts/check-website.py`
 - [ ] `python3 .github/scripts/check-website.py --external` (when external links change)
-- [ ] `python3 -m unittest discover -s .github/scripts -p 'test_*.py'` (when site checks or portfolio automation change)
+- [ ] `python3 -m unittest discover -s .github/scripts -p 'test_*.py'` (when scripts, workflows or portfolio automation change)
+- [ ] `ruff check .github/scripts`, `mypy` and `actionlint` (when scripts or workflows change)
 - [ ] Visual review in a browser (when the website changes)
 
 ## 🔎 Final-head review
@@ -47,6 +48,6 @@ reviewed content or a maintainer-authorized exception, follow GOVERNANCE.md. -->
 ## ☑️ Checklist
 
 - [ ] The base follows GOVERNANCE.md: active release branch for tasks and for synchronization from main; main for release integration or portfolio-refresh proposals.
-- [ ] Each linked issue has a milestone and exactly one priority label.
+- [ ] Each linked issue has a milestone and exactly one priority label; the pull request itself carries no milestone.
 - [ ] Portfolio claims match each engine repository's own evidence (GOVERNANCE.md, Portfolio inclusion and status).
 - [ ] No tokens, credentials or confidential data.

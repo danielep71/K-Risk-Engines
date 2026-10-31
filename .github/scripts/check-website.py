@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Small, dependency-free checks for this static site and its Markdown docs (not a full HTML validator)."""
+from __future__ import annotations
+
 import argparse
-from concurrent.futures import ThreadPoolExecutor
 import html
-from html.parser import HTMLParser
-from pathlib import Path
 import re
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
+from html.parser import HTMLParser
+from pathlib import Path
+from typing import NamedTuple
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -17,49 +20,53 @@ ATTRIBUTE = r'\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s"\'=<>`]+))'
 
 
 class Page(HTMLParser):
-    def __init__(self, path):
+    def __init__(self, path: Path) -> None:
         super().__init__(convert_charrefs=True)
-        self.path, self.stack, self.ids, self.links, self.errors = path, [], set(), [], []
+        self.path = path
+        self.stack: list[str] = []
+        self.ids: set[str] = set()
+        self.links: list[str] = []
+        self.errors: list[str] = []
         self.doctype = self.language = self.title = False
 
-    def handle_decl(self, decl):
+    def handle_decl(self, decl: str) -> None:
         self.doctype |= decl.lower() == 'doctype html'
 
-    def handle_starttag(self, tag, attrs):
-        attrs = dict(attrs)
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = {name: value or '' for name, value in attrs}
         if tag not in VOID:
             self.stack.append(tag)
         if tag == 'html':
-            self.language = bool(attrs.get('lang'))
-        if tag == 'img' and 'alt' not in attrs:
+            self.language = bool(values.get('lang'))
+        if tag == 'img' and 'alt' not in values:
             self.errors.append('Image missing alt attribute')
-        if 'id' in attrs:
-            if attrs['id'] in self.ids:
-                self.errors.append('Duplicate id: ' + attrs['id'])
-            self.ids.add(attrs['id'])
+        if 'id' in values:
+            if values['id'] in self.ids:
+                self.errors.append('Duplicate id: ' + values['id'])
+            self.ids.add(values['id'])
         for attr in ('href', 'src'):
-            if attr in attrs:
-                self.links.append(attrs[attr])
-        if tag == 'meta' and attrs.get('property') == 'og:image':
-            self.links.append(attrs.get('content', ''))
+            if attr in values:
+                self.links.append(values[attr])
+        if tag == 'meta' and values.get('property') == 'og:image':
+            self.links.append(values.get('content', ''))
 
-    def handle_startendtag(self, tag, attrs):
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.handle_starttag(tag, attrs)
         if tag not in VOID:
             self.handle_endtag(tag)
 
-    def handle_endtag(self, tag):
+    def handle_endtag(self, tag: str) -> None:
         if not self.stack or self.stack[-1] != tag:
             self.errors.append('Unexpected closing tag: ' + tag)
         else:
             self.stack.pop()
 
-    def handle_data(self, data):
+    def handle_data(self, data: str) -> None:
         if self.stack and self.stack[-1] == 'title' and data.strip():
             self.title = True
 
 
-def github_slug(heading):
+def github_slug(heading: str) -> str:
     """Anchor GitHub generates for a Markdown heading (before duplicate suffixes)."""
     text = re.sub(r'!?\[([^\]]*)\]\([^)]*\)', r'\1', heading)
     # Decode only complete character references (ending in ';'), as Markdown does.
@@ -68,7 +75,7 @@ def github_slug(heading):
     return re.sub(r'[^\w\- ]', '', text.lower()).replace(' ', '-')
 
 
-def heading_anchor(slug, used):
+def heading_anchor(slug: str, used: dict[str, int]) -> str:
     """Make a heading slug unique the way GitHub does: -1, -2... until unused."""
     anchor = slug
     while anchor in used:
@@ -78,9 +85,9 @@ def heading_anchor(slug, used):
     return anchor
 
 
-def inline_destinations(line):
+def inline_destinations(line: str) -> list[str]:
     """Destinations of [text](destination "title"), allowing <...> and balanced parentheses."""
-    found = []
+    found: list[str] = []
     for match in re.finditer(r'\]\(', line):
         rest = line[match.end():].lstrip()
         if rest.startswith('<'):
@@ -99,9 +106,13 @@ def inline_destinations(line):
     return found
 
 
-def markdown_links(text):
+def markdown_links(text: str) -> tuple[list[str], set[str]]:
     """Return (links, anchors) of a Markdown document, ignoring fenced and inline code."""
-    links, anchors, used, fence, paragraph = [], set(), {}, None, []
+    links: list[str] = []
+    anchors: set[str] = set()
+    used: dict[str, int] = {}
+    fence: str | None = None
+    paragraph: list[str] = []
     for line in text.splitlines():
         match = FENCE.match(line)
         if fence:
@@ -135,7 +146,7 @@ def markdown_links(text):
     return links, anchors
 
 
-def tracked_markdown(root):
+def tracked_markdown(root: Path) -> list[Path]:
     try:
         names = subprocess.run(['git', '-C', str(root), 'ls-files', '-z', '--', '*.md'],
                                capture_output=True, text=True, check=True).stdout.split('\0')
@@ -144,7 +155,7 @@ def tracked_markdown(root):
         return [path for path in root.rglob('*.md') if '.git' not in path.relative_to(root).parts]
 
 
-def check_external(url):
+def check_external(url: str) -> tuple[str, str]:
     # GET follows redirects; HEAD is rejected by some otherwise working sites.
     result = subprocess.run([
         'curl', '--silent', '--show-error', '--location', '--output', '/dev/null',
@@ -160,17 +171,28 @@ def check_external(url):
     return 'PASS', url
 
 
-def check(root=ROOT):
-    """Return (errors, external URLs, HTML page count, Markdown file count, reference count)."""
-    pages, anchors = {}, {}
-    errors, references = [], []
+class Result(NamedTuple):
+    errors: list[str]
+    external: set[str]
+    pages: int
+    markdown: int
+    references: int
+
+
+Anchors = dict[Path, set[str]]
+References = list[tuple[Path, str]]
+
+
+def html_pages(root: Path, anchors: Anchors, errors: list[str], references: References) -> int:
+    """Parse every HTML page outside dot-directories; return the page count."""
+    count = 0
     for path in root.rglob('*.html'):
         if any(part.startswith('.') for part in path.relative_to(root).parts):
             continue
         page = Page(path)
         page.feed(path.read_text(encoding='utf-8'))
         page.close()
-        pages[path.resolve()] = page
+        count += 1
         anchors[path.resolve()] = page.ids
         problems = page.errors[:]
         if page.stack:
@@ -180,6 +202,48 @@ def check(root=ROOT):
                 problems.append('Missing ' + name)
         errors.extend(f'{path.relative_to(root)}: {problem}' for problem in problems)
         references.extend((path, link) for link in page.links)
+    return count
+
+
+def site_error(root: Path, where: Path, link: str) -> str | None:
+    # Pages publishes main only, so check this site's own URLs against the files.
+    target = (root / unquote(urlsplit(link).path)[len(urlsplit(SITE).path):]).resolve()
+    if target.is_dir():
+        target /= 'index.html'
+    if not target.is_relative_to(root.resolve()) or not target.is_file() \
+            or target.stat().st_size == 0:
+        return f'{where}: missing site target {link}'
+    return None
+
+
+def local_error(root: Path, source: Path, link: str, anchors: Anchors) -> str | None:
+    """Check a relative link against the repository files and their anchors."""
+    url = urlsplit(link)
+    where = source.relative_to(root)
+    if url.scheme:
+        return f'{where}: unsupported URL scheme: {link}'
+    if url.path.startswith('/'):
+        return f'{where}: root-relative URL breaks project Pages hosting: {link}'
+    target = (source.parent / unquote(url.path)).resolve() if url.path else source.resolve()
+    if not target.is_relative_to(root.resolve()):
+        return f'{where}: path outside repository: {link}'
+    if target.is_dir() and source.suffix == '.html':
+        target /= 'index.html'
+    if not target.exists():
+        return f'{where}: missing target {link}'
+    if target.is_file() and target.stat().st_size == 0:
+        return f'{where}: empty target {link}'
+    if url.fragment and target in anchors and unquote(url.fragment) not in anchors[target]:
+        return f'{where}: missing anchor {link}'
+    return None
+
+
+def check(root: Path = ROOT) -> Result:
+    """Return (errors, external URLs, HTML page count, Markdown file count, reference count)."""
+    anchors: Anchors = {}
+    errors: list[str] = []
+    references: References = []
+    pages = html_pages(root, anchors, errors, references)
     if not pages:
         errors.append('No HTML pages found')
     markdown = tracked_markdown(root)
@@ -189,46 +253,24 @@ def check(root=ROOT):
     for path in (root / 'assets').rglob('*.css'):
         references.extend((path, link.strip(' \"\'')) for link in
                           re.findall(r'url\(([^)]+)\)', path.read_text(encoding='utf-8')))
-    external = set()
+    external: set[str] = set()
     for source, link in references:
         url = urlsplit(link)
-        where = source.relative_to(root)
         if link.startswith(SITE):
-            # Pages publishes main only, so check this site's own URLs against the files.
-            target = (root / unquote(url.path)[len(urlsplit(SITE).path):]).resolve()
-            if target.is_dir():
-                target /= 'index.html'
-            if not target.is_relative_to(root.resolve()) or not target.is_file() \
-                    or target.stat().st_size == 0:
-                errors.append(f'{where}: missing site target {link}')
-            continue
-        if url.scheme in ('http', 'https') or url.netloc:
+            error = site_error(root, source.relative_to(root), link)
+        elif url.scheme in ('http', 'https') or url.netloc:
             external.add(('https:' + link if link.startswith('//') else link).split('#')[0])
             continue
-        if url.scheme in ('mailto', 'tel', 'data'):
+        elif url.scheme in ('mailto', 'tel', 'data'):
             continue
-        if url.scheme:
-            errors.append(f'{where}: unsupported URL scheme: {link}')
-            continue
-        if url.path.startswith('/'):
-            errors.append(f'{where}: root-relative URL breaks project Pages hosting: {link}')
-            continue
-        target = (source.parent / unquote(url.path)).resolve() if url.path else source.resolve()
-        if not target.is_relative_to(root.resolve()):
-            errors.append(f'{where}: path outside repository: {link}')
-            continue
-        if target.is_dir() and source.suffix == '.html':
-            target /= 'index.html'
-        if not target.exists():
-            errors.append(f'{where}: missing target {link}')
-        elif target.is_file() and target.stat().st_size == 0:
-            errors.append(f'{where}: empty target {link}')
-        elif url.fragment and target in anchors and unquote(url.fragment) not in anchors[target]:
-            errors.append(f'{where}: missing anchor {link}')
-    return errors, external, len(pages), len(markdown), len(references)
+        else:
+            error = local_error(root, source, link, anchors)
+        if error:
+            errors.append(error)
+    return Result(errors, external, pages, len(markdown), len(references))
 
 
-def main(argv=None):
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--external', action='store_true')
     args = parser.parse_args(argv)
@@ -243,7 +285,7 @@ def main(argv=None):
         print('ERROR: ' + error)
     print(f'Checked {pages} HTML page(s), {markdown} Markdown file(s), {references} references; '
           f'{len(errors)} error(s).')
-    return bool(errors)
+    return int(bool(errors))
 
 
 if __name__ == '__main__':
