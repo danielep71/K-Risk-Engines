@@ -36,6 +36,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- `docs/REPOSITORY_SETTINGS.md` records the security features as in
+  MyTemplate (private vulnerability reporting, Dependabot alerts and security
+  updates, secret scanning and push protection) and states that direct pushes
+  stay allowed for the Daily traffic export workflow (#167).
 - The daily traffic export keeps the GitHub App and is restructured after
   MyTemplate: a tested script merges each collection (the newest observation
   of a date wins, a repeated merge changes nothing, and everything is

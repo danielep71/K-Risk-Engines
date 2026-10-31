@@ -26,7 +26,7 @@ authoritative. Copying this file does not apply settings or verify another
 repository. [GOVERNANCE.md](../GOVERNANCE.md) describes how contributors work
 within these settings.
 
-[General differences](#general) · [Custom protection](#rulesets) · [Reuse](#reuse) · [Sources](#sources)
+[General differences](#general) · [Security features](#security) · [Custom protection](#rulesets) · [Reuse](#reuse) · [Sources](#sources)
 
 <a id="general"></a>
 
@@ -45,6 +45,27 @@ Sources: GitHub's [repository REST documentation][repo-api] and
 [Pages publishing source documentation][pages-source]. These values are
 configuration differences, not blanket recommendations for every project.
 
+<a id="security"></a>
+
+## 🔐 Security features — always enabled
+
+Their initial state depends on the account, the repository's visibility and
+any applied security configuration, so they are not classified as differences
+from a default. Each is enabled in the repository's **Settings → Advanced
+Security** (or **Code security**) page where GitHub offers it; no script
+applies or verifies them, so check them there after any settings change.
+
+| Feature | Configured value | Availability / effect |
+| --- | --- | --- |
+| Private vulnerability reporting | **On** | Public repositories only. Adds **Security → Report a vulnerability**, the private channel that [SECURITY.md](../SECURITY.md) names. |
+| Dependabot alerts | **On** | Every repository. Alerts on vulnerable dependencies. |
+| Dependabot security updates | **On** | Every repository; requires Dependabot alerts. Opens pull requests that fix vulnerable dependencies, separately from the scheduled version updates in `.github/dependabot.yml`. |
+| Secret scanning | **On** | Public repositories; private repositories need a paid licence. |
+| Push protection | **On** | Same availability as secret scanning, which it requires. Blocks pushes that contain a detected secret. |
+
+Sources: [private vulnerability reporting][pvr], [Dependabot alerts][dependabot-alerts],
+[Dependabot security updates][dependabot-updates] and [secret scanning][secret-scanning].
+
 <a id="rulesets"></a>
 
 ## 🛡️ Custom active protection
@@ -62,7 +83,7 @@ they enforce nothing.
 | Protect release branches | `refs/heads/release/**` | Require PR, resolved conversations and the same strict required check; allow squash or merge commits; block deletion and force pushes. |
 | Prevent release branch deletion | `refs/heads/release/**` | Independent deletion restriction. |
 | Protect release tags | `refs/tags/v*` | Block updates, deletion and force pushes. |
-| Protect traffic history | `refs/heads/traffic-history` | Block deletion and force pushes; allow the intended data-writing automation. |
+| Protect traffic history | `refs/heads/traffic-history` | Block deletion and force pushes. Direct pushes stay allowed for the Daily traffic export workflow ([docs/TRAFFIC.md](TRAFFIC.md)). |
 
 ### 🔬 Supporting parameters for the two PR rulesets
 
@@ -100,10 +121,10 @@ reports on every relevant PR before adopting these rules.
 - Recheck this comparison after platform-default changes or an approved configuration change.
 
 > [!NOTE]
-> This is intentionally not a complete settings inventory. Security features
-> whose initial state depends on account, visibility or an applied security
-> configuration are not classified as non-default without a verified comparator.
-> Deployment environments and their secrets are configured as described in the
+> This is intentionally not a complete settings inventory. The security
+> features above are recorded as configured values, not as differences from
+> a default, because their initial state depends on account, visibility or an
+> applied security configuration. Deployment environments and their secrets are configured as described in the
 > automation guides. Omission does not mean a feature is disabled or unimportant.
 
 <a id="sources"></a>
@@ -114,12 +135,19 @@ reports on every relevant PR before adopting these rules.
 | --- | --- |
 | [Repository REST API][repo-api] | Declared option defaults and parameter meanings |
 | [Pages publishing source][pages-source] | Publishing from a branch and folder |
+| [Private vulnerability reporting][pvr] | Availability on public repositories and how the setting is enabled |
+| [Dependabot alerts][dependabot-alerts] and [security updates][dependabot-updates] | What the two Dependabot switches do and how they depend on each other |
+| [Secret scanning][secret-scanning] | Availability by visibility and the push protection it enables |
 | [Creating rulesets][ruleset-create] | Custom targets, bypass configuration and activation; the editor initially uses Disabled enforcement |
 | [Available rules][ruleset-rules] | Meaning of selected protection rules, including editor defaults |
 | [Security configuration defaults][security-defaults] | Why organization-applied defaults must be distinguished from a standalone baseline |
 
 [repo-api]: https://docs.github.com/en/rest/repos/repos
 [pages-source]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+[pvr]: https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository
+[dependabot-alerts]: https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-alerts
+[dependabot-updates]: https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-security-updates
+[secret-scanning]: https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning
 [ruleset-create]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository
 [ruleset-rules]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
 [security-defaults]: https://docs.github.com/en/enterprise-cloud@latest/code-security/how-tos/secure-at-scale/configure-enterprise-security/establish-complete-coverage/create-custom-configuration
