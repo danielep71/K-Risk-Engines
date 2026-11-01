@@ -121,3 +121,14 @@ adapted from danielep71/MyTemplate (a private template repository)
 under the Mozilla Public License 2.0. Modifications: this repository's CSV
 layout and badge files, its alert thresholds and labels, and the GitHub App
 credential of the collection job.
+
+<a id="settings-tool"></a>
+
+## 🧰 Settings tool
+
+`.github/scripts/setup_repository.py` and
+`.github/scripts/test_setup_repository.py` were adapted from
+danielep71/MyTemplate (a private template repository) under the Mozilla Public
+License 2.0. Modifications: file locations, the hub's settings file and
+required check, rebase merging as a fifth general option, and the GitHub Pages
+source.

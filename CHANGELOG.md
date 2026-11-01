@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- A settings tool adapted from MyTemplate: `docs/repository-settings.json`
+  records the general options, security features, Pages source and the five
+  rulesets as read from GitHub, and `.github/scripts/setup_repository.py`
+  previews, applies or verifies them (`--check --report`). The maintainer
+  runs it locally with an administrator token; it does not run in CI (#167).
 - **Keep milestones issue-only**, adapted from K-FRTB-SA through MyTemplate
   under the MIT License: milestones belong to issues, and the workflow removes
   any milestone set on a pull request; `GOVERNANCE.md`, the PR template and
