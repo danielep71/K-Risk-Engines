@@ -93,6 +93,24 @@ the earlier Basel rules they replace, without project names.
 It is a method map: it does not certify implemented functionality or the scope
 of K-FRTB-SA or K-CVA.
 
+<a id="irrbb-framework"></a>
+
+### 🏦 Interest rate risk in the banking book
+
+Interest rate risk in the banking book is a Pillar 2 risk, without a Pillar 1
+capital requirement. [K-IRRBB NMDs](https://github.com/danielep71/K-IRRBB-NMDs)
+and [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models)
+address the behavioural assumptions, non-maturity deposits and loan
+prepayments, that feed the economic value and earnings measures and the
+supervisory outlier tests.
+
+[![Interest rate risk in the banking book from behavioural cash flows to supervisory measures: behavioural assumptions, economic value and earnings measures, and the supervisory outlier tests](assets/IRRBB_framework.svg)](assets/IRRBB_framework.svg)
+
+[Editable SVG](assets/IRRBB_framework.svg) · [High-resolution PNG](assets/IRRBB_framework.png)
+
+It is a method map: it does not certify implemented functionality or the scope
+of K-IRRBB NMDs or K-IRRBB Prepayment Models.
+
 <a id="liquidity-risk"></a>
 
 ### 💧 Liquidity risk
@@ -106,6 +124,13 @@ Stable Funding Ratio, which compares available with required stable funding
 over a one-year horizon, starting with the EU CRR standard profile. Their
 current status is in the portfolio table above.
 
+[![Liquidity risk as two minimum ratios: the Liquidity Coverage Ratio over a 30-day stress and the Net Stable Funding Ratio over one year, with the main Basel factors and the EU differences](assets/Liquidity_framework.svg)](assets/Liquidity_framework.svg)
+
+[Editable SVG](assets/Liquidity_framework.svg) · [High-resolution PNG](assets/Liquidity_framework.png)
+
+It is a method map: it does not certify implemented functionality or the scope
+of K-LCR or K-NSFR.
+
 ## 🌐 Website
 
 Project websites: [K-SACCR](https://danielep71.github.io/K-SACCR/) ·
@@ -115,8 +140,8 @@ Project websites: [K-SACCR](https://danielep71.github.io/K-SACCR/) ·
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).
 It presents the portfolio by risk category (Counterparty Credit Risk, Market
-Risk, IRRBB and Liquidity Risk), with the counterparty credit risk and market
-risk framework diagrams and a status card for each project. A card links only
+Risk, IRRBB and Liquidity Risk), with a framework diagram for each category
+and a status card for each project. A card links only
 to the project's website where it has one (K-SACCR, K-SFTs, K-FRTB-SA, K-LCR),
 otherwise to its repository and documentation; detailed documentation and
 diagrams stay in each project's repository. Serving it
