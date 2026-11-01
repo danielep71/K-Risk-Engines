@@ -20,7 +20,7 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 ## 🖼️ Portfolio artwork exclusion
 
-`assets/K-Risk-Engines-social-preview-v2.jpg` is an AI-generated decorative portfolio
+`assets/K-Risk-Engines-social-preview-v3.jpg` is an AI-generated decorative portfolio
 image and is excluded from the MPL-2.0 grant. No separate reuse licence is
 granted for this image by this repository. Contact the maintainer before
 reusing it. This exclusion does not apply to `assets/site.css` or asset
