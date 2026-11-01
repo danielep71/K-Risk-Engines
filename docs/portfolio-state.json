@@ -485,5 +485,34 @@
         "url": "https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/docs/DECISIONS.md"
       }
     ]
+  },
+  {
+    "id": "nsfr",
+    "repo": "danielep71/K-NSFR",
+    "status": "Repository setup (v0.1.0). No NSFR calculation engine, workbook or validated regulatory profile exists yet. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Repo setup",
+        "state": "open",
+        "open_issues": 17,
+        "closed_issues": 33,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-NSFR/milestone/1"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "82a96f51f8b41451a23cc11719701be30c96e762c85de202e61cefa60810d6e3",
+        "url": "https://github.com/danielep71/K-NSFR/blob/46db6f9e1cb404f99aa618af77351c8a8b9365c2/README.md"
+      },
+      {
+        "path": "docs/DECISIONS.md",
+        "sha256": "8c52d399e82e7b72542c3dbc0f631ca125e73a0f6abadc46a8dfa7b4cb30b2a6",
+        "url": "https://github.com/danielep71/K-NSFR/blob/46db6f9e1cb404f99aa618af77351c8a8b9365c2/docs/DECISIONS.md"
+      }
+    ]
   }
 ]
