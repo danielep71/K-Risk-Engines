@@ -23,10 +23,12 @@ creating and activating that targeted ruleset is still a customization.
 
 Reference documentation checked: **2026-10-29**. GitHub's live settings remain
 authoritative. Copying this file does not apply settings or verify another
-repository. [GOVERNANCE.md](../GOVERNANCE.md) describes how contributors work
+repository; [docs/repository-settings.json](repository-settings.json) and the
+tool described under [Applying and verifying](#apply) do.
+[GOVERNANCE.md](../GOVERNANCE.md) describes how contributors work
 within these settings.
 
-[General differences](#general) · [Security features](#security) · [Custom protection](#rulesets) · [Reuse](#reuse) · [Sources](#sources)
+[General differences](#general) · [Security features](#security) · [Custom protection](#rulesets) · [Apply and verify](#apply) · [Reuse](#reuse) · [Sources](#sources)
 
 <a id="general"></a>
 
@@ -52,8 +54,8 @@ configuration differences, not blanket recommendations for every project.
 Their initial state depends on the account, the repository's visibility and
 any applied security configuration, so they are not classified as differences
 from a default. Each is enabled in the repository's **Settings → Advanced
-Security** (or **Code security**) page where GitHub offers it; no script
-applies or verifies them, so check them there after any settings change.
+Security** (or **Code security**) page where GitHub offers it, and the
+settings tool below verifies them.
 
 | Feature | Configured value | Availability / effect |
 | --- | --- | --- |
@@ -110,11 +112,38 @@ The check name and branch patterns are reusable conventions, not built-in
 GitHub jobs or automatically existing branches. Confirm that the required job
 reports on every relevant PR before adopting these rules.
 
+<a id="apply"></a>
+
+## 🧰 Applying and verifying
+
+[docs/repository-settings.json](repository-settings.json) holds the general
+options above, the five security features, the GitHub Pages source and the
+five rulesets with their full parameters. Its rulesets were read from GitHub on
+2026-11-01. [.github/scripts/setup_repository.py](../.github/scripts/setup_repository.py)
+compares the repository with that file through the GitHub CLI:
+
+```sh
+# Read-only: exit 1 on drift, and write a dated evidence record.
+python3 .github/scripts/setup_repository.py --repo OWNER/REPO --check --report settings-evidence.md
+# Preview, then apply the differences and read them back.
+python3 .github/scripts/setup_repository.py --repo OWNER/REPO
+python3 .github/scripts/setup_repository.py --repo OWNER/REPO --apply
+```
+
+The maintainer runs it locally after each settings change. It needs an account
+or fine-grained token with **Administration** access, so it never runs in CI,
+where the workflow token cannot read or change these settings. It never
+deletes a ruleset: rulesets outside the file, such as disabled ones, are named
+in a note and left in place. A differing named ruleset is replaced only with
+`--update-existing`. Keep the evidence record out of the repository unless it
+is wanted as a dated record; it contains the repository name and ruleset IDs.
+
 <a id="reuse"></a>
 
 ## ♻️ Reuse and maintenance
 
-- Keep repository names, usernames, URLs, issue numbers and rule IDs out of this file.
+- Keep repository names, usernames, URLs, issue numbers and rule IDs out of this file
+  and out of `repository-settings.json`.
 - Verify the destination's actual default and inherited policies before copying a value.
 - Include a setting only when both its configured value and comparison default are known.
 - Remove rows that match the destination's default; retain only its actual differences.
@@ -124,8 +153,9 @@ reports on every relevant PR before adopting these rules.
 > This is intentionally not a complete settings inventory. The security
 > features above are recorded as configured values, not as differences from
 > a default, because their initial state depends on account, visibility or an
-> applied security configuration. Deployment environments and their secrets are configured as described in the
-> automation guides. Omission does not mean a feature is disabled or unimportant.
+> applied security configuration. Deployment environments and their secrets
+> are configured as described in the automation guides and are outside the
+> settings tool. Omission does not mean a feature is disabled or unimportant.
 
 <a id="sources"></a>
 
