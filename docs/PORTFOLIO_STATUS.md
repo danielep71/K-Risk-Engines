@@ -138,3 +138,18 @@ Repository setup. There is no LCR calculation engine, validated workbook, Excel 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 49 closed / 18 open issues.
+
+<a id="nsfr"></a>
+## 🧩 K-NSFR
+
+Repository setup (v0.1.0). No NSFR calculation engine, workbook or validated regulatory profile exists yet. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.
+
+### 🔗 Sources
+
+- [README.md](https://github.com/danielep71/K-NSFR/blob/46db6f9e1cb404f99aa618af77351c8a8b9365c2/README.md) — content SHA-256 `82a96f51f8b41451a23cc11719701be30c96e762c85de202e61cefa60810d6e3`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/46db6f9e1cb404f99aa618af77351c8a8b9365c2/docs/DECISIONS.md) — content SHA-256 `8c52d399e82e7b72542c3dbc0f631ca125e73a0f6abadc46a8dfa7b4cb30b2a6`
+- No published stable release (drafts and prereleases excluded).
+
+### 🏁 Milestones (tracking only)
+
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 33 closed / 17 open issues.
