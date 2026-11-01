@@ -10,7 +10,7 @@
 
 Project-specific diagrams (usage, aggregation) live in each engine's repository; the hub shows only the two framework diagrams.
 
-The current artwork identifies six portfolio projects without making implementation or validation claims. It predates K-LCR, which it does not show. Refer to the project status table for current maturity.
+The current artwork identifies six portfolio projects without making implementation or validation claims. It predates K-LCR and K-NSFR, which it does not show. Refer to the project status table for current maturity.
 
 To set GitHub's repository social preview, upload `K-Risk-Engines-social-preview-v2.jpg` under repository Settings → General → Social preview. Website Open Graph metadata is configured separately in `index.html`.
 

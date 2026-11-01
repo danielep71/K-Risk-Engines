@@ -69,6 +69,16 @@
       "evidence": [
         "docs/DECISIONS.md"
       ]
+    },
+    {
+      "id": "nsfr",
+      "repo": "danielep71/K-NSFR",
+      "name": "K-NSFR",
+      "purpose": "Net Stable Funding Ratio (EU CRR standard profile)",
+      "selector": "important",
+      "evidence": [
+        "docs/DECISIONS.md"
+      ]
     }
   ]
 }
