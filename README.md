@@ -31,7 +31,7 @@ A single entry point to independent financial risk models and calculation engine
 
 <br>
 
-![K-Risk Engines: K-SACCR, K-SFTs, K-CVA, K-FRTB-SA, K-IRRBB NMDs and Prepayment](assets/K-Risk-Engines-social-preview-v2.jpg)
+![K-Risk Engines: K-SACCR, K-SFTs, K-FRTB-SA, K-CVA, K-IRRBB NMDs, K-IRRBB Prepayment, K-LCR and K-NSFR](assets/K-Risk-Engines-social-preview-v3.jpg)
 
 </div>
 
@@ -195,6 +195,6 @@ independent personal project.
 ## 📄 License
 
 [Mozilla Public License 2.0](LICENSE) for the hub's code and documentation.
-The portfolio artwork (`assets/K-Risk-Engines-social-preview-v2.jpg`) is
+The portfolio artwork (`assets/K-Risk-Engines-social-preview-v3.jpg`) is
 excluded; no separate reuse licence is granted for it. See [licensing and attribution](NOTICE.md).
 Each linked engine is licensed separately in its own repository.
