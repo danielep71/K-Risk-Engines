@@ -49,6 +49,7 @@ A single entry point to independent financial risk models and calculation engine
 | [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: working prototype, not a validated method. Latest published release: v0.2.0. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2) (2026-10-30) |
 | [K-CVA](https://github.com/danielep71/K-CVA) | Regulatory CVA risk capital (BA-CVA, then SA-CVA) | Repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#cva) | None recorded |
 | [K-LCR](https://github.com/danielep71/K-LCR) | Liquidity Coverage Ratio (EU and Basel profiles) | Repository setup. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#lcr) | None recorded |
+| [K-NSFR](https://github.com/danielep71/K-NSFR) | Net Stable Funding Ratio (EU CRR standard profile) | Repository setup (v0.1.0). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#nsfr) | None recorded |
 <!-- portfolio:table:end -->
 
 The table and [full evidence report](docs/PORTFOLIO_STATUS.md) are generated
