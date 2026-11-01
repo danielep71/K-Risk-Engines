@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- List K-NSFR, the public Net Stable Funding Ratio project at the
+  repository-setup stage, in the Liquidity Risk section of the website and
+  README, the website description, the portfolio direction, the issue
+  chooser and the daily portfolio refresh. Its card links the repository,
+  since it has no project website yet (#179).
 - A settings tool adapted from MyTemplate: `docs/repository-settings.json`
   records the general options, security features, Pages source and the five
   rulesets as read from GitHub, and `.github/scripts/setup_repository.py`
