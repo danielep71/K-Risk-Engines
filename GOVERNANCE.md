@@ -61,7 +61,7 @@ available for traceability.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Changes arrive only through pull requests merged with a merge commit: integrations of the active release branch and automated portfolio-status proposals (below). |
-| `release/1.0.1` | **Active release branch**, currently used as the maintenance queue (see Release records). Base for task branches and task pull requests; integration PRs target `main`. |
+| `release/1.0.1` | **Active release branch** and permanent maintenance queue; v1.0.1 will not be published (see Release records). Base for task branches and task pull requests; integration PRs target `main`. |
 | `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
@@ -112,11 +112,13 @@ decisions).
 
 ### 📦 Release records
 
-The current **v1.0.1 - Hub maintenance and security** milestone is an open
-maintenance work queue. Its name and the `release/1.0.1` branch do not imply
-that another release must be created. Keep maintenance follow-ups there;
-publication happens only on an explicit maintainer decision. The procedure
-below applies if a release is requested.
+The **v1.0.1 - Hub maintenance and security** milestone and the
+`release/1.0.1` branch are a permanent maintenance queue: v1.0.1 will not be
+published, and both stay open indefinitely. Keep maintenance follow-ups there.
+Because every milestone has a due date and issue triage requires target end
+dates before it, move the milestone's due date forward before it approaches,
+for example once a year. Another release happens only on an explicit
+decision, through a new release branch; the procedure below applies then.
 
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in
