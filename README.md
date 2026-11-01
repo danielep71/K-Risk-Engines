@@ -100,7 +100,10 @@ Liquidity risk is the risk that a bank cannot meet its obligations as they fall
 due. [K-LCR](https://github.com/danielep71/K-LCR) addresses the Liquidity
 Coverage Ratio, which compares the stock of high-quality liquid assets with the
 net cash outflows of a 30-day stress period, under separate EU and Basel
-profiles. Its current status is in the portfolio table above.
+profiles. [K-NSFR](https://github.com/danielep71/K-NSFR) addresses the Net
+Stable Funding Ratio, which compares available with required stable funding
+over a one-year horizon, starting with the EU CRR standard profile. Their
+current status is in the portfolio table above.
 
 ## 🌐 Website
 
@@ -179,7 +182,7 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 ## 🗺️ Portfolio direction
 
-Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA and K-LCR are the newest public projects. Detailed milestones remain in each model repository.
+Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA, K-LCR and K-NSFR are the newest public projects. Detailed milestones remain in each model repository.
 
 ---
 
