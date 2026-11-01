@@ -55,6 +55,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- GOVERNANCE.md records that v1.0.1 will not be published: its milestone and
+  `release/1.0.1` stay open indefinitely as the maintenance queue, and the
+  milestone's due date is moved forward before it approaches, since issue
+  triage needs target end dates before it (#190).
 - `docs/REPOSITORY_SETTINGS.md` records the security features as in
   MyTemplate (private vulnerability reporting, Dependabot alerts and security
   updates, secret scanning and push protection) and states that direct pushes
