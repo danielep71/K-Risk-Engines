@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1300" viewBox="0 0 1600 1300" role="img" aria-labelledby="title desc" font-family="Inter, &#x27;Segoe UI&#x27;, &#x27;Helvetica Neue&#x27;, Arial, &#x27;DejaVu Sans&#x27;, sans-serif">
+<title id="title">Liquidity risk: the Liquidity Coverage Ratio and the Net Stable Funding Ratio</title>
+<desc id="desc">The LCR compares the stock of high-quality liquid assets with net cash outflows over a 30-day stress, with inflows capped at 75% of outflows. The NSFR compares available with required stable funding over one year. Both must be at least 100%.</desc>
+<rect width="1600" height="1300" fill="#FFFFFF"/>
+<text x="800.0" y="54" font-size="34" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">LIQUIDITY RISK</text>
+<text x="800.0" y="92" font-size="24" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="22" data-hi="1578">Two minimum ratios: a 30-day stress and stable funding over one year</text>
+<text x="800.0" y="120" font-size="17" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">Each ratio must be at least 100%</text>
+<rect x="354.35" y="136" width="70" height="28" rx="14" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="1.5"/>
+<text x="389.35" y="155" font-size="14.5" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="354.35" data-hi="424.35">HQLA</text>
+<text x="434.35" y="155" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-lo="354.35" data-hi="682.95">high-quality liquid assets</text>
+<rect x="690.95" y="136" width="54" height="28" rx="14" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="1.5"/>
+<text x="717.95" y="155" font-size="14.5" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="690.95" data-hi="744.95">ASF</text>
+<text x="754.95" y="155" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-lo="690.95" data-hi="987.35">available stable funding</text>
+<rect x="995.35" y="136" width="54" height="28" rx="14" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="1.5"/>
+<text x="1022.35" y="155" font-size="14.5" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="995.35" data-hi="1049.35">RSF</text>
+<text x="1059.35" y="155" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-lo="995.35" data-hi="1283.65">required stable funding</text>
+<rect x="22" y="182" width="1556" height="38" rx="4" fill="#1F4E8C"/>
+<rect x="22" y="182" width="46" height="38" rx="4" fill="#0B2A5B"/>
+<text x="45" y="208" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="84" y="208" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="start" data-hi="1186.4">LIQUIDITY COVERAGE RATIO (LCR) — survive a 30-day stress</text>
+<text x="1560" y="207" font-size="15" font-weight="normal" font-style="italic" fill="#DCE7F5" text-anchor="end" data-lo="752.0">Basel LCR30–40; EU Delegated Reg. (EU) 2015/61</text>
+<rect x="30" y="234" width="486" height="200" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="48" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="446.0">STOCK OF HQLA</text>
+<text x="498" y="268" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="48">LCR30</text>
+<text x="48" y="302" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="500" data-bottom="426">Unencumbered assets, liquid in a stress</text>
+<text x="48" y="328" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="500" data-bottom="426">Level 1, no haircut: cash, central bank</text>
+<text x="48" y="354" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="500" data-bottom="426">reserves, 0% risk-weight sovereigns</text>
+<text x="48" y="380" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="500" data-bottom="426">Level 2A: 15% haircut; Level 2B: 25–50%</text>
+<text x="48" y="406" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="500" data-bottom="426">Caps: Level 2 ≤ 40%, Level 2B ≤ 15%</text>
+<rect x="556" y="234" width="486" height="200" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="574" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="972.0">CASH OUTFLOWS</text>
+<text x="1024" y="268" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="574">LCR40</text>
+<text x="574" y="302" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1026" data-bottom="426">Balances × run-off rates over 30 days</text>
+<text x="574" y="328" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1026" data-bottom="426">Stable retail deposits 5%; less stable ≥ 10%</text>
+<text x="574" y="354" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1026" data-bottom="426">Operational deposits 25%; non-financial</text>
+<text x="574" y="380" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1026" data-bottom="426">corporates 40%; financial institutions 100%</text>
+<text x="574" y="406" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1026" data-bottom="426">Drawdowns of committed facilities</text>
+<rect x="1082" y="234" width="486" height="200" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="1100" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1498.0">CASH INFLOWS</text>
+<text x="1550" y="268" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="1100">LCR40</text>
+<text x="1100" y="302" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1552" data-bottom="426">Contractual inflows within 30 days</text>
+<text x="1100" y="328" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1552" data-bottom="426">from performing exposures</text>
+<text x="1100" y="354" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1552" data-bottom="426">No inflows from assets in the HQLA stock</text>
+<text x="1100" y="380" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1552" data-bottom="426">Capped at 75% of total outflows</text>
+<circle cx="536.0" cy="334" r="15" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="2"/>
+<text x="536.0" y="341" font-size="21" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle">÷</text>
+<circle cx="1062.0" cy="334" r="15" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="2"/>
+<text x="1062.0" y="341" font-size="21" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle">−</text>
+<text x="800.0" y="476" font-size="26" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">LCR = stock of HQLA ÷ (outflows − min(inflows, 75% × outflows)) ≥ 100%</text>
+<text x="800.0" y="508" font-size="18" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="22" data-hi="1578">In a period of stress, banks may use their HQLA and fall below 100%</text>
+<text x="30" y="540" font-size="15.5" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="start" data-hi="1570">EU profile: extremely high quality covered bonds in Level 1 with a 7% haircut, more detailed retail deposit categories and exemptions from the inflow cap.</text>
+<rect x="22" y="568" width="1556" height="38" rx="4" fill="#1F4E8C"/>
+<rect x="22" y="568" width="46" height="38" rx="4" fill="#0B2A5B"/>
+<text x="45" y="594" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="84" y="594" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="start" data-hi="1270.0">NET STABLE FUNDING RATIO (NSFR) — fund long-term assets stably</text>
+<text x="1560" y="593" font-size="15" font-weight="normal" font-style="italic" fill="#DCE7F5" text-anchor="end" data-lo="821.0">Basel NSF30; EU CRR Art. 428a–428az</text>
+<rect x="30" y="620" width="750" height="230" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="48" y="656" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="710.0">AVAILABLE STABLE FUNDING (ASF)</text>
+<text x="762" y="654" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="48">NSF30</text>
+<text x="48" y="690" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="764" data-bottom="842">Capital and liabilities × ASF factor, by maturity and counterparty</text>
+<text x="48" y="716" font-size="16.5" fill="#2B3A4E" data-hi="764" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">100%:</tspan> regulatory capital; other liabilities of one year or more</text>
+<text x="48" y="742" font-size="16.5" fill="#2B3A4E" data-hi="764" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">95% / 90%:</tspan> stable / less stable retail and small business deposits</text>
+<text x="48" y="768" font-size="16.5" fill="#2B3A4E" data-hi="764" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">50%:</tspan> non-financial corporate funding under one year;</text>
+<text x="48" y="794" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="764" data-bottom="842">operational deposits</text>
+<text x="48" y="820" font-size="16.5" fill="#2B3A4E" data-hi="764" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">0%:</tspan> other funding, incl. financials under six months</text>
+<rect x="820" y="620" width="750" height="230" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="838" y="656" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1500.0">REQUIRED STABLE FUNDING (RSF)</text>
+<text x="1552" y="654" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="838">NSF30</text>
+<text x="838" y="690" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="842">Assets and off-balance-sheet items × RSF factor, by liquidity</text>
+<text x="838" y="716" font-size="16.5" fill="#2B3A4E" data-hi="1554" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">0%:</tspan> cash, central bank reserves;  5%: Level 1;  15%: Level 2A</text>
+<text x="838" y="742" font-size="16.5" fill="#2B3A4E" data-hi="1554" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">50%:</tspan> Level 2B; loans to non-financial customers under one year</text>
+<text x="838" y="768" font-size="16.5" fill="#2B3A4E" data-hi="1554" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">65%:</tspan> residential mortgages ≥ 1 year with risk weight ≤ 35%</text>
+<text x="838" y="794" font-size="16.5" fill="#2B3A4E" data-hi="1554" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">85%:</tspan> other performing loans ≥ 1 year;  100%: other assets</text>
+<text x="838" y="820" font-size="16.5" fill="#2B3A4E" data-hi="1554" data-bottom="842"><tspan font-weight="bold" fill="#0B2A5B">Derivatives:</tspan> net assets, plus 5–20% of gross derivative liabilities</text>
+<circle cx="800" cy="735" r="15" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="2"/>
+<text x="800" y="742" font-size="21" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle">÷</text>
+<text x="800.0" y="892" font-size="26" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">NSFR = available stable funding ÷ required stable funding ≥ 100%</text>
+<text x="30" y="926" font-size="15.5" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="start" data-hi="1570">EU profile (CRR Part Six, Title IV): for example 0% RSF for most Level 1 assets, 5% of gross derivative liabilities, and a simplified NSFR for small and non-complex institutions.</text>
+<rect x="22" y="954" width="1556" height="38" rx="4" fill="#1F4E8C"/>
+<rect x="22" y="954" width="46" height="38" rx="4" fill="#0B2A5B"/>
+<text x="45" y="980" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="84" y="980" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="start" data-hi="1338.4">TWO COMPLEMENTARY MINIMUM REQUIREMENTS</text>
+<text x="1560" y="979" font-size="15" font-weight="normal" font-style="italic" fill="#DCE7F5" text-anchor="end" data-lo="545.0">neither replaces the other</text>
+<text x="800.0" y="1040" font-size="26" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">LCR ≥ 100% and NSFR ≥ 100%</text>
+<text x="800.0" y="1074" font-size="18" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="22" data-hi="1578">The LCR covers a 30-day stress; the NSFR limits maturity transformation over one year (CRR Art. 412 and 413)</text>
+<rect x="22" y="1100" width="1556" height="130" rx="6" fill="#FFF7EF" stroke="#E07B26" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="40" y="1134" font-size="20" font-weight="bold" font-style="normal" fill="#C2500A" text-anchor="start" data-hi="1560">NOT DRAWN — liquidity risk beyond the two ratios</text>
+<text x="40" y="1166" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">The internal liquidity adequacy assessment (ILAAP) and Pillar 2 liquidity requirements; intraday liquidity; the Basel monitoring tools</text>
+<text x="40" y="1191" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">(contractual maturity mismatch, funding concentration, available unencumbered assets, LCR by significant currency) and the EU</text>
+<text x="40" y="1216" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">additional liquidity monitoring metrics.</text>
+<text x="24" y="1260" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">Method map: does not certify implemented functionality or the scope of K-LCR or K-NSFR. Minimum standards; national options and discretions excluded.</text>
+<text x="24" y="1282" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">References: BCBS, Basel III: the Liquidity Coverage Ratio (2013) and the net stable funding ratio (2014), now Basel LCR, NSF and SRP50; CRR Art. 411–428az; Delegated Reg. (EU) 2015/61.</text>
+</svg>

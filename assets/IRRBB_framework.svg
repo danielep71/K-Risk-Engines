@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1330" viewBox="0 0 1600 1330" role="img" aria-labelledby="title desc" font-family="Inter, &#x27;Segoe UI&#x27;, &#x27;Helvetica Neue&#x27;, Arial, &#x27;DejaVu Sans&#x27;, sans-serif">
+<title id="title">Interest rate risk in the banking book: from behavioural cash flows to supervisory measures</title>
+<desc id="desc">Behavioural assumptions for non-maturity deposits and loan prepayments feed the economic value and earnings measures under interest rate shocks, which the supervisory outlier tests compare with Tier 1 capital. IRRBB is a Pillar 2 risk without a Pillar 1 capital requirement.</desc>
+<rect width="1600" height="1330" fill="#FFFFFF"/>
+<text x="800.0" y="54" font-size="34" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">INTEREST RATE RISK IN THE BANKING BOOK</text>
+<text x="800.0" y="92" font-size="24" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="22" data-hi="1578">From behavioural cash flows to supervisory measures</text>
+<text x="800.0" y="120" font-size="17" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">A Pillar 2 risk: no Pillar 1 own funds requirement</text>
+<rect x="293.65000000000003" y="136" width="70" height="28" rx="14" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="1.5"/>
+<text x="328.65000000000003" y="155" font-size="14.5" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="293.65000000000003" data-hi="363.65000000000003">ΔEVE</text>
+<text x="373.65000000000003" y="155" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-lo="293.65000000000003" data-hi="687.05">change in economic value of equity</text>
+<rect x="695.05" y="136" width="62" height="28" rx="14" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="1.5"/>
+<text x="726.05" y="155" font-size="14.5" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="695.05" data-hi="757.05">ΔNII</text>
+<text x="767.05" y="155" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-lo="695.05" data-hi="1039.9499999999998">change in net interest income</text>
+<rect x="1047.9499999999998" y="136" width="54" height="28" rx="14" fill="#FFFFFF" stroke="#1F5AA6" stroke-width="1.5"/>
+<text x="1074.9499999999998" y="155" font-size="14.5" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="1047.9499999999998" data-hi="1101.9499999999998">SOT</text>
+<text x="1111.9499999999998" y="155" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-lo="1047.9499999999998" data-hi="1344.35">supervisory outlier test</text>
+<rect x="22" y="182" width="1556" height="38" rx="4" fill="#1F4E8C"/>
+<rect x="22" y="182" width="46" height="38" rx="4" fill="#0B2A5B"/>
+<text x="45" y="208" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="84" y="208" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="start" data-hi="1254.8">BEHAVIOURAL ASSUMPTIONS — the modelling inputs</text>
+<text x="1560" y="207" font-size="15" font-weight="normal" font-style="italic" fill="#DCE7F5" text-anchor="end" data-lo="637.0">where the two K-IRRBB projects belong</text>
+<rect x="30" y="234" width="760" height="256" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="48" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="604.8">K-IRRBB NMDs | NON-MATURITY DEPOSITS</text>
+<text x="772" y="268" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="48">SRP31; EBA/GL/2022/14</text>
+<text x="48" y="300" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="445">No contractual repricing date: the bank sets the customer rate</text>
+<text x="48" y="326" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="445">Behavioural model: rate pass-through, stable balances and decay</text>
+<text x="48" y="352" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="445">Basel standardised framework: the stable core may reprice beyond</text>
+<text x="48" y="378" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="445">overnight, within caps on core share and average maturity:</text>
+<text x="48" y="404" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="445">retail transactional 90%, 5 years; retail non-transactional 70%,</text>
+<text x="48" y="430" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="445">4.5 years; wholesale 50%, 4 years</text>
+<text x="48" y="470" font-size="13.5" font-weight="bold" font-style="normal" fill="#5B6B80" text-anchor="start">Output</text>
+<rect x="112" y="451" width="255.0" height="28" rx="14" fill="#1F4E8C"/>
+<text x="239.5" y="470" font-size="14.5" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle" data-lo="118" data-hi="361.0">Deposit repricing profile</text>
+<rect x="810" y="234" width="760" height="256" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="828" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1384.8">K-IRRBB PREPAYMENT | LOANS</text>
+<text x="1552" y="268" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="828">SRP31; EBA/GL/2022/14</text>
+<text x="828" y="300" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">Borrowers repay fixed-rate loans early, mostly when rates fall</text>
+<text x="828" y="326" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">Behavioural model: conditional prepayment rate (CPR), driven by</text>
+<text x="828" y="352" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">the refinancing incentive, loan age and seasonality</text>
+<text x="828" y="378" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">Basel standardised framework: a baseline CPR scaled by a multiplier</text>
+<text x="828" y="404" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">per shock scenario, so that prepayments rise as rates fall</text>
+<text x="828" y="470" font-size="13.5" font-weight="bold" font-style="normal" fill="#5B6B80" text-anchor="start">Output</text>
+<rect x="892" y="451" width="246.39999999999998" height="28" rx="14" fill="#1F4E8C"/>
+<text x="1015.2" y="470" font-size="14.5" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle" data-lo="898" data-hi="1132.4">Expected loan cash flows</text>
+<line x1="410" y1="490" x2="410" y2="500" stroke="#1F4E8C" stroke-width="3"/>
+<polygon points="417.0,500.0 403.0,500.0 410.0,512.0" fill="#1F4E8C"/>
+<line x1="1190" y1="490" x2="1190" y2="500" stroke="#1F4E8C" stroke-width="3"/>
+<polygon points="1197.0,500.0 1183.0,500.0 1190.0,512.0" fill="#1F4E8C"/>
+<rect x="22" y="512" width="1556" height="38" rx="4" fill="#1F4E8C"/>
+<rect x="22" y="512" width="46" height="38" rx="4" fill="#0B2A5B"/>
+<text x="45" y="538" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="84" y="538" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="start" data-hi="1330.8">MEASURE — both inputs feed both views under rate shocks</text>
+<text x="1560" y="537" font-size="15" font-weight="normal" font-style="italic" fill="#DCE7F5" text-anchor="end" data-lo="740.5">economic value and earnings</text>
+<line x1="410" y1="554" x2="310.5347468749726" y2="608.2537744318331" stroke="#1F5AA6" stroke-width="2.5"/>
+<polygon points="307.2,602.1 313.9,614.4 300.0,614.0" fill="#1F5AA6"/>
+<line x1="410" y1="554" x2="1058.0492815223874" y2="612.9135710474898" stroke="#1F5AA6" stroke-width="2.5"/>
+<polygon points="1057.4,619.9 1058.7,605.9 1070.0,614.0" fill="#1F5AA6"/>
+<line x1="1190" y1="554" x2="541.9507184776124" y2="612.9135710474898" stroke="#1F5AA6" stroke-width="2.5"/>
+<polygon points="541.3,605.9 542.6,619.9 530.0,614.0" fill="#1F5AA6"/>
+<line x1="1190" y1="554" x2="1289.4652531250274" y2="608.2537744318331" stroke="#1F5AA6" stroke-width="2.5"/>
+<polygon points="1286.1,614.4 1292.8,602.1 1300.0,614.0" fill="#1F5AA6"/>
+<rect x="30" y="618" width="760" height="200" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="48" y="654" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="604.8">ECONOMIC VALUE | ΔEVE</text>
+<text x="772" y="652" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="48">SRP31; CRD Art. 98(5)</text>
+<text x="48" y="686" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="773">Change in the present value of banking-book cash flows</text>
+<text x="48" y="712" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="773">Run-off balance sheet; own equity excluded</text>
+<text x="48" y="738" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="773">Six scenarios: parallel up and down, steepener, flattener,</text>
+<text x="48" y="764" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="773">short rate up and short rate down</text>
+<text x="48" y="798" font-size="13.5" font-weight="bold" font-style="normal" fill="#5B6B80" text-anchor="start">Output</text>
+<rect x="112" y="779" width="186.2" height="28" rx="14" fill="#1F4E8C"/>
+<text x="205.1" y="798" font-size="14.5" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle" data-lo="118" data-hi="292.2">ΔEVE per scenario</text>
+<rect x="810" y="618" width="760" height="200" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="828" y="654" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1384.8">EARNINGS | ΔNII</text>
+<text x="1552" y="652" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="828">SRP31; CRD Art. 98(5)</text>
+<text x="828" y="686" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="773">Change in net interest income over the next 12 months</text>
+<text x="828" y="712" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="773">Constant balance sheet: maturing positions are replaced</text>
+<text x="828" y="738" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="773">Two scenarios: parallel up and parallel down</text>
+<text x="828" y="764" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="773">Shorter-term view: earnings sensitivity to repricing gaps</text>
+<text x="828" y="798" font-size="13.5" font-weight="bold" font-style="normal" fill="#5B6B80" text-anchor="start">Output</text>
+<rect x="892" y="779" width="186.2" height="28" rx="14" fill="#1F4E8C"/>
+<text x="985.1" y="798" font-size="14.5" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle" data-lo="898" data-hi="1072.2">ΔNII per scenario</text>
+<line x1="410" y1="818" x2="410" y2="828" stroke="#1F4E8C" stroke-width="3"/>
+<polygon points="417.0,828.0 403.0,828.0 410.0,840.0" fill="#1F4E8C"/>
+<line x1="1190" y1="818" x2="1190" y2="828" stroke="#1F4E8C" stroke-width="3"/>
+<polygon points="1197.0,828.0 1183.0,828.0 1190.0,840.0" fill="#1F4E8C"/>
+<rect x="22" y="840" width="1556" height="38" rx="4" fill="#1F4E8C"/>
+<rect x="22" y="840" width="46" height="38" rx="4" fill="#0B2A5B"/>
+<text x="45" y="866" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="84" y="866" font-size="19" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="start" data-hi="1475.2">SUPERVISORY OUTLIER TESTS — thresholds, not a capital charge</text>
+<text x="1560" y="865" font-size="15" font-weight="normal" font-style="italic" fill="#DCE7F5" text-anchor="end" data-lo="798.0">Pillar 2</text>
+<rect x="30" y="892" width="760" height="142" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="48" y="928" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="561.6">ECONOMIC VALUE TEST</text>
+<text x="772" y="926" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="48">Basel SRP31; CRD Art. 98(5)</text>
+<text x="48" y="960" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="1026">Largest ΔEVE decline over the six scenarios, against Tier 1 capital</text>
+<text x="48" y="986" font-size="16.5" fill="#2B3A4E" data-hi="774" data-bottom="1026"><tspan font-weight="bold" fill="#0B2A5B">Outlier:</tspan> decline above 15% of Tier 1 capital</text>
+<text x="48" y="1012" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="774" data-bottom="1026">Basel and EU</text>
+<rect x="810" y="892" width="760" height="142" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
+<text x="828" y="928" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1334.4">NET INTEREST INCOME TEST (EU)</text>
+<text x="1552" y="926" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="828">Delegated Reg. (EU) 2024/856</text>
+<text x="828" y="960" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="1026">Largest ΔNII decline under the two parallel scenarios, against Tier 1</text>
+<text x="828" y="986" font-size="16.5" fill="#2B3A4E" data-hi="1554" data-bottom="1026"><tspan font-weight="bold" fill="#0B2A5B">Large decline:</tspan> above 5% of Tier 1 capital</text>
+<text x="828" y="1012" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="1026">EU only; no Basel equivalent</text>
+<text x="800.0" y="1076" font-size="24" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="middle" data-lo="22" data-hi="1578">An outlier leads to supervisory review and measures, not to an automatic capital charge</text>
+<text x="800.0" y="1108" font-size="17" font-weight="bold" font-style="normal" fill="#1F5AA6" text-anchor="middle" data-lo="22" data-hi="1578">EU: where internal systems are not satisfactory, the supervisor can require the standardised approach (Delegated Reg. (EU) 2024/857)</text>
+<rect x="22" y="1130" width="1556" height="130" rx="6" fill="#FFF7EF" stroke="#E07B26" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="40" y="1164" font-size="20" font-weight="bold" font-style="normal" fill="#C2500A" text-anchor="start" data-hi="1560">NOT DRAWN — related to IRRBB but outside the measures above</text>
+<text x="40" y="1196" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">Credit spread risk from banking-book instruments (CSRBB) is assessed alongside IRRBB (EBA/GL/2022/14), but it is not part of ΔEVE, ΔNII</text>
+<text x="40" y="1221" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">or the outlier tests. Other behavioural options, such as early redemption of term deposits, enter step 1 in the same way. Internal</text>
+<text x="40" y="1246" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">measurement systems, hedging and Pillar 3 disclosure (Basel DIS70) are not shown.</text>
+<text x="24" y="1290" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">Method map: does not certify implemented functionality or the scope of K-IRRBB NMDs or K-IRRBB Prepayment. Minimum standards; national options excluded.</text>
+<text x="24" y="1312" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">References: BCBS, Interest rate risk in the banking book (2016), now Basel SRP31 and DIS70; CRD Art. 84 and 98(5)–(5a); Delegated Regulations (EU) 2024/856 and 2024/857; EBA/GL/2022/14.</text>
+</svg>

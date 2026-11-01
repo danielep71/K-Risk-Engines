@@ -13,6 +13,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Add framework diagrams for IRRBB and liquidity risk, in the style of the
+  counterparty credit risk one: from behavioural assumptions to the economic
+  value and earnings measures and the supervisory outlier tests, and the LCR
+  and NSFR with their main Basel factors and EU differences. The website and
+  README show them in their sections; the README gains an IRRBB subsection
+  (#187).
 - Refresh the portfolio hero and social artwork with the eight projects, two per
   risk category, including K-LCR and K-NSFR, keeping the navy, teal and blue
   palette (#184).
