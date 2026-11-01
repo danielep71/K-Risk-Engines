@@ -130,9 +130,21 @@ python3 .github/scripts/setup_repository.py --repo OWNER/REPO
 python3 .github/scripts/setup_repository.py --repo OWNER/REPO --apply
 ```
 
-The maintainer runs it locally after each settings change. It needs an account
-or fine-grained token with **Administration** access, so it never runs in CI,
-where the workflow token cannot read or change these settings. It never
+The maintainer runs it locally after each settings change, signed in to the
+GitHub CLI as a repository administrator or with a fine-grained token for this
+repository. The token needs:
+
+| Mode | Repository permissions |
+| --- | --- |
+| Preview and `--check` | Administration: read, Pages: read, Contents: read, Metadata: read |
+| `--apply` | Administration: write, Pages: write, Checks: read, Contents: read, Metadata: read |
+
+`--apply` writes the rulesets, the security features, the Pages source and the
+general options in that order, after confirming that `HTML and links` succeeded
+on the default branch; a missing permission can stop it part-way, so preview
+first and rerun the preview after any error. It never runs in CI, where the
+workflow token cannot read or change these settings. Dependabot security
+updates that GitHub reports as paused count as drift. It never
 deletes a ruleset: rulesets outside the file, such as disabled ones, are named
 in a note and left in place. A differing named ruleset is replaced only with
 `--update-existing`. Keep the evidence record out of the repository unless it

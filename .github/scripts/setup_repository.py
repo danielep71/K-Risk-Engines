@@ -189,14 +189,21 @@ def missing(call: Call, endpoint: str) -> tuple[Json, bool]:
         raise
 
 
+def security_updates_paused(call: Call, root: str) -> bool:
+    """GitHub can report Dependabot security updates as enabled but paused."""
+    value, absent = missing(call, root + '/automated-security-fixes')
+    return not absent and bool((value or {}).get('paused'))
+
+
 def security_state(call: Call, root: str, metadata: dict[str, Json], feature: str) -> bool:
     if feature == 'private_vulnerability_reporting':
         return bool((call('GET', root + '/private-vulnerability-reporting') or {}).get('enabled'))
     if feature == 'vulnerability_alerts':
         return not missing(call, root + '/vulnerability-alerts')[1]
     if feature == 'automated_security_fixes':
+        # Paused updates generate no pull requests, so they do not count as on.
         value, absent = missing(call, root + '/automated-security-fixes')
-        return not absent and bool((value or {}).get('enabled'))
+        return not absent and bool((value or {}).get('enabled')) and not (value or {}).get('paused')
     analysis = metadata.get('security_and_analysis') or {}
     return bool((analysis.get(feature) or {}).get('status') == 'enabled')
 
@@ -211,6 +218,9 @@ def security_plan(call: Call, root: str, metadata: dict[str, Json], config: dict
         print(f'NOTE: {", ".join(skipped)} apply only to public repositories here; they are not '
               f'applied while the destination is {metadata.get("visibility")}. Rerun the check '
               'after making the repository public.')
+    if report and config['security']['automated_security_fixes'] and security_updates_paused(call, root):
+        print('NOTE: Dependabot security updates are enabled but paused; they count as drift until '
+              'GitHub resumes them, and an apply that cannot resume them fails its read-back.')
     plan: Plan = []
     analysis: dict[str, dict[str, str]] = {}
     # Alerts before security updates, which depend on them.
@@ -273,8 +283,12 @@ def evidence(call: Call, repo: str, config: dict[str, Json], metadata: dict[str,
               for key, value in config['repository'].items()]
     lines += ['', '## Security features', '', '| Feature | Configured | Observed |', '| --- | --- | --- |']
     for feature, value in config['security'].items():
-        observed = ('not applied (public repositories only)' if SECURITY_PUBLIC_ONLY[feature] and not public
-                    else cell(security_state(call, root, metadata, feature)))
+        if SECURITY_PUBLIC_ONLY[feature] and not public:
+            observed = 'not applied (public repositories only)'
+        elif feature == 'automated_security_fixes' and security_updates_paused(call, root):
+            observed = 'paused'
+        else:
+            observed = cell(security_state(call, root, metadata, feature))
         lines.append(f'| `{feature}` | {cell(value)} | {observed} |')
     observed_pages = pages_state(call, root) or {}
     observed_source = observed_pages.get('source') or {}

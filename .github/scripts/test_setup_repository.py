@@ -39,6 +39,7 @@ class FakeAPI:
         self.reporting = False
         self.alerts = False
         self.fixes = False
+        self.paused = False
         self.pages: dict[str, Any] | None = None
 
     def not_found(self, endpoint: str) -> Any:
@@ -50,7 +51,8 @@ class FakeAPI:
                 return {'enabled': self.reporting}
             if attribute == 'alerts':
                 return None if self.alerts else self.not_found(endpoint)
-            return {'enabled': self.fixes, 'paused': False} if self.alerts else self.not_found(endpoint)
+            return ({'enabled': self.fixes, 'paused': self.paused} if self.alerts
+                    else self.not_found(endpoint))
         self.writes.append((method, endpoint, None))
         setattr(self, attribute, method == 'PUT')
         return None
@@ -237,6 +239,21 @@ class SetupTests(unittest.TestCase):
             self.assertIn('| source branch | `main` | `main` |', verified)
             self.assertIn('| `vulnerability_alerts` | on | on |', verified)
         self.assertEqual([w for w in self.api.writes if 'evidence' in w[1]], [])
+
+    def test_paused_security_updates_are_drift_not_verified(self) -> None:
+        self.api.repo['visibility'] = 'public'
+        self.args.apply = True
+        self.assertEqual(self.run_setup(), 0)
+        self.api.paused = True
+        with tempfile.TemporaryDirectory() as directory:
+            self.args.report = Path(directory) / 'settings.md'
+            self.args.apply, self.args.check = False, True
+            output = io.StringIO()
+            with redirect_stdout(output):
+                self.assertEqual(setup.run(self.args, self.api), 1)
+            self.assertIn('enabled but paused', output.getvalue())
+            self.assertIn('| `automated_security_fixes` | on | paused |',
+                          self.args.report.read_text(encoding='utf-8'))
 
     def test_readback_detects_ignored_changes(self) -> None:
         self.args.apply = True
