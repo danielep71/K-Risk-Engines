@@ -24,7 +24,7 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
 `assets/K-Risk-Engines-social-preview-v2.jpg` are AI-generated decorative portfolio
 images and are excluded from the MPL-2.0 grant. No separate reuse licence is
 granted for these images by this repository. Contact the maintainer before
-reusing it. This exclusion does not apply to `assets/site.css` or asset
+reusing them. This exclusion does not apply to `assets/site.css` or asset
 documentation.
 
 <a id="linked-projects-and-third-party-rights"></a>

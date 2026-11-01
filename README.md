@@ -31,7 +31,7 @@ A single entry point to independent financial risk models and calculation engine
 
 <br>
 
-![K-Risk Engines: K-SACCR, K-SFTs, K-FRTB-SA, K-CVA, K-IRRBB NMDs, Prepayment, K-LCR and K-NSFR](assets/K-Risk-Engines-social-preview-v3.jpg)
+![K-Risk Engines: K-SACCR, K-SFTs, K-FRTB-SA, K-CVA, K-IRRBB NMDs, K-IRRBB Prepayment, K-LCR and K-NSFR](assets/K-Risk-Engines-social-preview-v3.jpg)
 
 </div>
 

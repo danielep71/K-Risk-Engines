@@ -13,7 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
-- Refresh portfolio hero and social artwork with eight projects in four risk categories, including K-LCR and K-NSFR (#183).
+- Refresh the portfolio hero and social artwork with the eight projects, two per
+  risk category, including K-LCR and K-NSFR, keeping the navy, teal and blue
+  palette (#184).
 - List K-NSFR, the public Net Stable Funding Ratio project at the
   repository-setup stage, in the Liquidity Risk section of the website and
   README, the website description, the portfolio direction, the issue
