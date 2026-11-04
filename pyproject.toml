@@ -21,6 +21,7 @@ files = [".github/scripts"]
 pretty = true
 show_error_codes = true
 warn_unused_configs = true
+warn_unreachable = true
 strict = true
 
 # The workflow tests read YAML with PyYAML, which ships without type stubs;

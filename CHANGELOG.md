@@ -55,6 +55,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- CI, after MyTemplate: every workflow pins Python 3.13.18 and Node.js
+  24.22.2 exactly; website checks cancel only a pull request's superseded run
+  and never a push run; the milestone workflow queues events per pull request;
+  and mypy also warns about unreachable code (#206).
 - GOVERNANCE.md records that v1.0.1 will not be published: its milestone and
   `release/1.0.1` stay open indefinitely as the maintenance queue, and the
   milestone's due date is moved forward before it approaches, since issue
