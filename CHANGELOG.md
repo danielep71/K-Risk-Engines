@@ -55,6 +55,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The daily traffic export, after MyTemplate, keeps the GitHub App and now
+  checks out without persisted credentials (the workflow token reaches only
+  the push step), checks the App configuration before using it, retries the
+  API requests with a timeout, and retries the push up to three times by
+  refetching the branch and re-merging the collection, without force-pushing.
+  It no longer creates `traffic-history` if it is missing (#204).
 - Label sync, adapted from MyTemplate: reconciliation refuses to prune a
   label still used by an open or closed issue or pull request (or one named
   with a comma) before applying any change; the reconcile job runs only on
