@@ -18,6 +18,11 @@ repositories keep their own changelogs; this file covers the hub only.
   and optional fields in the hub issue forms: evidence, workaround and
   recovery for bugs, alternatives for improvements. Adapted from MyTemplate
   (#210).
+- A versioned CodeQL workflow, adapted from MyTemplate, replacing GitHub's
+  default setup: it analyzes the workflows (Actions), the label scripts
+  (JavaScript) and the Python scripts with the security-extended queries on
+  pushes, pull requests and weekly; pull-request runs upload nothing and keep
+  the results as an artifact (#208).
 - Add framework diagrams for IRRBB and liquidity risk, in the style of the
   counterparty credit risk one: from behavioural assumptions to the economic
   value and earnings measures and the supervisory outlier tests, and the LCR
@@ -60,6 +65,29 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- CI, after MyTemplate: every workflow pins Python 3.13.18 and Node.js
+  24.22.2 exactly; website checks cancel only a pull request's superseded run
+  and never a push run; the milestone workflow queues events per pull request;
+  and mypy also warns about unreachable code (#206).
+- The daily traffic export, after MyTemplate, keeps the GitHub App and now
+  checks out without persisted credentials (the workflow token reaches only
+  the push step), checks the App configuration before using it, retries the
+  API requests with a timeout, and retries the push up to three times by
+  refetching the branch and re-merging the collection, without force-pushing.
+  It no longer creates `traffic-history` if it is missing (#204).
+- Label sync, adapted from MyTemplate: reconciliation refuses to prune a
+  label still used by an open or closed issue or pull request (or one named
+  with a comma) before applying any change; the reconcile job runs only on
+  the default branch, also for manual dispatches; and the sync and drift
+  summaries use code spans that label names and API errors cannot break.
+  The drift script now reuses the reconciler's planner (#202).
+- Make names and wording consistent across the hub: the CCR diagram uses the
+  project names K-SACCR and K-SFTs and no longer shows "K-CCP"; K-IRRBB
+  Prepayment Models has its full name in the IRRBB diagram, the image
+  descriptions and the issue chooser ("engine issues" like the others); the
+  prepayment wording no longer says "early-stage", "specifications" or "new";
+  the portfolio direction no longer contradicts the status table; and
+  hub-written text uses "standardised" (#198).
 - GOVERNANCE.md records that v1.0.1 will not be published: its milestone and
   `release/1.0.1` stay open indefinitely as the maintenance queue, and the
   milestone's due date is moved forward before it approaches, since issue

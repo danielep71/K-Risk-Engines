@@ -1,9 +1,11 @@
 name: Sync issue labels
 
 # Pull requests validate without write permission. Only a trusted push to main
-# or an explicit manual dispatch can reconcile the live repository taxonomy.
-# The script validates and self-tests before the first API mutation, then
-# verifies an exact post-run match.
+# or an explicit manual dispatch on the default branch can reconcile the live
+# repository taxonomy; a dispatch on any other branch skips reconciliation.
+# The script validates and self-tests before the first API mutation, refuses
+# to prune a label still used by an issue or pull request, then verifies an
+# exact post-run match.
 
 on:
   pull_request:
@@ -48,7 +50,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "24"
+          node-version: "24.22.2"
 
       - name: Exercise validation and reconciliation paths
         run: node .github/scripts/labels-sync.mjs --self-test
@@ -58,7 +60,9 @@ jobs:
 
   reconcile:
     name: Reconcile live labels
-    if: github.event_name != 'pull_request'
+    if: >-
+      github.event_name != 'pull_request' &&
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
@@ -74,7 +78,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "24"
+          node-version: "24.22.2"
 
       - name: Exercise validation and reconciliation paths
         run: node .github/scripts/labels-sync.mjs --self-test

@@ -64,6 +64,7 @@ settings tool below verifies them.
 | Dependabot security updates | **On** | Every repository; requires Dependabot alerts. Opens pull requests that fix vulnerable dependencies, separately from the scheduled version updates in `.github/dependabot.yml`. |
 | Secret scanning | **On** | Public repositories; private repositories need a paid licence. |
 | Push protection | **On** | Same availability as secret scanning, which it requires. Blocks pushes that contain a detected secret. |
+| Code scanning (CodeQL) | **Advanced setup**; default setup **Off** | Free on public repositories. [`.github/workflows/codeql.yml`](../.github/workflows/codeql.yml) analyzes Actions, JavaScript and Python with the security-extended queries. GitHub rejects advanced-setup uploads while the default setup is on, so it stays off. The settings tool does not read or apply this setting. |
 
 Sources: [private vulnerability reporting][pvr], [Dependabot alerts][dependabot-alerts],
 [Dependabot security updates][dependabot-updates] and [secret scanning][secret-scanning].
