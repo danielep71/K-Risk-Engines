@@ -149,8 +149,9 @@ decision, through a new release branch; the procedure below applies then.
   hash-locked tools from [tools/requirements-quality-ci.txt](tools/requirements-quality-ci.txt)
   and the parser from [.github/requirements.txt](.github/requirements.txt).
   The workflow tests require SHA-pinned actions, explicit permissions and
-  timeouts, Node.js 24 before any node use, and write permissions only in the
-  jobs they list.
+  timeouts, Node.js and Python pinned to one exact version each (updated
+  by pull request, with the test that names them), Node.js set up before any
+  node use, and write permissions only in the jobs they list.
 - Verify applicable hosted checks and, after integration into `main`, the
   deployment. Investigate failures and fix or revert through a new commit.
   Preserve shared history; do not force-push or delete the long-lived

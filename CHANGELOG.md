@@ -55,6 +55,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- CI, after MyTemplate: every workflow pins Python 3.13.18 and Node.js
+  24.22.2 exactly; website checks cancel only a pull request's superseded run
+  and never a push run; the milestone workflow queues events per pull request;
+  and mypy also warns about unreachable code (#206).
 - The daily traffic export, after MyTemplate, keeps the GitHub App and now
   checks out without persisted credentials (the workflow token reaches only
   the push step), checks the App configuration before using it, retries the

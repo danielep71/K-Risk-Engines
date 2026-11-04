@@ -35,6 +35,9 @@ WRITE_PERMISSIONS = {
 # No checkout keeps credentials: the traffic export passes the workflow token
 # to its push step only (see test_traffic_credentials_stay_in_their_steps).
 PERSISTED_CHECKOUTS: set[tuple[str, str]] = set()
+# Exact runtime versions, pinned in every setup step (see website-checks.yml).
+NODE_VERSION = "24.22.2"
+PYTHON_VERSION = "3.13.18"
 PINNED = re.compile(r"^[\w.-]+/[\w.-]+(/[\w./-]+)?@[0-9a-f]{40}$")
 # The tests and the issue checker run the label scripts too.
 USES_NODE = re.compile(r"\bnode\s|unittest|check_issues\.py")
@@ -172,7 +175,27 @@ class WorkflowControlTests(unittest.TestCase):
                     self.assertTrue(setups and setups[0] < runs[0], "set up Node.js before using it")
                     versions.add(str(steps[setups[0]]["with"]["node-version"]))
         self.assertGreater(jobs, 0)
-        self.assertEqual(versions, {"24"}, f"Node.js 24 everywhere, found {versions}")
+        self.assertEqual(versions, {NODE_VERSION}, f"Node.js {NODE_VERSION} everywhere, found {versions}")
+
+    def test_python_setups_pin_one_exact_version(self) -> None:
+        versions = {str(step["with"]["python-version"])
+                    for document in workflows().values()
+                    for job in document["jobs"].values()
+                    for step in job.get("steps", [])
+                    if str(step.get("uses", "")).startswith("actions/setup-python@")}
+        self.assertEqual(versions, {PYTHON_VERSION})
+
+    def test_pull_request_runs_are_replaced_and_push_runs_kept(self) -> None:
+        concurrency = workflows()["website-checks.yml"]["concurrency"]
+        self.assertIn("github.event.pull_request.number", concurrency["group"])
+        self.assertIn("github.run_id", concurrency["group"])
+        self.assertEqual(concurrency["cancel-in-progress"],
+                         "${{ github.event_name == 'pull_request' }}")
+
+    def test_milestone_events_queue_per_pull_request(self) -> None:
+        concurrency = workflows()["pr-milestones.yml"]["concurrency"]
+        self.assertIn("github.event.pull_request.number", concurrency["group"])
+        self.assertIs(concurrency["cancel-in-progress"], False)
 
     def test_dependabot_covers_each_pinned_dependency_once(self) -> None:
         document = yaml.safe_load((ROOT / ".github/dependabot.yml").read_text(encoding="utf-8"))
