@@ -136,6 +136,15 @@ from danielep71/K-SACCR. Modifications: the reconciler's User-Agent names this
 repository; `.github/labels.json` and the workflows' branch filters are this
 repository's own.
 
+<a id="code-scanning"></a>
+
+## 🔎 Code scanning
+
+`.github/workflows/codeql.yml` was adapted from danielep71/MyTemplate (a
+private template repository) under the Mozilla Public License 2.0.
+Modifications: its header describes this repository's scripts and public
+visibility.
+
 <a id="settings-tool"></a>
 
 ## 🧰 Settings tool

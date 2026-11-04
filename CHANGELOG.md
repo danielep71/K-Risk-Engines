@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- A versioned CodeQL workflow, adapted from MyTemplate, replacing GitHub's
+  default setup: it analyzes the workflows (Actions), the label scripts
+  (JavaScript) and the Python scripts with the security-extended queries on
+  pushes, pull requests and weekly; pull-request runs upload nothing and keep
+  the results as an artifact (#208).
 - Add framework diagrams for IRRBB and liquidity risk, in the style of the
   counterparty credit risk one: from behavioural assumptions to the economic
   value and earnings measures and the supervisory outlier tests, and the LCR
