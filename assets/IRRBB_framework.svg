@@ -32,7 +32,7 @@
 <rect x="112" y="451" width="255.0" height="28" rx="14" fill="#1F4E8C"/>
 <text x="239.5" y="470" font-size="14.5" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle" data-lo="118" data-hi="361.0">Deposit repricing profile</text>
 <rect x="810" y="234" width="760" height="256" rx="6" fill="#EAF1FA" stroke="#A9C1E3" stroke-width="1.5"/>
-<text x="828" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1384.8">K-IRRBB PREPAYMENT | LOANS</text>
+<text x="828" y="270" font-size="21" font-weight="bold" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1384.8">K-IRRBB PREPAYMENT MODELS | LOANS</text>
 <text x="1552" y="268" font-size="14" font-weight="normal" font-style="italic" fill="#5B6B80" text-anchor="end" data-lo="828">SRP31; EBA/GL/2022/14</text>
 <text x="828" y="300" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">Borrowers repay fixed-rate loans early, mostly when rates fall</text>
 <text x="828" y="326" font-size="16.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1554" data-bottom="445">Behavioural model: conditional prepayment rate (CPR), driven by</text>
@@ -107,6 +107,6 @@
 <text x="40" y="1196" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">Credit spread risk from banking-book instruments (CSRBB) is assessed alongside IRRBB (EBA/GL/2022/14), but it is not part of ΔEVE, ΔNII</text>
 <text x="40" y="1221" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">or the outlier tests. Other behavioural options, such as early redemption of term deposits, enter step 1 in the same way. Internal</text>
 <text x="40" y="1246" font-size="15.5" font-weight="normal" font-style="normal" fill="#2B3A4E" text-anchor="start" data-hi="1560">measurement systems, hedging and Pillar 3 disclosure (Basel DIS70) are not shown.</text>
-<text x="24" y="1290" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">Method map: does not certify implemented functionality or the scope of K-IRRBB NMDs or K-IRRBB Prepayment. Minimum standards; national options excluded.</text>
+<text x="24" y="1290" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">Method map: does not certify implemented functionality or the scope of K-IRRBB NMDs or K-IRRBB Prepayment Models. Minimum standards; national options excluded.</text>
 <text x="24" y="1312" font-size="13.5" font-weight="normal" font-style="normal" fill="#0B2A5B" text-anchor="start" data-hi="1578">References: BCBS, Interest rate risk in the banking book (2016), now Basel SRP31 and DIS70; CRD Art. 84 and 98(5)–(5a); Delegated Regulations (EU) 2024/856 and 2024/857; EBA/GL/2022/14.</text>
 </svg>

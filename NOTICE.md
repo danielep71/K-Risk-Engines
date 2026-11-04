@@ -125,6 +125,17 @@ under the Mozilla Public License 2.0. Modifications: this repository's CSV
 layout and badge files, its alert thresholds and labels, and the GitHub App
 credential of the collection job.
 
+<a id="label-tooling"></a>
+
+## 🏷️ Label tooling
+
+`.github/scripts/labels-sync.mjs` and `.github/scripts/labels-drift.mjs` were
+adapted from danielep71/MyTemplate (a private template repository) under the
+Mozilla Public License 2.0. They replace the hub's earlier versions, which came
+from danielep71/K-SACCR. Modifications: the reconciler's User-Agent names this
+repository; `.github/labels.json` and the workflows' branch filters are this
+repository's own.
+
 <a id="settings-tool"></a>
 
 ## 🧰 Settings tool
