@@ -145,6 +145,16 @@ private template repository) under the Mozilla Public License 2.0.
 Modifications: its header describes this repository's scripts and public
 visibility.
 
+<a id="community-texts"></a>
+
+## 🤝 Community and security texts
+
+`CODE_OF_CONDUCT.md`, the safe-harbor section of `SECURITY.md` and the
+optional evidence and alternatives fields of the hub issue forms were adapted
+from danielep71/MyTemplate (a private template repository) under the Mozilla
+Public License 2.0. Modifications: impersonal wording, this repository's
+contact route and scope, and the forms' JSON layout.
+
 <a id="settings-tool"></a>
 
 ## 🧰 Settings tool

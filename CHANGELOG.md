@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- A code of conduct (Contributor Covenant 2.1, reporting through GitHub),
+  a conditional safe-harbor section in `SECURITY.md` for good-faith research,
+  and optional fields in the hub issue forms: evidence, workaround and
+  recovery for bugs, alternatives for improvements. Adapted from MyTemplate
+  (#210).
 - A versioned CodeQL workflow, adapted from MyTemplate, replacing GitHub's
   default setup: it analyzes the workflows (Actions), the label scripts
   (JavaScript) and the Python scripts with the security-extended queries on
