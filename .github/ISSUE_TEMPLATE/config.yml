@@ -17,9 +17,9 @@
       "about": "Market-risk aggregation, methodology, workbook and validation."
     },
     {
-      "name": "K-IRRBB Prepayment Models issues",
+      "name": "K-IRRBB Prepayment Models engine issues",
       "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/issues",
-      "about": "Loan prepayment model specifications, methodology and validation."
+      "about": "Loan prepayment models, methodology, workbook and validation."
     },
     {
       "name": "K-SFTs engine issues",
