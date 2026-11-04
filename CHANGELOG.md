@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
+  EVE/NII, Prudent Valuation and Liquidity Stress priorities, further candidates,
+  shared components and a conditional initial-margin workstream (#200).
 - A code of conduct (Contributor Covenant 2.1, reporting through GitHub),
   a conditional safe-harbor section in `SECURITY.md` for good-faith research,
   and optional fields in the hub issue forms: evidence, workaround and
