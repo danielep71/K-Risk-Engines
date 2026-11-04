@@ -55,6 +55,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Label sync, adapted from MyTemplate: reconciliation refuses to prune a
+  label still used by an open or closed issue or pull request (or one named
+  with a comma) before applying any change; the reconcile job runs only on
+  the default branch, also for manual dispatches; and the sync and drift
+  summaries use code spans that label names and API errors cannot break.
+  The drift script now reuses the reconciler's planner (#202).
 - Make names and wording consistent across the hub: the CCR diagram uses the
   project names K-SACCR and K-SFTs and no longer shows "K-CCP"; K-IRRBB
   Prepayment Models has its full name in the IRRBB diagram, the image
