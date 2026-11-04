@@ -116,8 +116,10 @@ SOFTWARE.
 
 The merge rules of `.github/scripts/traffic_history.py` (newest observation
 of each date, idempotent merge, validation before writing), its alert's
-dependencies and planning sections, and the split of
-`.github/workflows/daily-traffic.yml` into collection and alert jobs were
+dependencies and planning sections, the split of
+`.github/workflows/daily-traffic.yml` into collection and alert jobs, and the
+collection job's credential-free checkouts, configuration check, request
+retries and push retries were
 adapted from danielep71/MyTemplate (a private template repository)
 under the Mozilla Public License 2.0. Modifications: this repository's CSV
 layout and badge files, its alert thresholds and labels, and the GitHub App
