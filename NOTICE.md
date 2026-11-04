@@ -123,6 +123,15 @@ under the Mozilla Public License 2.0. Modifications: this repository's CSV
 layout and badge files, its alert thresholds and labels, and the GitHub App
 credential of the collection job.
 
+<a id="code-scanning"></a>
+
+## 🔎 Code scanning
+
+`.github/workflows/codeql.yml` was adapted from danielep71/MyTemplate (a
+private template repository) under the Mozilla Public License 2.0.
+Modifications: its header describes this repository's scripts and public
+visibility.
+
 <a id="settings-tool"></a>
 
 ## 🧰 Settings tool

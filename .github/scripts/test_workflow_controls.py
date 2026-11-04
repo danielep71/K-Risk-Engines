@@ -31,6 +31,7 @@ WRITE_PERMISSIONS = {
     ("daily-traffic.yml", "collect"): {"contents"},
     ("daily-traffic.yml", "alert"): {"issues"},
     ("pr-milestones.yml", "reconcile"): {"pull-requests"},
+    ("codeql.yml", "analyze"): {"security-events"},
 }
 # The traffic export pushes the CSV history, so its checkout keeps credentials.
 PERSISTED_CHECKOUTS = {("daily-traffic.yml", "traffic"), ("daily-traffic.yml", "collect")}
@@ -107,6 +108,41 @@ class WorkflowControlTests(unittest.TestCase):
         self.assertNotIn("strategy", job)
         # The rulesets in docs/REPOSITORY_SETTINGS.md require this name.
         self.assertEqual(job["name"], REQUIRED_CHECK)
+
+    def test_code_scanning_covers_each_language_and_pull_requests_upload_nothing(self) -> None:
+        document = workflows()["codeql.yml"]
+        self.assertEqual(document["on"]["push"], document["on"]["pull_request"])
+        self.assertEqual(set(document["on"]["push"]["branches"]), {"main", "release/**"})
+        self.assertIn("schedule", document["on"])
+        jobs = document["jobs"]
+        gate = jobs["availability"]["steps"][0]
+        self.assertIn(".visibility", gate["run"])
+        self.assertEqual(gate["env"]["CODE_SCANNING"], "${{ vars.CODE_SCANNING }}")
+        expected = {
+            "analyze": ("needs.availability.outputs.enabled == 'true' && "
+                        "github.event_name != 'pull_request'",
+                        ["actions/checkout", "github/codeql-action/init",
+                         "github/codeql-action/analyze"]),
+            "analyze-pr": ("needs.availability.outputs.enabled == 'true' && "
+                           "github.event_name == 'pull_request'",
+                           ["actions/checkout", "github/codeql-action/init",
+                            "github/codeql-action/analyze", "actions/upload-artifact"]),
+        }
+        for job_id, (condition, sequence) in expected.items():
+            with self.subTest(job=job_id):
+                job = jobs[job_id]
+                self.assertEqual(job["needs"], "availability")
+                self.assertEqual(job["if"], condition)
+                self.assertEqual(sorted(job["strategy"]["matrix"]["language"]),
+                                 ["actions", "javascript-typescript", "python"])
+                steps = [step for step in job["steps"] if "uses" in step]
+                self.assertEqual([step["uses"].split("@")[0] for step in steps], sequence)
+                self.assertEqual(steps[1]["with"]["queries"], "security-extended")
+        # Pull request analysis writes nothing to code scanning.
+        self.assertEqual(jobs["analyze-pr"]["permissions"], {"contents": "read"})
+        pr_analyze = jobs["analyze-pr"]["steps"][2]["with"]
+        self.assertEqual(pr_analyze["upload"], "never")
+        self.assertIs(pr_analyze["upload-database"], False)
 
     def test_every_pip_install_is_hash_locked(self) -> None:
         installs = 0
