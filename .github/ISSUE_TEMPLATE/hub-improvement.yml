@@ -41,6 +41,17 @@
     },
     {
       "type": "textarea",
+      "id": "alternatives",
+      "attributes": {
+        "label": "Alternatives considered",
+        "description": "Optional. Other ways to meet the need, doing nothing included, and why you prefer the proposed change."
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
       "id": "acceptance",
       "attributes": {
         "label": "Acceptance criteria",

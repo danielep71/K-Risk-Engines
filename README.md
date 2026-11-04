@@ -31,7 +31,7 @@ A single entry point to independent financial risk models and calculation engine
 
 <br>
 
-![K-Risk Engines: K-SACCR, K-SFTs, K-FRTB-SA, K-CVA, K-IRRBB NMDs, K-IRRBB Prepayment, K-LCR and K-NSFR](assets/K-Risk-Engines-social-preview-v3.jpg)
+![K-Risk Engines: K-SACCR, K-SFTs, K-FRTB-SA, K-CVA, K-IRRBB NMDs, K-IRRBB Prepayment Models, K-LCR and K-NSFR](assets/K-Risk-Engines-social-preview-v3.jpg)
 
 </div>
 
@@ -44,7 +44,7 @@ A single entry point to independent financial risk models and calculation engine
 | --- | --- | --- | --- |
 | [K-SACCR](https://github.com/danielep71/K-SACCR) | SA-CCR calculation and reconciliation | Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. Latest published release: v1.0.2. [Full status and caveats](docs/PORTFOLIO_STATUS.md#saccr) | [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/K-SACCR/milestone/14) (2026-10-23) |
 | [K-IRRBB NMDs](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | v0.2.0 – Workbook, data and Excel tests (in progress). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#nmd) | [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1) (2026-10-09) |
-| [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) | Standardized market-risk aggregation | Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1) (2026-10-18) |
+| [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) | Standardised market-risk aggregation | Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1) (2026-10-18) |
 | [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: prototype development. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1) (2026-10-21) |
 | [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: working prototype, not a validated method. Latest published release: v0.2.0. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2) (2026-10-30) |
 | [K-CVA](https://github.com/danielep71/K-CVA) | Regulatory CVA risk capital (BA-CVA, then SA-CVA) | Repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#cva) | None recorded |
@@ -193,7 +193,8 @@ checkouts and maintainer clones, so they do not measure outside interest.
 See [portfolio governance](GOVERNANCE.md) for ownership, project status definitions,
 change checks and issue handling, and [repository settings](docs/REPOSITORY_SETTINGS.md)
 for the rulesets and other non-default settings. Report vulnerabilities privately under the
-[security policy](SECURITY.md). For hub defects and improvements, use the
+[security policy](SECURITY.md). Participation follows the
+[code of conduct](CODE_OF_CONDUCT.md). For hub defects and improvements, use the
 [issue chooser](https://github.com/danielep71/K-Risk-Engines/issues/new/choose).
 The maintainer assigns a milestone and confirms the priority during triage.
 Engine calculation and methodology reports belong in their own repositories.
@@ -208,7 +209,7 @@ Agreement with a benchmark supports a review; it does not by itself establish mo
 
 ## 🗺️ Portfolio direction
 
-Develop the existing projects on their own validation evidence, develop the newer prepayment and K-SFTs projects, and maintain consistent presentation and documentation across the collection. K-CVA, K-LCR and K-NSFR are the newest public projects. Detailed milestones remain in each model repository.
+Develop each project on its own validation evidence, with an explicit modelling scope and validation plan, and maintain consistent presentation and documentation across the collection. K-SACCR and K-SFTs publish releases; K-CVA, K-LCR and K-NSFR, the newest public projects, start from repository setup. The current status of each project is in the portfolio table above; detailed milestones remain in each model repository.
 
 ---
 
