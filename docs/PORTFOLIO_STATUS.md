@@ -7,21 +7,21 @@ Proposed automatically from public project sources; reviewed on merge. Release a
 <a id="saccr"></a>
 ## 🧩 K-SACCR
 
-Version 1.0.2 is the current release: the 1.0.2 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.0.2, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
+Version 1.1.0 is the current release: the 1.1.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.1.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/599e40b283dd3783ca69c9305e170633819ea5c1/README.md) — content SHA-256 `db85e8a1714643c867f6a80acfc22ebbc090218d8c0b3b449056b77be35e7468`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/599e40b283dd3783ca69c9305e170633819ea5c1/docs/methodology/README.md) — content SHA-256 `18d345f0d3f1e28a066a63b0aa0b59c1b84bd612903f4d0d24e01438a98e905a`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/0e123ac5c4344f4b4cba9542f90bce3a531a51d6/README.md) — content SHA-256 `110d17f912c4776d2e91a67ca071cad86c08cd8c83895bc1a87df5e1884d023e`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/0e123ac5c4344f4b4cba9542f90bce3a531a51d6/docs/methodology/README.md) — content SHA-256 `7c3d1b5f6eae47cedf58984d3127452f26e8ce76ea9386aae91d077248a7e3e3`
 - Published release: [v1.0.2](https://github.com/danielep71/K-SACCR/releases/tag/v1.0.2) (2026-10-22T21:46:09Z)
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 26 closed / 0 open issues.
-- [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 57 closed / 0 open issues.
-- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 15 closed / 14 open issues.
-- [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 0 closed / 9 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 6 open issues.
+- [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 12 closed / 0 open issues.
+- [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
+- [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): open; 29 closed / 3 open issues.
+- [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 0 closed / 10 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 13 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.
@@ -63,15 +63,15 @@ Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/0540f892614ac0479591c78b648e7f808ea4a8c0/README.md) — content SHA-256 `3acaa98e5c248cff49111ca8d7afeea2ddee8a4a006551eac58ce2884892a668`
-- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/0540f892614ac0479591c78b648e7f808ea4a8c0/docs/validation.md) — content SHA-256 `6126bf7dead97f18f2448510397fe421790253fa64535e58e6d2b59fcd622ed6`
+- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/3999cbe0b52b506749834e72a10f3f466035143c/README.md) — content SHA-256 `6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765`
+- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/3999cbe0b52b506749834e72a10f3f466035143c/docs/validation.md) — content SHA-256 `593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1): closed; 10 closed / 0 open issues.
-- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-SA/milestone/2): open; 29 closed / 8 open issues.
-- [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-SA/milestone/3): open; 6 closed / 1 open issues.
+- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-SA/milestone/2): open; 59 closed / 5 open issues.
+- [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-SA/milestone/3): open; 10 closed / 0 open issues.
 
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
@@ -131,13 +131,14 @@ Repository setup. There is no LCR calculation engine, validated workbook, Excel 
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/README.md) — content SHA-256 `439a86a3426144bcde07fcc493ffe9d644df08db59f0eb883ea89a60a5791c65`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/05477725ecd6c8efe4adda77c3e13114a9c2e03d/docs/DECISIONS.md) — content SHA-256 `98b2a89c3f387fcdf0758a67cfb507cc4ce29e24aea15f5de917780a7ac2dc05`
+- [README.md](https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/README.md) — content SHA-256 `d082ee5e64a808093bb500dbf82b9fe974bb0281dada3eb52f806d20f7278e80`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/docs/DECISIONS.md) — content SHA-256 `eba4b95e84637e9f0ea6c4b2e320507809049c710c735b4382b858005ac55b27`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 49 closed / 18 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 43 closed / 11 open issues.
+- [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 0 open issues.
 
 <a id="nsfr"></a>
 ## 🧩 K-NSFR
