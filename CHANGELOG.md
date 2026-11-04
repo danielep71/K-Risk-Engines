@@ -55,6 +55,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Label sync, adapted from MyTemplate: reconciliation refuses to prune a
+  label still used by an open or closed issue or pull request (or one named
+  with a comma) before applying any change; the reconcile job runs only on
+  the default branch, also for manual dispatches; and the sync and drift
+  summaries use code spans that label names and API errors cannot break.
+  The drift script now reuses the reconciler's planner (#202).
 - GOVERNANCE.md records that v1.0.1 will not be published: its milestone and
   `release/1.0.1` stay open indefinitely as the maintenance queue, and the
   milestone's due date is moved forward before it approaches, since issue

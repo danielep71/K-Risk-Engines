@@ -108,6 +108,12 @@ class WorkflowControlTests(unittest.TestCase):
         # The rulesets in docs/REPOSITORY_SETTINGS.md require this name.
         self.assertEqual(job["name"], REQUIRED_CHECK)
 
+    def test_live_label_reconciliation_runs_only_on_the_default_branch(self) -> None:
+        # A manual dispatch on another branch must not apply an unintegrated manifest.
+        condition = workflows()["labels-sync.yml"]["jobs"]["reconcile"]["if"]
+        self.assertIn("github.event_name != 'pull_request'", condition)
+        self.assertIn("github.event.repository.default_branch", condition)
+
     def test_every_pip_install_is_hash_locked(self) -> None:
         installs = 0
         for name, document in workflows().items():
