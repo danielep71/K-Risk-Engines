@@ -72,13 +72,12 @@ The `traffic-history` branch holds the analytics data and a short README:
 | `data/popular_paths.csv` | Popular repository paths per snapshot |
 | `data/badges/*.json` | Shields endpoint data for clones, visits and 14-day visitors |
 
-**`traffic-history` exception.** A data-only branch created by this workflow
-would be an orphan. This repository's branch is the exception: it was
-initialized from `main` at `85159f7` (commit `1b6d86d`), so its history shares
-`main`'s early commits, while its current tree contains only the files above.
-It is kept as it is: never recreated, rewritten, or merged into `main` or a
-release branch. The workflow would create an orphan branch only if it were
-missing.
+**`traffic-history` exception.** A data-only branch would normally be an
+orphan. This repository's branch is the exception: it was initialized from
+`main` at `85159f7` (commit `1b6d86d`), so its history shares `main`'s early
+commits, while its current tree contains only the files above. It is kept as
+it is: never recreated, rewritten, or merged into `main` or a release branch.
+The workflow requires it to exist and never creates it.
 
 [.github/scripts/traffic_history.py](../.github/scripts/traffic_history.py)
 merges each collection, with tests in
@@ -136,9 +135,14 @@ history.
 The workflow has two jobs, each with one write permission:
 
 - **Export GitHub traffic** (`collect`): the `analytics` environment and
-  `contents: write`. The App token is passed only to the API-fetch step; the
-  job's `GITHUB_TOKEN` pushes the history. Apart from the default branch's
-  merge script it runs no repository code or tests.
+  `contents: write`. It first checks that the App's client ID and key are set
+  (seeing only whether the key exists), then passes the App token only to the
+  API-fetch step, whose `curl` requests retry transient errors with a timeout.
+  Neither checkout keeps credentials: the job's `GITHUB_TOKEN` reaches only the
+  push step, which retries up to three times, refetching the branch and
+  re-merging the collection if another writer moved it, and never
+  force-pushes. Apart from the default branch's merge script it runs no
+  repository code or tests.
 - **Traffic alert** (`alert`): no environment, so it never receives the App's
   credentials, with `issues: write` to open the alert and manage its
   milestone.

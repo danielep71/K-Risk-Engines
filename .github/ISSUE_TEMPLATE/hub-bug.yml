@@ -52,6 +52,17 @@
     },
     {
       "type": "textarea",
+      "id": "evidence",
+      "attributes": {
+        "label": "Evidence, workaround and recovery",
+        "description": "Optional. Further evidence, such as screenshots or run links (no tokens or confidential data); a workaround while the defect is open; and how to recover affected pages, files or data."
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
       "id": "acceptance",
       "attributes": {
         "label": "Acceptance criteria",
