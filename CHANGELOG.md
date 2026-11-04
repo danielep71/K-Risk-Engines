@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
+  EVE/NII, Prudent Valuation and Liquidity Stress priorities, further candidates,
+  shared components and a conditional initial-margin workstream (#200).
 - Add framework diagrams for IRRBB and liquidity risk, in the style of the
   counterparty credit risk one: from behavioural assumptions to the economic
   value and earnings measures and the supervisory outlier tests, and the LCR
