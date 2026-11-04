@@ -47,8 +47,8 @@ under the Mozilla Public License 2.0; MyTemplate adapted the first three from
 [danielep71/K-SFTs](https://github.com/danielep71/K-SFTs) under the same
 licence. Modifications: the checks cover `.github/scripts`, PyYAML is treated
 as untyped by mypy, and the workflow rules name this repository's jobs, its
-required check `HTML and links` and the traffic push as the one checkout that
-keeps credentials.
+required check `HTML and links`, and the traffic export's checkouts, which
+keep no credentials.
 
 <a id="adapted-files"></a>
 
@@ -116,12 +116,25 @@ SOFTWARE.
 
 The merge rules of `.github/scripts/traffic_history.py` (newest observation
 of each date, idempotent merge, validation before writing), its alert's
-dependencies and planning sections, and the split of
-`.github/workflows/daily-traffic.yml` into collection and alert jobs were
+dependencies and planning sections, the split of
+`.github/workflows/daily-traffic.yml` into collection and alert jobs, and the
+collection job's credential-free checkouts, configuration check, request
+retries and push retries were
 adapted from danielep71/MyTemplate (a private template repository)
 under the Mozilla Public License 2.0. Modifications: this repository's CSV
 layout and badge files, its alert thresholds and labels, and the GitHub App
 credential of the collection job.
+
+<a id="label-tooling"></a>
+
+## 🏷️ Label tooling
+
+`.github/scripts/labels-sync.mjs` and `.github/scripts/labels-drift.mjs` were
+adapted from danielep71/MyTemplate (a private template repository) under the
+Mozilla Public License 2.0. They replace the hub's earlier versions, which came
+from danielep71/K-SACCR. Modifications: the reconciler's User-Agent names this
+repository; `.github/labels.json` and the workflows' branch filters are this
+repository's own.
 
 <a id="code-scanning"></a>
 

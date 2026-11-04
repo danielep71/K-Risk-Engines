@@ -33,8 +33,12 @@ WRITE_PERMISSIONS = {
     ("pr-milestones.yml", "reconcile"): {"pull-requests"},
     ("codeql.yml", "analyze"): {"security-events"},
 }
-# The traffic export pushes the CSV history, so its checkout keeps credentials.
-PERSISTED_CHECKOUTS = {("daily-traffic.yml", "traffic"), ("daily-traffic.yml", "collect")}
+# No checkout keeps credentials: the traffic export passes the workflow token
+# to its push step only (see test_traffic_credentials_stay_in_their_steps).
+PERSISTED_CHECKOUTS: set[tuple[str, str]] = set()
+# Exact runtime versions, pinned in every setup step (see website-checks.yml).
+NODE_VERSION = "24.22.2"
+PYTHON_VERSION = "3.13.18"
 PINNED = re.compile(r"^[\w.-]+/[\w.-]+(/[\w./-]+)?@[0-9a-f]{40}$")
 # The tests and the issue checker run the label scripts too.
 USES_NODE = re.compile(r"\bnode\s|unittest|check_issues\.py")
@@ -109,6 +113,33 @@ class WorkflowControlTests(unittest.TestCase):
         # The rulesets in docs/REPOSITORY_SETTINGS.md require this name.
         self.assertEqual(job["name"], REQUIRED_CHECK)
 
+    def test_live_label_reconciliation_runs_only_on_the_default_branch(self) -> None:
+        # A manual dispatch on another branch must not apply an unintegrated manifest.
+        condition = workflows()["labels-sync.yml"]["jobs"]["reconcile"]["if"]
+        self.assertIn("github.event_name != 'pull_request'", condition)
+        self.assertIn("github.event.repository.default_branch", condition)
+
+    def test_traffic_credentials_stay_in_their_steps(self) -> None:
+        steps = workflows()["daily-traffic.yml"]["jobs"]["collect"]["steps"]
+        with_key = [step for step in steps if "TRAFFIC_APP_PRIVATE_KEY" in str(step)]
+        self.assertEqual([step["name"] for step in with_key],
+                         ["Check the traffic App configuration", "Create traffic App token"])
+        # The configuration check sees only whether the key is set.
+        self.assertEqual(with_key[0]["env"]["HAS_KEY"],
+                         "${{ secrets.TRAFFIC_APP_PRIVATE_KEY != '' }}")
+        with_app_token = [step for step in steps if "steps.app-token.outputs.token" in str(step)]
+        self.assertEqual([step["name"] for step in with_app_token], ["Fetch GitHub traffic API data"])
+        self.assertNotRegex(with_app_token[0]["run"], r"\bpython|\.py\b")
+        with_workflow_token = [step for step in steps if "github.token" in str(step)]
+        self.assertEqual([step["name"] for step in with_workflow_token],
+                         ["Commit and push traffic history"])
+        push = with_workflow_token[0]["run"]
+        self.assertNotIn("--force", push)
+        self.assertIn("fetch origin traffic-history", push)
+        fetch = with_app_token[0]["run"]
+        self.assertIn("--retry 5", fetch)
+        self.assertIn("--max-time 60", fetch)
+
     def test_code_scanning_covers_each_language_and_pull_requests_upload_nothing(self) -> None:
         document = workflows()["codeql.yml"]
         self.assertEqual(document["on"]["push"], document["on"]["pull_request"])
@@ -180,7 +211,27 @@ class WorkflowControlTests(unittest.TestCase):
                     self.assertTrue(setups and setups[0] < runs[0], "set up Node.js before using it")
                     versions.add(str(steps[setups[0]]["with"]["node-version"]))
         self.assertGreater(jobs, 0)
-        self.assertEqual(versions, {"24"}, f"Node.js 24 everywhere, found {versions}")
+        self.assertEqual(versions, {NODE_VERSION}, f"Node.js {NODE_VERSION} everywhere, found {versions}")
+
+    def test_python_setups_pin_one_exact_version(self) -> None:
+        versions = {str(step["with"]["python-version"])
+                    for document in workflows().values()
+                    for job in document["jobs"].values()
+                    for step in job.get("steps", [])
+                    if str(step.get("uses", "")).startswith("actions/setup-python@")}
+        self.assertEqual(versions, {PYTHON_VERSION})
+
+    def test_pull_request_runs_are_replaced_and_push_runs_kept(self) -> None:
+        concurrency = workflows()["website-checks.yml"]["concurrency"]
+        self.assertIn("github.event.pull_request.number", concurrency["group"])
+        self.assertIn("github.run_id", concurrency["group"])
+        self.assertEqual(concurrency["cancel-in-progress"],
+                         "${{ github.event_name == 'pull_request' }}")
+
+    def test_milestone_events_queue_per_pull_request(self) -> None:
+        concurrency = workflows()["pr-milestones.yml"]["concurrency"]
+        self.assertIn("github.event.pull_request.number", concurrency["group"])
+        self.assertIs(concurrency["cancel-in-progress"], False)
 
     def test_dependabot_covers_each_pinned_dependency_once(self) -> None:
         document = yaml.safe_load((ROOT / ".github/dependabot.yml").read_text(encoding="utf-8"))
