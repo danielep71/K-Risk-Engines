@@ -193,7 +193,8 @@ checkouts and maintainer clones, so they do not measure outside interest.
 See [portfolio governance](GOVERNANCE.md) for ownership, project status definitions,
 change checks and issue handling, and [repository settings](docs/REPOSITORY_SETTINGS.md)
 for the rulesets and other non-default settings. Report vulnerabilities privately under the
-[security policy](SECURITY.md). For hub defects and improvements, use the
+[security policy](SECURITY.md). Participation follows the
+[code of conduct](CODE_OF_CONDUCT.md). For hub defects and improvements, use the
 [issue chooser](https://github.com/danielep71/K-Risk-Engines/issues/new/choose).
 The maintainer assigns a milestone and confirms the priority during triage.
 Engine calculation and methodology reports belong in their own repositories.

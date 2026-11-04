@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- A code of conduct (Contributor Covenant 2.1, reporting through GitHub),
+  a conditional safe-harbor section in `SECURITY.md` for good-faith research,
+  and optional fields in the hub issue forms: evidence, workaround and
+  recovery for bugs, alternatives for improvements. Adapted from MyTemplate
+  (#210).
 - Add framework diagrams for IRRBB and liquidity risk, in the style of the
   counterparty credit risk one: from behavioural assumptions to the economic
   value and earnings measures and the supervisory outlier tests, and the LCR

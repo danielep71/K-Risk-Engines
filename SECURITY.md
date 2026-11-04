@@ -3,6 +3,7 @@
 [![Reporting](https://img.shields.io/badge/Reporting-private_GitHub_form-B60205?style=flat-square)](#report-a-vulnerability-privately)
 [![Supported](https://img.shields.io/badge/Supported-main-2ea44f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/main)
 [![Response](https://img.shields.io/badge/Response-best_effort-6E7781?style=flat-square)](#handling-reports)
+[![Safe harbor](https://img.shields.io/badge/Safe_harbor-good--faith_research-2ea44f?style=flat-square)](#safe-harbor)
 
 <a id="scope-and-supported-version"></a>
 
@@ -54,3 +55,16 @@ severity; no guaranteed response time or bug bounty is offered.
 This policy does not authorize testing GitHub infrastructure, linked websites,
 or other third-party systems. Report vulnerabilities in those services through
 their own security channels.
+
+<a id="safe-harbor"></a>
+
+## 🤝 Safe harbor
+
+Good-faith security research within the scope above is welcome. If you report
+privately as this policy describes, use only synthetic data and your own
+copies and accounts, do not access, change or delete anyone else's data, do
+not degrade this repository, its website or the services they run on, and
+allow reasonable time for a response before any disclosure, no legal action
+will be pursued or supported against you for that research. This covers only
+claims the repository owner could bring; it cannot authorize testing of
+GitHub, Microsoft or other third-party systems, whose own policies apply.

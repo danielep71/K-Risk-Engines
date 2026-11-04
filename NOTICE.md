@@ -123,6 +123,16 @@ under the Mozilla Public License 2.0. Modifications: this repository's CSV
 layout and badge files, its alert thresholds and labels, and the GitHub App
 credential of the collection job.
 
+<a id="community-texts"></a>
+
+## 🤝 Community and security texts
+
+`CODE_OF_CONDUCT.md`, the safe-harbor section of `SECURITY.md` and the
+optional evidence and alternatives fields of the hub issue forms were adapted
+from danielep71/MyTemplate (a private template repository) under the Mozilla
+Public License 2.0. Modifications: impersonal wording, this repository's
+contact route and scope, and the forms' JSON layout.
+
 <a id="settings-tool"></a>
 
 ## 🧰 Settings tool
