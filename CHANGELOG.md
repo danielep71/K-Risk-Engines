@@ -68,6 +68,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- `assets/README.md` records that the K-SFTs copy of the CCR diagram now
+  matches the hub's (danielep71/K-SFTs#290); only the K-SACCR copy keeps the
+  earlier labels (#198).
 - CI, after MyTemplate: every workflow pins Python 3.13.18 and Node.js
   24.22.2 exactly; website checks cancel only a pull request's superseded run
   and never a push run; the milestone workflow queues events per pull request;
