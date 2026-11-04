@@ -24,7 +24,7 @@
       "id": "frtb",
       "repo": "danielep71/K-FRTB-SA",
       "name": "K-FRTB-SA",
-      "purpose": "Standardized market-risk aggregation",
+      "purpose": "Standardised market-risk aggregation",
       "selector": "important",
       "evidence": [
         "docs/validation.md"

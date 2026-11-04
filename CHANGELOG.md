@@ -61,6 +61,13 @@ repositories keep their own changelogs; this file covers the hub only.
   the default branch, also for manual dispatches; and the sync and drift
   summaries use code spans that label names and API errors cannot break.
   The drift script now reuses the reconciler's planner (#202).
+- Make names and wording consistent across the hub: the CCR diagram uses the
+  project names K-SACCR and K-SFTs and no longer shows "K-CCP"; K-IRRBB
+  Prepayment Models has its full name in the IRRBB diagram, the image
+  descriptions and the issue chooser ("engine issues" like the others); the
+  prepayment wording no longer says "early-stage", "specifications" or "new";
+  the portfolio direction no longer contradicts the status table; and
+  hub-written text uses "standardised" (#198).
 - GOVERNANCE.md records that v1.0.1 will not be published: its milestone and
   `release/1.0.1` stay open indefinitely as the maintenance queue, and the
   milestone's due date is moved forward before it approaches, since issue
