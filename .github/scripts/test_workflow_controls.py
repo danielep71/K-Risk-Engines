@@ -32,8 +32,9 @@ WRITE_PERMISSIONS = {
     ("daily-traffic.yml", "alert"): {"issues"},
     ("pr-milestones.yml", "reconcile"): {"pull-requests"},
 }
-# The traffic export pushes the CSV history, so its checkout keeps credentials.
-PERSISTED_CHECKOUTS = {("daily-traffic.yml", "traffic"), ("daily-traffic.yml", "collect")}
+# No checkout keeps credentials: the traffic export passes the workflow token
+# to its push step only (see test_traffic_credentials_stay_in_their_steps).
+PERSISTED_CHECKOUTS: set[tuple[str, str]] = set()
 PINNED = re.compile(r"^[\w.-]+/[\w.-]+(/[\w./-]+)?@[0-9a-f]{40}$")
 # The tests and the issue checker run the label scripts too.
 USES_NODE = re.compile(r"\bnode\s|unittest|check_issues\.py")
@@ -107,6 +108,27 @@ class WorkflowControlTests(unittest.TestCase):
         self.assertNotIn("strategy", job)
         # The rulesets in docs/REPOSITORY_SETTINGS.md require this name.
         self.assertEqual(job["name"], REQUIRED_CHECK)
+
+    def test_traffic_credentials_stay_in_their_steps(self) -> None:
+        steps = workflows()["daily-traffic.yml"]["jobs"]["collect"]["steps"]
+        with_key = [step for step in steps if "TRAFFIC_APP_PRIVATE_KEY" in str(step)]
+        self.assertEqual([step["name"] for step in with_key],
+                         ["Check the traffic App configuration", "Create traffic App token"])
+        # The configuration check sees only whether the key is set.
+        self.assertEqual(with_key[0]["env"]["HAS_KEY"],
+                         "${{ secrets.TRAFFIC_APP_PRIVATE_KEY != '' }}")
+        with_app_token = [step for step in steps if "steps.app-token.outputs.token" in str(step)]
+        self.assertEqual([step["name"] for step in with_app_token], ["Fetch GitHub traffic API data"])
+        self.assertNotRegex(with_app_token[0]["run"], r"\bpython|\.py\b")
+        with_workflow_token = [step for step in steps if "github.token" in str(step)]
+        self.assertEqual([step["name"] for step in with_workflow_token],
+                         ["Commit and push traffic history"])
+        push = with_workflow_token[0]["run"]
+        self.assertNotIn("--force", push)
+        self.assertIn("fetch origin traffic-history", push)
+        fetch = with_app_token[0]["run"]
+        self.assertIn("--retry 5", fetch)
+        self.assertIn("--max-time 60", fetch)
 
     def test_every_pip_install_is_hash_locked(self) -> None:
         installs = 0

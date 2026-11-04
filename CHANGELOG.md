@@ -55,6 +55,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The daily traffic export, after MyTemplate, keeps the GitHub App and now
+  checks out without persisted credentials (the workflow token reaches only
+  the push step), checks the App configuration before using it, retries the
+  API requests with a timeout, and retries the push up to three times by
+  refetching the branch and re-merging the collection, without force-pushing.
+  It no longer creates `traffic-history` if it is missing (#204).
 - GOVERNANCE.md records that v1.0.1 will not be published: its milestone and
   `release/1.0.1` stay open indefinitely as the maintenance queue, and the
   milestone's due date is moved forward before it approaches, since issue

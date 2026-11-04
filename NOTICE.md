@@ -47,8 +47,8 @@ under the Mozilla Public License 2.0; MyTemplate adapted the first three from
 [danielep71/K-SFTs](https://github.com/danielep71/K-SFTs) under the same
 licence. Modifications: the checks cover `.github/scripts`, PyYAML is treated
 as untyped by mypy, and the workflow rules name this repository's jobs, its
-required check `HTML and links` and the traffic push as the one checkout that
-keeps credentials.
+required check `HTML and links`, and the traffic export's checkouts, which
+keep no credentials.
 
 <a id="adapted-files"></a>
 
