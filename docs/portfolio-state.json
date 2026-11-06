@@ -467,8 +467,8 @@
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "open",
-        "open_issues": 11,
-        "closed_issues": 43,
+        "open_issues": 1,
+        "closed_issues": 57,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-LCR/milestone/1"
       },
@@ -476,7 +476,7 @@
         "number": 2,
         "title": "v0.2.0 - Host execution",
         "state": "open",
-        "open_issues": 0,
+        "open_issues": 5,
         "closed_issues": 0,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-LCR/milestone/2"
@@ -485,42 +485,51 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "d082ee5e64a808093bb500dbf82b9fe974bb0281dada3eb52f806d20f7278e80",
-        "url": "https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/README.md"
+        "sha256": "af1c10994da73a7ecc764c6c722e8ed8b9b9ee780d66f9061695500a14e498de",
+        "url": "https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "eba4b95e84637e9f0ea6c4b2e320507809049c710c735b4382b858005ac55b27",
-        "url": "https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/docs/DECISIONS.md"
+        "sha256": "04460193ff581f265cb679e5406617a477309925af91013d4cb4ed4f826dc856",
+        "url": "https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/docs/DECISIONS.md"
       }
     ]
   },
   {
     "id": "nsfr",
     "repo": "danielep71/K-NSFR",
-    "status": "Repository setup (v0.1.0). No NSFR calculation engine, workbook or validated regulatory profile exists yet. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.",
+    "status": "Repository setup (v0.1.0). No admitted NSFR calculation engine, workbook or validated regulatory profile exists yet; the benchmark prototype is stored but not admitted. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.",
     "release": null,
     "milestones": [
       {
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "open",
-        "open_issues": 10,
-        "closed_issues": 44,
+        "open_issues": 9,
+        "closed_issues": 46,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-NSFR/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.2.0 - Prototype Setup",
+        "state": "open",
+        "open_issues": 8,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-NSFR/milestone/2"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "0797677145c8841941a3434151e1415d28f2881c4fc2d9557b20183805047f13",
-        "url": "https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/README.md"
+        "sha256": "8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0",
+        "url": "https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "3cf0de685ce8d7790eca9dd7ef8f7e6b1ee587f200b05f2583d31679d382b6ce",
-        "url": "https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/docs/DECISIONS.md"
+        "sha256": "626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac",
+        "url": "https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md"
       }
     ]
   }
