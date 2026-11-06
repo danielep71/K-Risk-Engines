@@ -131,26 +131,27 @@ Repository setup. There is no LCR calculation engine, validated workbook, Excel 
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/README.md) — content SHA-256 `d082ee5e64a808093bb500dbf82b9fe974bb0281dada3eb52f806d20f7278e80`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/docs/DECISIONS.md) — content SHA-256 `eba4b95e84637e9f0ea6c4b2e320507809049c710c735b4382b858005ac55b27`
+- [README.md](https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/README.md) — content SHA-256 `af1c10994da73a7ecc764c6c722e8ed8b9b9ee780d66f9061695500a14e498de`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/docs/DECISIONS.md) — content SHA-256 `04460193ff581f265cb679e5406617a477309925af91013d4cb4ed4f826dc856`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 43 closed / 11 open issues.
-- [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 0 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 57 closed / 1 open issues.
+- [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 5 open issues.
 
 <a id="nsfr"></a>
 ## 🧩 K-NSFR
 
-Repository setup (v0.1.0). No NSFR calculation engine, workbook or validated regulatory profile exists yet. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.
+Repository setup (v0.1.0). No admitted NSFR calculation engine, workbook or validated regulatory profile exists yet; the benchmark prototype is stored but not admitted. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/README.md) — content SHA-256 `0797677145c8841941a3434151e1415d28f2881c4fc2d9557b20183805047f13`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/docs/DECISIONS.md) — content SHA-256 `3cf0de685ce8d7790eca9dd7ef8f7e6b1ee587f200b05f2583d31679d382b6ce`
+- [README.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md) — content SHA-256 `8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md) — content SHA-256 `626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 44 closed / 10 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 46 closed / 9 open issues.
+- [v0.2.0 - Prototype Setup](https://github.com/danielep71/K-NSFR/milestone/2): open; 0 closed / 8 open issues.
