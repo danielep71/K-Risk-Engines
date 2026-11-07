@@ -7,21 +7,21 @@ Proposed automatically from public project sources; reviewed on merge. Release a
 <a id="saccr"></a>
 ## 🧩 K-SACCR
 
-Version 1.1.0 is the current release: the 1.1.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.1.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
+Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/README.md) — content SHA-256 `911e69814eb8e3ffc09a1eac2804630c58a948edd57b1103ed0b585ad2247161`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/docs/methodology/README.md) — content SHA-256 `7c3d1b5f6eae47cedf58984d3127452f26e8ce76ea9386aae91d077248a7e3e3`
-- Published release: [v1.1.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.1.0) (2026-11-05T09:11:01Z)
+- [README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md) — content SHA-256 `eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md) — content SHA-256 `bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26`
+- Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 12 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
 - [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): closed; 32 closed / 0 open issues.
-- [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 3 closed / 10 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 13 open issues.
+- [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): closed; 14 closed / 0 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 1 closed / 17 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.

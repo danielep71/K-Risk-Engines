@@ -2,12 +2,12 @@
   {
     "id": "saccr",
     "repo": "danielep71/K-SACCR",
-    "status": "Version 1.1.0 is the current release: the 1.1.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.1.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
+    "status": "Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
     "release": {
-      "tag": "v1.1.0",
-      "url": "https://github.com/danielep71/K-SACCR/releases/tag/v1.1.0",
-      "published_at": "2026-11-05T09:11:01Z",
-      "notes_sha256": "2521a811be536ff08deb99a990dc3fc34b380498b4813b1280533761494f0e88"
+      "tag": "v1.2.0",
+      "url": "https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0",
+      "published_at": "2026-11-07T09:46:22Z",
+      "notes_sha256": "34c565c09abb76b9c18ac62b13bfee680cd629d3de95c1ffab9bfb3ac3d81ce7"
     },
     "milestones": [
       {
@@ -40,18 +40,18 @@
       {
         "number": 4,
         "title": "v1.2.0 - Excel Ribbon Interface",
-        "state": "open",
-        "open_issues": 10,
-        "closed_issues": 3,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 14,
+        "closed_at": "2026-11-07T10:10:17Z",
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/4"
       },
       {
         "number": 5,
         "title": "v1.3.0 - Diagnostics and Independent Validation",
         "state": "open",
-        "open_issues": 13,
-        "closed_issues": 0,
+        "open_issues": 17,
+        "closed_issues": 1,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/5"
       },
@@ -143,13 +143,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "911e69814eb8e3ffc09a1eac2804630c58a948edd57b1103ed0b585ad2247161",
-        "url": "https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/README.md"
+        "sha256": "eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc",
+        "url": "https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "7c3d1b5f6eae47cedf58984d3127452f26e8ce76ea9386aae91d077248a7e3e3",
-        "url": "https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/docs/methodology/README.md"
+        "sha256": "bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26",
+        "url": "https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md"
       }
     ]
   },
