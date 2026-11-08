@@ -262,7 +262,8 @@ class SetupTests(unittest.TestCase):
             self.run_setup()
 
     def test_unknown_bypass_blocks_preview_check_and_apply(self) -> None:
-        for value in ('omitted', None, {}):
+        values: tuple[Any, ...] = ('omitted', None, {})
+        for value in values:
             for mode in ('preview', 'check', 'apply'):
                 with self.subTest(value=value, mode=mode):
                     self.setUp()
