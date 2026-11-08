@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Remove the obsolete invented project name from the asset guide; the shared diagram uses K-SACCR and K-SFTs (#198).
+
 - Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
   EVE/NII, Prudent Valuation and Liquidity Stress priorities, further candidates,
   shared components and a conditional initial-margin workstream (#200).
