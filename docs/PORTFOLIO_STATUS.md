@@ -76,18 +76,18 @@ Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
 
-Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released. The branding graphic above retains the earlier specifications-only label.
+Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/README.md) — content SHA-256 `426af4e3f76e2e915eb7dd4908cb2cfb1bb10023dbda75184315e9f5340c0fe5`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/README.md) — content SHA-256 `61e66f846a4fd34634752ce3fa031379387d2b57b9fda957c4f78a0dbc5cc5c7`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 17 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 10 closed / 14 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 29 closed / 7 open issues.
 
 <a id="sfts"></a>
 ## 🧩 K-SFTs
@@ -131,13 +131,13 @@ Repository setup. There is no LCR calculation engine, validated workbook, Excel 
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/README.md) — content SHA-256 `af1c10994da73a7ecc764c6c722e8ed8b9b9ee780d66f9061695500a14e498de`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/docs/DECISIONS.md) — content SHA-256 `04460193ff581f265cb679e5406617a477309925af91013d4cb4ed4f826dc856`
+- [README.md](https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/README.md) — content SHA-256 `0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/docs/DECISIONS.md) — content SHA-256 `a56d3bc8ba7d51b331aa6d9056a170d387ebad1a3c87d431972c383755813ea0`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 57 closed / 1 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 59 closed / 0 open issues.
 - [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 5 open issues.
 
 <a id="nsfr"></a>

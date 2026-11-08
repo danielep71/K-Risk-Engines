@@ -313,7 +313,7 @@
   {
     "id": "prepayment",
     "repo": "danielep71/K-IRRBB-Prepayment_Models",
-    "status": "Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released. The branding graphic above retains the earlier specifications-only label.",
+    "status": "Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released.",
     "release": null,
     "milestones": [
       {
@@ -329,8 +329,8 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 14,
-        "closed_issues": 10,
+        "open_issues": 7,
+        "closed_issues": 29,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2"
       }
@@ -338,13 +338,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "426af4e3f76e2e915eb7dd4908cb2cfb1bb10023dbda75184315e9f5340c0fe5",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/README.md"
+        "sha256": "61e66f846a4fd34634752ce3fa031379387d2b57b9fda957c4f78a0dbc5cc5c7",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/README.md"
       },
       {
         "path": "docs/Milestones/v0.1.0.md",
         "sha256": "0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/docs/Milestones/v0.1.0.md"
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/docs/Milestones/v0.1.0.md"
       }
     ]
   },
@@ -467,8 +467,8 @@
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "open",
-        "open_issues": 1,
-        "closed_issues": 57,
+        "open_issues": 0,
+        "closed_issues": 59,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-LCR/milestone/1"
       },
@@ -485,13 +485,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "af1c10994da73a7ecc764c6c722e8ed8b9b9ee780d66f9061695500a14e498de",
-        "url": "https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/README.md"
+        "sha256": "0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216",
+        "url": "https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "04460193ff581f265cb679e5406617a477309925af91013d4cb4ed4f826dc856",
-        "url": "https://github.com/danielep71/K-LCR/blob/0e96e86a24e5b70eed7bd6d3894f31b957fd4b29/docs/DECISIONS.md"
+        "sha256": "a56d3bc8ba7d51b331aa6d9056a170d387ebad1a3c87d431972c383755813ea0",
+        "url": "https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/docs/DECISIONS.md"
       }
     ]
   },
