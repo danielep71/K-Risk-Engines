@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Ignore private SSH key filenames and keystore files while retaining public SSH keys (#226); declare PR read access for the label reconciliation association checks (#227).
+
 - Remove the obsolete invented project name from the asset guide; the shared diagram uses K-SACCR and K-SFTs (#198).
 
 - Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
