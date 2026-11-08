@@ -6,6 +6,12 @@
 
 🌐 [**Visit the website**](https://danielep71.github.io/K-Risk-Engines/) · 📚 [**Project wiki**](https://github.com/danielep71/K-Risk-Engines/wiki)
 
+🔒 [**GitHub Issue Deadline Tracker — private maintainer dashboard**](https://github-issue-deadline-tracker.dpenza.chatgpt.site)
+
+Read-only issue deadlines and priorities across repositories. Requires ChatGPT
+sign-in with an authorised account; the link does not grant access or modify
+repositories. Consult the tracker’s coverage and last-update timestamp.
+
 A single entry point to independent financial risk models and calculation engines for benchmarking, model challenge, audit, advisory and education.
 
 <br>
