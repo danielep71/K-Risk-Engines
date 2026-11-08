@@ -261,6 +261,43 @@ class SetupTests(unittest.TestCase):
         with self.assertRaisesRegex(setup.SetupError, 'Read-back'):
             self.run_setup()
 
+    def test_unknown_bypass_blocks_preview_check_and_apply(self) -> None:
+        values: tuple[Any, ...] = ('omitted', None, {})
+        for value in values:
+            for mode in ('preview', 'check', 'apply'):
+                with self.subTest(value=value, mode=mode):
+                    self.setUp()
+                    rule = copy.deepcopy(setup.load_config(setup.CONFIG)['rulesets'][0])
+                    rule.update(id=1, source_type='Repository')
+                    if value == 'omitted':
+                        del rule['bypass_actors']
+                    else:
+                        rule['bypass_actors'] = value
+                    self.api.rules = [rule]
+                    self.args.check = mode == 'check'
+                    self.args.apply = mode == 'apply'
+                    self.args.update_existing = True
+                    with self.assertRaisesRegex(setup.SetupError, 'Unknown bypass_actors from GET'):
+                        self.run_setup()
+                    self.assertEqual(self.api.writes, [])
+
+    def test_populated_bypass_is_known_drift(self) -> None:
+        self.args.apply = True
+        self.assertEqual(self.run_setup(), 0)
+        self.api.writes.clear()
+        self.api.rules[0]['bypass_actors'] = [
+            {'actor_id': 1, 'actor_type': 'Team', 'bypass_mode': 'always'}]
+        self.args.apply, self.args.check = False, True
+        self.assertEqual(self.run_setup(), 1)
+        self.assertEqual(self.api.writes, [])
+
+    def test_null_baseline_bypass_is_rejected(self) -> None:
+        broken = copy.deepcopy(setup.load_config(setup.CONFIG))
+        broken['rulesets'][0]['bypass_actors'] = None
+        with patch.object(Path, 'read_text', return_value=json.dumps(broken)), \
+                self.assertRaises(setup.SetupError):
+            setup.load_config(Path('settings.json'))
+
     def test_duplicate_names_rejected_before_writes(self) -> None:
         name = setup.load_config(setup.CONFIG)['rulesets'][0]['name']
         self.api.rules = [{'name': name, 'id': 1}, {'name': name, 'id': 2}]

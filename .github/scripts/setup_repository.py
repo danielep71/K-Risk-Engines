@@ -91,7 +91,7 @@ def canonical(value: Json) -> Json:
 
 def rule_spec(rule: dict[str, Json]) -> Json:
     # Ignore response metadata, but preserve unknown rules/parameters in comparison.
-    return canonical({k: rule.get(k, [] if k == 'bypass_actors' else None) for k in RULE_KEYS})
+    return canonical({k: rule.get(k) for k in RULE_KEYS})
 
 
 def load_config(path: Path) -> dict[str, Json]:
@@ -115,7 +115,7 @@ def load_config(path: Path) -> dict[str, Json]:
     for rule in value['rulesets']:
         if set(rule) != set(RULE_KEYS) or rule['target'] not in ('branch', 'tag') or rule['enforcement'] != 'active':
             raise SetupError('Invalid baseline ruleset.')
-        if rule['bypass_actors'] or rule['conditions']['ref_name']['exclude']:
+        if rule['bypass_actors'] != [] or rule['conditions']['ref_name']['exclude']:
             raise SetupError('Baseline must not contain bypass actors or excluded refs.')
         names.append(rule['name'])
     if len(names) != 5 or len(set(names)) != 5:
@@ -149,6 +149,9 @@ def inspect(call: Call, repo: str, config: dict[str, Json],
         else:
             endpoint = root + '/rulesets/' + str(matches[0]['id'])
             actual = call('GET', endpoint)
+            if not isinstance(actual.get('bypass_actors'), list):
+                raise SetupError(f'Unknown bypass_actors from GET {endpoint}; '
+                                 'cannot verify or apply settings from this response.')
             if rule_spec(actual) != rule_spec(desired):
                 plan.append(('PUT', endpoint, desired))
     plan += security_plan(call, root, metadata, config, report)
