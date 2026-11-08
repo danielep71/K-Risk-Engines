@@ -2,12 +2,12 @@
   {
     "id": "saccr",
     "repo": "danielep71/K-SACCR",
-    "status": "Version 1.1.0 is the current release: the 1.1.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.1.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
+    "status": "Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
     "release": {
-      "tag": "v1.1.0",
-      "url": "https://github.com/danielep71/K-SACCR/releases/tag/v1.1.0",
-      "published_at": "2026-11-05T09:11:01Z",
-      "notes_sha256": "2521a811be536ff08deb99a990dc3fc34b380498b4813b1280533761494f0e88"
+      "tag": "v1.2.0",
+      "url": "https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0",
+      "published_at": "2026-11-07T09:46:22Z",
+      "notes_sha256": "34c565c09abb76b9c18ac62b13bfee680cd629d3de95c1ffab9bfb3ac3d81ce7"
     },
     "milestones": [
       {
@@ -40,18 +40,18 @@
       {
         "number": 4,
         "title": "v1.2.0 - Excel Ribbon Interface",
-        "state": "open",
-        "open_issues": 10,
-        "closed_issues": 3,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 14,
+        "closed_at": "2026-11-07T10:10:17Z",
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/4"
       },
       {
         "number": 5,
         "title": "v1.3.0 - Diagnostics and Independent Validation",
         "state": "open",
-        "open_issues": 13,
-        "closed_issues": 0,
+        "open_issues": 17,
+        "closed_issues": 1,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/5"
       },
@@ -143,13 +143,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "911e69814eb8e3ffc09a1eac2804630c58a948edd57b1103ed0b585ad2247161",
-        "url": "https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/README.md"
+        "sha256": "eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc",
+        "url": "https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "7c3d1b5f6eae47cedf58984d3127452f26e8ce76ea9386aae91d077248a7e3e3",
-        "url": "https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/docs/methodology/README.md"
+        "sha256": "bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26",
+        "url": "https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md"
       }
     ]
   },
@@ -313,7 +313,7 @@
   {
     "id": "prepayment",
     "repo": "danielep71/K-IRRBB-Prepayment_Models",
-    "status": "Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released. The branding graphic above retains the earlier specifications-only label.",
+    "status": "Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released.",
     "release": null,
     "milestones": [
       {
@@ -329,8 +329,8 @@
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 14,
-        "closed_issues": 10,
+        "open_issues": 7,
+        "closed_issues": 29,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2"
       }
@@ -338,13 +338,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "426af4e3f76e2e915eb7dd4908cb2cfb1bb10023dbda75184315e9f5340c0fe5",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/README.md"
+        "sha256": "61e66f846a4fd34634752ce3fa031379387d2b57b9fda957c4f78a0dbc5cc5c7",
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/README.md"
       },
       {
         "path": "docs/Milestones/v0.1.0.md",
         "sha256": "0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de",
-        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/docs/Milestones/v0.1.0.md"
+        "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/docs/Milestones/v0.1.0.md"
       }
     ]
   },
@@ -467,8 +467,8 @@
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "open",
-        "open_issues": 11,
-        "closed_issues": 43,
+        "open_issues": 0,
+        "closed_issues": 59,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-LCR/milestone/1"
       },
@@ -476,7 +476,7 @@
         "number": 2,
         "title": "v0.2.0 - Host execution",
         "state": "open",
-        "open_issues": 0,
+        "open_issues": 5,
         "closed_issues": 0,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-LCR/milestone/2"
@@ -485,42 +485,51 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "d082ee5e64a808093bb500dbf82b9fe974bb0281dada3eb52f806d20f7278e80",
-        "url": "https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/README.md"
+        "sha256": "0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216",
+        "url": "https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "eba4b95e84637e9f0ea6c4b2e320507809049c710c735b4382b858005ac55b27",
-        "url": "https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/docs/DECISIONS.md"
+        "sha256": "a56d3bc8ba7d51b331aa6d9056a170d387ebad1a3c87d431972c383755813ea0",
+        "url": "https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/docs/DECISIONS.md"
       }
     ]
   },
   {
     "id": "nsfr",
     "repo": "danielep71/K-NSFR",
-    "status": "Repository setup (v0.1.0). No NSFR calculation engine, workbook or validated regulatory profile exists yet. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.",
+    "status": "Repository setup (v0.1.0). No admitted NSFR calculation engine, workbook or validated regulatory profile exists yet; the benchmark prototype is stored but not admitted. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.",
     "release": null,
     "milestones": [
       {
         "number": 1,
         "title": "v0.1.0 - Repo setup",
         "state": "open",
-        "open_issues": 10,
-        "closed_issues": 44,
+        "open_issues": 9,
+        "closed_issues": 46,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-NSFR/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.2.0 - Prototype Setup",
+        "state": "open",
+        "open_issues": 8,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-NSFR/milestone/2"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "0797677145c8841941a3434151e1415d28f2881c4fc2d9557b20183805047f13",
-        "url": "https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/README.md"
+        "sha256": "8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0",
+        "url": "https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "3cf0de685ce8d7790eca9dd7ef8f7e6b1ee587f200b05f2583d31679d382b6ce",
-        "url": "https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/docs/DECISIONS.md"
+        "sha256": "626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac",
+        "url": "https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md"
       }
     ]
   }
