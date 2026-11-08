@@ -101,6 +101,23 @@ class MilestoneScriptTests(unittest.TestCase):
         self.assertEqual(api.patches, list(range(1, 151, 2)))
         self.assertIsNotNone(api.items[500]["milestone"])
 
+    def test_successful_patch_with_stale_readback_fails(self) -> None:
+        def request(method: str, path: str, data: Any = None) -> Any:
+            if method == "PATCH":
+                return {"milestone": None}
+            return {"pull_request": {}, "milestone": {"title": "still assigned"}}
+        with self.assertRaisesRegex(ValueError, "not verified"):
+            self.reconcile()(request, "o/r", {"number": 1, "pull_request": {}})
+
+    def test_removal_summary_escapes_title(self) -> None:
+        namespace: dict[str, Any] = {"__name__": "milestones"}
+        exec(milestone_script(), namespace)
+        api = FakeGitHub([{"number": 1, "milestone": {"title": "a|b\\c\nd"}}])
+        removed = namespace["reconcile"](api, "o/r", {"number": 1, "pull_request": {}})
+        self.assertEqual(removed, [(1, "a|b\\c\nd")])
+        self.assertIn("| #1 | a\\|b\\\\c d |", namespace["summary"](removed))
+        self.assertIn("No milestones removed", namespace["summary"]([]))
+
     def test_an_issue_number_is_refused(self) -> None:
         api = FakeGitHub([], issues=({"number": 7, "milestone": {"title": "v1"}},))
         with self.assertRaisesRegex(ValueError, "Refusing to change an issue"):
