@@ -198,3 +198,10 @@ is wanted as a dated record; it contains the repository name and ruleset IDs.
 ---
 
 [↑ Back to comparison basis](#scope)
+
+A managed ruleset response must explicitly contain a `bypass_actors` list.
+An omitted, null or malformed value is unknown, not an empty bypass list.
+Preview, check and apply stop with an endpoint-specific error before any writes
+when the initial inspection encounters it; no verification is claimed.
+An unknown value during post-apply inspection also fails verification, without
+automatic rollback. The manifest requires an explicit empty list (#230).
