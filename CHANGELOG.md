@@ -13,6 +13,10 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Add an isolated document-portal pilot with parallel Material/Zensical builds,
+  eight engine gateways, evidence provenance and additive Pages candidates;
+  production publication remains unchanged (#223).
+
 - Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
   EVE/NII, Prudent Valuation and Liquidity Stress priorities, further candidates,
   shared components and a conditional initial-margin workstream (#200).

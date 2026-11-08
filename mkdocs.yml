@@ -1,0 +1,56 @@
+# Shared, portable configuration. Stage input with tools/portal/build.py first.
+site_name: K-Risk Engines — Documentation pilot
+site_url: https://danielep71.github.io/K-Risk-Engines/documentation/
+repo_url: https://github.com/danielep71/K-Risk-Engines
+repo_name: danielep71/K-Risk-Engines
+edit_uri: ''
+docs_dir: build/portal-content
+site_dir: build/site
+use_directory_urls: true
+theme:
+  name: material
+  language: en
+  font: false
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+extra_css:
+  - assets/portal.css
+nav:
+  - Overview: index.md
+  - CCR:
+      - Overview: domains/ccr.md
+      - K-SACCR: engines/saccr/index.md
+      - K-SFTs: engines/sfts/index.md
+  - Market Risk:
+      - Overview: domains/market-risk.md
+      - K-FRTB-SA: engines/frtb/index.md
+      - K-CVA: engines/cva/index.md
+  - IRRBB:
+      - Overview: domains/irrbb.md
+      - K-IRRBB-NMDs: engines/nmd/index.md
+      - K-IRRBB-Prepayment_Models: engines/prepayment/index.md
+  - Liquidity:
+      - Overview: domains/liquidity.md
+      - K-LCR: engines/lcr/index.md
+      - K-NSFR: engines/nsfr/index.md
+  - Evidence:
+      - Portfolio snapshot: portfolio-status.md
+      - Compatibility specimen: compatibility.md

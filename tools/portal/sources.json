@@ -1,0 +1,188 @@
+{
+  "saccr": {
+    "domain": "CCR",
+    "repo": "danielep71/K-SACCR",
+    "revision": "f831561caba40b1b686a20035f0a76d91eea2d48",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26"
+      },
+      "validation": {
+        "path": "docs/methodology/TEST_CASES.md",
+        "sha256": "55e0157288937494bed18774d844c1be23af2f6c9ac6633b3b884a348742ecf3"
+      },
+      "excel-evidence": {
+        "path": "docs/EXCEL_EVIDENCE.md",
+        "sha256": "8ed4e8b5c586fe4d87ce3f233dff75920640155e274be66d3df2633130beb15d"
+      },
+      "limitations": {
+        "path": "README.md",
+        "sha256": "eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc"
+      }
+    }
+  },
+  "nmd": {
+    "domain": "IRRBB",
+    "repo": "danielep71/K-IRRBB-NMDs",
+    "revision": "17bf3d972b37d184bd4cac8119aef2c8e92377ec",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "55262e9eb4df2de473eda4a8b6b6d35c9af5c30b0b7b02a716396e8ccc3d49f4"
+      },
+      "validation": {
+        "path": "docs/methodology/VALIDATION_PLAN.md",
+        "sha256": "804cbe381846254391917505b801124faa09840acc9c313a6aadf93e50c999d1"
+      },
+      "excel-evidence": {
+        "path": "docs/EXCEL_EVIDENCE.md",
+        "sha256": "c4e538abb905a34ee27a98cf0ebcee9d6c4e3cb1d359191656499dcc8ff96620"
+      },
+      "limitations": {
+        "path": "README.md",
+        "sha256": "d3c00b38d1122fd68fe96596a5e708ab0b0e7c43c9754edc1934be2e4aa7a58c"
+      }
+    }
+  },
+  "frtb": {
+    "domain": "Market Risk",
+    "repo": "danielep71/K-FRTB-SA",
+    "revision": "f67eaea4eb80904f6955d4ea1309e87dec042eed",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology.md",
+        "sha256": "d50c50fc770e6fe9fe8c705710665388fb6199e028ff1b70cb9fbe990f2d56ba"
+      },
+      "validation": {
+        "path": "docs/validation.md",
+        "sha256": "593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907"
+      },
+      "excel-evidence": {
+        "path": "docs/EXCEL_EVIDENCE.md",
+        "sha256": "7acf524a2f911931f5ae0fa88416200b37a382c21fb86680bd80c7f70feaa925"
+      },
+      "limitations": {
+        "path": "README.md",
+        "sha256": "6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765"
+      }
+    }
+  },
+  "prepayment": {
+    "domain": "IRRBB",
+    "repo": "danielep71/K-IRRBB-Prepayment_Models",
+    "revision": "95cf1b48dd35f13c0f78db7034ff3cb394f170c7",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "08108e68043fa2cb9d6e1e2ac11e0818073d5403218a3765bd2d10a0f9be51e5"
+      },
+      "validation": {
+        "path": "docs/methodology/VALIDATION_PLAN.md",
+        "sha256": "3d8bef29c02275fb25da8e7c6d69a75934a0d414b41f5967d1756a1401774de5"
+      },
+      "excel-evidence": {
+        "path": "docs/EXCEL_EVIDENCE.md",
+        "sha256": "dca4ace173f949db8fde32c8c4f55ad62685a96b43be52860a87076d4843e419"
+      },
+      "limitations": {
+        "path": "README.md",
+        "sha256": "426af4e3f76e2e915eb7dd4908cb2cfb1bb10023dbda75184315e9f5340c0fe5"
+      }
+    }
+  },
+  "sfts": {
+    "domain": "CCR",
+    "repo": "danielep71/K-SFTs",
+    "revision": "0d994f7818c49439610f6ec6f418001852b1db71",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "da10ea0b2ba72d4943ad94a6a680dc606c12ff85835380ba0a2a100ec6e8e1df"
+      },
+      "validation": {
+        "path": "docs/methodology/TEST_CASES.md",
+        "sha256": "c78750e53166a6478c3383353cebf82ec3f342c3715845464f07119f42f7da22"
+      },
+      "excel-evidence": null,
+      "limitations": {
+        "path": "README.md",
+        "sha256": "b57e8968799ac5ce3dca12893e81d929af3a24fcc0df7861d93ddfe82e71222d"
+      }
+    }
+  },
+  "cva": {
+    "domain": "Market Risk",
+    "repo": "danielep71/K-CVA",
+    "revision": "3d75855e5cbe6cda2f7fd519b6c363710ba9b935",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "318fd173082af0b4351d349e61d9d0e515cbd5f7ed576638989307cb0deec32f"
+      },
+      "validation": {
+        "path": "docs/methodology/TEST_CASES.md",
+        "sha256": "49b818d8606b386ef34085d50f6f239c05c003f9b7d524a75566c887d86a3215"
+      },
+      "excel-evidence": {
+        "path": "docs/evidence/excel-run-194e9cd.md",
+        "sha256": "d0b4c62dbd7e914b26369a21653f8bb96f3ebbd7c7d542d221ba27c9752344b3"
+      },
+      "limitations": {
+        "path": "README.md",
+        "sha256": "e61e605f7b50b141871af72486834f44790811d16574f721d1d70970c23c6aec"
+      }
+    }
+  },
+  "lcr": {
+    "domain": "Liquidity",
+    "repo": "danielep71/K-LCR",
+    "revision": "7b343cc5c6f91423802c0cc56bfe4d9b50d102a5",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "ef4b8dfce3399b3b273b5d7ea558177035e31b5b66cdea087f4f67e9f4ebb534"
+      },
+      "validation": {
+        "path": "docs/methodology/VALIDATION_PLAN.md",
+        "sha256": "d8f6bba1371c24da2a90f89109e2546207d757693c31cc5bafd8bce4088f7ee6"
+      },
+      "excel-evidence": null,
+      "limitations": {
+        "path": "README.md",
+        "sha256": "0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216"
+      }
+    }
+  },
+  "nsfr": {
+    "domain": "Liquidity",
+    "repo": "danielep71/K-NSFR",
+    "revision": "1f8abd3c80efc9c2a22a594c4e69598a6578aaf0",
+    "audited_on": "2026-11-08",
+    "documents": {
+      "methodology": {
+        "path": "prototype/docs/methodology/PROTOTYPE.md",
+        "sha256": "8503f5b6b99147d13aa8410d84d773f3e75978959924a1f77d0257c344fddd5d"
+      },
+      "validation": {
+        "path": "docs/validation/VALIDATION.md",
+        "sha256": "e6be341e4848ecc3301d2bbfbbddf65b8d4b4e10ea927de9125ef40f64e1b4eb"
+      },
+      "excel-evidence": {
+        "path": "docs/validation/HOST_EVIDENCE.md",
+        "sha256": "9d3d266ab8e6f9008cd35e05a51b68c766fbcc59a98f117649ba3039b8250ebb"
+      },
+      "limitations": {
+        "path": "README.md",
+        "sha256": "b432c5de38f82d0c0fb978dc4b0faacdc9b27ac18e3cdb31609b3900ad64003f"
+      }
+    }
+  }
+}

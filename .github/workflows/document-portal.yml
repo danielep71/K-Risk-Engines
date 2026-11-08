@@ -1,0 +1,46 @@
+name: Document portal comparison
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: portal-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13.18'
+      - name: Install hash-locked builders
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r tools/requirements-portal.txt
+      - name: Build both engines and additive Pages candidates
+        run: python tools/portal/build.py
+      - name: Exercise broken-link rejection
+        run: python tools/portal/test_portal.py
+      - name: Compare paths and check links and stale references
+        run: python tools/portal/check.py
+      - name: Verify immutable external document evidence
+        if: github.event_name != 'pull_request'
+        run: python tools/portal/check.py --external
+      - name: Keep comparison and candidate artifacts (no deployment)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: document-portal-comparison-${{ github.sha }}
+          path: |
+            build/pages-mkdocs
+            build/pages-zensical
+            build/comparison.json
+          if-no-files-found: error
+          retention-days: 30
