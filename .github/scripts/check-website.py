@@ -164,6 +164,10 @@ def check_external(url: str) -> tuple[str, str]:
         '--proto-redir', '=https,http', url
     ], capture_output=True, text=True, timeout=95)
     code = result.stdout.strip()
+    # This documented private dashboard requires sign-in; do not claim its content is verified.
+    if (not result.returncode and code == '401'
+            and url == 'https://github-issue-deadline-tracker.dpenza.chatgpt.site'):
+        return 'WARN', f'{url}: authentication required; private content not verified (HTTP 401)'
     if result.returncode or code in ('403', '429') or code.startswith('5'):
         return 'WARN', f'{url}: unavailable for verification (HTTP {code or "unknown"})'
     if not code.startswith('2'):
