@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Independently verify PR milestone removals and summarize removed milestone titles safely (#224, #228).
+
 - Reject unknown managed ruleset bypass data before planning or applying settings; require an explicit empty bypass list in the manifest (#230).
 - Ignore private SSH key filenames and keystore files while retaining public SSH keys (#226); declare PR read access for the label reconciliation association checks (#227).
 
