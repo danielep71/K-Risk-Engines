@@ -129,6 +129,14 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(errors, [f'README.md: missing site target {site.SITE}assets/gone.jpg'])
         self.assertEqual(external, {'https://example.com/'})
 
+    def test_generated_portal_urls_are_fetched_not_looked_up(self) -> None:
+        errors, external, *_ = self.run_check({
+            'index.html': PAGE,
+            'README.md': f'[Portal]({site.GENERATED}) [Gateway]({site.GENERATED}engines/saccr/#status)\n',
+            'docs/guide.md': '# Guide\n\n## Install\n'})
+        self.assertEqual(errors, [])
+        self.assertEqual(external, {site.GENERATED, site.GENERATED + 'engines/saccr/'})
+
     def test_html_links_to_markdown_anchors_are_checked(self) -> None:
         errors, *_ = self.run_check({'index.html': PAGE, 'docs/guide.md': '# Guide\n'})
         self.assertEqual(errors, ['index.html: missing anchor docs/guide.md#install'])
