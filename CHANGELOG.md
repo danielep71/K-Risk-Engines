@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Add the reference poster *Counterparty credit risk at a glance* (A0 PDF
+  with a PNG preview, status 30 October 2026) to the documentation portal's
+  CCR section, from `docs/CCR_AT_A_GLANCE.md`, copied byte for byte and
+  checked like the portfolio snapshot; the third-party logo is removed from
+  the hub copy.
 - Publish the documentation portal at `/documentation/` on the website, built
   with Zensical. The `deploy` job of `document-portal.yml` publishes the
   complete candidate (the unchanged website plus the portal) from `main` only,

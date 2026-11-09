@@ -12,6 +12,7 @@ from urllib.parse import unquote, urlsplit
 from urllib.request import urlopen
 
 import yaml
+from build import REFERENCES
 
 ROOT = Path(__file__).resolve().parents[2]
 BUILD = ROOT / 'build'
@@ -115,6 +116,9 @@ def main() -> None:
             raise ValueError('Obsolete reference in generated gateway: ' + str(path))
     if (BUILD / 'portal-content/portfolio-status.md').read_bytes() != (ROOT / 'docs/PORTFOLIO_STATUS.md').read_bytes():
         raise ValueError('Portfolio Markdown must be reused without editing')
+    for source, page, _ in (r for refs in REFERENCES.values() for r in refs):
+        if (BUILD / 'portal-content/reference' / page).read_bytes() != (ROOT / 'docs' / source).read_bytes():
+            raise ValueError('Reference Markdown must be reused without editing: ' + source)
     if args.external:
         verify_sources()
     report = {'pages': counts, 'page_urls': sorted(first),
