@@ -115,14 +115,14 @@ Repository setup only. There is no calculation engine, public API, workbook or v
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/README.md) — content SHA-256 `f35e2cc035a59ec769099383dd0e9a738b73d5a41bde5bde6bfb5b0a1f8a94fa`
-- [docs/methodology/README.md](https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/docs/methodology/README.md) — content SHA-256 `318fd173082af0b4351d349e61d9d0e515cbd5f7ed576638989307cb0deec32f`
+- [README.md](https://github.com/danielep71/K-CVA/blob/92d0e983357fe7a5696050ed7fec4dbe4ff91072/README.md) — content SHA-256 `d9c227b8c7ef1f04cf5cf62ab0a7e2c8095ca46a48529ba60664d4d11876dd21`
+- [docs/methodology/README.md](https://github.com/danielep71/K-CVA/blob/92d0e983357fe7a5696050ed7fec4dbe4ff91072/docs/methodology/README.md) — content SHA-256 `edb95552337b7ac614297b25ac4cf2a3597fb6e30dce700adf8afb7a69830cb7`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-CVA/milestone/1): open; 27 closed / 4 open issues.
-- [v0.2.0 - BA-CVA](https://github.com/danielep71/K-CVA/milestone/2): open; 0 closed / 1 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-CVA/milestone/1): closed; 43 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-CVA/milestone/2): open; 0 closed / 6 open issues.
 
 <a id="lcr"></a>
 ## 🧩 K-LCR
