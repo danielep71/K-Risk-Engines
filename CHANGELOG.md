@@ -13,6 +13,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Publish the documentation portal at `/documentation/` on the website, built
+  with Zensical. The `deploy` job of `document-portal.yml` publishes the
+  complete candidate (the unchanged website plus the portal) from `main` only,
+  with the GitHub Pages source set to GitHub Actions, and checks the live
+  pages after each deployment; a manual run can publish the Material candidate
+  instead (#223).
 - Add an isolated document-portal pilot with parallel Material/Zensical builds,
   eight engine gateways, evidence provenance and additive Pages candidates;
   production publication remains unchanged (#223).

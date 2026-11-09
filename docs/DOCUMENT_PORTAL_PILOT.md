@@ -2,15 +2,18 @@
 
 Analysis opened in [#223](https://github.com/danielep71/K-Risk-Engines/issues/223)
 before implementation on 2026-11-08; tracked in **v1.1.0 - Document Portal**.
-This is a technical pilot, not approval to replace the production website.
+The pilot was accepted on 2026-11-09 (#240) and the portal is published
+additively at `/K-Risk-Engines/documentation/`, built with Zensical; the
+landing page and every existing path are unchanged (see
+[Publication and rollback](#publication-and-rollback)).
 
 ## Recommendation
 
 Use an additive documentation portal at `/K-Risk-Engines/documentation/`.
 Keep the current landing page, every existing asset and its fragments intact.
 Compare Material for MkDocs 9.8.1 and Zensical 0.1.0 on the same input and
-configuration. The pilot is technically buildable; production adoption is gated
-on browser evidence, hosted checks and maintainer review.
+configuration. Adoption followed the browser evidence, the hosted checks and
+review recorded below.
 
 Alternatives considered: keep the static site alone (lowest change, no internal
 document search); use Material only (supported fallback); replace the landing
@@ -24,8 +27,8 @@ and Markdown in `docs/`; there is no pre-existing MkDocs configuration.
 The recorded Pages configuration is legacy deployment from `main` at `/` in
 [repository-settings.json](repository-settings.json). The existing
 `website-checks.yml` checks HTML, links, Markdown, scripts and workflow controls;
-it does not build or deploy a documentation generator. GitHub's branch-based
-Pages build is separate. No Pages setting is changed by this pilot.
+it does not build or deploy a documentation generator. The pilot changed no
+Pages setting; publication moves the Pages source to GitHub Actions (below).
 
 [GOVERNANCE.md](../GOVERNANCE.md) assigns the hub presentation/navigation and
 each engine its methodology, implementation, evidence and releases. Task PRs
@@ -134,9 +137,9 @@ External checking verifies every selected immutable document against its recorde
 SHA-256. Network or HTTP failures fail that check; they are not called a pass.
 The existing `check-website.py --external` remains the general hub link checker.
 
-## Browser acceptance record (pending)
+## Browser acceptance record
 
-Review both builders at desktop 1440×900 and mobile 390×844:
+Planned review of both builders at desktop 1440×900 and mobile 390×844:
 
 - Home, each domain, one engine overview and each topic, long portfolio snapshot.
 - Navigation drawer/tabs, keyboard focus, wrapping and horizontal overflow.
@@ -144,38 +147,52 @@ Review both builders at desktop 1440×900 and mobile 390×844:
 - Mermaid must render an SVG, with readable labels; inspect PNG and SVG artwork.
 - Compare current landing page and all its anchors in each packaged candidate.
 - Record screenshots, browser/version, console/network failures, commit and build
-  provenance; have the maintainer accept material design differences.
+  provenance; have material design differences accepted.
 
-Local browser installation failed because the downloaded Chromium archive was
-invalid. No desktop/mobile, interactive search or rendered Mermaid pass is
-claimed. Keep this as an explicit acceptance blocker, not an unchecked assumption.
+Record of 2026-11-09, hub commit `52f647c` (the #240 head), Chromium through
+Playwright, both candidates served locally at 1280×900 and 390×844: the home,
+compatibility and K-SACCR status pages load with no horizontal overflow; the
+Mermaid specimen renders as a diagram with readable labels in both; searching
+`validation` returns results in both (20 in Material, 35 in Zensical). Not
+reviewed: every domain and topic page, each engine-name search, keyboard focus
+and screen-reader output, and the landing-page anchors inside the candidates
+(the static files are copied byte for byte and `check.py` verifies them).
+Material for MkDocs announces its end of life on 2027-05-05 and names Zensical
+its successor; Zensical is therefore the published builder, and Material stays
+the tested fallback.
 
-## Publication gate and rollback
+## Publication and rollback
 
-GitHub Pages has one published site per repository. Deploying only the new
-portal artifact would remove the current root and assets. Do not create a second
-competing deploy workflow or switch Pages settings during the pilot.
+GitHub Pages has one published site per repository, so deploying the portal
+directory alone would remove the current root and assets. The `deploy` job of
+[document-portal.yml](../.github/workflows/document-portal.yml) therefore
+publishes the **complete** `build/pages-zensical` candidate: every tracked file
+unchanged, plus the portal under `/documentation/`.
 
-After the comparison is accepted, propose a separate deployment PR that:
+1. It publishes only on pushes to the default branch and manual runs on it;
+   pull requests and other branches build and check the candidates but never
+   package or deploy them.
+2. The build job is read-only and packages the candidate with
+   `actions/upload-pages-artifact`; only the deploy job has `pages: write` and
+   `id-token: write`, uses the `github-pages` environment and queues behind
+   any deployment in progress (`actions/deploy-pages`). Both actions are
+   SHA-pinned; `actions/configure-pages` is not needed and not used.
+3. It deploys only while the Pages source is **GitHub Actions**
+   (`build_type: workflow`, [repository settings](REPOSITORY_SETTINGS.md)).
+   With the earlier branch source it deploys nothing and reports a warning, so
+   the workflow can reach `main` before the setting changes.
+4. After each deployment it fetches the root, `assets/site.css`, a Markdown
+   document, the portal home, an engine gateway and the search index, and
+   fails if any is missing.
+5. The workflow-control tests pin this shape: the default-branch condition,
+   the complete-candidate path, the builder choice and the deploy permissions.
 
-1. Builds and checks both candidates from reviewed `main`; keeps a known-good
-   previous artifact and the baseline URL inventory.
-2. Uses GitHub Pages Actions deployment (`actions/configure-pages`,
-   `actions/upload-pages-artifact`, `actions/deploy-pages`, each SHA-pinned) to
-   publish the **complete** chosen `build/pages-zensical` or `build/pages-mkdocs`
-   artifact, not the documentation subdirectory alone.
-3. Uses read-only build permissions; gives only the deploy job `pages: write`
-   and `id-token: write`, with `github-pages` environment and serialized deploys.
-4. Coordinates the Pages source-setting change from legacy to workflow mode,
-   updates workflow-control tests, and verifies live root, assets, old fragments,
-   documentation URLs and search after deployment. Publish only from `main`.
-5. Retains Material selection for a reversible engine switch and prevents
-   accidental selection from an unreviewed PR or branch.
-
-Before deployment, rollback is simply closing/reverting the pilot change;
-production never moved. After adoption, deploy the previous complete verified
-artifact or the equivalent Material candidate, preserving the documentation
-prefix and all old paths. Never roll back by deleting the new URL namespace.
+Rollback: run the workflow manually on the default branch with the `mkdocs`
+builder to publish the equivalent Material candidate, or revert the change and
+run it again to republish an earlier commit. Every old path and the
+`/documentation/` prefix stay in place either way; never roll back by deleting
+the new URL namespace. To return to branch publishing, set the Pages source
+back to the default branch and revert this workflow change.
 
 Automatic source updates continue through existing portfolio-refresh PRs; the
 next build consumes the merged snapshot without a second status store. Changes
