@@ -13,6 +13,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Add an isolated document-portal pilot with parallel Material/Zensical builds,
+  eight engine gateways, evidence provenance and additive Pages candidates;
+  production publication remains unchanged (#223).
 - Add a prominent root README shortcut to the private GitHub Issue Deadline
   Tracker, with ChatGPT sign-in requirements and read-only scope (#252).
 - Independently verify PR milestone removals and summarize removed milestone titles safely (#224, #228).
