@@ -19,6 +19,9 @@ repositories keep their own changelogs; this file covers the hub only.
   with the GitHub Pages source set to GitHub Actions, and checks the live
   pages after each deployment; a manual run can publish the Material candidate
   instead (#223).
+- Link the documentation portal from the website's main navigation and the
+  README; the website checker fetches the portal's URLs, which are generated at
+  deployment, instead of looking them up as repository files (#223).
 - Add an isolated document-portal pilot with parallel Material/Zensical builds,
   eight engine gateways, evidence provenance and additive Pages candidates;
   production publication remains unchanged (#223).

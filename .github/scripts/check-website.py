@@ -14,6 +14,9 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 SITE = 'https://danielep71.github.io/K-Risk-Engines/'
+# The documentation portal is generated at deployment (document-portal.yml), so
+# its URLs are not repository files: they are fetched like external links.
+GENERATED = SITE + 'documentation/'
 VOID = set('area base br col embed hr img input link meta param source track wbr'.split())
 FENCE = re.compile(r' {0,3}(`{3,}|~{3,})')
 ATTRIBUTE = r'\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s"\'=<>`]+))'
@@ -260,6 +263,9 @@ def check(root: Path = ROOT) -> Result:
     external: set[str] = set()
     for source, link in references:
         url = urlsplit(link)
+        if link.startswith(GENERATED):
+            external.add(link.split('#')[0])
+            continue
         if link.startswith(SITE):
             error = site_error(root, source.relative_to(root), link)
         elif url.scheme in ('http', 'https') or url.netloc:
