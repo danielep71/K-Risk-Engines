@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from typing import Any
+from unittest.mock import Mock, patch
 
 
 def load_module(label: str, filename: str) -> Any:
@@ -71,6 +72,17 @@ class MarkdownParsingTests(unittest.TestCase):
 
 
 class CheckTests(unittest.TestCase):
+    def test_private_tracker_authentication_is_not_a_broken_link(self) -> None:
+        url = 'https://github-issue-deadline-tracker.dpenza.chatgpt.site'
+        with patch.object(site.subprocess, 'run', return_value=Mock(returncode=0, stdout='401')):
+            status, message = site.check_external(url)
+            self.assertEqual(status, 'WARN')
+            self.assertIn('not verified', message)
+            self.assertEqual(site.check_external('https://example.com')[0], 'ERROR')
+            self.assertEqual(site.check_external(url + '/missing')[0], 'ERROR')
+        with patch.object(site.subprocess, 'run', return_value=Mock(returncode=0, stdout='404')):
+            self.assertEqual(site.check_external(url)[0], 'ERROR')
+
     def run_check(self, files: dict[str, str]) -> Any:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve()
