@@ -73,7 +73,10 @@ One root [mkdocs.yml](../mkdocs.yml), one portfolio manifest, one reviewed statu
 snapshot, one small map of source-document paths and SHA-256 digests. Build-time
 pages are disposable under ignored `build/`. No generated engine documentation
 is committed. Existing `PORTFOLIO_STATUS.md` is reused **byte for byte**, and
-existing artwork is copied only into build output. Engine pages link to pinned
+existing artwork is copied only into build output. Hub reference documents
+listed in `REFERENCES` of `tools/portal/build.py` (currently
+[CCR_AT_A_GLANCE.md](CCR_AT_A_GLANCE.md)) are reused byte for byte under
+`reference/` in the same way. Engine pages link to pinned
 original documents; engine licences and notices remain at source.
 
 Each of eight engine gateways has separate status, release, milestones,

@@ -21,6 +21,8 @@ DOMAINS = {'CCR': ('ccr', 'CCR_framework.svg'),
 TOPICS = {'status': 'Status', 'release': 'Release', 'milestones': 'Milestones',
           'methodology': 'Methodology', 'validation': 'Validation',
           'excel-evidence': 'Excel evidence', 'limitations': 'Limitations'}
+# Hub reference documents, copied byte for byte from docs/ into reference/.
+REFERENCES = {'CCR': [('CCR_AT_A_GLANCE.md', 'ccr-at-a-glance.md', 'Counterparty credit risk at a glance')]}
 
 
 def write(path: str, text: str) -> None:
@@ -109,12 +111,16 @@ def stage() -> None:
     for name, (slug, asset) in DOMAINS.items():
         write(f'domains/{slug}.md', f'# {name}\n\n'
               + '\n'.join(f'- [{p["repo"].split("/")[1]}](../engines/{p["id"]}/index.md)' for p in projects if records[p['id']]['domain'] == name)
+              + ''.join(f'\n\nReference: [{title}](../reference/{page})' for _, page, title in REFERENCES.get(name, []))
               + f'\n\n![{name} framework](../assets/{asset})\n\n'
               'Architecture overview only; not a statement of implemented or validated coverage.')
     shutil.copytree(ROOT / 'assets', CONTENT / 'assets', ignore=shutil.ignore_patterns('*.md', '*.css'))
     (CONTENT / 'assets/portal.css').write_text('.md-typeset img {height:auto;max-width:100%}\n.md-typeset a {overflow-wrap:anywhere}\n')
     # Byte-for-byte reuse: no second editable copy of the existing Markdown.
     shutil.copyfile(ROOT / 'docs/PORTFOLIO_STATUS.md', CONTENT / 'portfolio-status.md')
+    (CONTENT / 'reference').mkdir()
+    for source, page, _ in (r for refs in REFERENCES.values() for r in refs):
+        shutil.copyfile(ROOT / 'docs' / source, CONTENT / 'reference' / page)
     write('compatibility.md', '# Compatibility specimen\n\n'
           'This page exercises shared Markdown, search, diagrams and local artwork.\n\n'
           '!!! note "Evidence matters"\n    A release is not a validation certificate.\n\n'

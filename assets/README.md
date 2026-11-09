@@ -13,6 +13,8 @@
 
 The IRRBB and liquidity diagrams are drawn in the style of `CCR_framework` (1,600 px wide, Inter or a system sans-serif font) and were checked against the Basel IRRBB standard (2016), the Basel LCR and NSF chapters, the CRR and Delegated Regulations (EU) 2015/61, 2024/856 and 2024/857. The SVG is the source; the PNG is its export with headless Chromium at a device scale factor of 2, quantized to 256 colours. Like the others, they are method maps: they do not certify implemented functionality or the scope of K-IRRBB NMDs, K-IRRBB Prepayment Models, K-LCR or K-NSFR.
 
+- `CCR_at_a_glance.pdf`, `CCR_at_a_glance.png`: the A0 reference poster *Counterparty credit risk at a glance* (EU CRR3 with Basel references; regulatory status 30 October 2026), published in the documentation portal's CCR section through [docs/CCR_AT_A_GLANCE.md](../docs/CCR_AT_A_GLANCE.md), added on 2026-11-09. The PDF is the source; the hub copy has the third-party logo in the header's top-right corner removed, with no other change to its content. The PNG is its preview, rendered with PyMuPDF at 3,200 pixels wide and quantized to 256 colours. It is a simplified regulatory overview: it does not certify implemented functionality or the scope of K-SACCR or K-SFTs, and the regulatory texts remain authoritative.
+
 Project-specific diagrams (usage, aggregation) live in each engine's repository; the hub shows only the four framework diagrams, one per risk category.
 
 The current artwork identifies the eight portfolio projects, two per risk category, without making implementation or validation claims. Refer to the project status table for current maturity. `K-Risk-Engines-social-preview-v2.jpg`, the previous six-project version, is kept but no longer used.
@@ -22,6 +24,7 @@ To set GitHub's repository social preview, upload `K-Risk-Engines-social-preview
 ## ⚖️ Licensing
 
 `site.css`, the four framework diagrams (CCR, market risk, IRRBB and
-liquidity, SVG and PNG) and this documentation are covered by [MPL-2.0](../LICENSE).
+liquidity, SVG and PNG), the CCR reference poster (PDF and PNG) and this
+documentation are covered by [MPL-2.0](../LICENSE).
 The portfolio artwork is excluded; no separate reuse licence is
 granted for the artwork. See [licensing and attribution](../NOTICE.md).
