@@ -294,6 +294,9 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🐛 Fixed
 
+- `setup_repository.py` no longer says that a disabled unmanaged ruleset
+  "stays active": the note follows the ruleset's enforcement (stays active,
+  stays in place but is disabled, or stays in place in evaluate mode) (#270).
 - The portfolio refresh keeps a milestone deleted in its source repository as
   a dated historical entry without a link, instead of restoring its dead URL
   or dropping it; the three deleted K-SACCR milestones are recorded that way,

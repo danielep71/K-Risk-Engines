@@ -172,11 +172,22 @@ class SetupTests(unittest.TestCase):
         output = io.StringIO()
         with redirect_stdout(output):
             self.assertEqual(setup.run(self.args, self.api), 0)
-        self.assertIn('unmanaged ruleset "Require website checks" (branch: ~DEFAULT_BRANCH; disabled)',
-                      output.getvalue())
+        self.assertIn('unmanaged ruleset "Require website checks" (branch: ~DEFAULT_BRANCH; disabled) '
+                      'stays in place but is disabled.', output.getvalue())
+        self.assertNotIn('stays active', output.getvalue())
         self.args.apply = True
         self.run_setup()
         self.assertEqual(self.api.rules[0]['name'], 'Require website checks')
+
+    def test_an_active_unmanaged_ruleset_is_said_to_stay_active(self) -> None:
+        self.api.rules = [{'name': 'Legacy protection', 'id': 11, 'source_type': 'Repository',
+                           'target': 'branch', 'enforcement': 'active',
+                           'conditions': {'ref_name': {'include': ['~DEFAULT_BRANCH'], 'exclude': []}}}]
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(setup.run(self.args, self.api), 0)
+        self.assertIn('unmanaged ruleset "Legacy protection" (branch: ~DEFAULT_BRANCH; active) stays active.',
+                      output.getvalue())
 
     def test_public_repository_enables_reporting_and_secret_scanning_once(self) -> None:
         self.api.repo['visibility'] = 'public'

@@ -25,6 +25,9 @@ RULE_KEYS = ('name', 'target', 'enforcement', 'conditions', 'rules', 'bypass_act
 GENERAL_KEYS = {'allow_rebase_merge', 'delete_branch_on_merge', 'allow_update_branch', 'has_projects',
                 'has_downloads'}
 PAGES_KEYS = {'build_type', 'source'}
+# How the note on an unmanaged ruleset describes it, by enforcement.
+UNMANAGED_STATE = {'active': 'stays active', 'disabled': 'stays in place but is disabled',
+                   'evaluate': 'stays in place in evaluate mode'}
 # Security features and whether GitHub offers them only on public repositories
 # (private repositories need a paid licence for secret scanning).
 SECURITY_PUBLIC_ONLY = {
@@ -252,9 +255,11 @@ def report_unmanaged(call: Call, root: str, current: list[Json], config: dict[st
             continue
         detail = call('GET', f'{root}/rulesets/{ruleset["id"]}')
         refs = ', '.join(((detail.get('conditions') or {}).get('ref_name') or {}).get('include') or [])
+        enforcement = detail.get('enforcement', 'unknown enforcement')
+        state = UNMANAGED_STATE.get(enforcement, 'stays in place')
         print(f'NOTE: unmanaged ruleset "{ruleset["name"]}" '
               f'({detail.get("target", "unknown target")}: {refs or "no ref conditions"}; '
-              f'{detail.get("enforcement", "unknown enforcement")}) stays active. This script '
+              f'{enforcement}) {state}. This script '
               'never changes or deletes it; delete it in the repository settings if a managed '
               'ruleset replaces it.')
 
