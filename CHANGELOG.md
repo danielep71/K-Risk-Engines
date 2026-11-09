@@ -13,6 +13,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- Add a prominent root README shortcut to the private GitHub Issue Deadline
+  Tracker, with ChatGPT sign-in requirements and read-only scope (#252).
 - Independently verify PR milestone removals and summarize removed milestone titles safely (#224, #228).
 
 - Reject unknown managed ruleset bypass data before planning or applying settings; require an explicit empty bypass list in the manifest (#230).
