@@ -7,21 +7,21 @@ Proposed automatically from public project sources; reviewed on merge. Release a
 <a id="saccr"></a>
 ## 🧩 K-SACCR
 
-Version 1.1.0 is the current release: the 1.1.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.1.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
+Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/README.md) — content SHA-256 `911e69814eb8e3ffc09a1eac2804630c58a948edd57b1103ed0b585ad2247161`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/2200dd592da83039c2ada726fc84c7a61686662b/docs/methodology/README.md) — content SHA-256 `7c3d1b5f6eae47cedf58984d3127452f26e8ce76ea9386aae91d077248a7e3e3`
-- Published release: [v1.1.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.1.0) (2026-11-05T09:11:01Z)
+- [README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md) — content SHA-256 `eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md) — content SHA-256 `bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26`
+- Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.0.1 - Repo setup](https://github.com/danielep71/K-SACCR/milestone/1): closed; 12 closed / 0 open issues.
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
 - [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): closed; 32 closed / 0 open issues.
-- [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): open; 3 closed / 10 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 0 closed / 13 open issues.
+- [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): closed; 14 closed / 0 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 1 closed / 17 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.
@@ -76,18 +76,18 @@ Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
 
-Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released. The branding graphic above retains the earlier specifications-only label.
+Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/README.md) — content SHA-256 `426af4e3f76e2e915eb7dd4908cb2cfb1bb10023dbda75184315e9f5340c0fe5`
-- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/ff95912e9755b08815caf97306c726e7e4c63e40/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
+- [README.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/README.md) — content SHA-256 `61e66f846a4fd34634752ce3fa031379387d2b57b9fda957c4f78a0dbc5cc5c7`
+- [docs/Milestones/v0.1.0.md](https://github.com/danielep71/K-IRRBB-Prepayment_Models/blob/efffd119102c4a282b690052022f1365d291f5a8/docs/Milestones/v0.1.0.md) — content SHA-256 `0b459ecb6ea11faf76f692d2ac3ed01e11219ab892cee1d30b7c714621eae9de`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1): closed; 17 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 10 closed / 14 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/2): open; 29 closed / 7 open issues.
 
 <a id="sfts"></a>
 ## 🧩 K-SFTs
@@ -115,14 +115,14 @@ Repository setup only. There is no calculation engine, public API, workbook or v
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/README.md) — content SHA-256 `f35e2cc035a59ec769099383dd0e9a738b73d5a41bde5bde6bfb5b0a1f8a94fa`
-- [docs/methodology/README.md](https://github.com/danielep71/K-CVA/blob/260fac21f23b3916d050fa7de5707f030f7c1cc8/docs/methodology/README.md) — content SHA-256 `318fd173082af0b4351d349e61d9d0e515cbd5f7ed576638989307cb0deec32f`
+- [README.md](https://github.com/danielep71/K-CVA/blob/92d0e983357fe7a5696050ed7fec4dbe4ff91072/README.md) — content SHA-256 `d9c227b8c7ef1f04cf5cf62ab0a7e2c8095ca46a48529ba60664d4d11876dd21`
+- [docs/methodology/README.md](https://github.com/danielep71/K-CVA/blob/92d0e983357fe7a5696050ed7fec4dbe4ff91072/docs/methodology/README.md) — content SHA-256 `edb95552337b7ac614297b25ac4cf2a3597fb6e30dce700adf8afb7a69830cb7`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-CVA/milestone/1): open; 27 closed / 4 open issues.
-- [v0.2.0 - BA-CVA](https://github.com/danielep71/K-CVA/milestone/2): open; 0 closed / 1 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-CVA/milestone/1): closed; 43 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-CVA/milestone/2): open; 0 closed / 6 open issues.
 
 <a id="lcr"></a>
 ## 🧩 K-LCR
@@ -131,26 +131,27 @@ Repository setup. There is no LCR calculation engine, validated workbook, Excel 
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/README.md) — content SHA-256 `d082ee5e64a808093bb500dbf82b9fe974bb0281dada3eb52f806d20f7278e80`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/12269d9d3052674e66769692d0fba8e022dc82b6/docs/DECISIONS.md) — content SHA-256 `eba4b95e84637e9f0ea6c4b2e320507809049c710c735b4382b858005ac55b27`
+- [README.md](https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/README.md) — content SHA-256 `0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/docs/DECISIONS.md) — content SHA-256 `a56d3bc8ba7d51b331aa6d9056a170d387ebad1a3c87d431972c383755813ea0`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 43 closed / 11 open issues.
-- [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 0 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 59 closed / 0 open issues.
+- [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 5 open issues.
 
 <a id="nsfr"></a>
 ## 🧩 K-NSFR
 
-Repository setup (v0.1.0). No NSFR calculation engine, workbook or validated regulatory profile exists yet. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.
+Repository setup (v0.1.0). No admitted NSFR calculation engine, workbook or validated regulatory profile exists yet; the benchmark prototype is stored but not admitted. Do not use this baseline for regulatory reporting, production decisions or a claim of compliance.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/README.md) — content SHA-256 `0797677145c8841941a3434151e1415d28f2881c4fc2d9557b20183805047f13`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/e57a91830c36d21e4f4a2b19d7d7f10beb23a1dd/docs/DECISIONS.md) — content SHA-256 `3cf0de685ce8d7790eca9dd7ef8f7e6b1ee587f200b05f2583d31679d382b6ce`
+- [README.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md) — content SHA-256 `8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md) — content SHA-256 `626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 44 closed / 10 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 46 closed / 9 open issues.
+- [v0.2.0 - Prototype Setup](https://github.com/danielep71/K-NSFR/milestone/2): open; 0 closed / 8 open issues.

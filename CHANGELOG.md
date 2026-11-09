@@ -16,6 +16,14 @@ repositories keep their own changelogs; this file covers the hub only.
 - Add an isolated document-portal pilot with parallel Material/Zensical builds,
   eight engine gateways, evidence provenance and additive Pages candidates;
   production publication remains unchanged (#223).
+- Add a prominent root README shortcut to the private GitHub Issue Deadline
+  Tracker, with ChatGPT sign-in requirements and read-only scope (#252).
+- Independently verify PR milestone removals and summarize removed milestone titles safely (#224, #228).
+
+- Reject unknown managed ruleset bypass data before planning or applying settings; require an explicit empty bypass list in the manifest (#230).
+- Ignore private SSH key filenames and keystore files while retaining public SSH keys (#226); declare PR read access for the label reconciliation association checks (#227).
+
+- Remove the obsolete invented project name from the asset guide; the shared diagram uses K-SACCR and K-SFTs (#198).
 
 - Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
   EVE/NII, Prudent Valuation and Liquidity Stress priorities, further candidates,
