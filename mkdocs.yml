@@ -39,6 +39,7 @@ nav:
       - Overview: domains/ccr.md
       - K-SACCR: engines/saccr/index.md
       - K-SFTs: engines/sfts/index.md
+      - At a glance: reference/ccr-at-a-glance.md
   - Market Risk:
       - Overview: domains/market-risk.md
       - K-FRTB-SA: engines/frtb/index.md
