@@ -1,13 +1,40 @@
-name: Document portal comparison
+name: Document portal
+
+# Builds the documentation portal with both builders (Zensical and Material for
+# MkDocs) from the same input, checks links, URL inventories and source hashes,
+# and keeps both complete Pages candidates as artifacts. Every candidate holds
+# the unchanged static website plus the portal under /documentation/.
+#
+# Only pushes to the default branch and manual runs on it publish. They deploy
+# the complete Zensical candidate; a manual run can choose the Material
+# candidate instead, to roll back the builder without a code change. The build
+# job is read-only; only the deploy job may write Pages, with the github-pages
+# environment, and deploys queue rather than cancel each other. The deploy job
+# runs only while the Pages source is "GitHub Actions"; with any other source
+# it skips the deployment and says so (docs/REPOSITORY_SETTINGS.md).
+
 on:
   pull_request:
   push:
   workflow_dispatch:
+    inputs:
+      builder:
+        description: Candidate to publish from the default branch
+        type: choice
+        options:
+          - zensical
+          - mkdocs
+        default: zensical
+
 permissions:
   contents: read
+
 concurrency:
-  group: portal-${{ github.event_name }}-${{ github.ref }}
-  cancel-in-progress: true
+  # A new commit on a pull request cancels the run of the commit it replaces;
+  # every other run has a group of its own.
+  group: document-portal-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || format('run-{0}', github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   compare:
     runs-on: ubuntu-24.04
@@ -25,7 +52,7 @@ jobs:
       - name: Install hash-locked builders
         run: |
           python -m pip install --require-hashes --only-binary=:all: -r tools/requirements-portal.txt
-      - name: Build both engines and additive Pages candidates
+      - name: Build both engines and complete Pages candidates
         run: python tools/portal/build.py
       - name: Exercise broken-link rejection
         run: python tools/portal/test_portal.py
@@ -34,7 +61,7 @@ jobs:
       - name: Verify immutable external document evidence
         if: github.event_name != 'pull_request'
         run: python tools/portal/check.py --external
-      - name: Keep comparison and candidate artifacts (no deployment)
+      - name: Keep comparison and candidate artifacts
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: document-portal-comparison-${{ github.sha }}
@@ -44,3 +71,51 @@ jobs:
             build/comparison.json
           if-no-files-found: error
           retention-days: 30
+      - name: Package the chosen candidate for Pages
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: build/pages-${{ inputs.builder || 'zensical' }}
+
+  deploy:
+    needs: compare
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: document-portal-pages
+      cancel-in-progress: false
+    steps:
+      - name: Check the Pages source
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type)"
+          echo "build_type=${build_type}" >> "$GITHUB_OUTPUT"
+          if [ "$build_type" != workflow ]; then
+            echo "::warning::The Pages source is '${build_type}', not GitHub Actions: nothing was deployed."
+          fi
+      - name: Deploy the complete candidate
+        id: deployment
+        if: steps.source.outputs.build_type == 'workflow'
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - name: Check the published website and portal
+        if: steps.source.outputs.build_type == 'workflow'
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          BUILDER: ${{ inputs.builder || 'zensical' }}
+        run: |
+          search=documentation/search.json
+          if [ "$BUILDER" = mkdocs ]; then search=documentation/search/search_index.json; fi
+          for path in "" assets/site.css docs/PORTFOLIO_STATUS.md documentation/ documentation/engines/saccr/ "$search"; do
+            curl --fail --silent --show-error --location --output /dev/null \
+              --retry 5 --retry-all-errors --retry-delay 10 --max-time 60 "${PAGE_URL}${path}"
+            echo "OK ${PAGE_URL}${path}"
+          done

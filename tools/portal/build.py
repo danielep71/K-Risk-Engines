@@ -96,9 +96,9 @@ def stage() -> None:
     for p in projects:
         assert p['repo'] == records[p['id']]['repo'] == snapshots[p['id']]['repo']
         engine(p, snapshots[p['id']], records[p['id']])
-    write('index.md', '# K-Risk Engines\n\n## Documentation pilot\n\n'
+    write('index.md', '# K-Risk Engines\n\n## Documentation\n\n'
           'Explore the methodology, validation evidence and limitations behind each engine. '
-          'This preview does not replace the [production portfolio](https://danielep71.github.io/K-Risk-Engines/).\n\n'
+          'The [portfolio website](https://danielep71.github.io/K-Risk-Engines/) remains the hub\'s home page.\n\n'
           + '\n'.join(f'- [{name}](domains/{slug}.md)' for name, (slug, _) in DOMAINS.items())
           + '\n\n[Portfolio status and provenance](portfolio-status.md) · [Compatibility specimen](compatibility.md)\n\n'
           'The source repositories own their documentation and releases. '
@@ -153,7 +153,7 @@ def main() -> None:
             shutil.rmtree(destination)
         shutil.copytree(baseline, destination)
         shutil.copytree(BUILD / builder, destination / 'documentation')
-    print('Both builds and additive Pages candidates are ready; nothing was published.')
+    print('Both builds and complete Pages candidates are ready; nothing was published by this script.')
 
 
 if __name__ == '__main__':

@@ -41,7 +41,7 @@ within these settings.
 | Always suggest updating PR branches | Off (`allow_update_branch: false`) | **On** | Offers updates for the strict up-to-date check below; governance still governs use on shared integration branches. |
 | Repository Projects feature | On (`has_projects: true`) | **Off** | Disables the repository feature; this does not describe account-level project boards. |
 | Legacy downloads flag | On (`has_downloads: true`) | **Off** | API metadata difference; not a prohibition on release assets or source downloads. |
-| GitHub Pages | Not published | **Deploy from a branch: default branch, `/` (root)** | Publishes the static website from the default branch only; other branches are not deployed. |
+| GitHub Pages | Not published | **Source: GitHub Actions** (`build_type: workflow`; the recorded source branch stays the default branch, `/`) | The `deploy` job of `document-portal.yml` publishes the static website and the documentation portal from the default branch only; other branches and pull requests are not deployed. With any other source the job deploys nothing and reports a warning. |
 
 Sources: GitHub's [repository REST documentation][repo-api] and
 [Pages publishing source documentation][pages-source]. These values are
@@ -177,7 +177,7 @@ is wanted as a dated record; it contains the repository name and ruleset IDs.
 | Reference | Supports |
 | --- | --- |
 | [Repository REST API][repo-api] | Declared option defaults and parameter meanings |
-| [Pages publishing source][pages-source] | Publishing from a branch and folder |
+| [Pages publishing source][pages-source] | Publishing with a custom GitHub Actions workflow |
 | [Private vulnerability reporting][pvr] | Availability on public repositories and how the setting is enabled |
 | [Dependabot alerts][dependabot-alerts] and [security updates][dependabot-updates] | What the two Dependabot switches do and how they depend on each other |
 | [Secret scanning][secret-scanning] | Availability by visibility and the push protection it enables |

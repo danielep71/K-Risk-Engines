@@ -32,6 +32,7 @@ WRITE_PERMISSIONS = {
     ("daily-traffic.yml", "alert"): {"issues"},
     ("pr-milestones.yml", "reconcile"): {"pull-requests"},
     ("codeql.yml", "analyze"): {"security-events"},
+    ("document-portal.yml", "deploy"): {"pages", "id-token"},
 }
 # No checkout keeps credentials: the traffic export passes the workflow token
 # to its push step only (see test_traffic_credentials_stay_in_their_steps).
@@ -232,6 +233,31 @@ class WorkflowControlTests(unittest.TestCase):
         concurrency = workflows()["pr-milestones.yml"]["concurrency"]
         self.assertIn("github.event.pull_request.number", concurrency["group"])
         self.assertIs(concurrency["cancel-in-progress"], False)
+
+    def test_portal_deploys_only_from_the_default_branch(self) -> None:
+        document = workflows()["document-portal.yml"]
+        default_branch = "github.ref == format('refs/heads/{0}', github.event.repository.default_branch)"
+        not_pr = "github.event_name != 'pull_request'"
+        build, deploy = document["jobs"]["compare"], document["jobs"]["deploy"]
+        self.assertEqual(writes(build["permissions"]), set())
+        package = [step for step in build["steps"]
+                   if str(step.get("uses", "")).startswith("actions/upload-pages-artifact@")]
+        self.assertEqual(len(package), 1)
+        for condition in (package[0]["if"], deploy["if"]):
+            with self.subTest(condition=condition):
+                self.assertIn(default_branch, condition)
+                self.assertIn(not_pr, condition)
+        # The complete candidate is published, never the portal directory alone.
+        self.assertEqual(package[0]["with"]["path"], "build/pages-${{ inputs.builder || 'zensical' }}")
+        self.assertEqual(document["on"]["workflow_dispatch"]["inputs"]["builder"]["options"],
+                         ["zensical", "mkdocs"])
+        self.assertEqual(deploy["needs"], "compare")
+        self.assertEqual(deploy["environment"]["name"], "github-pages")
+        self.assertIs(deploy["concurrency"]["cancel-in-progress"], False)
+        deploy_step = [step for step in deploy["steps"]
+                       if str(step.get("uses", "")).startswith("actions/deploy-pages@")]
+        self.assertEqual(len(deploy_step), 1)
+        self.assertEqual(deploy_step[0]["if"], "steps.source.outputs.build_type == 'workflow'")
 
     def test_dependabot_covers_each_pinned_dependency_once(self) -> None:
         document = yaml.safe_load((ROOT / ".github/dependabot.yml").read_text(encoding="utf-8"))

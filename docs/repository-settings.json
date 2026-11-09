@@ -15,7 +15,7 @@
     "secret_scanning_push_protection": true
   },
   "pages": {
-    "build_type": "legacy",
+    "build_type": "workflow",
     "source": {
       "branch": "main",
       "path": "/"

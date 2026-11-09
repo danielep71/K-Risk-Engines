@@ -65,7 +65,7 @@ def config_check() -> None:
     # BaseLoader reads the explicitly trusted shared config without executing YAML tags.
     cfg = yaml.load((ROOT / 'mkdocs.yml').read_text(), Loader=yaml.BaseLoader)
     if cfg.get('plugins') != ['search'] or 'hooks' in cfg or 'custom_dir' in cfg['theme']:
-        raise ValueError('Pilot supports search only; no hooks or template overrides')
+        raise ValueError('The portal supports search only; no hooks or template overrides')
     expected = {'admonition', 'attr_list', 'md_in_html', 'tables', 'toc', 'pymdownx.details', 'pymdownx.superfences'}
     extensions = {x if isinstance(x, str) else next(iter(x)) for x in cfg['markdown_extensions']}
     if extensions != expected or (ROOT / 'zensical.toml').exists():

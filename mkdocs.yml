@@ -1,5 +1,5 @@
 # Shared, portable configuration. Stage input with tools/portal/build.py first.
-site_name: K-Risk Engines — Documentation pilot
+site_name: K-Risk Engines — Documentation
 site_url: https://danielep71.github.io/K-Risk-Engines/documentation/
 repo_url: https://github.com/danielep71/K-Risk-Engines
 repo_name: danielep71/K-Risk-Engines
