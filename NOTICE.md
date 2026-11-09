@@ -165,3 +165,13 @@ danielep71/MyTemplate (a private template repository) under the Mozilla Public
 License 2.0. Modifications: file locations, the hub's settings file and
 required check, rebase merging as a fifth general option, and the GitHub Pages
 source.
+
+<a id="documentation-portal"></a>
+
+## 📚 Documentation portal
+
+The portal under `/documentation/` on the website is generated at build time
+by Zensical (MIT License, Copyright (c) 2025-2026 Zensical and contributors) or,
+as the fallback, Material for MkDocs (MIT License) on MkDocs (BSD 2-Clause
+License). The published pages include their theme stylesheets and scripts,
+which keep their own licence headers. No generated output is committed.

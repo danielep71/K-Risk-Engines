@@ -138,7 +138,7 @@ class SetupTests(unittest.TestCase):
         self.args.apply, self.args.update_existing = True, True
         self.assertEqual(self.run_setup(), 0)
         self.assertIn(('PUT', 'repos/example/project/pages',
-                       {'build_type': 'legacy', 'source': {'branch': 'main', 'path': '/'}}), self.api.writes)
+                       {'build_type': 'workflow', 'source': {'branch': 'main', 'path': '/'}}), self.api.writes)
 
     def test_failed_check_blocks_all_writes(self) -> None:
         self.args.apply = True

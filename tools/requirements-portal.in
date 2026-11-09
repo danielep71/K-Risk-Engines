@@ -1,0 +1,3 @@
+# Portable, separately replaceable builders; no third-party MkDocs plugins.
+mkdocs-material==9.8.1
+zensical==0.1.0
