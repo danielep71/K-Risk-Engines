@@ -11,8 +11,8 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md) — content SHA-256 `eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md) — content SHA-256 `bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/7d145069a49dfd7efc8d23f9168fca6044222f4a/README.md) — content SHA-256 `fba2e24f339b2e450fbba4679f1b520d9552627cbc5e1878be03da39780055c0`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/7d145069a49dfd7efc8d23f9168fca6044222f4a/docs/methodology/README.md) — content SHA-256 `9e07f7974050a7ad5d0a970533043e2fefebe2a9b54a984a044f5c769aa88155`
 - Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
@@ -21,7 +21,7 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
 - [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): closed; 32 closed / 0 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): closed; 14 closed / 0 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 1 closed / 17 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 15 closed / 8 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.
@@ -31,6 +31,7 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/K-SACCR/milestone/13): closed; 9 closed / 0 open issues.
 - [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/K-SACCR/milestone/14): closed; 10 closed / 0 open issues.
 - [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/K-SACCR/milestone/15): open; 0 closed / 10 open issues.
+- [v1.3.5 - COREP Templates](https://github.com/danielep71/K-SACCR/milestone/16): open; 0 closed / 1 open issues.
 
 <a id="nmd"></a>
 ## 🧩 K-IRRBB NMDs
@@ -147,11 +148,11 @@ Repository setup (v0.1.0). No admitted NSFR calculation engine, workbook or vali
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md) — content SHA-256 `8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md) — content SHA-256 `626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac`
+- [README.md](https://github.com/danielep71/K-NSFR/blob/3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26/README.md) — content SHA-256 `f57100299c5a21fac61eb00388d13376e5f6d0b9db667780452998ba91e83d59`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26/docs/DECISIONS.md) — content SHA-256 `2d95280283349169157a7440eb80e2ec5f5147018b20d98acb6e834f5ab02c38`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 46 closed / 9 open issues.
-- [v0.2.0 - Prototype Setup](https://github.com/danielep71/K-NSFR/milestone/2): open; 0 closed / 8 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): closed; 63 closed / 0 open issues.
+- [v0.2.0 - Prototype Setup](https://github.com/danielep71/K-NSFR/milestone/2): open; 4 closed / 8 open issues.

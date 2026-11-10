@@ -50,8 +50,8 @@
         "number": 5,
         "title": "v1.3.0 - Diagnostics and Independent Validation",
         "state": "open",
-        "open_issues": 17,
-        "closed_issues": 1,
+        "open_issues": 8,
+        "closed_issues": 15,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/5"
       },
@@ -138,18 +138,27 @@
         "closed_issues": 0,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/15"
+      },
+      {
+        "number": 16,
+        "title": "v1.3.5 - COREP Templates",
+        "state": "open",
+        "open_issues": 1,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/16"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc",
-        "url": "https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md"
+        "sha256": "fba2e24f339b2e450fbba4679f1b520d9552627cbc5e1878be03da39780055c0",
+        "url": "https://github.com/danielep71/K-SACCR/blob/7d145069a49dfd7efc8d23f9168fca6044222f4a/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26",
-        "url": "https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md"
+        "sha256": "9e07f7974050a7ad5d0a970533043e2fefebe2a9b54a984a044f5c769aa88155",
+        "url": "https://github.com/danielep71/K-SACCR/blob/7d145069a49dfd7efc8d23f9168fca6044222f4a/docs/methodology/README.md"
       }
     ]
   },
@@ -504,10 +513,10 @@
       {
         "number": 1,
         "title": "v0.1.0 - Repo setup",
-        "state": "open",
-        "open_issues": 9,
-        "closed_issues": 46,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 63,
+        "closed_at": "2026-11-10T07:57:39Z",
         "html_url": "https://github.com/danielep71/K-NSFR/milestone/1"
       },
       {
@@ -515,7 +524,7 @@
         "title": "v0.2.0 - Prototype Setup",
         "state": "open",
         "open_issues": 8,
-        "closed_issues": 0,
+        "closed_issues": 4,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-NSFR/milestone/2"
       }
@@ -523,13 +532,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0",
-        "url": "https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md"
+        "sha256": "f57100299c5a21fac61eb00388d13376e5f6d0b9db667780452998ba91e83d59",
+        "url": "https://github.com/danielep71/K-NSFR/blob/3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac",
-        "url": "https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md"
+        "sha256": "2d95280283349169157a7440eb80e2ec5f5147018b20d98acb6e834f5ab02c38",
+        "url": "https://github.com/danielep71/K-NSFR/blob/3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26/docs/DECISIONS.md"
       }
     ]
   }
