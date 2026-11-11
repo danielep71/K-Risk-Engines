@@ -21,7 +21,8 @@ Resolves #
 - [ ] `python3 .github/scripts/check-website.py --external` (when external links change)
 - [ ] `python3 -m unittest discover -s .github/scripts -p 'test_*.py'` (when scripts, workflows or portfolio automation change)
 - [ ] `ruff check .github/scripts`, `mypy` and `actionlint` (when scripts or workflows change)
-- [ ] Visual review in a browser (when the website changes)
+- [ ] `tools/portal/build.py`, `test_portal.py` and `check.py` (with `--external` when `sources.json` changes) (when the documentation portal or the documents it reuses change)
+- [ ] Visual review in a browser (when the website or the portal changes)
 
 ## 🔎 Final-head review
 
