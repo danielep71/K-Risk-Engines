@@ -285,7 +285,7 @@
   {
     "id": "frtb",
     "repo": "danielep71/K-FRTB-ASA",
-    "status": "Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. It has not yet been compiled or run in Excel, the engine platform decision is still open (scope), and no result is validated for regulatory use (validation).",
+    "status": "Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. One desktop Excel run is recorded, on 323260b and one host (evidence); the remaining manual Excel checks are in #28, #72, #85 and #206. The long-term platform decision is open (scope), and no result is validated for regulatory use (validation).",
     "release": null,
     "milestones": [
       {
@@ -301,8 +301,8 @@
         "number": 2,
         "title": "v0.2.0 — SA prototype",
         "state": "open",
-        "open_issues": 5,
-        "closed_issues": 59,
+        "open_issues": 7,
+        "closed_issues": 68,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-FRTB-ASA/milestone/2"
       },
@@ -319,13 +319,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765",
-        "url": "https://github.com/danielep71/K-FRTB-ASA/blob/3999cbe0b52b506749834e72a10f3f466035143c/README.md"
+        "sha256": "7b7666b4e276aa79326770e65558f8b8af88f467e9f0d6abe82c6f92078aa4a8",
+        "url": "https://github.com/danielep71/K-FRTB-ASA/blob/b04b752fcea3c4ad73255453ad3c163d920b1db7/README.md"
       },
       {
         "path": "docs/validation.md",
-        "sha256": "593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907",
-        "url": "https://github.com/danielep71/K-FRTB-ASA/blob/3999cbe0b52b506749834e72a10f3f466035143c/docs/validation.md"
+        "sha256": "496f980ef02a2fa8274f2c584409be0f6e40fdf93afb556c3cfd2c9e0f2cd5ab",
+        "url": "https://github.com/danielep71/K-FRTB-ASA/blob/b04b752fcea3c4ad73255453ad3c163d920b1db7/docs/validation.md"
       }
     ]
   },
