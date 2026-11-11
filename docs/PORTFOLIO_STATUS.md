@@ -65,15 +65,15 @@ Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-SA/blob/3999cbe0b52b506749834e72a10f3f466035143c/README.md) — content SHA-256 `6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765`
-- [docs/validation.md](https://github.com/danielep71/K-FRTB-SA/blob/3999cbe0b52b506749834e72a10f3f466035143c/docs/validation.md) — content SHA-256 `593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907`
+- [README.md](https://github.com/danielep71/K-FRTB-ASA/blob/3999cbe0b52b506749834e72a10f3f466035143c/README.md) — content SHA-256 `6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765`
+- [docs/validation.md](https://github.com/danielep71/K-FRTB-ASA/blob/3999cbe0b52b506749834e72a10f3f466035143c/docs/validation.md) — content SHA-256 `593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1): closed; 10 closed / 0 open issues.
-- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-SA/milestone/2): open; 59 closed / 5 open issues.
-- [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-SA/milestone/3): open; 10 closed / 0 open issues.
+- [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-ASA/milestone/1): closed; 10 closed / 0 open issues.
+- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-ASA/milestone/2): open; 59 closed / 5 open issues.
+- [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-ASA/milestone/3): open; 10 closed / 0 open issues.
 
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
