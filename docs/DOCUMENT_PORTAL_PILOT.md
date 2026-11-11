@@ -24,11 +24,12 @@ plugins (deferred compatibility, licensing and content-maintenance complexity).
 
 The hub is a hand-authored `index.html`, `assets/site.css`, SVG/PNG/JPEG artwork,
 and Markdown in `docs/`; there is no pre-existing MkDocs configuration.
-The recorded Pages configuration is legacy deployment from `main` at `/` in
-[repository-settings.json](repository-settings.json). The existing
-`website-checks.yml` checks HTML, links, Markdown, scripts and workflow controls;
-it does not build or deploy a documentation generator. The pilot changed no
-Pages setting; publication moves the Pages source to GitHub Actions (below).
+At the audit, the recorded Pages configuration was legacy deployment from
+`main` at `/`. The existing `website-checks.yml` checks HTML, links, Markdown,
+scripts and workflow controls; it does not build or deploy a documentation
+generator. The pilot changed no Pages setting; publication moved the Pages
+source to GitHub Actions, as now recorded in
+[repository-settings.json](repository-settings.json) (below).
 
 [GOVERNANCE.md](../GOVERNANCE.md) assigns the hub presentation/navigation and
 each engine its methodology, implementation, evidence and releases. Task PRs
@@ -101,15 +102,15 @@ These online claims are distinguished from local build evidence.
 | Capability | Pilot choice | Verification / limitation |
 | --- | --- | --- |
 | Configuration | Shared YAML; explicit directory URLs and paths | Both strict builds succeed |
-| Plugins | Only `search` | Native support documented; browser search still a release gate |
+| Plugins | Only `search` | Native support documented; browser search verified in both builds on 2026-11-09 |
 | Markdown | admonition, attr_list, md_in_html, tables, toc, details, superfences | Same config builds with both; specimen retained |
-| Mermaid | SuperFences `mermaid` fence | Compatible markup generated; browser SVG rendering not yet verified |
-| Images | Existing local SVG, PNG, JPEG | File references pass; responsive visual review pending |
+| Mermaid | SuperFences `mermaid` fence | Rendered as a diagram in both builds on 2026-11-09 (script loaded at view time) |
+| Images | Existing local SVG, PNG, JPEG, PDF | File references pass; reviewed at 1280 and 390 px on 2026-11-09 |
 | CSS | Minimal image sizing and link wrapping | No template overrides or Python callbacks |
 | Hooks | Not used | Unsupported by Zensical |
 | Other plugins | Explicitly rejected by pilot config check | Unsupported plugins may otherwise be silently ignored; gen-files is unsupported |
 | Templates | Stock themes | Zensical MiniJinja cannot call arbitrary Python as Jinja can |
-| Publishing | Actions artifact, later upload/deploy Pages | Zensical has no gh-deploy; do not use it |
+| Publishing | Pages artifact and deployment from GitHub Actions | Zensical has no gh-deploy; do not use it |
 | Proprietary features | None | No zensical.toml, custom theme variant or Zensical-specific content |
 
 The two builders may use different search engines and presentation. Equal file
@@ -131,7 +132,8 @@ python -m http.server 8000 --directory build/pages-zensical
 
 Visit `/documentation/` on the local server. Serve `build/pages-mkdocs` separately
 for comparison. The CI workflow builds both with read-only permissions and
-uploads candidates and `comparison.json`; there is **no deployment job**.
+uploads candidates and `comparison.json`; only its `deploy` job publishes, from
+the default branch (see [Publication and rollback](#publication-and-rollback)).
 Both candidates retain existing tracked public paths and place documentation
 under a new prefix. `comparison.json` inventories every generated HTML URL;
 checks reject missing files/anchors, output path differences, unsupported plugin

@@ -17,7 +17,7 @@ repositories keep their own changelogs; this file covers the hub only.
   with a PNG preview, status 30 October 2026) to the documentation portal's
   CCR section, from `docs/CCR_AT_A_GLANCE.md`, copied byte for byte and
   checked like the portfolio snapshot; the third-party logo is removed from
-  the hub copy.
+  the hub copy (#266).
 - Publish the documentation portal at `/documentation/` on the website, built
   with Zensical. The `deploy` job of `document-portal.yml` publishes the
   complete candidate (the unchanged website plus the portal) from `main` only,
@@ -27,18 +27,15 @@ repositories keep their own changelogs; this file covers the hub only.
 - Link the documentation portal from the website's main navigation and the
   README; the website checker fetches the portal's URLs, which are generated at
   deployment, instead of looking them up as repository files (#223).
-- Add an isolated document-portal pilot with parallel Material/Zensical builds,
-  eight engine gateways, evidence provenance and additive Pages candidates;
-  production publication remains unchanged (#223).
+- Add the document-portal pilot with parallel Material/Zensical builds,
+  eight engine gateways, evidence provenance and additive Pages candidates,
+  first without publication (#223, #240).
 - Add a prominent root README shortcut to the private GitHub Issue Deadline
   Tracker, with ChatGPT sign-in requirements and read-only scope (#252).
 - Independently verify PR milestone removals and summarize removed milestone titles safely (#224, #228).
-
 - Reject unknown managed ruleset bypass data before planning or applying settings; require an explicit empty bypass list in the manifest (#230).
 - Ignore private SSH key filenames and keystore files while retaining public SSH keys (#226); declare PR read access for the label reconciliation association checks (#227).
-
 - Remove the obsolete invented project name from the asset guide; the shared diagram uses K-SACCR and K-SFTs (#198).
-
 - Document the proposed portfolio expansion in [the roadmap](docs/ROADMAP.md):
   EVE/NII, Prudent Valuation and Liquidity Stress priorities, further candidates,
   shared components and a conditional initial-margin workstream (#200).
@@ -305,6 +302,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🐛 Fixed
 
+- The hub's Markdown documents follow the current state: GitHub Actions
+  publishes the website and the documentation portal, the portal document
+  records its deployment and browser review, the rename procedure names the
+  portal's source map, the CCR diagram note records both engines' corrected
+  `main` copies, and the governance, PR template and repository settings
+  documents are completed (#294).
 - `setup_repository.py` no longer says that a disabled unmanaged ruleset
   "stays active": the note follows the ruleset's enforcement (stays active,
   stays in place but is disabled, or stays in place in evaluate mode) (#270).

@@ -150,13 +150,23 @@ Risk, IRRBB and Liquidity Risk), with a framework diagram for each category
 and a status card for each project. A card links only
 to the project's website where it has one (K-SACCR, K-SFTs, K-FRTB-SA, K-LCR),
 otherwise to its repository and documentation; detailed documentation and
-diagrams stay in each project's repository. Serving it
-requires no build step or application dependencies. Repository checks
-and automation use Python, curl and GitHub Actions as documented below.
+diagrams stay in each project's repository. The landing page needs no build
+step or application dependencies.
 
-GitHub Pages publishes `main` from the repository root (see
+The [documentation portal](https://danielep71.github.io/K-Risk-Engines/documentation/)
+is generated at deployment from the hub's portfolio sources with Zensical
+(`mkdocs.yml`, `tools/portal/`); it gathers each engine's methodology,
+validation, Excel evidence and limitations documents at audited commits, and
+the CCR reference poster. See the
+[portal document](docs/DOCUMENT_PORTAL_PILOT.md).
+
+GitHub Pages publishes with GitHub Actions: the `deploy` job of
+[document-portal.yml](.github/workflows/document-portal.yml) publishes `main`
+only, as the unchanged website plus the portal under `/documentation/` (see
 [repository settings](docs/REPOSITORY_SETTINGS.md)). The live website is
 [danielep71.github.io/K-Risk-Engines](https://danielep71.github.io/K-Risk-Engines/).
+Repository checks and automation use Python, curl and GitHub Actions as
+documented below.
 
 ## ✅ Website checks
 
@@ -173,14 +183,15 @@ explicit `<a id>`. It is a focused structural check, not a full HTML standards
 or accessibility validator. Its own tests run with
 `python3 -m unittest discover -s .github/scripts -p 'test_*.py'`.
 
-GitHub Actions runs local checks on every pull request and push to `main`
-or a `release/**` branch. External links are checked on pushes, weekly and
+GitHub Actions runs local checks on every pull request and every push. External links are checked on pushes, weekly and
 on manual runs; redirects are accepted. Broken links fail the check. Network
 errors, HTTP 403/429 and server errors are reported as warnings because
 availability could not be verified. External page fragments are not validated;
 external URLs from Markdown files follow the same rules. Links to this site's own
 Pages URLs (`https://danielep71.github.io/K-Risk-Engines/…`) are checked against
-the repository files instead, because Pages publishes `main` only.
+the repository files instead, because Pages publishes `main` only; the portal's
+URLs under `documentation/`, generated at deployment, are fetched like external
+links.
 
 ## 🔄 Daily portfolio refresh
 

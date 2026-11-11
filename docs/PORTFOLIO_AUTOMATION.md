@@ -21,14 +21,18 @@ snapshot without a link, and it is never chosen as the last closed milestone. Do
 not edit `docs/PORTFOLIO_STATUS.md` for this: change the stored state or the
 renderer, so that `--render-only` reproduces the report.
 
-Repository paths in the generated files come from GitHub's API, so after an
-engine repository is renamed the generated links point to its new name at the
-next refresh. Displayed project names come from the `name` field in
-`.github/portfolio.json` and do not follow a rename. After a rename, update the
-`repo` field, and the `name` field if the displayed name should change, in
-`.github/portfolio.json`; the issue chooser in
-`.github/ISSUE_TEMPLATE/config.yml`; and the README and the website's
-hand-written card and heading links.
+Repository paths in the generated files come from GitHub's API, which follows
+a rename. Displayed project names come from the `name` field in
+`.github/portfolio.json` and do not follow a rename. The documentation portal's
+build requires the same repository in `.github/portfolio.json`,
+`tools/portal/sources.json` and the snapshot `docs/portfolio-state.json`, so after
+an engine repository is renamed change them together in one pull request: the
+`repo` field in the first two (and `name` if the displayed name should change),
+and in the snapshot only its `repo` field and the URLs into that repository,
+then re-render with `--render-only` (as in #290). Also update the issue chooser
+in `.github/ISSUE_TEMPLATE/config.yml`, the README and the website's
+hand-written links, and any project website link: GitHub redirects a renamed
+repository's URLs but not its Pages site.
 
 The workflow updates only the hub's marked README table and website status
 blocks, plus `docs/PORTFOLIO_STATUS.md` and `docs/portfolio-state.json`. Project

@@ -64,7 +64,7 @@ available for traceability.
 | `release/1.0.1` | **Active release branch** and permanent maintenance queue; v1.0.1 will not be published (see Release records). Base for task branches and task pull requests; integration PRs target `main`. |
 | `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
-| `fix/<issue>-<slug>`, `docs/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
+| `fix/<issue>-<slug>`, `docs/<slug>`, `ci/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
 | `traffic-history` | Generated repository analytics. Not a release branch; never merged into `main` or a release branch. |
 
 1. Create a task branch from the active release branch, never from `main` or
@@ -142,6 +142,10 @@ decision, through a new release branch; the procedure below applies then.
 - Inspect the diff and run applicable checks before publishing. For website
   changes, run `python3 .github/scripts/check-website.py`; when external links
   change, also run it with `--external`. Review visual changes in a browser.
+  For documentation-portal changes (`mkdocs.yml`, `tools/portal/`, the
+  documents it reuses), install `tools/requirements-portal.txt` and run
+  `tools/portal/build.py`, `tools/portal/test_portal.py` and
+  `tools/portal/check.py`, with `--external` when its source map changes.
   Apply the relevant label-script checks when changing label configuration.
   For script or workflow changes, run the gates of the required `HTML and
   links` check: `ruff check .github/scripts`, `mypy` (strict, configured in
