@@ -22,7 +22,7 @@
     },
     {
       "id": "frtb",
-      "repo": "danielep71/K-FRTB-SA",
+      "repo": "danielep71/K-FRTB-ASA",
       "name": "K-FRTB-SA",
       "purpose": "Standardised market-risk aggregation",
       "selector": "important",

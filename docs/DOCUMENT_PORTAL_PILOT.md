@@ -54,7 +54,7 @@ websites are not migrated and engine workflows are not modified.
 | --- | --- | --- | --- | --- |
 | CCR | K-SACCR | docs/methodology/README.md | docs/methodology/TEST_CASES.md | docs/EXCEL_EVIDENCE.md |
 | CCR | K-SFTs | docs/methodology/README.md | docs/methodology/TEST_CASES.md | No dedicated document selected |
-| Market Risk | K-FRTB-SA | docs/methodology.md | docs/validation.md | docs/EXCEL_EVIDENCE.md |
+| Market Risk | K-FRTB-SA | docs/methodology.md | docs/validation.md | docs/evidence/2026-10-31-excel-run-323260b.md |
 | Market Risk | K-CVA | docs/methodology/README.md | docs/methodology/TEST_CASES.md | docs/evidence/excel-run-194e9cd.md |
 | IRRBB | K-IRRBB-NMDs | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | docs/EXCEL_EVIDENCE.md |
 | IRRBB | K-IRRBB-Prepayment_Models | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | docs/EXCEL_EVIDENCE.md |
@@ -64,8 +64,10 @@ websites are not migrated and engine workflows are not modified.
 The entries are document locations, not certifications. In particular, a test
 case format, validation plan or host-record specification is not proof of an
 executed run. The K-CVA record concerns a scaffold run; it does not validate
-calculations. Full READMEs remain the limitation entry points. Missing selected
-Excel documents are disclosed without claiming the repositories have no evidence.
+calculations. The K-FRTB-SA record is one desktop Excel run on `323260b` and
+one host; it does not validate results for regulatory use. Full READMEs remain
+the limitation entry points. Missing selected Excel documents are disclosed
+without claiming the repositories have no evidence.
 
 ## Content architecture
 

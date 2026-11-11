@@ -77,7 +77,7 @@ issue forms are read as JSON; references to this repository's
 ## 🧾 MIT-licensed file
 
 `.github/workflows/pr-milestones.yml` was adapted from
-[danielep71/K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA), through
+[danielep71/K-FRTB-ASA](https://github.com/danielep71/K-FRTB-ASA) (named K-FRTB-SA until 2026-11-11), through
 danielep71/MyTemplate (a private template repository), under the
 MIT License below. Its tests in `.github/scripts/test_pr_milestones.py` were
 adapted from MyTemplate. Modifications: pushes and manual runs use only the

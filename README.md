@@ -50,7 +50,7 @@ A single entry point to independent financial risk models and calculation engine
 | --- | --- | --- | --- |
 | [K-SACCR](https://github.com/danielep71/K-SACCR) | SA-CCR calculation and reconciliation | Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. Latest published release: v1.2.0. [Full status and caveats](docs/PORTFOLIO_STATUS.md#saccr) | [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4) (2026-11-07) |
 | [K-IRRBB NMDs](https://github.com/danielep71/K-IRRBB-NMDs) | Non-maturity deposit behavioural modelling | v0.2.0 - Workbook, data and Excel tests (in progress). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#nmd) | [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1) (2026-10-09) |
-| [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) | Standardised market-risk aggregation | Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-SA/milestone/1) (2026-10-18) |
+| [K-FRTB-SA](https://github.com/danielep71/K-FRTB-ASA) | Standardised market-risk aggregation | Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#frtb) | [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-ASA/milestone/1) (2026-10-18) |
 | [K-IRRBB Prepayment Models](https://github.com/danielep71/K-IRRBB-Prepayment_Models) | Behavioural loan prepayment modelling | Current status: prototype development. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#prepayment) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-IRRBB-Prepayment_Models/milestone/1) (2026-10-21) |
 | [K-SFTs](https://github.com/danielep71/K-SFTs) | Counterparty credit risk for securities financing transactions | Status: working prototype, not a validated method. Latest published release: v0.2.0. [Full status and caveats](docs/PORTFOLIO_STATUS.md#sfts) | [v0.2.0 - Prototype setup](https://github.com/danielep71/K-SFTs/milestone/2) (2026-10-30) |
 | [K-CVA](https://github.com/danielep71/K-CVA) | Regulatory CVA risk capital (BA-CVA, then SA-CVA) | Repository setup only. No published stable release. [Full status and caveats](docs/PORTFOLIO_STATUS.md#cva) | [v0.1.0 - Repo setup](https://github.com/danielep71/K-CVA/milestone/1) (2026-11-08) |
@@ -88,7 +88,7 @@ and status, summarised in the table above.
 ### 📉 Market risk and CVA risk
 
 Market risk and CVA risk are two separate capital requirements, each with its
-own approaches. [K-FRTB-SA](https://github.com/danielep71/K-FRTB-SA) addresses
+own approaches. [K-FRTB-SA](https://github.com/danielep71/K-FRTB-ASA) addresses
 the standardised approach for market risk; [K-CVA](https://github.com/danielep71/K-CVA) addresses CVA risk. The method map below shows both frameworks and
 the earlier Basel rules they replace, without project names.
 
@@ -141,7 +141,7 @@ of K-LCR or K-NSFR.
 
 Project websites: [K-SACCR](https://danielep71.github.io/K-SACCR/) ·
 [K-SFTs](https://danielep71.github.io/K-SFTs/) ·
-[K-FRTB-SA](https://danielep71.github.io/K-FRTB-SA/) ·
+[K-FRTB-SA](https://danielep71.github.io/K-FRTB-ASA/) ·
 [K-LCR](https://danielep71.github.io/K-LCR/).
 
 The static landing page is `index.html`; images and styles live in [`assets/`](assets/).

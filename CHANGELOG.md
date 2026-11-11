@@ -94,10 +94,17 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The K-FRTB-SA engine repository is now `danielep71/K-FRTB-ASA`: the
+  portfolio configuration, the portal's source map and the status snapshot
+  name it together, and the website card, README, issue chooser, NOTICE and
+  asset guide link its repository and its new site
+  (`https://danielep71.github.io/K-FRTB-ASA/`); the old site address returned
+  HTTP 404. The project keeps its displayed name, K-FRTB-SA (#289).
 - The documentation portal links each engine's documents at its default-branch
   head of 2026-11-11 instead of 8 November, with new content hashes; the
   selected documents are unchanged (#275). K-CVA follows its README update of
-  the same day (#282).
+  the same day (#282), and K-FRTB-SA its release-branch integration, with
+  its Excel evidence now the recorded run its README cites (#286).
 - `assets/README.md` records that the K-SFTs copy of the CCR diagram now
   matches the hub's (danielep71/K-SFTs#290); only the K-SACCR copy keeps the
   earlier labels (#198).
