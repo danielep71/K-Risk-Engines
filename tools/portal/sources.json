@@ -2,36 +2,36 @@
   "saccr": {
     "domain": "CCR",
     "repo": "danielep71/K-SACCR",
-    "revision": "f831561caba40b1b686a20035f0a76d91eea2d48",
-    "audited_on": "2026-11-08",
+    "revision": "d706d175a84abadab99eebd027012c0b5676472b",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology/README.md",
-        "sha256": "bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26"
+        "sha256": "69d39f0da6d243fc3aa516ca762c6fc5eac97ffb2918d9f2f7ff76e45e83b95f"
       },
       "validation": {
         "path": "docs/methodology/TEST_CASES.md",
-        "sha256": "55e0157288937494bed18774d844c1be23af2f6c9ac6633b3b884a348742ecf3"
+        "sha256": "d802e2a2fb20e5a30d0e1ff3d0798460bc49e43ebebde263063a31ac6f6916de"
       },
       "excel-evidence": {
         "path": "docs/EXCEL_EVIDENCE.md",
-        "sha256": "8ed4e8b5c586fe4d87ce3f233dff75920640155e274be66d3df2633130beb15d"
+        "sha256": "22c5705d497e005a7e0985f1d6fcbdbb2e3e1c514030efa374df687c23a3fe6c"
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc"
+        "sha256": "03017b9f9f7fc78cbb1ce866259c46cf4e5cbbeffd3e08fae5d79fdbb646db9a"
       }
     }
   },
   "nmd": {
     "domain": "IRRBB",
     "repo": "danielep71/K-IRRBB-NMDs",
-    "revision": "17bf3d972b37d184bd4cac8119aef2c8e92377ec",
-    "audited_on": "2026-11-08",
+    "revision": "626836d947234b2e7cdd25bd941c2aaa843a6fcc",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology/README.md",
-        "sha256": "55262e9eb4df2de473eda4a8b6b6d35c9af5c30b0b7b02a716396e8ccc3d49f4"
+        "sha256": "954be1a12f924b95680ac6d1fed8cc3251320b771317d317de8d248c2fd1e5da"
       },
       "validation": {
         "path": "docs/methodology/VALIDATION_PLAN.md",
@@ -43,15 +43,15 @@
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "d3c00b38d1122fd68fe96596a5e708ab0b0e7c43c9754edc1934be2e4aa7a58c"
+        "sha256": "5a819702e4a71e7dbab522621ee5776fef5d86bd4bde26aaa1b050979d3ccd69"
       }
     }
   },
   "frtb": {
     "domain": "Market Risk",
     "repo": "danielep71/K-FRTB-SA",
-    "revision": "f67eaea4eb80904f6955d4ea1309e87dec042eed",
-    "audited_on": "2026-11-08",
+    "revision": "721775dd1e3fdce7cdd8c13a62a00342e96d7968",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology.md",
@@ -74,8 +74,8 @@
   "prepayment": {
     "domain": "IRRBB",
     "repo": "danielep71/K-IRRBB-Prepayment_Models",
-    "revision": "95cf1b48dd35f13c0f78db7034ff3cb394f170c7",
-    "audited_on": "2026-11-08",
+    "revision": "1ef86d4e95ce4d6cc0e917b88ff1e1a033c07e56",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology/README.md",
@@ -91,15 +91,15 @@
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "426af4e3f76e2e915eb7dd4908cb2cfb1bb10023dbda75184315e9f5340c0fe5"
+        "sha256": "61e66f846a4fd34634752ce3fa031379387d2b57b9fda957c4f78a0dbc5cc5c7"
       }
     }
   },
   "sfts": {
     "domain": "CCR",
     "repo": "danielep71/K-SFTs",
-    "revision": "0d994f7818c49439610f6ec6f418001852b1db71",
-    "audited_on": "2026-11-08",
+    "revision": "5f2d702ae9428517b86345e49a0af2a7399e71f8",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology/README.md",
@@ -119,12 +119,12 @@
   "cva": {
     "domain": "Market Risk",
     "repo": "danielep71/K-CVA",
-    "revision": "3d75855e5cbe6cda2f7fd519b6c363710ba9b935",
-    "audited_on": "2026-11-08",
+    "revision": "92d0e983357fe7a5696050ed7fec4dbe4ff91072",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology/README.md",
-        "sha256": "318fd173082af0b4351d349e61d9d0e515cbd5f7ed576638989307cb0deec32f"
+        "sha256": "edb95552337b7ac614297b25ac4cf2a3597fb6e30dce700adf8afb7a69830cb7"
       },
       "validation": {
         "path": "docs/methodology/TEST_CASES.md",
@@ -136,7 +136,7 @@
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "e61e605f7b50b141871af72486834f44790811d16574f721d1d70970c23c6aec"
+        "sha256": "d9c227b8c7ef1f04cf5cf62ab0a7e2c8095ca46a48529ba60664d4d11876dd21"
       }
     }
   },
@@ -144,7 +144,7 @@
     "domain": "Liquidity",
     "repo": "danielep71/K-LCR",
     "revision": "7b343cc5c6f91423802c0cc56bfe4d9b50d102a5",
-    "audited_on": "2026-11-08",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology/README.md",
@@ -164,8 +164,8 @@
   "nsfr": {
     "domain": "Liquidity",
     "repo": "danielep71/K-NSFR",
-    "revision": "1f8abd3c80efc9c2a22a594c4e69598a6578aaf0",
-    "audited_on": "2026-11-08",
+    "revision": "3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26",
+    "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "prototype/docs/methodology/PROTOTYPE.md",
@@ -177,11 +177,11 @@
       },
       "excel-evidence": {
         "path": "docs/validation/HOST_EVIDENCE.md",
-        "sha256": "9d3d266ab8e6f9008cd35e05a51b68c766fbcc59a98f117649ba3039b8250ebb"
+        "sha256": "b706b5796e39eb239c589db11a9df1d323c630875cc036101632c5553c3010a4"
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "b432c5de38f82d0c0fb978dc4b0faacdc9b27ac18e3cdb31609b3900ad64003f"
+        "sha256": "f57100299c5a21fac61eb00388d13376e5f6d0b9db667780452998ba91e83d59"
       }
     }
   }
