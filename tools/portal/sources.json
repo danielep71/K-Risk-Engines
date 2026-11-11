@@ -49,7 +49,7 @@
   },
   "frtb": {
     "domain": "Market Risk",
-    "repo": "danielep71/K-FRTB-SA",
+    "repo": "danielep71/K-FRTB-ASA",
     "revision": "b04b752fcea3c4ad73255453ad3c163d920b1db7",
     "audited_on": "2026-11-11",
     "documents": {

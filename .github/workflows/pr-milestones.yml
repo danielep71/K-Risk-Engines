@@ -5,7 +5,7 @@ name: Keep milestones issue-only
 # for every pull request on a daily scan, a manual run, or a change to this
 # file on the default branch. pull_request_target runs this file from the
 # base branch; the job never checks out or runs pull-request code.
-# Adapted from danielep71/K-FRTB-SA via danielep71/MyTemplate under the MIT
+# Adapted from danielep71/K-FRTB-ASA (then K-FRTB-SA) via danielep71/MyTemplate under the MIT
 # License (see NOTICE.md).
 
 on:
