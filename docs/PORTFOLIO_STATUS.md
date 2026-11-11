@@ -61,18 +61,18 @@ v0.2.0 - Workbook, data and Excel tests (in progress). The v0.1.0 foundation, cl
 <a id="frtb"></a>
 ## 🧩 K-FRTB-SA
 
-Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. It has not yet been compiled or run in Excel, the engine platform decision is still open (scope), and no result is validated for regulatory use (validation).
+Version 0.2.0 is a prototype of the v0.2.0 — SA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. One desktop Excel run is recorded, on 323260b and one host (evidence); the remaining manual Excel checks are in #28, #72, #85 and #206. The long-term platform decision is open (scope), and no result is validated for regulatory use (validation).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-ASA/blob/3999cbe0b52b506749834e72a10f3f466035143c/README.md) — content SHA-256 `6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765`
-- [docs/validation.md](https://github.com/danielep71/K-FRTB-ASA/blob/3999cbe0b52b506749834e72a10f3f466035143c/docs/validation.md) — content SHA-256 `593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907`
+- [README.md](https://github.com/danielep71/K-FRTB-ASA/blob/b04b752fcea3c4ad73255453ad3c163d920b1db7/README.md) — content SHA-256 `7b7666b4e276aa79326770e65558f8b8af88f467e9f0d6abe82c6f92078aa4a8`
+- [docs/validation.md](https://github.com/danielep71/K-FRTB-ASA/blob/b04b752fcea3c4ad73255453ad3c163d920b1db7/docs/validation.md) — content SHA-256 `496f980ef02a2fa8274f2c584409be0f6e40fdf93afb556c3cfd2c9e0f2cd5ab`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-ASA/milestone/1): closed; 10 closed / 0 open issues.
-- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-ASA/milestone/2): open; 59 closed / 5 open issues.
+- [v0.2.0 — SA prototype](https://github.com/danielep71/K-FRTB-ASA/milestone/2): open; 68 closed / 7 open issues.
 - [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-ASA/milestone/3): open; 10 closed / 0 open issues.
 
 <a id="prepayment"></a>
