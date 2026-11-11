@@ -32,7 +32,7 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/K-SACCR/milestone/14): closed; 10 closed / 0 open issues.
 - [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/K-SACCR/milestone/15): open; 0 closed / 10 open issues.
 - [v1.3.5 - COREP Templates](https://github.com/danielep71/K-SACCR/milestone/16): open; 0 closed / 1 open issues.
-- [v1.3.1 - Dashboard and reporting](https://github.com/danielep71/K-SACCR/milestone/17): open; 0 closed / 0 open issues.
+- v1.3.1 - Dashboard and reporting: historical snapshot recorded open; 0 closed / 0 open issues. Milestone URL no longer available as of 2026-11-11.
 
 <a id="nmd"></a>
 ## 🧩 K-IRRBB NMDs
