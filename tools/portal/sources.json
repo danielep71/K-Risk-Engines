@@ -119,7 +119,7 @@
   "cva": {
     "domain": "Market Risk",
     "repo": "danielep71/K-CVA",
-    "revision": "92d0e983357fe7a5696050ed7fec4dbe4ff91072",
+    "revision": "e9ac066931db9cdc5ed3d20c4f337a203caccefe",
     "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
@@ -136,7 +136,7 @@
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "d9c227b8c7ef1f04cf5cf62ab0a7e2c8095ca46a48529ba60664d4d11876dd21"
+        "sha256": "28306799f7a6cf3c0976f4045fe186c585267f5d792203b64106bfe51eb26e64"
       }
     }
   },
