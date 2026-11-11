@@ -2,7 +2,7 @@
   {
     "id": "saccr",
     "repo": "danielep71/K-SACCR",
-    "status": "Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).",
+    "status": "Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology). Since then, on the active release branch, the CRR calculation has been validated against a bank's production SA-CCR engine on a real portfolio (#667): see Validation.",
     "release": {
       "tag": "v1.2.0",
       "url": "https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0",
@@ -50,8 +50,8 @@
         "number": 5,
         "title": "v1.3.0 - Diagnostics and Independent Validation",
         "state": "open",
-        "open_issues": 8,
-        "closed_issues": 15,
+        "open_issues": 10,
+        "closed_issues": 17,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/5"
       },
@@ -147,25 +147,34 @@
         "closed_issues": 0,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/16"
+      },
+      {
+        "number": 17,
+        "title": "v1.3.1 - Dashboard and reporting",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-SACCR/milestone/17"
       }
     ],
     "sources": [
       {
         "path": "README.md",
-        "sha256": "fba2e24f339b2e450fbba4679f1b520d9552627cbc5e1878be03da39780055c0",
-        "url": "https://github.com/danielep71/K-SACCR/blob/7d145069a49dfd7efc8d23f9168fca6044222f4a/README.md"
+        "sha256": "03017b9f9f7fc78cbb1ce866259c46cf4e5cbbeffd3e08fae5d79fdbb646db9a",
+        "url": "https://github.com/danielep71/K-SACCR/blob/d706d175a84abadab99eebd027012c0b5676472b/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "9e07f7974050a7ad5d0a970533043e2fefebe2a9b54a984a044f5c769aa88155",
-        "url": "https://github.com/danielep71/K-SACCR/blob/7d145069a49dfd7efc8d23f9168fca6044222f4a/docs/methodology/README.md"
+        "sha256": "69d39f0da6d243fc3aa516ca762c6fc5eac97ffb2918d9f2f7ff76e45e83b95f",
+        "url": "https://github.com/danielep71/K-SACCR/blob/d706d175a84abadab99eebd027012c0b5676472b/docs/methodology/README.md"
       }
     ]
   },
   {
     "id": "nmd",
     "repo": "danielep71/K-IRRBB-NMDs",
-    "status": "v0.2.0 – Workbook, data and Excel tests (in progress). The v0.1.0 foundation, closed on 2026-10-09, established source layout, documentation, issue governance, CI and static source checks; v0.2.0 builds the first workbook, data import and Excel test harness. Neither delivers pricing, econometric fitting, a production workbook or certified IRRBB outputs. - Decay model (draft, not validated, milestone v0.3.0): core, public facade IRRBB_Decay, harness cases and example, reviewed on release/v0.3.0 and present here since this branch was levelled with main; built to MODEL_CONTRACTS.md and under review in #36; no Excel evidence is recorded yet. Rate and stable-amount models are not built. - Application profile: an Excel workbook will be the end-user deliverable, assembled from reviewed exported VBA source. - Production calculations live in src/core/ without direct Excel object dependencies; at present the data import's parsing, validation, summaries and fingerprint, and the draft decay calculations. - src/modules/ exposes the documented public facade (the data import and the draft decay model, listed in docs/PUBLIC_API.txt); src/workbook/ contains host glue only. - tests/ holds synthetic fixtures, expected results and the VBA regression harness; evidence from a real Excel run must be separately recorded. - No client data, confidential third-party material, vendor source code or customer-specific models are allowed in Git; the repository and its history are public.",
+    "status": "v0.2.0 - Workbook, data and Excel tests (in progress). The v0.1.0 foundation, closed on 2026-10-09, established source layout, documentation, issue governance, CI and static source checks; v0.2.0 builds the first workbook, data import and Excel test harness. Neither delivers pricing, econometric fitting, a production workbook or certified IRRBB outputs. - Decay model (draft, not validated, milestone v0.3.0): core, public facade IRRBB_Decay, harness cases and example, reviewed on release/v0.3.0 and present here since this branch was levelled with main; built to MODEL_CONTRACTS.md and under review in #36; no Excel evidence is recorded yet. Rate and stable-amount models are not built. - Application profile: an Excel workbook will be the end-user deliverable, assembled from reviewed exported VBA source. - Production calculations live in src/core/ without direct Excel object dependencies; at present the data import's parsing, validation, summaries and fingerprint, and the draft decay calculations. - src/modules/ exposes the documented public facade (the data import and the draft decay model, listed in docs/PUBLIC_API.txt); src/workbook/ contains host glue only. - tests/ holds synthetic fixtures, expected results and the VBA regression harness; evidence from a real Excel run must be separately recorded. - No client data, confidential third-party material, vendor source code or customer-specific models are allowed in Git; the repository and its history are public.",
     "release": null,
     "milestones": [
       {
@@ -173,7 +182,7 @@
         "title": "v0.1.0 - Repository foundation",
         "state": "closed",
         "open_issues": 0,
-        "closed_issues": 20,
+        "closed_issues": 13,
         "closed_at": "2026-10-09T15:16:04Z",
         "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/1"
       },
@@ -181,8 +190,8 @@
         "number": 2,
         "title": "v0.2.0 - Workbook, data and Excel tests",
         "state": "open",
-        "open_issues": 4,
-        "closed_issues": 10,
+        "open_issues": 6,
+        "closed_issues": 54,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-IRRBB-NMDs/milestone/2"
       },
@@ -262,13 +271,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "f9d21461d714a5238736637e6e312d37e17c4e04889e7453525afde51f97a832",
-        "url": "https://github.com/danielep71/K-IRRBB-NMDs/blob/973501c82f2f9011acfdc9d741ab2af0132cb96c/README.md"
+        "sha256": "5a819702e4a71e7dbab522621ee5776fef5d86bd4bde26aaa1b050979d3ccd69",
+        "url": "https://github.com/danielep71/K-IRRBB-NMDs/blob/626836d947234b2e7cdd25bd941c2aaa843a6fcc/README.md"
       },
       {
         "path": "docs/EXCEL_EVIDENCE.md",
         "sha256": "c4e538abb905a34ee27a98cf0ebcee9d6c4e3cb1d359191656499dcc8ff96620",
-        "url": "https://github.com/danielep71/K-IRRBB-NMDs/blob/973501c82f2f9011acfdc9d741ab2af0132cb96c/docs/EXCEL_EVIDENCE.md"
+        "url": "https://github.com/danielep71/K-IRRBB-NMDs/blob/626836d947234b2e7cdd25bd941c2aaa843a6fcc/docs/EXCEL_EVIDENCE.md"
       }
     ]
   },
