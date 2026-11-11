@@ -96,7 +96,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 - The documentation portal links each engine's documents at its default-branch
   head of 2026-11-11 instead of 8 November, with new content hashes; the
-  selected documents are unchanged (#275).
+  selected documents are unchanged (#275). K-CVA follows its README update of
+  the same day (#282).
 - `assets/README.md` records that the K-SFTs copy of the CCR diagram now
   matches the hub's (danielep71/K-SFTs#290); only the K-SACCR copy keeps the
   earlier labels (#198).
