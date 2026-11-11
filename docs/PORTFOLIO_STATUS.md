@@ -7,12 +7,12 @@ Proposed automatically from public project sources; reviewed on merge. Release a
 <a id="saccr"></a>
 ## 🧩 K-SACCR
 
-Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology).
+Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workbook and the user manual. The engine implements EU CRR and Basel CRE52, but only Basel rules are validated in v1.2.0, by the published CRE99 examples. CRR rules are implemented and tested against illustrative values, not validated (methodology). Since then, on the active release branch, the CRR calculation has been validated against a bank&#x27;s production SA-CCR engine on a real portfolio (#667): see Validation.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/README.md) — content SHA-256 `eadc7adc83d917c4e0f2773cfc5258ec63ba36647d54282b3103d9dc97b995dc`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/f831561caba40b1b686a20035f0a76d91eea2d48/docs/methodology/README.md) — content SHA-256 `bcf0dda2f6d8840b9920d72d79615f0416c7469b9ce5f021b7245b04a20b9c26`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/d706d175a84abadab99eebd027012c0b5676472b/README.md) — content SHA-256 `03017b9f9f7fc78cbb1ce866259c46cf4e5cbbeffd3e08fae5d79fdbb646db9a`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/d706d175a84abadab99eebd027012c0b5676472b/docs/methodology/README.md) — content SHA-256 `69d39f0da6d243fc3aa516ca762c6fc5eac97ffb2918d9f2f7ff76e45e83b95f`
 - Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
@@ -21,7 +21,7 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
 - [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): closed; 32 closed / 0 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): closed; 14 closed / 0 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 1 closed / 17 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 17 closed / 10 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.
@@ -31,22 +31,24 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.1 - Post release hardening](https://github.com/danielep71/K-SACCR/milestone/13): closed; 9 closed / 0 open issues.
 - [v1.0.2 - Clearing Coverage and CCP Completeness](https://github.com/danielep71/K-SACCR/milestone/14): closed; 10 closed / 0 open issues.
 - [v1.7.0 - Standalone Python Engine and VBA/Python Reconciliation](https://github.com/danielep71/K-SACCR/milestone/15): open; 0 closed / 10 open issues.
+- [v1.3.5 - COREP Templates](https://github.com/danielep71/K-SACCR/milestone/16): open; 0 closed / 1 open issues.
+- [v1.3.1 - Dashboard and reporting](https://github.com/danielep71/K-SACCR/milestone/17): open; 0 closed / 0 open issues.
 
 <a id="nmd"></a>
 ## 🧩 K-IRRBB NMDs
 
-v0.2.0 – Workbook, data and Excel tests (in progress). The v0.1.0 foundation, closed on 2026-10-09, established source layout, documentation, issue governance, CI and static source checks; v0.2.0 builds the first workbook, data import and Excel test harness. Neither delivers pricing, econometric fitting, a production workbook or certified IRRBB outputs. - Decay model (draft, not validated, milestone v0.3.0): core, public facade IRRBB_Decay, harness cases and example, reviewed on release/v0.3.0 and present here since this branch was levelled with main; built to MODEL_CONTRACTS.md and under review in #36; no Excel evidence is recorded yet. Rate and stable-amount models are not built. - Application profile: an Excel workbook will be the end-user deliverable, assembled from reviewed exported VBA source. - Production calculations live in src/core/ without direct Excel object dependencies; at present the data import&#x27;s parsing, validation, summaries and fingerprint, and the draft decay calculations. - src/modules/ exposes the documented public facade (the data import and the draft decay model, listed in docs/PUBLIC_API.txt); src/workbook/ contains host glue only. - tests/ holds synthetic fixtures, expected results and the VBA regression harness; evidence from a real Excel run must be separately recorded. - No client data, confidential third-party material, vendor source code or customer-specific models are allowed in Git; the repository and its history are public.
+v0.2.0 - Workbook, data and Excel tests (in progress). The v0.1.0 foundation, closed on 2026-10-09, established source layout, documentation, issue governance, CI and static source checks; v0.2.0 builds the first workbook, data import and Excel test harness. Neither delivers pricing, econometric fitting, a production workbook or certified IRRBB outputs. - Decay model (draft, not validated, milestone v0.3.0): core, public facade IRRBB_Decay, harness cases and example, reviewed on release/v0.3.0 and present here since this branch was levelled with main; built to MODEL_CONTRACTS.md and under review in #36; no Excel evidence is recorded yet. Rate and stable-amount models are not built. - Application profile: an Excel workbook will be the end-user deliverable, assembled from reviewed exported VBA source. - Production calculations live in src/core/ without direct Excel object dependencies; at present the data import&#x27;s parsing, validation, summaries and fingerprint, and the draft decay calculations. - src/modules/ exposes the documented public facade (the data import and the draft decay model, listed in docs/PUBLIC_API.txt); src/workbook/ contains host glue only. - tests/ holds synthetic fixtures, expected results and the VBA regression harness; evidence from a real Excel run must be separately recorded. - No client data, confidential third-party material, vendor source code or customer-specific models are allowed in Git; the repository and its history are public.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-IRRBB-NMDs/blob/973501c82f2f9011acfdc9d741ab2af0132cb96c/README.md) — content SHA-256 `f9d21461d714a5238736637e6e312d37e17c4e04889e7453525afde51f97a832`
-- [docs/EXCEL_EVIDENCE.md](https://github.com/danielep71/K-IRRBB-NMDs/blob/973501c82f2f9011acfdc9d741ab2af0132cb96c/docs/EXCEL_EVIDENCE.md) — content SHA-256 `c4e538abb905a34ee27a98cf0ebcee9d6c4e3cb1d359191656499dcc8ff96620`
+- [README.md](https://github.com/danielep71/K-IRRBB-NMDs/blob/626836d947234b2e7cdd25bd941c2aaa843a6fcc/README.md) — content SHA-256 `5a819702e4a71e7dbab522621ee5776fef5d86bd4bde26aaa1b050979d3ccd69`
+- [docs/EXCEL_EVIDENCE.md](https://github.com/danielep71/K-IRRBB-NMDs/blob/626836d947234b2e7cdd25bd941c2aaa843a6fcc/docs/EXCEL_EVIDENCE.md) — content SHA-256 `c4e538abb905a34ee27a98cf0ebcee9d6c4e3cb1d359191656499dcc8ff96620`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1): closed; 20 closed / 0 open issues.
-- [v0.2.0 - Workbook, data and Excel tests](https://github.com/danielep71/K-IRRBB-NMDs/milestone/2): open; 10 closed / 4 open issues.
+- [v0.1.0 - Repository foundation](https://github.com/danielep71/K-IRRBB-NMDs/milestone/1): closed; 13 closed / 0 open issues.
+- [v0.2.0 - Workbook, data and Excel tests](https://github.com/danielep71/K-IRRBB-NMDs/milestone/2): open; 54 closed / 6 open issues.
 - [v0.3.0 - Decay model](https://github.com/danielep71/K-IRRBB-NMDs/milestone/3): open; 0 closed / 1 open issues.
 - [v0.4.0 - Interest-rate model](https://github.com/danielep71/K-IRRBB-NMDs/milestone/4): open; 0 closed / 1 open issues.
 - [v0.5.0 - Stable-amount model](https://github.com/danielep71/K-IRRBB-NMDs/milestone/5): open; 0 closed / 1 open issues.
@@ -147,11 +149,11 @@ Repository setup (v0.1.0). No admitted NSFR calculation engine, workbook or vali
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/README.md) — content SHA-256 `8164daa9905659e405dbe63b6112c28ee5cefe829f8e0e4bb2c91f1b29f59fc0`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/d84d149dba864ac6bd125c1598d88e46fe194f54/docs/DECISIONS.md) — content SHA-256 `626606c5ebc4e6bce208c20c45639064a15922796f238ec88c2072acbaa7ffac`
+- [README.md](https://github.com/danielep71/K-NSFR/blob/3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26/README.md) — content SHA-256 `f57100299c5a21fac61eb00388d13376e5f6d0b9db667780452998ba91e83d59`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-NSFR/blob/3dca8965cce5ee3e03baf74fbf53d6ba0bd3fd26/docs/DECISIONS.md) — content SHA-256 `2d95280283349169157a7440eb80e2ec5f5147018b20d98acb6e834f5ab02c38`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): open; 46 closed / 9 open issues.
-- [v0.2.0 - Prototype Setup](https://github.com/danielep71/K-NSFR/milestone/2): open; 0 closed / 8 open issues.
+- [v0.1.0 - Repo setup](https://github.com/danielep71/K-NSFR/milestone/1): closed; 63 closed / 0 open issues.
+- [v0.2.0 - Prototype Setup](https://github.com/danielep71/K-NSFR/milestone/2): open; 4 closed / 8 open issues.
