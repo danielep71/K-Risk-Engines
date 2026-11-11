@@ -50,24 +50,24 @@
   "frtb": {
     "domain": "Market Risk",
     "repo": "danielep71/K-FRTB-SA",
-    "revision": "721775dd1e3fdce7cdd8c13a62a00342e96d7968",
+    "revision": "b04b752fcea3c4ad73255453ad3c163d920b1db7",
     "audited_on": "2026-11-11",
     "documents": {
       "methodology": {
         "path": "docs/methodology.md",
-        "sha256": "d50c50fc770e6fe9fe8c705710665388fb6199e028ff1b70cb9fbe990f2d56ba"
+        "sha256": "1f9ac908c72ca392f4c9384081010a45c2c14dac99cef3e9df133dcc0cbcb176"
       },
       "validation": {
         "path": "docs/validation.md",
-        "sha256": "593f2af7d6f028f1769c0952daf26830b71a8792899fc24d65f07769190c3907"
+        "sha256": "496f980ef02a2fa8274f2c584409be0f6e40fdf93afb556c3cfd2c9e0f2cd5ab"
       },
       "excel-evidence": {
-        "path": "docs/EXCEL_EVIDENCE.md",
-        "sha256": "7acf524a2f911931f5ae0fa88416200b37a382c21fb86680bd80c7f70feaa925"
+        "path": "docs/evidence/2026-10-31-excel-run-323260b.md",
+        "sha256": "58fea7cd42856ccab0c55cafd2973b4c924867a006868626f0ab31db209e9e4e"
       },
       "limitations": {
         "path": "README.md",
-        "sha256": "6621862733399cb176c584f2cb1370034fdbea27daa27c0edde4bc67ab104765"
+        "sha256": "7b7666b4e276aa79326770e65558f8b8af88f467e9f0d6abe82c6f92078aa4a8"
       }
     }
   },
