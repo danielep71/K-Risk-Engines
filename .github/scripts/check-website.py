@@ -149,13 +149,22 @@ def markdown_links(text: str) -> tuple[list[str], set[str]]:
     return links, anchors
 
 
-def tracked_markdown(root: Path) -> list[Path]:
+def tracked_files(root: Path, pattern: str) -> list[Path]:
+    """Files git tracks, so that ignored output such as a local portal build is skipped.
+
+    Outside a git repository, every matching file outside dot-directories.
+    """
     try:
-        names = subprocess.run(['git', '-C', str(root), 'ls-files', '-z', '--', '*.md'],
+        names = subprocess.run(['git', '-C', str(root), 'ls-files', '-z', '--', pattern],
                                capture_output=True, text=True, check=True).stdout.split('\0')
         return [root / name for name in names if name]
     except (OSError, subprocess.CalledProcessError):
-        return [path for path in root.rglob('*.md') if '.git' not in path.relative_to(root).parts]
+        return [path for path in root.rglob(pattern)
+                if not any(part.startswith('.') for part in path.relative_to(root).parts)]
+
+
+def tracked_markdown(root: Path) -> list[Path]:
+    return tracked_files(root, '*.md')
 
 
 def check_external(url: str) -> tuple[str, str]:
@@ -191,11 +200,9 @@ References = list[tuple[Path, str]]
 
 
 def html_pages(root: Path, anchors: Anchors, errors: list[str], references: References) -> int:
-    """Parse every HTML page outside dot-directories; return the page count."""
+    """Parse every tracked HTML page; return the page count."""
     count = 0
-    for path in root.rglob('*.html'):
-        if any(part.startswith('.') for part in path.relative_to(root).parts):
-            continue
+    for path in tracked_files(root, '*.html'):
         page = Page(path)
         page.feed(path.read_text(encoding='utf-8'))
         page.close()
@@ -213,7 +220,8 @@ def html_pages(root: Path, anchors: Anchors, errors: list[str], references: Refe
 
 
 def site_error(root: Path, where: Path, link: str) -> str | None:
-    # Pages publishes main only, so check this site's own URLs against the files.
+    # Pages publishes the files tracked on main (plus the portal, fetched instead),
+    # so check this site's own URLs against the files.
     target = (root / unquote(urlsplit(link).path)[len(urlsplit(SITE).path):]).resolve()
     if target.is_dir():
         target /= 'index.html'
@@ -263,7 +271,7 @@ def check(root: Path = ROOT) -> Result:
     external: set[str] = set()
     for source, link in references:
         url = urlsplit(link)
-        if link.startswith(GENERATED):
+        if (link + '/').startswith(GENERATED):
             external.add(link.split('#')[0])
             continue
         if link.startswith(SITE):

@@ -107,6 +107,16 @@ class TargetDateTests(unittest.TestCase):
         self.assertEqual(rules([issue(1, milestone_due="2026-11-04")]), [(1, "milestone-due")])
         self.assertEqual(rules([issue(1, milestone_due=None)]), [(1, "milestone-due")])
 
+    def test_missing_target_date_does_not_hide_a_milestone_without_due_date(self) -> None:
+        self.assertEqual(rules([issue(1, target=None, milestone_due=None)]),
+                         [(1, "target-date"), (1, "milestone-due")])
+
+    def test_empty_dependency_section_is_reported(self) -> None:
+        for section in ("## Dependencies\n\n", "### Dependencies and blocking status\n\n_No response_\n"):
+            with self.subTest(section=section):
+                self.assertEqual(rules([issue(1, body=section)]), [(1, "dependencies")])
+        self.assertEqual(rules([issue(1, body="## Dependencies\n\nNone.\n")]), [])
+
     def test_missing_milestone_is_reported_once(self) -> None:
         self.assertEqual(rules([issue(1, milestone=None, milestone_due=None)]), [(1, "milestone")])
 

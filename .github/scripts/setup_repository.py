@@ -177,7 +177,9 @@ def pages_state(call: Call, root: str) -> dict[str, Json] | None:
 
 
 def pages_plan(call: Call, root: str, config: dict[str, Json]) -> Plan:
-    """Publish from the configured branch and folder: create the site, or update its source."""
+    """Make the Pages build type and recorded source match the configuration: create the
+    site, or update it. With build type "workflow" a GitHub Actions workflow publishes; the
+    source branch and folder are only recorded."""
     desired = config['pages']
     current = pages_state(call, root)
     if current == desired:
@@ -248,7 +250,7 @@ def security_plan(call: Call, root: str, metadata: dict[str, Json], config: dict
 
 
 def report_unmanaged(call: Call, root: str, current: list[Json], config: dict[str, Json]) -> None:
-    """Name repository rulesets outside the baseline; they stay active alongside it."""
+    """Name repository rulesets outside the baseline, with their enforcement; they are left in place."""
     managed = {rule['name'] for rule in config['rulesets']}
     for ruleset in current:
         if ruleset.get('source_type', 'Repository') != 'Repository' or ruleset['name'] in managed:

@@ -46,8 +46,8 @@ nav:
       - K-CVA: engines/cva/index.md
   - IRRBB:
       - Overview: domains/irrbb.md
-      - K-IRRBB-NMDs: engines/nmd/index.md
-      - K-IRRBB-Prepayment_Models: engines/prepayment/index.md
+      - K-IRRBB NMDs: engines/nmd/index.md
+      - K-IRRBB Prepayment Models: engines/prepayment/index.md
   - Liquidity:
       - Overview: domains/liquidity.md
       - K-LCR: engines/lcr/index.md
