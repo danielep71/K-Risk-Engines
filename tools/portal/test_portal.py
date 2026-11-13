@@ -1,8 +1,9 @@
-"""Regression checks for broken-link rejection and project names."""
+"""Regression checks for broken-link rejection, project names and link text."""
 import tempfile
 import unittest
 from pathlib import Path
 
+from build import in_sentence
 from check import Page, inspect, name_errors
 
 
@@ -18,6 +19,10 @@ class PortalTests(unittest.TestCase):
             (root / 'engines/frtb/index.md').write_text('# K-FRTB-SA\n\nText\n')
             nav = [{'Market Risk': [{'K-FRTB-SA': 'engines/frtb/index.md'}]}]
             self.assertEqual(name_errors(root, projects, nav), [])
+
+    def test_topic_titles_in_sentences_keep_the_excel_capital(self):
+        self.assertEqual(in_sentence('Excel evidence'), 'Excel evidence')
+        self.assertEqual(in_sentence('Methodology'), 'methodology')
 
     def test_missing_file_and_anchor_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
