@@ -36,6 +36,11 @@ def safe(value: str) -> str:
     return html.escape(value).replace('[', '&#91;').replace(']', '&#93;').replace('|', '&#124;')
 
 
+def in_sentence(title: str) -> str:
+    """Return a topic title as it reads inside a sentence; Excel keeps its capital."""
+    return title.lower().replace('excel', 'Excel')
+
+
 def source_link(source: dict[str, str], record: dict[str, object]) -> str:
     return f"https://github.com/{record['repo']}/blob/{record['revision']}/{source['path']}"
 
@@ -77,7 +82,7 @@ def engine(project: dict, snapshot: dict, record: dict) -> None:
             source = record['documents'][topic]
             content += f'Document location audited on {record["audited_on"]}; revision `{record["revision"]}`.\n\n'
             if source:
-                content += (f'[Read the selected {title.lower()} document]({source_link(source, record)}) in the source repository.\n\n'
+                content += (f'[Read the selected {in_sentence(title)} document]({source_link(source, record)}) in the source repository.\n\n'
                             f'Content SHA-256: `{source["sha256"]}`.\n\n')
             else:
                 content += f'No dedicated Excel evidence document was selected in this audit. [Inspect the source repository]({repo}). This is not a claim that no evidence exists.\n\n'
