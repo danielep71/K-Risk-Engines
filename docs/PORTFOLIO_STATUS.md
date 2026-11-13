@@ -61,18 +61,18 @@ v0.2.0 - Workbook, data and Excel tests (in progress). The v0.1.0 foundation, cl
 <a id="frtb"></a>
 ## 🧩 K-FRTB-SA
 
-Version 0.2.0 is a prototype of the v0.2.0 — ASA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. One desktop Excel run is recorded, on 323260b and one host (evidence); the remaining Excel checks are in #28, #72, #85 and #206; tools\Check-FRTB-Excel.cmd (#274) runs those of #28, #72 and #85 unattended, but it has not yet run in desktop Excel. The long-term platform decision is open (scope), and no result is validated for regulatory use (validation).
+Version 0.2.0 is a prototype of the v0.2.0 — ASA prototype milestone (issue #20). It implements the Basel standardized approach (MAR21-MAR23) in Excel VBA with parameters checked against the BIS text, and every output is reconciled with an independent Python reference. Two desktop Excel sessions are recorded, on one host: a run on 323260b (evidence) and the unattended check tools\Check-FRTB-Excel.cmd (#274) on 1badef1, which passed 21 of 21 (evidence). The remaining Excel review is #206, the formatting of every sheet. The long-term platform decision is open (scope), and no result is validated for regulatory use (validation).
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-ASA/blob/bb780392c48c752edf245840a202ae5c2c2cde34/README.md) — content SHA-256 `b1174f6f20795a5ec81ef49ef0c790d5b8b1e1dc2168f48543a5c6ff735dbd92`
-- [docs/validation.md](https://github.com/danielep71/K-FRTB-ASA/blob/bb780392c48c752edf245840a202ae5c2c2cde34/docs/validation.md) — content SHA-256 `1f3fd6409e50cb8892054f1ffa4769e38ce7e7f497d41b699f9452002157f9bd`
+- [README.md](https://github.com/danielep71/K-FRTB-ASA/blob/231991cd9857fb4e8405dc73cd1b2a5c4276830f/README.md) — content SHA-256 `fa216ceca883acab61d072ffe5c0524586a3c47ccbadf62d41a0a7aa015af3bb`
+- [docs/validation.md](https://github.com/danielep71/K-FRTB-ASA/blob/231991cd9857fb4e8405dc73cd1b2a5c4276830f/docs/validation.md) — content SHA-256 `0f9293b3c1aff216f6919596488ca7188a95f0461c7c73fb77e851e34fbb29ba`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 — Repo setup](https://github.com/danielep71/K-FRTB-ASA/milestone/1): closed; 10 closed / 0 open issues.
-- [v0.2.0 — ASA prototype](https://github.com/danielep71/K-FRTB-ASA/milestone/2): open; 79 closed / 5 open issues.
+- [v0.2.0 — ASA prototype](https://github.com/danielep71/K-FRTB-ASA/milestone/2): open; 85 closed / 2 open issues.
 - [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-ASA/milestone/3): open; 10 closed / 0 open issues.
 
 <a id="prepayment"></a>
