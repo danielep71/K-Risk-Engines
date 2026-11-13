@@ -307,6 +307,8 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🐛 Fixed
 
+- The documentation portal's Excel evidence pages read "Read the selected
+  Excel evidence document", no longer "excel" in lower case (#308).
 - Fixes from a review of the non-Markdown files (#299):
   - the documentation portal names each engine by its displayed name (K-FRTB-SA,
     K-IRRBB NMDs, K-IRRBB Prepayment Models), not its repository name, and
