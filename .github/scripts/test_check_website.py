@@ -3,6 +3,7 @@ from __future__ import annotations
 import contextlib
 import importlib.util
 import io
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -132,10 +133,25 @@ class CheckTests(unittest.TestCase):
     def test_generated_portal_urls_are_fetched_not_looked_up(self) -> None:
         errors, external, *_ = self.run_check({
             'index.html': PAGE,
-            'README.md': f'[Portal]({site.GENERATED}) [Gateway]({site.GENERATED}engines/saccr/#status)\n',
+            'README.md': (f'[Portal]({site.GENERATED}) [Gateway]({site.GENERATED}engines/saccr/#status) '
+                          f'[Bare]({site.GENERATED.rstrip("/")})\n'),
             'docs/guide.md': '# Guide\n\n## Install\n'})
         self.assertEqual(errors, [])
-        self.assertEqual(external, {site.GENERATED, site.GENERATED + 'engines/saccr/'})
+        self.assertEqual(external, {site.GENERATED, site.GENERATED + 'engines/saccr/', site.GENERATED.rstrip('/')})
+
+    def test_untracked_html_is_not_checked_in_a_repository(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
+            (root / 'index.html').write_text(PAGE, encoding='utf-8')
+            (root / 'docs').mkdir()
+            (root / 'docs/guide.md').write_text('# Guide\n\n## Install\n', encoding='utf-8')
+            (root / 'build').mkdir()
+            (root / 'build/broken.html').write_text('<p><a href="/root-relative">x</a>', encoding='utf-8')
+            subprocess.run(['git', 'init', '-q', str(root)], check=True)
+            subprocess.run(['git', '-C', str(root), 'add', 'index.html', 'docs/guide.md'], check=True)
+            with contextlib.redirect_stdout(io.StringIO()):
+                errors, *_ = site.check(root)
+            self.assertEqual(errors, [])
 
     def test_html_links_to_markdown_anchors_are_checked(self) -> None:
         errors, *_ = self.run_check({'index.html': PAGE, 'docs/guide.md': '# Guide\n'})

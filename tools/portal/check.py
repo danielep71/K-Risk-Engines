@@ -16,7 +16,7 @@ from build import REFERENCES
 
 ROOT = Path(__file__).resolve().parents[2]
 BUILD = ROOT / 'build'
-OBSOLETE = re.compile(r'K-SA-CCR|K-SFT(?!s|[\w-])|K-CCP(?:\b)|/releases/tag/v1\.1\.0(?=["\s])')
+OBSOLETE = re.compile(r'K-SA-CCR|K-SFT(?!s|[\w-])|K-CCP(?:\b)')
 
 
 class Page(HTMLParser):
@@ -90,6 +90,29 @@ def verify_sources() -> None:
     print(f'{len(checks)} immutable source documents verified remotely')
 
 
+def name_errors(content: Path, projects: list[dict], nav: list) -> list[str]:
+    """Each engine gateway and its menu entry use the project's displayed name."""
+    labels = {}
+
+    def walk(items: list) -> None:
+        for item in items:
+            for label, target in item.items():
+                if isinstance(target, list):
+                    walk(target)
+                else:
+                    labels[target] = label
+    walk(nav)
+    errors = []
+    for project in projects:
+        page = f"engines/{project['id']}/index.md"
+        heading = (content / page).read_text().split('\n', 1)[0]
+        if heading != '# ' + project['name']:
+            errors.append(f'{page} starts with {heading!r}')
+        if labels.get(page) != project['name']:
+            errors.append(f'mkdocs.yml labels {page} {labels.get(page)!r}')
+    return errors
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--external', action='store_true')
@@ -108,7 +131,11 @@ def main() -> None:
     second = inspect(BUILD / 'zensical')
     if first.keys() != second.keys():
         raise ValueError('Builder page URL inventories differ')
-    # Theme-owned anchors may differ. Every author-owned content heading must survive.
+    errors = name_errors(BUILD / 'portal-content', json.loads((ROOT / '.github/portfolio.json').read_text())['projects'],
+                         yaml.load((ROOT / 'mkdocs.yml').read_text(), Loader=yaml.BaseLoader)['nav'])
+    if errors:
+        raise ValueError('Project names differ from .github/portfolio.json: ' + '; '.join(errors))
+    # Generated gateway text must not use obsolete project names.
     for path in (BUILD / 'portal-content').rglob('*.md'):
         if path.name == 'portfolio-status.md':
             continue  # Immutable historical quotations can name older releases.

@@ -275,6 +275,13 @@ jobs:
           if [ -n "$row" ]; then
             IFS=$'\t' read -r number state due <<< "$row"
           fi
+          # Issue triage requires a milestone due date: give a new or undated
+          # milestone the end of the year after next.
+          set_due=""
+          if [ -z "$due" ]; then
+            due="$(( $(date -u +%Y) + 2 ))-12-31"
+            set_due=1
+          fi
 
           alert="$RUNNER_TEMP/alert.json"
           python3 source/.github/scripts/traffic_history.py alert \
@@ -295,11 +302,17 @@ jobs:
           # Keep analytics alerts assigned, prioritised and grouped separately.
           if [ -z "$number" ]; then
             gh api --method POST "$milestones_api" -f title="$milestone_title" \
-              -f description="Review repository traffic alerts and trends." > /dev/null
-          elif [ "$state" != "open" ]; then
+              -f description="Review repository traffic alerts and trends." \
+              -f due_on="${due}T08:00:00Z" > /dev/null
+          else
             # Reopen it: alerts belong in an open milestone, and gh issue
             # create may not resolve a closed milestone by title.
-            gh api --method PATCH "$milestones_api/$number" -f state=open > /dev/null
+            if [ "$state" != "open" ]; then
+              gh api --method PATCH "$milestones_api/$number" -f state=open > /dev/null
+            fi
+            if [ -n "$set_due" ]; then
+              gh api --method PATCH "$milestones_api/$number" -f due_on="${due}T08:00:00Z" > /dev/null
+            fi
           fi
 
           gh issue create --title "$title" --body-file "$RUNNER_TEMP/alert.md" \

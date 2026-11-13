@@ -188,7 +188,8 @@ def render(projects: list[Record], snapshot: list[Record], readme: str,
                  '</p><p class="asof">' + html.escape(release) +
                  '.</p><details><summary>Full status and limitations</summary><p>' +
                  html.escape(status) + '</p></details>')
-        # The website links each project only from its card; sources stay in the README table and status report.
+        # The website links each project only from its card; the README table links the repository and
+        # milestone, and the status report keeps the pinned source links.
         if milestone:
             block += ('<p class="asof">Last closed milestone: ' + html.escape(milestone['title']) +
                       ' (' + milestone['closed_at'][:10] + ').</p>')

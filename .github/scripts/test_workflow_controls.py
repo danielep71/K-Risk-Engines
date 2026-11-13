@@ -23,11 +23,11 @@ ROOT = Path(__file__).resolve().parents[2]
 WORKFLOWS = ROOT / ".github/workflows"
 REQUIRED_JOB = ("website-checks.yml", "website")
 REQUIRED_CHECK = "HTML and links"
-# The only jobs that may write, and what each may write. An entry for a job
-# that does not exist is allowed: it names the intended shape of a pending change.
+# The only jobs whose GITHUB_TOKEN may write, and what each may write. Every
+# entry must name an existing job (test_write_permission_entries_name_existing_jobs).
+# The portfolio refresh writes through a GitHub App token instead.
 WRITE_PERMISSIONS = {
     ("labels-sync.yml", "reconcile"): {"issues"},
-    ("daily-traffic.yml", "traffic"): {"contents", "issues"},
     ("daily-traffic.yml", "collect"): {"contents"},
     ("daily-traffic.yml", "alert"): {"issues"},
     ("pr-milestones.yml", "reconcile"): {"pull-requests"},
@@ -257,7 +257,25 @@ class WorkflowControlTests(unittest.TestCase):
         deploy_step = [step for step in deploy["steps"]
                        if str(step.get("uses", "")).startswith("actions/deploy-pages@")]
         self.assertEqual(len(deploy_step), 1)
-        self.assertEqual(deploy_step[0]["if"], "steps.source.outputs.build_type == 'workflow'")
+        self.assertEqual(deploy_step[0]["if"], "steps.source.outputs.deploy == 'true'")
+        source = [step for step in deploy["steps"] if step.get("id") == "source"]
+        self.assertEqual(len(source), 1)
+        # An older run that finishes late must not replace a newer site.
+        self.assertIn("git ls-remote", source[0]["run"])
+        self.assertIn('[ "$head" != "$GITHUB_SHA" ]', source[0]["run"])
+
+    def test_traffic_alert_milestone_gets_a_due_date(self) -> None:
+        # Issue triage reports every issue in a milestone without a due date.
+        script = "\n".join(step.get("run", "") for step in
+                            workflows()["daily-traffic.yml"]["jobs"]["alert"]["steps"])
+        self.assertIn('-f due_on="${due}T08:00:00Z"', script.split('--method POST "$milestones_api"', 1)[1])
+        self.assertIn('if [ -n "$set_due" ]', script)
+
+    def test_write_permission_entries_name_existing_jobs(self) -> None:
+        documents = workflows()
+        for name, job_id in WRITE_PERMISSIONS:
+            with self.subTest(workflow=name, job=job_id):
+                self.assertIn(job_id, documents[name]["jobs"])
 
     def test_dependabot_covers_each_pinned_dependency_once(self) -> None:
         document = yaml.safe_load((ROOT / ".github/dependabot.yml").read_text(encoding="utf-8"))
