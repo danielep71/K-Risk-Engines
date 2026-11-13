@@ -1,4 +1,4 @@
-"""Stage a disposable portal, build both engines and preserve the static baseline.
+"""Stage a disposable portal, build it with both builders and preserve the static baseline.
 
 No network, source execution, status inference or production deployment.
 """
@@ -43,14 +43,15 @@ def source_link(source: dict[str, str], record: dict[str, object]) -> str:
 def engine(project: dict, snapshot: dict, record: dict) -> None:
     pid = project['id']
     repo = 'https://github.com/' + project['repo']
-    name = project['repo'].split('/')[1]
+    name = project['name']  # the displayed project name, not the repository name
     prefix = f'engines/{pid}/'
     intro = (f'# {name}\n\n{safe(project["purpose"])}\n\n'
              f'[Source repository]({repo}) · [Live releases]({repo}/releases) · '
              f'[Live milestones]({repo}/milestones)\n\n'
              'This is a documentation gateway, not a validation certificate. '
-             'Search covers gateway pages and the reviewed hub snapshot; linked engine documents '
-             'remain in their source repository and are not indexed here.\n\n')
+             'Search covers the portal\'s own pages (gateways, domain and reference pages and the '
+             'reviewed hub snapshot); linked engine documents remain in their source repository '
+             'and are not indexed here.\n\n')
     write(prefix + 'index.md', intro + '\n'.join(f'- [{title}]({topic}.md)' for topic, title in TOPICS.items()))
     for topic, title in TOPICS.items():
         content = f'# {name}: {title}\n\n[Engine overview](index.md)\n\n'
@@ -76,7 +77,7 @@ def engine(project: dict, snapshot: dict, record: dict) -> None:
             source = record['documents'][topic]
             content += f'Document location audited on {record["audited_on"]}; revision `{record["revision"]}`.\n\n'
             if source:
-                content += (f'[Read the authoritative {title.lower()} document]({source_link(source, record)}).\n\n'
+                content += (f'[Read the selected {title.lower()} document]({source_link(source, record)}) in the source repository.\n\n'
                             f'Content SHA-256: `{source["sha256"]}`.\n\n')
             else:
                 content += f'No dedicated Excel evidence document was selected in this audit. [Inspect the source repository]({repo}). This is not a claim that no evidence exists.\n\n'
@@ -104,13 +105,14 @@ def stage() -> None:
           + '\n'.join(f'- [{name}](domains/{slug}.md)' for name, (slug, _) in DOMAINS.items())
           + '\n\n[Portfolio status and provenance](portfolio-status.md) · [Compatibility specimen](compatibility.md)\n\n'
           'The source repositories own their documentation and releases. '
-          'This portal generates navigation from one manifest and the existing reviewed snapshot; '
-          'it does not maintain a second set of engine documentation.\n\n'
+          'This portal generates its pages from the portfolio manifest, the reviewed snapshot and '
+          'a reviewed map of source documents; its menu is set in mkdocs.yml. '
+          'It does not maintain a second set of engine documentation.\n\n'
           'Release availability, milestone closure and passing CI do not establish independent validation '
           'or production readiness. Snapshot and source-document revisions can differ; each is identified explicitly.')
     for name, (slug, asset) in DOMAINS.items():
         write(f'domains/{slug}.md', f'# {name}\n\n'
-              + '\n'.join(f'- [{p["repo"].split("/")[1]}](../engines/{p["id"]}/index.md)' for p in projects if records[p['id']]['domain'] == name)
+              + '\n'.join(f'- [{p["name"]}](../engines/{p["id"]}/index.md)' for p in projects if records[p['id']]['domain'] == name)
               + ''.join(f'\n\nReference: [{title}](../reference/{page})' for _, page, title in REFERENCES.get(name, []))
               + f'\n\n![{name} framework](../assets/{asset})\n\n'
               'Architecture overview only; not a statement of implemented or validated coverage.')

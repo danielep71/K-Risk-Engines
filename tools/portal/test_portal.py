@@ -1,12 +1,24 @@
-"""Regression checks for deployment isolation and broken-link rejection."""
+"""Regression checks for broken-link rejection and project names."""
 import tempfile
 import unittest
 from pathlib import Path
 
-from check import Page, inspect
+from check import Page, inspect, name_errors
 
 
 class PortalTests(unittest.TestCase):
+    def test_engine_pages_and_menu_use_the_displayed_name(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'engines/frtb').mkdir(parents=True)
+            (root / 'engines/frtb/index.md').write_text('# K-FRTB-ASA\n\nText\n')
+            projects = [{'id': 'frtb', 'name': 'K-FRTB-SA', 'repo': 'danielep71/K-FRTB-ASA'}]
+            nav = [{'Market Risk': [{'K-FRTB-ASA': 'engines/frtb/index.md'}]}]
+            self.assertEqual(len(name_errors(root, projects, nav)), 2)
+            (root / 'engines/frtb/index.md').write_text('# K-FRTB-SA\n\nText\n')
+            nav = [{'Market Risk': [{'K-FRTB-SA': 'engines/frtb/index.md'}]}]
+            self.assertEqual(name_errors(root, projects, nav), [])
+
     def test_missing_file_and_anchor_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

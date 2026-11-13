@@ -302,6 +302,25 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🐛 Fixed
 
+- Fixes from a review of the non-Markdown files (#299):
+  - the documentation portal names each engine by its displayed name (K-FRTB-SA,
+    K-IRRBB NMDs, K-IRRBB Prepayment Models), not its repository name, and
+    `tools/portal/check.py` checks the gateways and menu against
+    `.github/portfolio.json`;
+  - Issue triage reports an empty dependency section and, when the target end
+    date is missing, a milestone without a due date;
+  - `check-website.py` reads only tracked HTML, so a local portal build no
+    longer produces false errors, and accepts the portal URL without its final
+    slash;
+  - a portal deployment publishes only if its commit is still the head of
+    `main`, so an older run that finishes late cannot replace a newer site;
+  - the traffic alert gives the `Traffic monitoring` milestone a due date when
+    it creates it or finds it without one;
+  - the workflow tests require every write-permission entry to name an existing
+    job;
+  - comments, docstrings, issue-form hints and website texts (the K-SFTs card,
+    the About section and the portfolio direction) match the code and the
+    projects' status.
 - The hub's Markdown documents follow the current state: GitHub Actions
   publishes the website and the documentation portal, the portal document
   records its deployment and browser review, the rename procedure names the
