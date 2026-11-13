@@ -66,7 +66,7 @@
       "id": "target_end_date",
       "attributes": {
         "label": "Target end date (Europe/Rome)",
-        "description": "ISO calendar date YYYY-MM-DD, earlier than the due date of the milestone. Triage checks it against the milestone it assigns.",
+        "description": "ISO calendar date YYYY-MM-DD, earlier than the due date of the milestone. Issue triage checks it against the milestone the issue is given.",
         "placeholder": "2026-12-31"
       },
       "validations": {
@@ -78,7 +78,7 @@
       "id": "dependencies",
       "attributes": {
         "label": "Dependencies and blocking status",
-        "description": "Name each prerequisite as an issue link (#12) or on a line starting \"External condition:\". Write \"None\" if nothing blocks this work. Triage adds `blocked` only while a named prerequisite is unresolved.",
+        "description": "Name each prerequisite as an issue link (#12) or on a line starting \"External condition:\". Write \"None\" if nothing blocks this work. The `blocked` label belongs on the issue exactly while a named prerequisite is open or an external condition holds; Issue triage reports a mismatch.",
         "placeholder": "None"
       },
       "validations": {

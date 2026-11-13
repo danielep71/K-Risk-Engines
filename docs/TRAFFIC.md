@@ -121,8 +121,10 @@ clone alert, as on 2026-10-21 (#30).
 
 Each alert carries what **Issue triage** requires: a dependencies section
 (`None.`) and a target end date 14 days after the snapshot, or the day before
-the `Traffic monitoring` milestone's due date if that comes first. Give that
-milestone a due date, or triage reports every alert in it.
+the `Traffic monitoring` milestone's due date if that comes first. When the
+workflow creates that milestone, or finds it without a due date, it sets the
+due date to 31 December of the year after next, since triage reports every
+issue in a milestone without one.
 
 The closed-milestone path was verified against live GitHub, before the alert
 moved into its own job and script, in

@@ -1,8 +1,9 @@
 name: CodeQL
 
 # Code scanning with CodeQL's advanced setup, adapted from MyTemplate (see
-# NOTICE.md): the hub's Python scripts and tests (.github/scripts), its label
-# scripts (JavaScript) and the workflows themselves (Actions). It runs on
+# NOTICE.md): the hub's Python scripts and tests (.github/scripts and the
+# documentation portal's tools/portal), its label scripts (JavaScript) and the
+# workflows themselves (Actions). It runs on
 # pushes to main and release branches, on pull requests into them, and weekly,
 # because new queries can find issues in unchanged code. Results appear under
 # Security -> Code scanning. It runs the security-extended query suite. Pull

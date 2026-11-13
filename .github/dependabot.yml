@@ -1,6 +1,8 @@
 # Proposes updates to the SHA-pinned GitHub Actions used by the workflows,
-# the pinned configuration parser in .github/requirements.txt and the
-# hash-locked quality tools in tools/requirements-quality-ci.txt. Every update
+# the pinned configuration parser in .github/requirements.txt, and the
+# hash-locked Python files in tools/: the quality tools
+# (requirements-quality-ci.txt) and the documentation portal's builders
+# (requirements-portal.txt, compiled from requirements-portal.in). Every update
 # arrives as a pull request for maintainer review; nothing merges
 # automatically. target-branch must name the active release branch in
 # GOVERNANCE.md; update it when a new release branch is opened.
