@@ -42,7 +42,8 @@ source documents and release/milestone metadata, retains provenance and proposes
 updates through reviewed PRs. Its snapshot is the only source of hub status
 paragraphs, published-release metadata and milestone counts in this pilot.
 Source-document locations were separately audited at immutable commits recorded
-in [sources.json](../tools/portal/sources.json). Different observation revisions
+in [sources.json](../tools/portal/sources.json), each with its audit date
+(K-FRTB-SA re-audited on 2026-11-13 at `231991c`). Different observation revisions
 are explicitly distinguished; a newly built page is not a newly verified status.
 The release branch snapshot can lag `main`, and the pilot does not relabel it as
 current. Existing branch synchronization rules apply before integration.
@@ -55,7 +56,7 @@ websites are not migrated and engine workflows are not modified.
 | --- | --- | --- | --- | --- |
 | CCR | K-SACCR | docs/methodology/README.md | docs/methodology/TEST_CASES.md | docs/EXCEL_EVIDENCE.md |
 | CCR | K-SFTs | docs/methodology/README.md | docs/methodology/TEST_CASES.md | No dedicated document selected |
-| Market Risk | K-FRTB-SA | docs/methodology.md | docs/validation.md | docs/evidence/2026-10-31-excel-run-323260b.md |
+| Market Risk | K-FRTB-SA | docs/methodology.md | docs/validation.md | docs/evidence/2026-11-12-excel-check-1badef1.md |
 | Market Risk | K-CVA | docs/methodology/README.md | docs/methodology/TEST_CASES.md | docs/evidence/excel-run-194e9cd.md |
 | IRRBB | K-IRRBB-NMDs | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | docs/EXCEL_EVIDENCE.md |
 | IRRBB | K-IRRBB-Prepayment_Models | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | docs/EXCEL_EVIDENCE.md |
@@ -65,8 +66,10 @@ websites are not migrated and engine workflows are not modified.
 The entries are document locations, not certifications. In particular, a test
 case format, validation plan or host-record specification is not proof of an
 executed run. The K-CVA record concerns a scaffold run; it does not validate
-calculations. The K-FRTB-SA record is one desktop Excel run on `323260b` and
-one host; it does not validate results for regulatory use. Full READMEs remain
+calculations. The K-FRTB-SA records are two desktop Excel sessions on one
+host, a run on `323260b` and the unattended check on `1badef1`; the selected
+record is the check, which links the run. Neither validates results for
+regulatory use. Full READMEs remain
 the limitation entry points. Missing selected Excel documents are disclosed
 without claiming the repositories have no evidence.
 

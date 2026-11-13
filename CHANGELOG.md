@@ -91,6 +91,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The documentation portal's K-FRTB-SA documents are re-audited at the
+  engine's `231991c` (2026-11-13): new digests for the methodology,
+  validation and README, and the Excel evidence page selects the unattended
+  check of 2026-11-12 (21 of 21), which links the run of 2026-10-31;
+  `docs/DOCUMENT_PORTAL_PILOT.md` describes both sessions (#304).
 - The K-FRTB-SA engine repository is now `danielep71/K-FRTB-ASA`: the
   portfolio configuration, the portal's source map and the status snapshot
   name it together, and the website card, README, issue chooser, NOTICE and
