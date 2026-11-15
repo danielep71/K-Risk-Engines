@@ -70,7 +70,8 @@ available for traceability.
 1. Create a task branch from the active release branch, never from `main` or
    GitHub's default branch by assumption.
 2. Open a pull request against the active release branch. Website checks run
-   on every pull request and push.
+   on every pull request and on pushes to `main` and `release/**`; a push to a
+   task branch would repeat its pull request's run.
 3. Squash-merge once the checks pass and every review finding is fixed or
    answered. The squash commit title is the PR title followed by `(#PR)`;
    cite the issue in the body (`Refs #issue`), not as a second number in the
