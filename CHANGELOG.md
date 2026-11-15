@@ -13,6 +13,11 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- A nine-project cover, `assets/K-Risk-Engines-social-preview-v4.jpg`, with
+  K-FRTB-SSA in the Market Risk row, replaces v3 in the README, the website
+  hero and the social metadata. It is a vector drawing rendered by
+  `tools/cover/render-cover.cjs` and covered by MPL-2.0; the earlier
+  AI-generated v2 and v3 stay in `assets/`, excluded as before (#326).
 - K-FRTB-SSA, the FRTB simplified standardised approach (Basel MAR40), joins
   the portfolio as its ninth engine, in Market Risk: configuration and
   snapshot, a website card linking its site, the README's market risk text
