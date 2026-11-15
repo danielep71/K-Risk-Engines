@@ -25,6 +25,14 @@ class PortfolioTests(unittest.TestCase):
         result = refresh.status_excerpt(source, 'important')
         self.assertIn('Not run in Excel. No result is validated.', result)
 
+    def test_status_table_rows_become_sentences(self) -> None:
+        source = ('## 📌 Status\n\nNo release. The prototype:\n\n| Area | State |\n| --- | --- |\n'
+                  '| Calculation | Prototype. Not run in Excel |\n| Tests | None registered. |\n\nMore *text*, 2 * 3.\n\n## Next\n')
+        result = refresh.status_excerpt(source, 'status')
+        self.assertEqual(result, 'No release. The prototype: Calculation: Prototype. Not run in Excel. '
+                                 'Tests: None registered. More text, 2 * 3.')
+        self.assertNotIn('|', result)
+
     def test_status_section_keeps_draft_caveats(self) -> None:
         source = '## 🧭 Status\n\n**In progress.**\n\n- Decay draft, not validated.\n- No Excel evidence.\n\n## Next\n'
         self.assertIn('No Excel evidence.', refresh.status_excerpt(source, 'status'))

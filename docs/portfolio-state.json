@@ -330,6 +330,44 @@
     ]
   },
   {
+    "id": "ssa",
+    "repo": "danielep71/K-FRTB-SSA",
+    "status": "No version has been released. The repository holds a prototype of the calculation, which has not been compiled or run in Excel: Calculation: Prototype. The VBA source of a MAR40 engine for the four risk classes is under src/, with a macro-free template of 18 sheets and synthetic sample data (workbook contract). I have run it only in LibreOffice's VBA mode: it is not compiled or run in Excel, no evidence of a run is recorded here, and it is not validated for regulatory reporting. Methodology: The guides are in place with illustrative rows. The FRTB sources, the data contract and the calculation contracts are still to be written. Test cases: The format, its checks and illustrative cases are in place. The prototype's test module, tests/modules/TEST_Suite.bas, has its own runner and does not use the test harness yet, and no FRTB test case is registered. Tooling and governance: In use: every change goes through a pull request that Repository integrity checks. The release state is recorded in one place: the Current status of RELEASING.md, which Repository integrity checks against CHANGELOG.md. Changes reach main through task branches and pull requests; only a release is versioned and tagged.",
+    "release": null,
+    "milestones": [
+      {
+        "number": 1,
+        "title": "v0.1.0 - Initial setup",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 8,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/1"
+      },
+      {
+        "number": 2,
+        "title": "v0.2.0 - Prototype setup",
+        "state": "open",
+        "open_issues": 13,
+        "closed_issues": 2,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/2"
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "sha256": "d5170a4fd48f17fadf119fc330f4ee6756e1ec476c6ed6ec6f84d669f2fc5eab",
+        "url": "https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/README.md"
+      },
+      {
+        "path": "docs/methodology/VALIDATION_PLAN.md",
+        "sha256": "32dc0b9f7f3656a4a64b9279f49f1963d83c69e004f80fd8b34adec3ff996c69",
+        "url": "https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/docs/methodology/VALIDATION_PLAN.md"
+      }
+    ]
+  },
+  {
     "id": "prepayment",
     "repo": "danielep71/K-IRRBB-Prepayment_Models",
     "status": "Current status: prototype development. Repository setup (v0.1.0) closed on 2026-10-21; prototype setup (v0.2.0) is open. Committed source includes workbook build/export tooling, SMM/CPR conversions, a VBA importer with its facade and workbook adapter, and a 16-case VBA harness. All twelve DATA cases have independent Python references that run offline. No Windows Excel build, compilation or execution is established; calibration, projections, EVE and gap calculations remain unimplemented. No workbook or validated model output has been released.",
