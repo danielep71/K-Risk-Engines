@@ -23,6 +23,11 @@ ROOT = Path(__file__).resolve().parents[2]
 WORKFLOWS = ROOT / ".github/workflows"
 REQUIRED_JOB = ("website-checks.yml", "website")
 REQUIRED_CHECK = "HTML and links"
+# GitHub's default branch; workflows name it in their push branch filters.
+DEFAULT_BRANCH = "main"
+SHARED_BRANCHES = [DEFAULT_BRANCH, "release/**"]
+SAME_REPOSITORY_PR = ("github.event_name != 'pull_request' || "
+                      "github.event.pull_request.head.repo.full_name == github.repository")
 # The only jobs whose GITHUB_TOKEN may write, and what each may write. Every
 # entry must name an existing job (test_write_permission_entries_name_existing_jobs).
 # The portfolio refresh writes through a GitHub App token instead.
@@ -100,19 +105,47 @@ class WorkflowControlTests(unittest.TestCase):
                     self.assertEqual(writes(job.get("permissions")),
                                      WRITE_PERMISSIONS.get((name, job_id), set()))
 
-    def test_required_check_runs_unconditionally_on_every_branch(self) -> None:
+    def test_required_check_runs_on_every_pull_request_and_shared_branch_push(self) -> None:
         name, job_id = REQUIRED_JOB
         document = workflows()[name]
-        for event in ("pull_request", "push"):
-            with self.subTest(event=event):
-                self.assertIn(event, document["on"])
-                self.assertFalse(document["on"][event],
-                                 f"{event} must have no branch or path filters")
+        # Every pull request, to any base, must report the required check.
+        self.assertIn("pull_request", document["on"])
+        self.assertFalse(document["on"]["pull_request"],
+                         "pull_request must have no branch or path filters")
+        # A push to a task branch would repeat the pull request run of its head.
+        self.assertEqual(document["on"]["push"], {"branches": SHARED_BRANCHES})
         job = document["jobs"][job_id]
         self.assertNotIn("if", job)
         self.assertNotIn("strategy", job)
         # The rulesets in docs/REPOSITORY_SETTINGS.md require this name.
         self.assertEqual(job["name"], REQUIRED_CHECK)
+
+    def test_push_branch_filters_include_the_default_branch(self) -> None:
+        for name, document in workflows().items():
+            push = document["on"].get("push")
+            if not isinstance(push, dict):
+                continue
+            with self.subTest(workflow=name):
+                if "branches" in push:
+                    self.assertIn(DEFAULT_BRANCH, push["branches"])
+                self.assertNotIn(DEFAULT_BRANCH, push.get("branches-ignore", []))
+
+    def test_portal_runs_on_pull_requests_and_shared_branch_pushes(self) -> None:
+        document = workflows()["document-portal.yml"]
+        self.assertFalse(document["on"]["pull_request"])
+        self.assertEqual(document["on"]["push"], {"branches": SHARED_BRANCHES})
+
+    def test_external_checks_run_on_same_repository_pull_requests(self) -> None:
+        steps = {
+            "website-checks.yml": ("website", "Check external links on trusted events"),
+            "document-portal.yml": ("compare", "Verify immutable external document evidence"),
+        }
+        for name, (job_id, step_name) in steps.items():
+            with self.subTest(workflow=name):
+                job = workflows()[name]["jobs"][job_id]
+                step = [s for s in job["steps"] if s.get("name") == step_name]
+                self.assertEqual(len(step), 1)
+                self.assertEqual(step[0]["if"], SAME_REPOSITORY_PR)
 
     def test_live_label_reconciliation_runs_only_on_the_default_branch(self) -> None:
         # A manual dispatch on another branch must not apply an unintegrated manifest.

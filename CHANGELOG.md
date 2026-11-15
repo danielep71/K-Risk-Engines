@@ -91,6 +91,13 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- Website checks and the Document portal run on every pull request and on
+  pushes to `main` and `release/**` only: from 2026-10-16 to 2026-11-15, 87
+  of 107 task-branch push runs of Website checks repeated the pull request
+  run of the same commit. External links and the portal's source digests,
+  which the duplicate push runs used to check before merge, are now checked
+  on pull requests from this repository's branches; a workflow test fails
+  while a `push` branch filter omits `main` (#313).
 - The documentation portal's K-FRTB-SA documents are re-audited at the
   engine's `231991c` (2026-11-13): new digests for the methodology,
   validation and README, and the Excel evidence page selects the unattended
