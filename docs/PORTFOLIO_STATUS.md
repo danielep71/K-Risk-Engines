@@ -11,8 +11,8 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/1ce971eb6f113f0135470baaa3c889a75083f4e8/README.md) — content SHA-256 `799cf724a1728c229e07cbb60e71e5863e41837caa879d2852f6d4b63d4c779a`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/1ce971eb6f113f0135470baaa3c889a75083f4e8/docs/methodology/README.md) — content SHA-256 `7a957a90f944fd740439aa6e6133f09578c34eeaaa16beff6425ececb3a3ffc7`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/963695e2a862647d9013814b5bc63df3489c387e/README.md) — content SHA-256 `799cf724a1728c229e07cbb60e71e5863e41837caa879d2852f6d4b63d4c779a`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/963695e2a862647d9013814b5bc63df3489c387e/docs/methodology/README.md) — content SHA-256 `133f28942e14a216a0a3165de28fc5ab3d705fc975bbc85f1e81a3364711d6b3`
 - Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
@@ -129,18 +129,18 @@ Repository setup only. There is no calculation engine, public API, workbook or v
 <a id="lcr"></a>
 ## 🧩 K-LCR
 
-Repository setup. There is no LCR calculation engine, validated workbook, Excel import/compile run or supported host claim yet. Windows desktop Excel 64-bit is an engineering target, not a tested configuration. This project is intended for reference and independent validation, not operational reporting or production use.
+Prototype. A prototype workbook of the EU profile is in the repository: it calculates an LCR, and nothing validates it. There is no validated workbook, Excel import/compile run or supported host claim yet. Windows desktop Excel 64-bit is an engineering target, not a tested configuration. This project is intended for reference and independent validation, not operational reporting or production use.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/README.md) — content SHA-256 `0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216`
-- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/docs/DECISIONS.md) — content SHA-256 `a56d3bc8ba7d51b331aa6d9056a170d387ebad1a3c87d431972c383755813ea0`
+- [README.md](https://github.com/danielep71/K-LCR/blob/0899a1fecfbcfcdf0ec377bf495721c4179715c4/README.md) — content SHA-256 `0e6d0685b40b305154c1a6f2a3e260854454f29dc9cf2cad3ccf727897fb0ee9`
+- [docs/DECISIONS.md](https://github.com/danielep71/K-LCR/blob/0899a1fecfbcfcdf0ec377bf495721c4179715c4/docs/DECISIONS.md) — content SHA-256 `e9f6cbd66403bf2bbbeb3486ec9b59ce6800800df0995008c01c01c2b4f8153f`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Repo setup](https://github.com/danielep71/K-LCR/milestone/1): open; 59 closed / 0 open issues.
-- [v0.2.0 - Host execution](https://github.com/danielep71/K-LCR/milestone/2): open; 0 closed / 5 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-LCR/milestone/2): open; 13 closed / 3 open issues.
 
 <a id="nsfr"></a>
 ## 🧩 K-NSFR

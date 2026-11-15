@@ -163,12 +163,12 @@
       {
         "path": "README.md",
         "sha256": "799cf724a1728c229e07cbb60e71e5863e41837caa879d2852f6d4b63d4c779a",
-        "url": "https://github.com/danielep71/K-SACCR/blob/1ce971eb6f113f0135470baaa3c889a75083f4e8/README.md"
+        "url": "https://github.com/danielep71/K-SACCR/blob/963695e2a862647d9013814b5bc63df3489c387e/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "7a957a90f944fd740439aa6e6133f09578c34eeaaa16beff6425ececb3a3ffc7",
-        "url": "https://github.com/danielep71/K-SACCR/blob/1ce971eb6f113f0135470baaa3c889a75083f4e8/docs/methodology/README.md"
+        "sha256": "133f28942e14a216a0a3165de28fc5ab3d705fc975bbc85f1e81a3364711d6b3",
+        "url": "https://github.com/danielep71/K-SACCR/blob/963695e2a862647d9013814b5bc63df3489c387e/docs/methodology/README.md"
       }
     ]
   },
@@ -479,7 +479,7 @@
   {
     "id": "lcr",
     "repo": "danielep71/K-LCR",
-    "status": "Repository setup. There is no LCR calculation engine, validated workbook, Excel import/compile run or supported host claim yet. Windows desktop Excel 64-bit is an engineering target, not a tested configuration. This project is intended for reference and independent validation, not operational reporting or production use.",
+    "status": "Prototype. A prototype workbook of the EU profile is in the repository: it calculates an LCR, and nothing validates it. There is no validated workbook, Excel import/compile run or supported host claim yet. Windows desktop Excel 64-bit is an engineering target, not a tested configuration. This project is intended for reference and independent validation, not operational reporting or production use.",
     "release": null,
     "milestones": [
       {
@@ -493,10 +493,10 @@
       },
       {
         "number": 2,
-        "title": "v0.2.0 - Host execution",
+        "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 5,
-        "closed_issues": 0,
+        "open_issues": 3,
+        "closed_issues": 13,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-LCR/milestone/2"
       }
@@ -504,13 +504,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "0faee6378d3ad8502af50d5e4f69bbb38ab35afda51971c0022e50cc4076d216",
-        "url": "https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/README.md"
+        "sha256": "0e6d0685b40b305154c1a6f2a3e260854454f29dc9cf2cad3ccf727897fb0ee9",
+        "url": "https://github.com/danielep71/K-LCR/blob/0899a1fecfbcfcdf0ec377bf495721c4179715c4/README.md"
       },
       {
         "path": "docs/DECISIONS.md",
-        "sha256": "a56d3bc8ba7d51b331aa6d9056a170d387ebad1a3c87d431972c383755813ea0",
-        "url": "https://github.com/danielep71/K-LCR/blob/7b343cc5c6f91423802c0cc56bfe4d9b50d102a5/docs/DECISIONS.md"
+        "sha256": "e9f6cbd66403bf2bbbeb3486ec9b59ce6800800df0995008c01c01c2b4f8153f",
+        "url": "https://github.com/danielep71/K-LCR/blob/0899a1fecfbcfcdf0ec377bf495721c4179715c4/docs/DECISIONS.md"
       }
     ]
   },
