@@ -1,7 +1,7 @@
 # ⚖️ Licensing and attribution
 
 [![License](https://img.shields.io/badge/License-MPL--2.0-1f3a5f?style=flat-square)](LICENSE)
-[![Artwork excluded](https://img.shields.io/badge/Artwork-excluded_from_MPL-B60205?style=flat-square)](#portfolio-artwork-exclusion)
+[![Earlier artwork excluded](https://img.shields.io/badge/Earlier_artwork-excluded_from_MPL-B60205?style=flat-square)](#portfolio-artwork-exclusion)
 [![Independent project](https://img.shields.io/badge/Independent-personal_project-6E7781?style=flat-square)](#linked-projects-and-third-party-rights)
 
 Copyright 2026 Daniele Penza and contributors.
@@ -20,12 +20,18 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 ## 🖼️ Portfolio artwork exclusion
 
-`assets/K-Risk-Engines-social-preview-v3.jpg` and the retained previous version
-`assets/K-Risk-Engines-social-preview-v2.jpg` are AI-generated decorative portfolio
-images and are excluded from the MPL-2.0 grant. No separate reuse licence is
-granted for these images by this repository. Contact the maintainer before
-reusing them. This exclusion does not apply to `assets/site.css` or asset
-documentation.
+`assets/K-Risk-Engines-social-preview-v3.jpg` and
+`assets/K-Risk-Engines-social-preview-v2.jpg`, the retained previous versions of
+the cover, are AI-generated decorative portfolio images and are excluded from
+the MPL-2.0 grant. No separate reuse licence is granted for these images by this
+repository. Contact the owner before reusing them. This exclusion does not apply
+to `assets/site.css`, asset documentation or the current cover.
+
+The current cover, `assets/K-Risk-Engines-social-preview-v4.jpg`, is not
+AI-generated: it is drawn by `tools/cover/render-cover.cjs`, and both are covered
+by MPL-2.0. The image renders the Oswald and JetBrains Mono typefaces, licensed
+under the [SIL Open Font License 1.1](https://openfontlicense.org/); no font file
+is distributed by this repository.
 
 <a id="linked-projects-and-third-party-rights"></a>
 
