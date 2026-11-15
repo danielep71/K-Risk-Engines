@@ -41,11 +41,35 @@ def pages(path: str) -> list[Record]:
     raise ValueError('Pagination exceeded safe limit')
 
 
+TABLE_SEPARATOR = re.compile(r'^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$')
+
+
+def table_sentences(text: str) -> str:
+    """Rewrite each Markdown table row as "first cell: other cells.", dropping header and separator rows."""
+    lines = text.split('\n')
+    out: list[str] = []
+    for i, line in enumerate(lines):
+        if TABLE_SEPARATOR.match(line):
+            continue
+        if line.lstrip().startswith('|'):
+            if i + 1 < len(lines) and TABLE_SEPARATOR.match(lines[i + 1]):
+                continue  # the header row
+            cells = [c.strip() for c in line.strip().strip('|').split('|') if c.strip()]
+            if cells:
+                row = cells[0] + (': ' + '; '.join(cells[1:]) if len(cells) > 1 else '')
+                out.append(row if row.endswith(('.', '!', '?')) else row + '.')
+            continue
+        out.append(line)
+    return '\n'.join(out)
+
+
 def plain(text: str) -> str:
     # Preserve link labels, sentences and caveats; render as escaped text, never source HTML.
+    text = table_sentences(text)
     text = re.sub(r'\[([^\]]+)\]\([^\n]+?\)', r'\1', text)
     text = re.sub(r'<[^>]+>', '', text)
     text = text.replace('**', '').replace('`', '')
+    text = re.sub(r'(?<![\w*])\*([^*\n]+)\*(?![\w*])', r'\1', text)  # *emphasis*
     return ' '.join(text.split())
 
 

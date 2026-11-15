@@ -71,6 +71,27 @@
       }
     }
   },
+  "ssa": {
+    "domain": "Market Risk",
+    "repo": "danielep71/K-FRTB-SSA",
+    "revision": "cb39951ce63b45838a88a75726e6feb69a13a271",
+    "audited_on": "2026-11-15",
+    "documents": {
+      "methodology": {
+        "path": "docs/methodology/README.md",
+        "sha256": "6c2685f8b61e0f5e9404d7b1a9f5cb85529a43d837d8512b04a02541b984c910"
+      },
+      "validation": {
+        "path": "docs/methodology/VALIDATION_PLAN.md",
+        "sha256": "32dc0b9f7f3656a4a64b9279f49f1963d83c69e004f80fd8b34adec3ff996c69"
+      },
+      "excel-evidence": null,
+      "limitations": {
+        "path": "README.md",
+        "sha256": "d5170a4fd48f17fadf119fc330f4ee6756e1ec476c6ed6ec6f84d669f2fc5eab"
+      }
+    }
+  },
   "prepayment": {
     "domain": "IRRBB",
     "repo": "danielep71/K-IRRBB-Prepayment_Models",

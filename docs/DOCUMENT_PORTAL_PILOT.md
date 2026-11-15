@@ -48,8 +48,9 @@ are explicitly distinguished; a newly built page is not a newly verified status.
 The release branch snapshot can lag `main`, and the pilot does not relabel it as
 current. Existing branch synchronization rules apply before integration.
 
-All eight default-branch trees and governance documents were inspected. None
-had a MkDocs/Zensical configuration in the audited tree. Existing engine
+All eight default-branch trees and governance documents were inspected, and
+K-FRTB-SSA's when it joined on 2026-11-15 at `cb39951`. None had a
+MkDocs/Zensical configuration in the audited tree. Existing engine
 websites are not migrated and engine workflows are not modified.
 
 | Domain | Repository | Methodology entry | Validation entry | Excel evidence entry |
@@ -57,6 +58,7 @@ websites are not migrated and engine workflows are not modified.
 | CCR | K-SACCR | docs/methodology/README.md | docs/methodology/TEST_CASES.md | docs/EXCEL_EVIDENCE.md |
 | CCR | K-SFTs | docs/methodology/README.md | docs/methodology/TEST_CASES.md | No dedicated document selected |
 | Market Risk | K-FRTB-SA | docs/methodology.md | docs/validation.md | docs/evidence/2026-11-12-excel-check-1badef1.md |
+| Market Risk | K-FRTB-SSA | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | No dedicated document selected |
 | Market Risk | K-CVA | docs/methodology/README.md | docs/methodology/TEST_CASES.md | docs/evidence/excel-run-194e9cd.md |
 | IRRBB | K-IRRBB-NMDs | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | docs/EXCEL_EVIDENCE.md |
 | IRRBB | K-IRRBB-Prepayment_Models | docs/methodology/README.md | docs/methodology/VALIDATION_PLAN.md | docs/EXCEL_EVIDENCE.md |
@@ -85,7 +87,7 @@ listed in `REFERENCES` of `tools/portal/build.py` (currently
 `reference/` in the same way. Engine pages link to pinned
 original documents; engine licences and notices remain at source.
 
-Each of eight engine gateways has separate status, release, milestones,
+Each of nine engine gateways has separate status, release, milestones,
 methodology, validation, Excel evidence and limitations pages. Four domain
 pages preserve the current pairing (CVA in Market Risk). Search indexes gateway
 pages and the hub snapshot. **Full text of linked engine documents is not yet
@@ -153,7 +155,7 @@ Planned review of both builders at desktop 1440×900 and mobile 390×844:
 
 - Home, each domain, one engine overview and each topic, long portfolio snapshot.
 - Navigation drawer/tabs, keyboard focus, wrapping and horizontal overflow.
-- Search each of the eight engine names and `validation`; open a result.
+- Search each of the nine engine names and `validation`; open a result.
 - Mermaid must render an SVG, with readable labels; inspect PNG and SVG artwork.
 - Compare current landing page and all its anchors in each packaged candidate.
 - Record screenshots, browser/version, console/network failures, commit and build

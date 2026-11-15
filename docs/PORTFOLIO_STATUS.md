@@ -75,6 +75,22 @@ Version 0.2.0 is a prototype of the v0.2.0 — ASA prototype milestone (issue #2
 - [v0.2.0 — ASA prototype](https://github.com/danielep71/K-FRTB-ASA/milestone/2): open; 85 closed / 2 open issues.
 - [v0.3.0 — Regulatory baseline and certification scope](https://github.com/danielep71/K-FRTB-ASA/milestone/3): open; 10 closed / 0 open issues.
 
+<a id="ssa"></a>
+## 🧩 K-FRTB-SSA
+
+No version has been released. The repository holds a prototype of the calculation, which has not been compiled or run in Excel: Calculation: Prototype. The VBA source of a MAR40 engine for the four risk classes is under src/, with a macro-free template of 18 sheets and synthetic sample data (workbook contract). I have run it only in LibreOffice&#x27;s VBA mode: it is not compiled or run in Excel, no evidence of a run is recorded here, and it is not validated for regulatory reporting. Methodology: The guides are in place with illustrative rows. The FRTB sources, the data contract and the calculation contracts are still to be written. Test cases: The format, its checks and illustrative cases are in place. The prototype&#x27;s test module, tests/modules/TEST_Suite.bas, has its own runner and does not use the test harness yet, and no FRTB test case is registered. Tooling and governance: In use: every change goes through a pull request that Repository integrity checks. The release state is recorded in one place: the Current status of RELEASING.md, which Repository integrity checks against CHANGELOG.md. Changes reach main through task branches and pull requests; only a release is versioned and tagged.
+
+### 🔗 Sources
+
+- [README.md](https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/README.md) — content SHA-256 `d5170a4fd48f17fadf119fc330f4ee6756e1ec476c6ed6ec6f84d669f2fc5eab`
+- [docs/methodology/VALIDATION_PLAN.md](https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/docs/methodology/VALIDATION_PLAN.md) — content SHA-256 `32dc0b9f7f3656a4a64b9279f49f1963d83c69e004f80fd8b34adec3ff996c69`
+- No published stable release (drafts and prereleases excluded).
+
+### 🏁 Milestones (tracking only)
+
+- [v0.1.0 - Initial setup](https://github.com/danielep71/K-FRTB-SSA/milestone/1): open; 8 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): open; 2 closed / 13 open issues.
+
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
 

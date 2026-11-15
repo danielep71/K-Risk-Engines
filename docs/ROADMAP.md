@@ -14,12 +14,12 @@ engine releases or claim regulatory compliance.
 
 ## 📍 Starting point
 
-The [portfolio catalogue](../README.md#explore-the-portfolio) covers eight engines:
+The [portfolio catalogue](../README.md#explore-the-portfolio) covers nine engines:
 
 | Area | Existing projects | Complementary direction |
 | --- | --- | --- |
 | Counterparty credit risk | K-SACCR, K-SFTs | Collateral and margin analysis |
-| Market and CVA risk | K-FRTB-SA, K-CVA | Management risk measures and valuation uncertainty |
+| Market and CVA risk | K-FRTB-SA, K-FRTB-SSA, K-CVA | Management risk measures and valuation uncertainty |
 | Banking book | K-IRRBB NMDs, K-IRRBB Prepayment Models | Portfolio EVE/NII measurement and CSRBB |
 | Liquidity | K-LCR, K-NSFR | Dynamic cash-flow stress and survival horizon |
 

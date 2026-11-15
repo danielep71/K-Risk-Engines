@@ -31,6 +31,16 @@
       ]
     },
     {
+      "id": "ssa",
+      "repo": "danielep71/K-FRTB-SSA",
+      "name": "K-FRTB-SSA",
+      "purpose": "Simplified standardised market-risk capital (MAR40)",
+      "selector": "status",
+      "evidence": [
+        "docs/methodology/VALIDATION_PLAN.md"
+      ]
+    },
+    {
       "id": "prepayment",
       "repo": "danielep71/K-IRRBB-Prepayment_Models",
       "name": "K-IRRBB Prepayment Models",
