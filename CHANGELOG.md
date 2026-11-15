@@ -91,6 +91,19 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- A synchronization from `main` whose head is the integration's merge commit,
+  whose diff against the release branch is empty and whose tree the
+  integration's final-head review covered cites that review instead of
+  waiting for a new one; the required check still runs. The 24
+  synchronizations of the last 30 days had 27 review rounds and no finding
+  (#315).
+- Website checks and the Document portal run on every pull request and on
+  pushes to `main` and `release/**` only: from 2026-10-16 to 2026-11-15, 87
+  of 107 task-branch push runs of Website checks repeated the pull request
+  run of the same commit. External links and the portal's source digests,
+  which the duplicate push runs used to check before merge, are now checked
+  on pull requests from this repository's branches; a workflow test fails
+  while a `push` branch filter omits `main` (#313).
 - The documentation portal's K-FRTB-SA documents are re-audited at the
   engine's `231991c` (2026-11-13): new digests for the methodology,
   validation and README, and the Excel evidence page selects the unattended
