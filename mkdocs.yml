@@ -43,6 +43,7 @@ nav:
   - Market Risk:
       - Overview: domains/market-risk.md
       - K-FRTB-SA: engines/frtb/index.md
+      - K-FRTB-SSA: engines/ssa/index.md
       - K-CVA: engines/cva/index.md
   - IRRBB:
       - Overview: domains/irrbb.md

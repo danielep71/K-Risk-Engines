@@ -13,6 +13,14 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### ✨ Added
 
+- K-FRTB-SSA, the FRTB simplified standardised approach (Basel MAR40), joins
+  the portfolio as its ninth engine, in Market Risk: configuration and
+  snapshot, a website card linking its site, the README's market risk text
+  and website list, the issue chooser, a portal gateway with audited document
+  locations at `cb39951`, and the counts in `docs/ROADMAP.md` and
+  `docs/DOCUMENT_PORTAL_PILOT.md`. The portfolio refresh renders a status
+  table's rows as sentences and drops single-asterisk emphasis, as
+  K-FRTB-SSA's Status section has both (#321).
 - Add the reference poster *Counterparty credit risk at a glance* (A0 PDF
   with a PNG preview, status 30 October 2026) to the documentation portal's
   CCR section, from `docs/CCR_AT_A_GLANCE.md`, copied byte for byte and

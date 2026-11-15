@@ -17,6 +17,11 @@
       "about": "Market-risk aggregation, methodology, workbook and validation."
     },
     {
+      "name": "K-FRTB-SSA engine issues",
+      "url": "https://github.com/danielep71/K-FRTB-SSA/issues",
+      "about": "Simplified standardised approach (MAR40), methodology, workbook and validation."
+    },
+    {
       "name": "K-IRRBB Prepayment Models engine issues",
       "url": "https://github.com/danielep71/K-IRRBB-Prepayment_Models/issues",
       "about": "Loan prepayment models, methodology, workbook and validation."
