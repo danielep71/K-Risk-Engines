@@ -91,6 +91,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- A synchronization from `main` whose head is the integration's merge commit,
+  whose diff against the release branch is empty and whose tree the
+  integration's final-head review covered cites that review instead of
+  waiting for a new one; the required check still runs. The 24
+  synchronizations of the last 30 days had 27 review rounds and no finding
+  (#315).
 - Website checks and the Document portal run on every pull request and on
   pushes to `main` and `release/**` only: from 2026-10-16 to 2026-11-15, 87
   of 107 task-branch push runs of Website checks repeated the pull request
