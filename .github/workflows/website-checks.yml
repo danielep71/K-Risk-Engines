@@ -1,12 +1,14 @@
 name: Website checks
 
 # Provides "HTML and links", the check required by the rulesets in
-# docs/REPOSITORY_SETTINGS.md. It runs on every pull request and push, without
-# branch or path filters, so the required check always reports. Every event
-# runs the quality gates (Ruff, mypy strict, actionlint), the script and
-# workflow tests, the label self-tests and the local HTML, Markdown, asset and
-# anchor checks. External links are fetched only on trusted events (pushes,
-# the weekly schedule and manual runs), not on pull requests.
+# docs/REPOSITORY_SETTINGS.md. It runs on every pull request, to any base and
+# without path filters, so the required check always reports, and on pushes to
+# main and release/** only: a push to a task branch would repeat the pull
+# request run of the same commit. Every event runs the quality gates (Ruff,
+# mypy strict, actionlint), the script and workflow tests, the label
+# self-tests and the local HTML, Markdown, asset and anchor checks. External
+# links are fetched on pushes, the weekly schedule, manual runs and pull
+# requests from this repository's own branches, not from forks.
 # Read-only token; no secrets. Python and Node.js are pinned to exact patch
 # versions so that the runtime cannot change without a diff; update them by a
 # pull request, together with the workflow test that names them.
@@ -14,6 +16,9 @@ name: Website checks
 on:
   pull_request:
   push:
+    branches:
+      - main
+      - "release/**"
   schedule:
     - cron: '43 6 * * 1'
   workflow_dispatch:
@@ -101,5 +106,5 @@ jobs:
       - name: Check HTML, Markdown links, assets and internal anchors
         run: python .github/scripts/check-website.py
       - name: Check external links on trusted events
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         run: python .github/scripts/check-website.py --external

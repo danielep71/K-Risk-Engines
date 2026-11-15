@@ -183,8 +183,8 @@ explicit `<a id>`. It is a focused structural check, not a full HTML standards
 or accessibility validator. Its own tests run with
 `python3 -m unittest discover -s .github/scripts -p 'test_*.py'`.
 
-GitHub Actions runs local checks on every pull request and every push. External links are checked on pushes, weekly and
-on manual runs; redirects are accepted. Broken links fail the check. Network
+GitHub Actions runs local checks on every pull request and on every push to `main` and `release/**`. External links are
+checked on those pushes, weekly, on manual runs and on pull requests from this repository's branches; redirects are accepted. Broken links fail the check. Network
 errors, HTTP 403/429 and server errors are reported as warnings because
 availability could not be verified. External page fragments are not validated;
 external URLs from Markdown files follow the same rules. Links to this site's own

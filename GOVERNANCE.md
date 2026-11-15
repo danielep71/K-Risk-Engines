@@ -70,7 +70,8 @@ available for traceability.
 1. Create a task branch from the active release branch, never from `main` or
    GitHub's default branch by assumption.
 2. Open a pull request against the active release branch. Website checks run
-   on every pull request and push.
+   on every pull request and on pushes to `main` and `release/**`; a push to a
+   task branch would repeat its pull request's run.
 3. Squash-merge once the checks pass and every review finding is fixed or
    answered. The squash commit title is the PR title followed by `(#PR)`;
    cite the issue in the body (`Refs #issue`), not as a second number in the
@@ -83,7 +84,9 @@ available for traceability.
    integration (step 4), or before task work that touches files `main` has
    changed, such as the generated portfolio files. The rulesets refuse a
    direct push, even a fast-forward, so the update arrives as a pull request
-   merged with a merge commit, after its checks and review:
+   merged with a merge commit, after its checks and review (an unchanged
+   synchronization cites the integration's review; see Review after fix
+   pushes):
    - If the release branch has no commits missing from `main`, open the pull
      request from `main` itself.
    - Otherwise, the required check must pass on a head that already contains
@@ -192,12 +195,20 @@ If review fails, is unavailable or remains incomplete, leave the PR open and
 record the blocker. A clean review of an older revision does not cover fixes
 pushed afterward.
 
-Two further cases are recorded in the PR in the same place:
+Three further cases are recorded in the PR in the same place:
 
 - **Identical reviewed content.** An integration PR whose head has the same
   tree as a commit already reviewed by Codex against the same base may cite
   that review when the integration PR's own review reports no commit. Record
   both SHAs and the shared tree, and do not claim a review of the head itself.
+- **Unchanged synchronization.** A synchronization from `main` (step 5)
+  needs no new Codex review when its head is the merge commit of the
+  integration into `main`, its diff against the release branch is empty, and
+  the integration's final-head review covered the same tree. Record the
+  integration pull request, its reviewed SHA and review permalink, and the
+  shared tree. The required `HTML and links` check still runs and must pass.
+  A synchronization that changes any file, such as one that brings a
+  portfolio refresh, is reviewed as usual.
 - **Maintainer-authorized exception.** The maintainer may decide to merge
   without a completed final-head review. Record the decision verbatim under
   "Explicitly authorized merge exception", what changed after the last
