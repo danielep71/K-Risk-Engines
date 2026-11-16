@@ -338,32 +338,41 @@
       {
         "number": 1,
         "title": "v0.1.0 - Initial setup",
-        "state": "open",
+        "state": "closed",
         "open_issues": 0,
         "closed_issues": 8,
-        "closed_at": null,
+        "closed_at": "2026-11-15T10:37:48Z",
         "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/1"
       },
       {
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
         "state": "open",
-        "open_issues": 13,
-        "closed_issues": 2,
+        "open_issues": 10,
+        "closed_issues": 8,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/2"
+      },
+      {
+        "number": 3,
+        "title": "v0.3.0 - CRR regime",
+        "state": "open",
+        "open_issues": 0,
+        "closed_issues": 0,
+        "closed_at": null,
+        "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/3"
       }
     ],
     "sources": [
       {
         "path": "README.md",
         "sha256": "d5170a4fd48f17fadf119fc330f4ee6756e1ec476c6ed6ec6f84d669f2fc5eab",
-        "url": "https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/README.md"
+        "url": "https://github.com/danielep71/K-FRTB-SSA/blob/74218122772cba9ebc429386e442514cedcc9240/README.md"
       },
       {
         "path": "docs/methodology/VALIDATION_PLAN.md",
         "sha256": "32dc0b9f7f3656a4a64b9279f49f1963d83c69e004f80fd8b34adec3ff996c69",
-        "url": "https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/docs/methodology/VALIDATION_PLAN.md"
+        "url": "https://github.com/danielep71/K-FRTB-SSA/blob/74218122772cba9ebc429386e442514cedcc9240/docs/methodology/VALIDATION_PLAN.md"
       }
     ]
   },
