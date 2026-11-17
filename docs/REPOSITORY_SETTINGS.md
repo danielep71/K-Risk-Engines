@@ -28,7 +28,7 @@ tool described under [Applying and verifying](#apply) do.
 [GOVERNANCE.md](../GOVERNANCE.md) describes how contributors work
 within these settings.
 
-[General differences](#general) · [Security features](#security) · [Custom protection](#rulesets) · [Apply and verify](#apply) · [Reuse](#reuse) · [Sources](#sources)
+[General differences](#general) · [Security features](#security) · [Actions settings](#actions) · [Custom protection](#rulesets) · [Apply and verify](#apply) · [Reuse](#reuse) · [Sources](#sources)
 
 <a id="general"></a>
 
@@ -68,6 +68,29 @@ settings tool below verifies them.
 
 Sources: [private vulnerability reporting][pvr], [Dependabot alerts][dependabot-alerts],
 [Dependabot security updates][dependabot-updates] and [secret scanning][secret-scanning].
+
+<a id="actions"></a>
+
+## 🎬 GitHub Actions settings — verified, never written
+
+Like the security features, these are recorded as configured values: their
+initial state depends on the account, the repository's creation date and any
+organization policy. Set them by hand in **Settings → Actions → General**. The
+settings tool reads each one from the REST endpoint below and compares it; it
+never writes them, and it does not infer them from the workflow files. A value
+that cannot be read (an HTTP error, or a response without the field) is
+unknown and counts as drift.
+
+| Setting (manifest key) | Configured value | Read from (`GET repos/OWNER/REPO/…`) | Effect |
+| --- | --- | --- | --- |
+| Require actions to be pinned to a full-length commit SHA (`sha_pinning_required`) | **On** | `actions/permissions`, `sha_pinning_required` | Workflows fail if they use an action by tag or branch; every action here is already pinned, and the workflow tests require it. |
+| Default workflow permissions (`default_workflow_permissions`) | **Read** | `actions/permissions/workflow`, `default_workflow_permissions` | A job without a `permissions` block gets a read-only token; jobs here declare their own permissions anyway. |
+| Allow GitHub Actions to create and approve pull requests (`can_approve_pull_request_reviews`) | **Off** | `actions/permissions/workflow`, `can_approve_pull_request_reviews` | The workflow token cannot approve pull requests. The portfolio refresh opens its proposal with a GitHub App token, not with this permission. |
+| Approval for workflows from fork pull requests (`fork_pr_approval_policy`) | **Require approval for all external contributors** (`all_external_contributors`) | `actions/permissions/fork-pr-contributor-approval`, `approval_policy` | Public repositories only; not applied, and not drift, on a private one. Workflow runs from fork pull requests wait for approval. |
+| Artifact and log retention (`retention_days`) | **90 days** | `actions/permissions/artifact-and-log-retention`, `days` | How long workflow artifacts and logs are kept; a workflow can ask for a shorter retention, as the artifact uploads here do (30 days). |
+
+Sources: GitHub's [Actions permissions REST documentation][actions-permissions-api]
+and [Actions settings for a repository][actions-settings], checked on 2026-11-17.
 
 <a id="rulesets"></a>
 
@@ -118,8 +141,8 @@ reports on every relevant PR before adopting these rules.
 ## 🧰 Applying and verifying
 
 [docs/repository-settings.json](repository-settings.json) holds the general
-options above, the five security features, the GitHub Pages source and the
-five rulesets with their full parameters. Its rulesets were read from GitHub on
+options above, the five security features, the GitHub Pages source, the five
+GitHub Actions settings and the five rulesets with their full parameters. Its rulesets were read from GitHub on
 2026-11-01. [.github/scripts/setup_repository.py](../.github/scripts/setup_repository.py)
 compares the repository with that file through the GitHub CLI:
 
@@ -141,11 +164,13 @@ repository. The token needs:
 | `--apply` | Administration: write, Pages: write, Checks: read, Contents: read, Metadata: read |
 
 `--apply` writes the rulesets, the security features, the Pages source and the
-general options in that order, after confirming that `HTML and links` succeeded
+general options in that order, never the Actions settings, after confirming that `HTML and links` succeeded
 on the default branch; a missing permission can stop it part-way, so preview
 first and rerun the preview after any error. It never runs in CI, where the
 workflow token cannot read or change these settings. Dependabot security
-updates that GitHub reports as paused count as drift. It never
+updates that GitHub reports as paused count as drift. A differing or unknown
+Actions setting is listed as `DIFF actions …`: `--check` exits 1, and `--apply`
+applies the rest, then fails naming each Actions setting to set by hand. It never
 deletes a ruleset: rulesets outside the file, such as disabled ones, are named
 in a note and left in place. A differing named ruleset is replaced only with
 `--update-existing`. Keep the evidence record out of the repository unless it
@@ -190,6 +215,7 @@ automatic rollback. The manifest requires an explicit empty list.
 | [Secret scanning][secret-scanning] | Availability by visibility and the push protection it enables |
 | [Creating rulesets][ruleset-create] | Custom targets, bypass configuration and activation; the editor initially uses Disabled enforcement |
 | [Available rules][ruleset-rules] | Meaning of selected protection rules, including editor defaults |
+| [Actions permissions REST API][actions-permissions-api] and [Actions settings][actions-settings] | The endpoints and fields the tool reads, the values each setting takes and its effect |
 | [Security configuration defaults][security-defaults] | Why organization-applied defaults must be distinguished from a standalone baseline |
 
 [repo-api]: https://docs.github.com/en/rest/repos/repos
@@ -200,6 +226,8 @@ automatic rollback. The manifest requires an explicit empty list.
 [secret-scanning]: https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning
 [ruleset-create]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository
 [ruleset-rules]: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+[actions-permissions-api]: https://docs.github.com/en/rest/actions/permissions
+[actions-settings]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository
 [security-defaults]: https://docs.github.com/en/enterprise-cloud@latest/code-security/how-tos/secure-at-scale/configure-enterprise-security/establish-complete-coverage/create-custom-configuration
 
 ---
