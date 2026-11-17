@@ -82,14 +82,15 @@ No version has been released. The repository holds a prototype of the calculatio
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/README.md) — content SHA-256 `d5170a4fd48f17fadf119fc330f4ee6756e1ec476c6ed6ec6f84d669f2fc5eab`
-- [docs/methodology/VALIDATION_PLAN.md](https://github.com/danielep71/K-FRTB-SSA/blob/cb39951ce63b45838a88a75726e6feb69a13a271/docs/methodology/VALIDATION_PLAN.md) — content SHA-256 `32dc0b9f7f3656a4a64b9279f49f1963d83c69e004f80fd8b34adec3ff996c69`
+- [README.md](https://github.com/danielep71/K-FRTB-SSA/blob/74218122772cba9ebc429386e442514cedcc9240/README.md) — content SHA-256 `d5170a4fd48f17fadf119fc330f4ee6756e1ec476c6ed6ec6f84d669f2fc5eab`
+- [docs/methodology/VALIDATION_PLAN.md](https://github.com/danielep71/K-FRTB-SSA/blob/74218122772cba9ebc429386e442514cedcc9240/docs/methodology/VALIDATION_PLAN.md) — content SHA-256 `32dc0b9f7f3656a4a64b9279f49f1963d83c69e004f80fd8b34adec3ff996c69`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
-- [v0.1.0 - Initial setup](https://github.com/danielep71/K-FRTB-SSA/milestone/1): open; 8 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): open; 2 closed / 13 open issues.
+- [v0.1.0 - Initial setup](https://github.com/danielep71/K-FRTB-SSA/milestone/1): closed; 8 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): open; 8 closed / 10 open issues.
+- [v0.3.0 - CRR regime](https://github.com/danielep71/K-FRTB-SSA/milestone/3): open; 0 closed / 0 open issues.
 
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
