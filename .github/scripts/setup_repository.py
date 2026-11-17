@@ -602,8 +602,11 @@ def plan(config: dict[str, Json], report: dict[str, Json], repo: str) -> Plan:
 
 
 def plan_digest(repo: str, config_sha256: str, report: dict[str, Json], steps: Plan,
-                rulesets: list[Json] | None = None) -> str:
-    """SHA-256 of the plan: repository, configuration, observed managed values and exact writes.
+                rulesets: list[Json] | None = None, default_branch: str | None = None) -> str:
+    """SHA-256 of the plan: repository, default branch, configuration, observed values and exact writes.
+
+    The default branch is included because a ruleset on ~DEFAULT_BRANCH protects
+    whichever branch it is: a new default branch needs a new approval.
 
     The observed definitions of the live rulesets that cover a managed one are
     included, so an approval goes stale when the covering protection changes.
@@ -623,7 +626,8 @@ def plan_digest(repo: str, config_sha256: str, report: dict[str, Json], steps: P
         observed['covering_rulesets'] = {name: [rule_spec(r) for r in rulesets or [] if r.get('name') == name]
                                          for name in covering}
     document = {
-        'repository': repo, 'configuration_sha256': config_sha256, 'observed': observed,
+        'repository': repo, 'default_branch': default_branch, 'configuration_sha256': config_sha256,
+        'observed': observed,
         'writes': [{'method': method, 'endpoint': endpoint, 'payload': payload}
                    for method, endpoint, payload in steps],
     }
@@ -951,6 +955,27 @@ def apply(call: Call, args: argparse.Namespace, config: dict[str, Json], state: 
     return state, report, steps
 
 
+def output_paths(args: argparse.Namespace, started: datetime) -> dict[str, Path]:
+    """The files this run writes, with {date} expanded; each must be a different file.
+
+    Checked before any API call, so that a record can never replace the journal
+    an apply needs for recovery, or another record.
+    """
+    paths: dict[str, Path] = {}
+    for option in ('journal', 'report', 'evidence'):
+        value = getattr(args, option, None)
+        if value is not None:
+            paths[option] = Path(str(value).replace('{date}', started.strftime('%Y-%m-%d')))
+    seen: dict[Path, str] = {}
+    for option, path in paths.items():
+        resolved = path.resolve()
+        if resolved in seen:
+            raise SetupError(f'--{seen[resolved]} and --{option} name the same file ({path}); '
+                             'give each output its own path. Nothing was read or written.')
+        seen[resolved] = option
+    return paths
+
+
 def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None) -> int:
     if not REPOSITORY_PATTERN.fullmatch(args.repo) or args.repo.split('/')[1] in ('.', '..'):
         raise SetupError('Destination must be an explicit owner/repository on github.com.')
@@ -958,6 +983,7 @@ def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None)
     config_sha256 = hashlib.sha256(args.config.read_bytes()).hexdigest()
     mode = 'apply' if args.apply else 'check' if args.check else 'preview'
     started = now or datetime.now(timezone.utc)
+    outputs = output_paths(args, started)
     state = observe(call, args.repo, config)
     report = assess(config, state)
     print_notes(config, state, report)
@@ -965,7 +991,7 @@ def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None)
         print(line)
     steps = plan(config, report, args.repo)
     digest = plan_digest(state['metadata'].get('full_name', args.repo), config_sha256, report, steps,
-                         state['rulesets'])
+                         state['rulesets'], state['metadata'].get('default_branch'))
     print_plan(steps)
     print(f'PLAN SHA-256: {digest}')
     if args.apply:
@@ -973,14 +999,13 @@ def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None)
         check_prerequisites(state, report)
         state, report, steps = apply(call, args, config, state, steps, digest, config_sha256, started)
         digest = plan_digest(state['metadata'].get('full_name', args.repo), config_sha256, report, steps,
-                             state['rulesets'])
+                             state['rulesets'], state['metadata'].get('default_branch'))
     stamp = now or datetime.now(timezone.utc)
     if getattr(args, 'report', None):
         write_text(args.report, markdown_record(state, report, digest, mode, stamp), 'Evidence')
-    if getattr(args, 'evidence', None):
-        target = Path(str(args.evidence).replace('{date}', stamp.strftime('%Y-%m-%d')))
+    if 'evidence' in outputs:
         record = evidence_record(args.config, config_sha256, args.repo, state, report, steps, digest, mode, stamp)
-        write_text(target, json.dumps(record, indent=2) + '\n', 'Evidence')
+        write_text(outputs['evidence'], json.dumps(record, indent=2) + '\n', 'Evidence')
     if report['result'] == 'VERIFIED':
         print('VERIFIED: all documented settings match' + (' after apply' if args.apply else '')
               + '. Unmanaged settings are outside this verification.')
@@ -1017,7 +1042,8 @@ def main() -> int:
     parser.add_argument('--update-existing', action='store_true', help='Allow replacement of differing named rulesets')
     parser.add_argument('--report', type=Path, help='Write a dated Markdown evidence record of the managed settings')
     parser.add_argument('--evidence', type=Path,
-                        help='Write a JSON evidence record of the managed settings ({date} becomes YYYY-MM-DD, UTC)')
+                        help='Write a JSON evidence record of the managed settings ({date} becomes the '
+                             'start date, YYYY-MM-DD, UTC)')
     args = parser.parse_args()
     for option in ('approve_plan', 'journal', 'update_existing'):
         if getattr(args, option) and not args.apply:

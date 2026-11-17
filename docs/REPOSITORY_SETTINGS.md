@@ -173,8 +173,9 @@ value is unknown, not an empty list. `--apply` refuses before any write while
 any managed value is unknown, when the token is not an administrator's, or when
 merge commits or squash merging are disabled (the release rulesets allow them).
 
-**Plan approval.** The `PLAN SHA-256` covers the repository, the configuration
-file's bytes, every observed managed value, the definitions of the rulesets
+**Plan approval.** The `PLAN SHA-256` covers the repository and its default
+branch (the `~DEFAULT_BRANCH` ruleset protects whichever branch it is), the
+configuration file's bytes, every observed managed value, the definitions of the rulesets
 that cover a managed one, and each planned write with its payload; it leaves
 out sources and timestamps, so an unchanged repository and configuration give
 the same digest. `--apply` recomputes it and writes nothing unless it equals
@@ -210,11 +211,13 @@ digest. For example, the separate `Prevent release branch deletion` ruleset is
 covered while `Protect release branches` is in place.
 
 **Records.** `--report` writes a dated Markdown record and `--evidence` a JSON
-record (`{date}` in the path becomes the UTC date) with the timestamp, mode,
+record (`{date}` in the path becomes the UTC start date) with the timestamp, mode,
 repository, default branch, the configuration path and SHA-256, every
 configured and observed value with its source, the ruleset statuses and
 differences, the planned writes (method, endpoint and ruleset name, never a
-payload) and the plan digest. Rulesets outside the file, such as disabled ones,
+payload) and the plan digest. The journal, the Markdown record and the JSON
+record must be three different files: the tool refuses before reading anything
+when two of them resolve to the same path. Rulesets outside the file, such as disabled ones,
 are named in a note and left in place; the tool never deletes a ruleset. Keep
 the records and the journal out of the repository unless they are wanted as
 dated records; they contain the repository name and ruleset IDs.

@@ -493,6 +493,35 @@ class SetupTests(unittest.TestCase):
         self.assertNotEqual(setup.plan_digest('example/project', 'x', report, steps),
                             setup.plan_digest('example/project', 'y', report, steps))
 
+    def test_a_new_default_branch_changes_the_digest(self) -> None:
+        self.apply_baseline()
+        self.api.repo['has_projects'] = True
+        before = self.digest()
+        self.api.repo['default_branch'] = 'trunk'
+        self.assertNotEqual(self.digest(), before)
+        journal = self.tmp / 'journal.json'
+        self.args.apply, self.args.approve_plan, self.args.journal = True, before, journal
+        with self.assertRaisesRegex(setup.SetupError, 'differs from the approved one'):
+            self.run_setup()
+        self.assertEqual(self.api.writes, [])
+
+    def test_outputs_that_name_the_same_file_are_refused_before_any_call(self) -> None:
+        cases = {('journal', 'evidence'): ('j.json', 'j.json'),
+                 ('journal', 'report'): ('out/j.json', 'out/../out/j.json'),
+                 ('report', 'evidence'): ('2026-11-17.md', '{date}.md')}
+        for (first, second), (one, two) in cases.items():
+            with self.subTest(first=first, second=second):
+                self.setUp()
+                if 'journal' in (first, second):
+                    self.approve()
+                setattr(self.args, first, self.tmp / one)
+                setattr(self.args, second, self.tmp / two)
+                calls = len(self.api.writes)
+                with self.assertRaisesRegex(setup.SetupError, f'--{first} and --{second} name the same file'):
+                    self.run_setup()
+                self.assertEqual(len(self.api.writes), calls)
+                self.assertFalse((self.tmp / one).exists())
+
     def test_a_wrong_digest_is_refused_before_any_write(self) -> None:
         journal = self.approve()
         self.args.approve_plan = '0' * 64
