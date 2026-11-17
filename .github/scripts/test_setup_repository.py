@@ -505,6 +505,21 @@ class SetupTests(unittest.TestCase):
             self.run_setup()
         self.assertEqual(self.api.writes, [])
 
+    def test_every_output_expands_the_date(self) -> None:
+        self.approve()
+        self.args.journal = self.tmp / 'journal-{date}.json'
+        self.args.report = self.tmp / 'settings-{date}.md'
+        self.args.evidence = self.tmp / 'settings-{date}.json'
+        self.assertEqual(self.run_setup(), 0)
+        for name in ('journal-2026-11-17.json', 'settings-2026-11-17.md', 'settings-2026-11-17.json'):
+            self.assertTrue((self.tmp / name).exists(), name)
+        self.assertEqual(sorted(p.name for p in self.tmp.iterdir() if '{date}' in p.name), [])
+        # A second dated run refuses the journal it wrote, by its expanded name.
+        self.approve()
+        self.args.journal = self.tmp / 'journal-{date}.json'
+        with self.assertRaisesRegex(setup.SetupError, 'journal-2026-11-17.json exists'):
+            self.run_setup()
+
     def test_outputs_that_name_the_same_file_are_refused_before_any_call(self) -> None:
         cases = {('journal', 'evidence'): ('j.json', 'j.json'),
                  ('journal', 'report'): ('out/j.json', 'out/../out/j.json'),

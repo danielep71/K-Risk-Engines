@@ -956,7 +956,7 @@ def apply(call: Call, args: argparse.Namespace, config: dict[str, Json], state: 
 
 
 def output_paths(args: argparse.Namespace, started: datetime) -> dict[str, Path]:
-    """The files this run writes, with {date} expanded; each must be a different file.
+    """The files this run writes, with {date} expanded to the UTC start date; each must be a different file.
 
     Checked before any API call, so that a record can never replace the journal
     an apply needs for recovery, or another record.
@@ -984,6 +984,8 @@ def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None)
     mode = 'apply' if args.apply else 'check' if args.check else 'preview'
     started = now or datetime.now(timezone.utc)
     outputs = output_paths(args, started)
+    # Every later check, write and message uses the expanded paths.
+    args = argparse.Namespace(**{**vars(args), **outputs})
     state = observe(call, args.repo, config)
     report = assess(config, state)
     print_notes(config, state, report)
@@ -1003,9 +1005,9 @@ def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None)
     stamp = now or datetime.now(timezone.utc)
     if getattr(args, 'report', None):
         write_text(args.report, markdown_record(state, report, digest, mode, stamp), 'Evidence')
-    if 'evidence' in outputs:
+    if getattr(args, 'evidence', None):
         record = evidence_record(args.config, config_sha256, args.repo, state, report, steps, digest, mode, stamp)
-        write_text(outputs['evidence'], json.dumps(record, indent=2) + '\n', 'Evidence')
+        write_text(args.evidence, json.dumps(record, indent=2) + '\n', 'Evidence')
     if report['result'] == 'VERIFIED':
         print('VERIFIED: all documented settings match' + (' after apply' if args.apply else '')
               + '. Unmanaged settings are outside this verification.')
@@ -1038,9 +1040,11 @@ def main() -> int:
                         help='The PLAN SHA-256 that preview printed for the plan to apply')
     parser.add_argument('--journal', type=Path,
                         help='Write a JSON journal of the apply to this new path, before the first '
-                             'write and after each')
+                             'write and after each ({date} becomes the start date, YYYY-MM-DD, UTC)')
     parser.add_argument('--update-existing', action='store_true', help='Allow replacement of differing named rulesets')
-    parser.add_argument('--report', type=Path, help='Write a dated Markdown evidence record of the managed settings')
+    parser.add_argument('--report', type=Path,
+                        help='Write a dated Markdown evidence record of the managed settings ({date} becomes '
+                             'the start date, YYYY-MM-DD, UTC)')
     parser.add_argument('--evidence', type=Path,
                         help='Write a JSON evidence record of the managed settings ({date} becomes the '
                              'start date, YYYY-MM-DD, UTC)')

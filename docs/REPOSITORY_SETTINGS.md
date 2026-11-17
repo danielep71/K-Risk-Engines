@@ -182,7 +182,8 @@ the same digest. `--apply` recomputes it and writes nothing unless it equals
 `--approve-plan`: if the repository or the file changed since the preview, run
 the preview again and review the new plan.
 
-**Journal and recovery.** `--apply` needs a new `--journal` path. The journal
+**Journal and recovery.** `--apply` needs a new `--journal` path (like the
+records' paths, it may contain `{date}`, the UTC start date). The journal
 (JSON, written atomically) lists the planned writes before the first one and
 records after each its status (`pending`, `done`, `failed` with the error) and
 the ID of a created ruleset, then the read-back result. It holds methods,
