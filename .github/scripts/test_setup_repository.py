@@ -41,6 +41,14 @@ class FakeAPI:
         self.fixes = False
         self.paused = False
         self.pages: dict[str, Any] | None = None
+        # GitHub Actions settings by actions/permissions suffix, matching the manifest.
+        self.actions: dict[str, dict[str, Any]] = {
+            '': {'enabled': True, 'allowed_actions': 'all', 'sha_pinning_required': True},
+            '/workflow': {'default_workflow_permissions': 'read',
+                          'can_approve_pull_request_reviews': False},
+            '/fork-pr-contributor-approval': {'approval_policy': 'all_external_contributors'},
+            '/artifact-and-log-retention': {'days': 90, 'maximum_allowed_days': 400}}
+        self.unreadable: set[str] = set()
 
     def not_found(self, endpoint: str) -> Any:
         raise setup.SetupError(f'GET {endpoint} failed (HTTP 404). Check gh authentication.')
@@ -57,7 +65,18 @@ class FakeAPI:
         setattr(self, attribute, method == 'PUT')
         return None
 
+    def actions_permissions(self, method: str, endpoint: str, payload: Any) -> Any:
+        suffix = endpoint.split('/actions/permissions', 1)[1]
+        if method != 'GET':
+            self.writes.append((method, endpoint, copy.deepcopy(payload)))
+            return {}
+        if suffix in self.unreadable:
+            raise setup.SetupError(f'GET {endpoint} failed (HTTP 403). Check gh authentication.')
+        return copy.deepcopy(self.actions[suffix])
+
     def __call__(self, method: str, endpoint: str, payload: Any = None) -> Any:
+        if '/actions/permissions' in endpoint:
+            return self.actions_permissions(method, endpoint, payload)
         switches = {'/private-vulnerability-reporting': 'reporting',
                     '/vulnerability-alerts': 'alerts', '/automated-security-fixes': 'fixes'}
         for suffix, attribute in switches.items():
@@ -224,6 +243,25 @@ class SetupTests(unittest.TestCase):
                     self.assertRaisesRegex(setup.SetupError, needed_by):
                 setup.load_config(Path('settings.json'))
 
+    def test_invalid_actions_configuration_is_rejected(self) -> None:
+        config = setup.load_config(setup.CONFIG)
+        changes: tuple[tuple[str, Any], ...] = (
+            ('sha_pinning_required', 'yes'), ('default_workflow_permissions', 'admin'),
+            ('can_approve_pull_request_reviews', 0), ('fork_pr_approval_policy', 'nobody'),
+            ('retention_days', 0), ('retention_days', True))
+        for key, value in changes:
+            with self.subTest(key=key, value=value):
+                broken = copy.deepcopy(config)
+                broken['actions'][key] = value
+                with patch.object(Path, 'read_text', return_value=json.dumps(broken)), \
+                        self.assertRaisesRegex(setup.SetupError, 'Invalid Actions settings'):
+                    setup.load_config(Path('settings.json'))
+        broken = copy.deepcopy(config)
+        del broken['actions']['retention_days']
+        with patch.object(Path, 'read_text', return_value=json.dumps(broken)), \
+                self.assertRaisesRegex(setup.SetupError, 'exactly the documented Actions settings'):
+            setup.load_config(Path('settings.json'))
+
     def test_incomplete_pages_configuration_is_rejected(self) -> None:
         broken = copy.deepcopy(setup.load_config(setup.CONFIG))
         del broken['pages']['source']['path']
@@ -308,6 +346,79 @@ class SetupTests(unittest.TestCase):
         with patch.object(Path, 'read_text', return_value=json.dumps(broken)), \
                 self.assertRaises(setup.SetupError):
             setup.load_config(Path('settings.json'))
+
+    def test_matching_actions_settings_are_verified_and_recorded(self) -> None:
+        self.api.repo['visibility'] = 'public'
+        self.args.apply = True
+        self.assertEqual(self.run_setup(), 0)
+        with tempfile.TemporaryDirectory() as directory:
+            self.args.report = Path(directory) / 'settings.md'
+            self.args.apply, self.args.check = False, True
+            self.assertEqual(self.run_setup(), 0)
+            record = self.args.report.read_text(encoding='utf-8')
+        self.assertIn('- Result: **VERIFIED**', record)
+        for row in ('| `sha_pinning_required` | on | on |',
+                    '| `default_workflow_permissions` | read | read |',
+                    '| `can_approve_pull_request_reviews` | off | off |',
+                    '| `fork_pr_approval_policy` | all_external_contributors | all_external_contributors |',
+                    '| `retention_days` | 90 | 90 |'):
+            self.assertIn(row, record)
+        self.assertFalse([w for w in self.api.writes if '/actions/' in w[1]])
+
+    def test_actions_settings_that_differ_or_are_unknown_are_drift(self) -> None:
+        cases: dict[str, tuple[Any, str]] = {
+            'mismatch': (lambda api: api.actions['/workflow'].update(default_workflow_permissions='write'),
+                         'default_workflow_permissions: configured "read", observed "write"'),
+            'omitted': (lambda api: api.actions['/artifact-and-log-retention'].pop('days'),
+                        'retention_days: configured 90, observed unknown (no days in GET '
+                        'actions/permissions/artifact-and-log-retention)'),
+            'inaccessible': (lambda api: api.unreadable.add(''),
+                             'sha_pinning_required: configured true, observed unknown (HTTP 403 from '
+                             'GET actions/permissions)'),
+        }
+        for case, (change, message) in cases.items():
+            with self.subTest(case=case):
+                self.setUp()
+                self.api.repo['visibility'] = 'public'
+                self.args.apply = True
+                self.assertEqual(self.run_setup(), 0)
+                self.api.writes.clear()
+                change(self.api)
+                self.args.apply, self.args.check = False, True
+                output = io.StringIO()
+                with redirect_stdout(output):
+                    self.assertEqual(setup.run(self.args, self.api), 1)
+                self.assertIn('DIFF actions ' + message, output.getvalue())
+                self.args.check, self.args.apply = False, True
+                with self.assertRaisesRegex(setup.SetupError, 'never writes Actions settings'):
+                    self.run_setup()
+                self.assertFalse([w for w in self.api.writes if '/actions/' in w[1]])
+
+    def test_fork_policy_applies_only_to_public_repositories(self) -> None:
+        self.api.actions['/fork-pr-contributor-approval']['approval_policy'] = 'first_time_contributors'
+        self.args.apply = True
+        self.assertEqual(self.run_setup(), 0)
+        with tempfile.TemporaryDirectory() as directory:
+            self.args.report = Path(directory) / 'settings.md'
+            self.args.apply, self.args.check = False, True
+            self.assertEqual(self.run_setup(), 0)
+            self.assertIn('| `fork_pr_approval_policy` | all_external_contributors | '
+                          'not applied (public repositories only) |',
+                          self.args.report.read_text(encoding='utf-8'))
+        # Once public, the policy applies: apply sets the rest and names it; check sees only it.
+        self.api.repo['visibility'] = 'public'
+        self.args.report, self.args.check, self.args.apply = None, False, True
+        with self.assertRaisesRegex(setup.SetupError,
+                                    'fork_pr_approval_policy to "all_external_contributors" '
+                                    '\\(observed "first_time_contributors"\\)'):
+            self.run_setup()
+        self.args.apply, self.args.check = False, True
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(setup.run(self.args, self.api), 1)
+        self.assertEqual([line for line in output.getvalue().splitlines() if line.startswith('DIFF')],
+                         ['DIFF actions fork_pr_approval_policy: configured "all_external_contributors", '
+                          'observed "first_time_contributors". This tool never writes Actions settings.'])
 
     def test_duplicate_names_rejected_before_writes(self) -> None:
         name = setup.load_config(setup.CONFIG)['rulesets'][0]['name']

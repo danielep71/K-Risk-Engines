@@ -2,8 +2,10 @@
 """Preview, apply or verify this repository's settings through an authenticated GitHub CLI.
 
 The settings are docs/repository-settings.json: the general options, the five
-security features, the GitHub Pages source and the five rulesets recorded in
-docs/REPOSITORY_SETTINGS.md. The maintainer runs it locally with an
+security features, the GitHub Pages source, the five GitHub Actions settings
+and the five rulesets recorded in docs/REPOSITORY_SETTINGS.md. The Actions
+settings are read and compared, never written: a value that cannot be read
+counts as drift. The maintainer runs it locally with an
 administrator token (docs/REPOSITORY_SETTINGS.md, Applying and verifying);
 it never runs in CI. Adapted from danielep71/MyTemplate's
 tools/setup_repository.py (see NOTICE.md).
@@ -38,6 +40,19 @@ SECURITY_PUBLIC_ONLY = {
     'secret_scanning_push_protection': True,
 }
 ANALYSIS_KEYS = ('secret_scanning', 'secret_scanning_push_protection')
+# Each GitHub Actions setting: the endpoint under actions/permissions that reports
+# it, its field there, and whether it applies only to public repositories. This
+# tool reads them and never writes them; set them in Settings > Actions > General.
+ACTIONS_SOURCES = {
+    'sha_pinning_required': ('', 'sha_pinning_required', False),
+    'default_workflow_permissions': ('/workflow', 'default_workflow_permissions', False),
+    'can_approve_pull_request_reviews': ('/workflow', 'can_approve_pull_request_reviews', False),
+    'fork_pr_approval_policy': ('/fork-pr-contributor-approval', 'approval_policy', True),
+    'retention_days': ('/artifact-and-log-retention', 'days', False),
+}
+FORK_POLICIES = ('first_time_contributors_new_to_github', 'first_time_contributors',
+                 'all_external_contributors')
+TOP_KEYS = {'schema_version', 'repository', 'security', 'pages', 'actions', 'rulesets'}
 
 # GitHub API values are JSON; a call takes a method, an endpoint and an optional payload.
 Json = Any
@@ -99,8 +114,7 @@ def rule_spec(rule: dict[str, Json]) -> Json:
 
 def load_config(path: Path) -> dict[str, Json]:
     value = json.loads(path.read_text(encoding='utf-8'))
-    if set(value) != {'schema_version', 'repository', 'security', 'pages', 'rulesets'} \
-            or value['schema_version'] != 1:
+    if set(value) != TOP_KEYS or value['schema_version'] != 1:
         raise SetupError('Unsupported configuration schema.')
     pages_config = value['pages']
     if set(pages_config) != PAGES_KEYS or set(pages_config['source']) != {'branch', 'path'}:
@@ -112,6 +126,7 @@ def load_config(path: Path) -> dict[str, Json]:
         raise SetupError('Push protection requires secret scanning.')
     if security['automated_security_fixes'] and not security['vulnerability_alerts']:
         raise SetupError('Dependabot security updates require vulnerability alerts.')
+    check_actions(value['actions'])
     if set(value['repository']) != GENERAL_KEYS or any(type(v) is not bool for v in value['repository'].values()):
         raise SetupError('Configuration must contain exactly the five documented boolean repository settings.')
     names: list[str] = []
@@ -124,6 +139,63 @@ def load_config(path: Path) -> dict[str, Json]:
     if len(names) != 5 or len(set(names)) != 5:
         raise SetupError('Expected five uniquely named baseline rulesets.')
     return dict(value)
+
+
+def check_actions(actions: Json) -> None:
+    if not isinstance(actions, dict) or set(actions) != set(ACTIONS_SOURCES):
+        raise SetupError('Configuration must contain exactly the documented Actions settings: '
+                         + ', '.join(ACTIONS_SOURCES) + '.')
+    days = actions['retention_days']
+    if (type(actions['sha_pinning_required']) is not bool
+            or actions['default_workflow_permissions'] not in ('read', 'write')
+            or type(actions['can_approve_pull_request_reviews']) is not bool
+            or actions['fork_pr_approval_policy'] not in FORK_POLICIES
+            or type(days) is not int or days < 1):
+        raise SetupError('Invalid Actions settings: sha_pinning_required and '
+                         'can_approve_pull_request_reviews are booleans, default_workflow_permissions '
+                         'is read or write, fork_pr_approval_policy is one of '
+                         + ', '.join(FORK_POLICIES) + ', and retention_days is a positive integer.')
+
+
+def actions_rows(call: Call, repo: str, metadata: dict[str, Json],
+                 config: dict[str, Json]) -> list[dict[str, Json]]:
+    """Each Actions setting as configured and as GitHub reports it. Read-only.
+
+    'matches' is True or False when the value was read, False when it could not be
+    read (unknown counts as drift) and None when the setting does not apply here."""
+    root = f'repos/{repo}/actions/permissions'
+    public = metadata.get('visibility') == 'public'
+    answers: dict[str, tuple[Json, str | None]] = {}
+    rows: list[dict[str, Json]] = []
+    for setting, (suffix, field, public_only) in ACTIONS_SOURCES.items():
+        row: dict[str, Json] = {'setting': setting, 'configured': config['actions'][setting],
+                                'observed': None, 'endpoint': 'actions/permissions' + suffix}
+        if public_only and not public:
+            rows.append(dict(row, matches=None, note='not applied (public repositories only)'))
+            continue
+        if suffix not in answers:
+            try:
+                answers[suffix] = (call('GET', root + suffix), None)
+            except SetupError as error:
+                status = re.search(r'HTTP (\w+)', str(error))
+                answers[suffix] = (None, f'HTTP {status.group(1) if status else "unknown"}')
+        value, failure = answers[suffix]
+        if failure is not None:
+            rows.append(dict(row, matches=False, note=f'unknown ({failure} from GET {row["endpoint"]})'))
+        elif not isinstance(value, dict) or field not in value:
+            rows.append(dict(row, matches=False, note=f'unknown (no {field} in GET {row["endpoint"]})'))
+        else:
+            rows.append(dict(row, observed=value[field], matches=value[field] == row['configured'],
+                             note=None))
+    return rows
+
+
+def actions_drift(rows: list[dict[str, Json]]) -> list[dict[str, Json]]:
+    return [row for row in rows if row['matches'] is False]
+
+
+def shown(row: dict[str, Json]) -> str:
+    return row['note'] or json.dumps(row['observed'])
 
 
 def inspect(call: Call, repo: str, config: dict[str, Json],
@@ -267,7 +339,8 @@ def report_unmanaged(call: Call, root: str, current: list[Json], config: dict[st
 
 
 def evidence(call: Call, repo: str, config: dict[str, Json], metadata: dict[str, Json],
-             plan: Plan, mode: str, now: datetime | None = None) -> str:
+             plan: Plan, mode: str, actions: list[dict[str, Json]] | None = None,
+             now: datetime | None = None) -> str:
     """A dated Markdown record of the managed settings as GitHub reports them."""
     root = f'repos/{repo}'
     stamp = (now or datetime.now(timezone.utc)).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -287,7 +360,8 @@ def evidence(call: Call, repo: str, config: dict[str, Json], metadata: dict[str,
              f'- Checked: **{stamp}** with `.github/scripts/setup_repository.py` ({mode})',
              f'- Destination: `{metadata["full_name"]}`; visibility: {metadata["visibility"]}; '
              f'default branch: `{metadata["default_branch"]}`',
-             f'- Result: **{"VERIFIED" if not plan else "DRIFT"}**', '',
+             f'- Result: **{"VERIFIED" if not plan and not actions_drift(actions or []) else "DRIFT"}**',
+             '',
              '## General settings', '', '| Setting | Configured | Observed |', '| --- | --- | --- |']
     lines += [f'| `{key}` | {cell(value)} | {cell(metadata.get(key))} |'
               for key, value in config['repository'].items()]
@@ -310,6 +384,11 @@ def evidence(call: Call, repo: str, config: dict[str, Json], metadata: dict[str,
     lines += ['', '## GitHub Pages', '', '| Setting | Configured | Observed |', '| --- | --- | --- |']
     lines += [f'| {label} | `{configured}` | {f"`{observed}`" if observed else "not published"} |'
               for label, configured, observed in pages_rows]
+    lines += ['', '## GitHub Actions settings', '',
+              'Read from `actions/permissions` and compared; this tool never writes them.', '',
+              '| Setting | Configured | Observed |', '| --- | --- | --- |']
+    lines += [f'| `{row["setting"]}` | {cell(row["configured"])} | '
+              f'{row["note"] or cell(row["observed"])} |' for row in actions or []]
     lines += ['', '## Managed rulesets', '', '| Ruleset | ID | Status |', '| --- | --- | --- |']
     for rule in config['rulesets']:
         match = next((r for r in current if r['name'] == rule['name']), None)
@@ -359,22 +438,27 @@ def run(args: argparse.Namespace, call: Call = api) -> int:
         raise SetupError('Destination must be an explicit owner/repository on github.com.')
     config = load_config(args.config)
     metadata, plan = inspect(call, args.repo, config)
+    actions = actions_rows(call, args.repo, metadata, config)
     mode = 'apply' if args.apply else 'check' if args.check else 'preview'
     report = getattr(args, 'report', None)
     if report and (not args.apply or not plan):
-        write_evidence(report, evidence(call, args.repo, config, metadata, plan, mode))
-    if not plan:
+        write_evidence(report, evidence(call, args.repo, config, metadata, plan, mode, actions))
+    if not plan and not actions_drift(actions):
         print('VERIFIED: all documented settings match. Unmanaged settings are outside this verification.')
         return 0
     for method, endpoint, payload in plan:
         print(f'{method} {endpoint}')
         if payload is not None:
             print(json.dumps(payload, indent=2))
+    for row in actions_drift(actions):
+        print(f'DIFF actions {row["setting"]}: configured {json.dumps(row["configured"])}, '
+              f'observed {shown(row)}. This tool never writes Actions settings.')
     if args.check:
         print('DRIFT: documented settings do not match.')
         return 1
     if not args.apply:
-        print('PREVIEW ONLY: no changes made. Use --apply to execute this plan.')
+        print('PREVIEW ONLY: no changes made. Use --apply to execute this plan; set any '
+              'differing Actions setting by hand in Settings > Actions > General.')
         return 0
     if any(method == 'PUT' and '/rulesets/' in endpoint for method, endpoint, _ in plan) and not args.update_existing:
         raise SetupError('A named ruleset differs. Review the preview, then use --update-existing '
@@ -384,10 +468,16 @@ def run(args: argparse.Namespace, call: Call = api) -> int:
         call(method, endpoint, payload)
         print(f'Applied {method} {endpoint}')
     metadata, remaining = inspect(call, args.repo, config, report=False)
+    actions = actions_rows(call, args.repo, metadata, config)
     if report:
-        write_evidence(report, evidence(call, args.repo, config, metadata, remaining, mode))
+        write_evidence(report, evidence(call, args.repo, config, metadata, remaining, mode, actions))
     if remaining:
         raise SetupError('Read-back verification failed; rerun preview to inspect remaining differences.')
+    if actions_drift(actions):
+        raise SetupError('The other settings match, but this tool never writes Actions settings: set '
+                         + '; '.join(f'{row["setting"]} to {json.dumps(row["configured"])} '
+                                     f'(observed {shown(row)})' for row in actions_drift(actions))
+                         + " in the repository's Settings > Actions > General, then rerun --check.")
     print('VERIFIED: all documented settings match after apply.')
     return 0
 
