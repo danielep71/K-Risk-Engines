@@ -104,6 +104,14 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The repository settings tool verifies five GitHub Actions settings without
+  ever writing them: `sha_pinning_required` (on), `default_workflow_permissions`
+  (read), `can_approve_pull_request_reviews` (off), `fork_pr_approval_policy`
+  (`all_external_contributors`, public repositories only) and `retention_days`
+  (90). Each is read from its `actions/permissions` endpoint; a value that
+  cannot be read counts as drift. `--check` and the evidence record report
+  them, and `--apply` names any to set by hand. Aligned with
+  danielep71/MyTemplate at `379cade` (#232, #233, #234, #235, #236).
 - A synchronization from `main` whose head is the integration's merge commit,
   whose diff against the release branch is empty and whose tree the
   integration's final-head review covered cites that review instead of
