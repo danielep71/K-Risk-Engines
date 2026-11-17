@@ -104,6 +104,17 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The repository settings tool reads, assesses and plans like
+  danielep71/MyTemplate's at `379cade`: preview and `--check` run without
+  administrator access and mark every value the token cannot read unknown, with
+  its source and HTTP status, as drift (#229); `--evidence` writes a JSON record
+  with the configuration SHA-256, observed values and sources and the planned
+  writes without payloads (#231); preview prints a PLAN SHA-256 that `--apply`
+  must receive in `--approve-plan`, refusing a changed plan before any write
+  (#237); `--apply` needs a new `--journal`, written atomically before the first
+  write and after each, with no automatic rollback (#238); and an active
+  ruleset under another name that enforces every rule at least as strictly
+  covers a managed one, judged after planned replacements (#239).
 - The repository settings tool verifies five GitHub Actions settings without
   ever writing them: `sha_pinning_required` (on), `default_workflow_permissions`
   (read), `can_approve_pull_request_reviews` (off), `fork_pr_approval_policy`

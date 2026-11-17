@@ -168,9 +168,12 @@ contact route and scope, and the forms' JSON layout.
 `.github/scripts/setup_repository.py` and
 `.github/scripts/test_setup_repository.py` were adapted from
 danielep71/MyTemplate (a private template repository) under the Mozilla Public
-License 2.0. Modifications: file locations, the hub's settings file and
-required check, rebase merging as a fifth general option, and the GitHub Pages
-source.
+License 2.0, last aligned with its revision `379cade` on 2026-11-17.
+Modifications: file locations, the hub's settings file and required check, five
+general options with rebase merging, the GitHub Pages source, merge commits and
+squash merging as apply prerequisites, the unmanaged-ruleset note by
+enforcement, a null or malformed bypass list treated as unknown, and no
+visibility setting or workflow-token scope.
 
 <a id="documentation-portal"></a>
 

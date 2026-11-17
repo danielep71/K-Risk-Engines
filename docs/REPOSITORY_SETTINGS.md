@@ -144,44 +144,80 @@ reports on every relevant PR before adopting these rules.
 options above, the five security features, the GitHub Pages source, the five
 GitHub Actions settings and the five rulesets with their full parameters. Its rulesets were read from GitHub on
 2026-11-01. [.github/scripts/setup_repository.py](../.github/scripts/setup_repository.py)
-compares the repository with that file through the GitHub CLI:
+compares the repository with that file through the GitHub CLI. I run it locally
+after each settings change; it never runs in CI.
 
 ```sh
-# Read-only: exit 1 on drift, and write a dated evidence record.
-python3 .github/scripts/setup_repository.py --repo OWNER/REPO --check --report settings-evidence.md
-# Preview, then apply the differences and read them back.
+# Read-only: exit 1 on drift; optional dated records in Markdown and JSON.
+python3 .github/scripts/setup_repository.py --repo OWNER/REPO --check \
+  --report settings-evidence.md --evidence settings-evidence-{date}.json
+# Preview: the differences, the plan and its PLAN SHA-256. Writes nothing.
 python3 .github/scripts/setup_repository.py --repo OWNER/REPO
-python3 .github/scripts/setup_repository.py --repo OWNER/REPO --apply
+# Apply exactly the reviewed plan, journaling each write, then read everything back.
+python3 .github/scripts/setup_repository.py --repo OWNER/REPO --apply \
+  --approve-plan PLAN_SHA256 --journal settings-journal.json
 ```
 
-The maintainer runs it locally after each settings change, signed in to the
-GitHub CLI as a repository administrator or with a fine-grained token for this
-repository. The token needs:
+| Mode | Access | Repository permissions of a fine-grained token |
+| --- | --- | --- |
+| Preview and `--check` | Any access that can read the repository | Metadata: read; with Administration: read, Pages: read and Contents: read every managed value is reported |
+| `--apply` | Administrator | Administration: write, Pages: write, Checks: read, Contents: read, Metadata: read |
 
-| Mode | Repository permissions |
-| --- | --- |
-| Preview and `--check` | Administration: read, Pages: read, Contents: read, Metadata: read |
-| `--apply` | Administration: write, Pages: write, Checks: read, Contents: read, Metadata: read |
+**Unknown values.** Preview and `--check` report what the token can read and
+mark everything else unknown, with its source and HTTP status (for example
+`[GET pages (HTTP 403: unreadable)]`, or a general option that GitHub does not
+report to this token). An unknown value is drift, never a match: with a
+read-only token, `--check` exits 1 and the records say DRIFT. A managed ruleset
+must report an explicit `bypass_actors` list; an omitted, null or malformed
+value is unknown, not an empty list. `--apply` refuses before any write while
+any managed value is unknown, when the token is not an administrator's, or when
+merge commits or squash merging are disabled (the release rulesets allow them).
 
-`--apply` writes the rulesets, the security features, the Pages source and the
-general options in that order, never the Actions settings, after confirming that `HTML and links` succeeded
-on the default branch; a missing permission can stop it part-way, so preview
-first and rerun the preview after any error. It never runs in CI, where the
-workflow token cannot read or change these settings. Dependabot security
-updates that GitHub reports as paused count as drift. A differing or unknown
-Actions setting is listed as `DIFF actions …`: `--check` exits 1, and `--apply`
-applies the rest, then fails naming each Actions setting to set by hand. It never
-deletes a ruleset: rulesets outside the file, such as disabled ones, are named
-in a note and left in place. A differing named ruleset is replaced only with
-`--update-existing`. Keep the evidence record out of the repository unless it
-is wanted as a dated record; it contains the repository name and ruleset IDs.
+**Plan approval.** The `PLAN SHA-256` covers the repository, the configuration
+file's bytes, every observed managed value, the definitions of the rulesets
+that cover a managed one, and each planned write with its payload; it leaves
+out sources and timestamps, so an unchanged repository and configuration give
+the same digest. `--apply` recomputes it and writes nothing unless it equals
+`--approve-plan`: if the repository or the file changed since the preview, run
+the preview again and review the new plan.
 
-A managed ruleset response must explicitly contain a `bypass_actors` list.
-An omitted, null or malformed value is unknown, not an empty bypass list.
-Preview, check and apply stop with an endpoint-specific error before any writes
-when the initial inspection encounters it; no verification is claimed.
-An unknown value during post-apply inspection also fails verification, without
-automatic rollback. The manifest requires an explicit empty list.
+**Journal and recovery.** `--apply` needs a new `--journal` path. The journal
+(JSON, written atomically) lists the planned writes before the first one and
+records after each its status (`pending`, `done`, `failed` with the error) and
+the ID of a created ruleset, then the read-back result. It holds methods,
+endpoints and ruleset names, never payloads or credentials. A failing write
+stops the run with no retry and no rollback: read the journal, run the preview
+again, and approve the new plan for what remains. The writes go in this order:
+missing rulesets, replaced rulesets, security features, the Pages site, the
+general options; never the Actions settings. A differing named ruleset is
+replaced only with `--update-existing`. Before writing protection, `--apply`
+confirms that `HTML and links` succeeded on the default branch. Dependabot
+security updates that GitHub reports as paused count as drift. A differing
+Actions setting is listed as `DIFF actions …`, and `--apply` fails its
+read-back naming each one to set by hand.
+
+**Equivalent protection.** A managed ruleset counts as `covered`, and needs no
+write, when active rulesets of the same target with an empty, reported bypass
+list and no excluded refs together enforce every configured rule at least as
+strictly under any names: on the same refs (`~ALL`, and `~DEFAULT_BRANCH` or the
+default branch by name), with as many or more required approvals, checks and
+true options, a strict check policy, and no more merge methods. A named
+ruleset with stronger parameters is covered, not replaced. Coverage is judged
+against the rulesets as the plan leaves them: a ruleset the plan replaces counts
+with its configured definition, so what it enforces beyond the file cannot
+cover a missing one. The definitions of covering rulesets are part of the plan
+digest. For example, the separate `Prevent release branch deletion` ruleset is
+covered while `Protect release branches` is in place.
+
+**Records.** `--report` writes a dated Markdown record and `--evidence` a JSON
+record (`{date}` in the path becomes the UTC date) with the timestamp, mode,
+repository, default branch, the configuration path and SHA-256, every
+configured and observed value with its source, the ruleset statuses and
+differences, the planned writes (method, endpoint and ruleset name, never a
+payload) and the plan digest. Rulesets outside the file, such as disabled ones,
+are named in a note and left in place; the tool never deletes a ruleset. Keep
+the records and the journal out of the repository unless they are wanted as
+dated records; they contain the repository name and ruleset IDs.
 
 <a id="reuse"></a>
 
