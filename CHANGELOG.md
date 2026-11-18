@@ -104,6 +104,14 @@ repositories keep their own changelogs; this file covers the hub only.
 
 ### 🔧 Changed
 
+- The traffic alert reads exactly the `traffic-history` commit that its
+  collection wrote, or merged onto when nothing changed, instead of the moving
+  branch: the push step reports it as the job's `history-sha` output, and the
+  alert job refuses anything but a full 40-character SHA before checking it
+  out, so a concurrent writer or a re-run cannot change the data an alert is
+  based on. Workflow tests run the push step, with a rejected push, a retry
+  and a writer that advances the branch, and the guard with bash against local
+  repositories. Aligned with danielep71/MyTemplate at `379cade` (#225).
 - The repository settings tool reads, assesses and plans like
   danielep71/MyTemplate's at `379cade`: preview and `--check` run without
   administrator access and mark every value the token cannot read unknown, with

@@ -144,10 +144,18 @@ The workflow has two jobs, each with one write permission:
   push step, which retries up to three times, refetching the branch and
   re-merging the collection if another writer moved it, and never
   force-pushes. Apart from the default branch's merge script it runs no
-  repository code or tests.
+  repository code or tests. Every successful exit of the push step records
+  the `traffic-history` commit the history now stands at, the commit it
+  pushed or, when nothing changed, the one it merged onto, as the job's
+  `history-sha` output.
 - **Traffic alert** (`alert`): no environment, so it never receives the App's
   credentials, with `issues: write` to open the alert and manage its
-  milestone.
+  milestone. It first checks that `history-sha` is a full lowercase
+  40-character hexadecimal SHA, and fails otherwise (an empty ref would check
+  out the default branch instead), then checks out exactly that commit, not
+  the `traffic-history` branch, which another writer may have moved since. A
+  re-run of the job therefore reads the same data as the first run, and an
+  alert is decided on the collection that was just made.
 
 The API requests use `X-GitHub-Api-Version: 2022-11-28`, like the hub's other
 scripts. Environment branch restrictions are required protection; the
