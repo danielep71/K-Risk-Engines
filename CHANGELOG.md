@@ -28,6 +28,9 @@ repositories keep their own changelogs; this file covers the hub only.
   of the daily traffic export carry the line (#358).
 - The branch table of `GOVERNANCE.md` states impersonally that `release/1.2.0`
   was opened from `main` after v1.1.0 and points to #351 (#360).
+- Dependabot proposes a version update only 14 days after its release: each of
+  the three update entries sets `cooldown.default-days: 14`, and a test keeps
+  it. Security updates are not delayed by it (#364).
 
 ## [1.1.0] - 2026-11-18
 
