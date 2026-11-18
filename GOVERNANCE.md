@@ -258,8 +258,9 @@ Every open issue also has:
 
 The **Issue triage** workflow
 ([.github/workflows/issue-triage.yml](.github/workflows/issue-triage.yml))
-checks these rules, the assignee, exactly one priority, an open milestone and
-catalogue labels on every issue and milestone event. It is read-only: a failed
+checks these rules, the assignee, exactly one priority, an open milestone,
+catalogue labels and the absence of circular dependencies between open issues
+on every issue and milestone event. It is read-only: a failed
 run lists the findings, and the maintainer resolves them by hand.
 
 The label catalogue is maintained in

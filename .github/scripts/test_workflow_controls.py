@@ -344,6 +344,7 @@ class WorkflowControlTests(unittest.TestCase):
             with self.subTest(ecosystem=update["package-ecosystem"], directory=update["directory"]):
                 self.assertEqual(update["target-branch"], release)
                 self.assertNotIn("milestone", update)
+                self.assertEqual(update.get("cooldown"), {"default-days": 14})
                 self.assertEqual([label for label in update["labels"]
                                   if label in {"P1", "P2", "P3"}], ["P3"])
 
