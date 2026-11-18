@@ -14,7 +14,7 @@ import sys
 import tempfile
 import unittest
 from collections.abc import Callable
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -476,6 +476,152 @@ class SetupTests(unittest.TestCase):
         status, output = self.run_output()
         self.assertEqual(status, 1)
         self.assertIn('[GET pages (HTTP 500: unreadable)]', output)
+
+    # Workflow token scope (S32)
+
+    def workflow_check(self) -> tuple[int, str]:
+        self.args.check = True
+        self.args.token_scope = 'workflow'
+        return self.run_output()
+
+    def test_a_workflow_token_check_is_partial_not_drift(self) -> None:
+        self.apply_baseline()
+        self.api.without_administrator_access()
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertEqual(setup.PARTIAL_EXIT, 3)
+        for line in ('NOT CHECKED setting allow_rebase_merge: GET repository (no allow_rebase_merge field',
+                     'NOT CHECKED security vulnerability_alerts: GET vulnerability-alerts (HTTP 403: unreadable).',
+                     'NOT CHECKED pages build_type: GET pages (HTTP 403: unreadable).',
+                     'NOT CHECKED actions retention_days: GET actions/permissions/artifact-and-log-retention '
+                     '(HTTP 403: unreadable).',
+                     'NOT CHECKED ruleset "Protect main": bypass_actors: not reported (needs write access to the ruleset)',
+                     'PARTIAL: no difference was found in the values this token can read',
+                     'No plan: a workflow-token check never writes or records anything.'):
+            self.assertIn(line, output)
+        for absent in ('DIFF', 'VERIFIED', 'PLAN SHA-256', 'PREVIEW ONLY'):
+            self.assertNotIn(absent, output)
+        self.assertEqual(self.api.writes, [])
+
+    def test_a_workflow_token_check_still_reports_a_difference_it_can_read(self) -> None:
+        self.apply_baseline()
+        self.api.without_administrator_access()
+        self.api.repo['allow_rebase_merge'] = True
+        self.api.rules[0]['enforcement'] = 'disabled'
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF setting allow_rebase_merge: observed true, configured false', output)
+        self.assertIn('DIFF ruleset "Protect main" (1) enforcement: observed "disabled"', output)
+        self.assertNotIn('DIFF ruleset "Protect main" (1) bypass_actors', output)
+        self.assertIn('NOT CHECKED ruleset "Protect release tags": bypass_actors: not reported', output)
+        self.assertIn('NOT CHECKED security vulnerability_alerts', output)
+        self.assertIn('DRIFT: documented settings do not match.', output)
+        self.assertNotIn('PARTIAL', output)
+        self.assertEqual(self.api.writes, [])
+
+    def test_a_workflow_token_check_that_reads_everything_is_verified(self) -> None:
+        self.apply_baseline()
+        status, output = self.workflow_check()
+        self.assertEqual(status, 0)
+        self.assertIn('VERIFIED: all documented settings match.', output)
+        self.assertNotIn('NOT CHECKED', output)
+
+    def test_unreadable_rulesets_and_an_unpublished_looking_site_are_not_checked(self) -> None:
+        self.apply_baseline()
+        self.api.refused['/rulesets'] = '403'
+        self.api.pages = None
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": rulesets: not readable with this token', output)
+        self.assertIn('NOT CHECKED pages build_type: GET pages (HTTP 404: not published).', output)
+        self.assertNotIn('DIFF', output)
+        # The same answers are errors and drift for an administrator.
+        self.args.token_scope = 'admin'
+        with self.assertRaises(setup.ApiError):
+            self.run_output()
+        self.api.refused.clear()
+        status, output = self.run_output()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF pages build_type: observed not published', output)
+
+    def test_one_unreadable_ruleset_does_not_hide_drift_in_the_others(self) -> None:
+        self.apply_baseline()
+        last = self.api.rules[-1]
+        self.api.refused[f'/rulesets/{last["id"]}'] = '403'
+        self.api.rules[0]['enforcement'] = 'disabled'
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF ruleset "Protect main" (1) enforcement: observed "disabled"', output)
+        self.assertIn(f'NOT CHECKED ruleset "{last["name"]}": ruleset: its definition could not be read', output)
+        self.assertNotIn('PARTIAL', output)
+        # Without a visible difference the same failure only makes the result partial.
+        self.api.rules[0]['enforcement'] = 'active'
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertNotIn('DIFF', output)
+        self.assertEqual(sum(line.startswith('NOT CHECKED ') for line in output.splitlines()), 1)
+        # An administrator's check fails instead of skipping the ruleset.
+        self.args.token_scope = 'admin'
+        with self.assertRaises(setup.ApiError):
+            self.run_output()
+
+    def test_stronger_rules_with_an_unreported_bypass_list_are_not_drift_in_workflow_scope(self) -> None:
+        self.apply_baseline()
+        rule = next(r for r in self.api.rules if r['name'] == 'Protect main')
+        pull = next(r for r in rule['rules'] if r['type'] == 'pull_request')
+        pull['parameters']['required_approving_review_count'] = 1
+        # An administrator sees the stronger ruleset as covered: no drift.
+        self.args.check = True
+        self.assertEqual(self.run_output()[0], 0)
+        # The workflow token cannot read the bypass list: only that stays unverified.
+        self.api.hide_bypass = True
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": bypass_actors: not reported', output)
+        self.assertNotIn('DIFF', output)
+        # A weaker definition is still drift, whatever the bypass list is.
+        pull['parameters']['required_approving_review_count'] = 0
+        pull['parameters']['allowed_merge_methods'] = ['merge', 'squash']
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF ruleset "Protect main" (1) rules.pull_request.allowed_merge_methods', output)
+
+    def test_cover_under_another_name_with_an_unreported_bypass_list_is_not_checked(self) -> None:
+        self.apply_baseline()
+        self.api.rules[0]['name'] = 'Main protection'
+        self.args.check = True
+        self.assertEqual(self.run_output()[0], 0, 'an administrator sees the renamed ruleset cover it')
+        self.api.hide_bypass = True
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": covered by a ruleset under another name whose '
+                      'bypass list is not reported', output)
+        self.assertNotIn('DIFF', output)
+        # Nothing covers a ruleset that is really missing.
+        self.api.rules = [r for r in self.api.rules if r['name'] != 'Main protection']
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF ruleset "Protect main": missing', output)
+
+    def test_a_missing_ruleset_is_not_checked_while_another_cannot_be_read(self) -> None:
+        self.apply_baseline()
+        self.api.rules = [r for r in self.api.rules if r['name'] != 'Protect main']
+        self.api.refused['/rulesets/5'] = '403'
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": another ruleset could not be read and may cover it', output)
+        self.assertNotIn('DIFF', output)
+
+    def test_the_workflow_scope_refuses_apply_and_records_on_the_command_line(self) -> None:
+        for extra in (['--apply', '--approve-plan', '0' * 64, '--journal', 'journal.json'],
+                      ['--report', 'record.md', '--check'], ['--evidence', 'record.json', '--check'], []):
+            with self.subTest(extra=extra), patch.object(sys, 'argv', ['setup_repository.py', '--repo',
+                                                                       'example/project', '--token-scope',
+                                                                       'workflow', *extra]):
+                with redirect_stderr(io.StringIO()) as stderr, self.assertRaises(SystemExit) as raised:
+                    setup.main()
+                self.assertEqual(raised.exception.code, 2)
+                self.assertIn('--token-scope workflow', stderr.getvalue())
 
     # Plan approval (S27)
 
