@@ -277,10 +277,12 @@ def alert(data: Path, milestone_due: str | None) -> dict[str, str] | None:
     def compared(key: str, name: str) -> str:
         return f"| {name} | {current[key]} | {previous[key]} |"
 
-    # Issue triage requires a target end date before the milestone's due date.
+    # Issue triage requires a start date not after the target end date, and a
+    # target end date before the milestone's due date.
     target = date.fromisoformat(day) + timedelta(days=ALERT_DAYS)
     if milestone_due:
         target = min(target, date.fromisoformat(milestone_due) - timedelta(days=1))
+    start = min(date.fromisoformat(day), target)
     body = [
         "## 🎯 Objective", "",
         f"Find out what drove the traffic recorded on {day}: " + ", ".join(reasons).lower() + ".", "",
@@ -299,6 +301,7 @@ def alert(data: Path, milestone_due: str | None) -> dict[str, str] | None:
         "- [ ] What was found, and any follow-up issue, is recorded in a Resolution.", "",
         "## 🔗 Dependencies and blocking status", "", "None.", "",
         "## 🗓️ Planning", "",
+        f"- Start date: {start.isoformat()} (Europe/Rome)",
         f"- Target end date: {target.isoformat()} (Europe/Rome)",
         f"- Milestone due date: {milestone_due or 'not set'}",
     ]

@@ -171,12 +171,15 @@ class AlertTests(unittest.TestCase):
     def test_alert_body_passes_issue_triage(self) -> None:
         self.space.collect("2026-10-31T06:17:00Z", responses({}))
         self.space.collect("2026-11-01T06:17:00Z", responses({}, stars=2))
-        for due, target in (("2026-12-31", "2026-11-15"), ("2026-11-10", "2026-11-09"),
-                            (None, "2026-11-15")):
+        for due, target, start in (("2026-12-31", "2026-11-15", "2026-11-01"),
+                                   ("2026-11-10", "2026-11-09", "2026-11-01"),
+                                   ("2026-10-30", "2026-10-29", "2026-10-29"),
+                                   (None, "2026-11-15", "2026-11-01")):
             with self.subTest(due=due):
                 issue = traffic.alert(self.space.data, due)
                 assert issue is not None
-                # The planning line and the dependency section issue triage reads.
+                # The planning lines and the dependency section issue triage reads.
+                self.assertRegex(issue["body"], rf"(?m)^- Start date: {start} \(Europe/Rome\)$")
                 self.assertRegex(issue["body"], rf"(?m)^- Target end date: {target} \(Europe/Rome\)$")
                 self.assertRegex(issue["body"], r"(?m)^## .*Dependencies and blocking status\n\nNone\.$")
 

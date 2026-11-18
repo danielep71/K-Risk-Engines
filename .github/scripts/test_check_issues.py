@@ -25,13 +25,16 @@ REPOSITORY = "example-org/sample-project"
 BLOCKED_LABEL = check_issues.BLOCKED
 READY = "## Dependencies and blocking status\n\n**Ready to start**: none.\n"
 PLANNING = "## Planning\n- Target end date: {} (Europe/Rome)\n\n"
+STARTING = "- Start date: {} (Europe/Rome)\n"
 
 
 def issue(number: int, *labels: str, state: str = "open", body: str = READY,
           assignees: tuple[str, ...] = ("triage-person",), milestone: str | None = "v0.1.0",
-          target: str | None = "2026-11-04", milestone_due: str | None = "2026-11-30") -> Issue:
-    """An issue whose body starts with a planning line for ``target`` unless it is None."""
-    planned = (PLANNING.format(target) if target is not None else "") + body
+          target: str | None = "2026-11-04", milestone_due: str | None = "2026-11-30",
+          start: str | None = "2026-11-02") -> Issue:
+    """An issue whose body starts with planning lines for ``start`` and ``target`` unless None."""
+    planned = ((STARTING.format(start) if start is not None else "")
+               + (PLANNING.format(target) if target is not None else "") + body)
     return Issue(number, state, labels or ("P3",), assignees, milestone, planned, milestone_due)
 
 
@@ -122,7 +125,8 @@ class TargetDateTests(unittest.TestCase):
 
     def test_open_issue_in_a_closed_milestone_is_reported(self) -> None:
         closed = Issue(1, "open", ("P3",), ("triage-person",), "v0.1.0",
-                       PLANNING.format("2026-11-04") + READY, "2026-11-30", "closed")
+                       STARTING.format("2026-11-02") + PLANNING.format("2026-11-04") + READY,
+                       "2026-11-30", "closed")
         self.assertEqual(rules([closed]), [(1, "milestone")])
 
     def test_due_date_comes_from_the_api_milestone(self) -> None:
@@ -181,6 +185,44 @@ class DependencyTests(unittest.TestCase):
                          [(2, "dependencies"), (2, "blocked")])
 
 
+class StartDateTests(unittest.TestCase):
+    def test_start_date_must_be_a_real_iso_date(self) -> None:
+        for date in ("2026-02-30", "02/11/2026", "2026-11-2", "soon", ""):
+            with self.subTest(date=date):
+                self.assertEqual(rules([issue(1, start=date)]), [(1, "start-date")])
+        self.assertEqual(rules([issue(1, start=None)]), [(1, "start-date")])
+
+    def test_start_date_may_equal_but_not_follow_the_target_end_date(self) -> None:
+        self.assertEqual(rules([issue(1, start="2026-11-04")]), [])
+        self.assertEqual(rules([issue(1, start="2026-11-05")]), [(1, "start-date")])
+
+    def test_issue_form_field_is_read(self) -> None:
+        form = "### 🗓️ Start date (Europe/Rome)\n\n2026-11-02\n\n" + READY
+        self.assertEqual(check_issues.start_date(form), "2026-11-02")
+        self.assertEqual(rules([issue(1, body=form, start=None)]), [])
+        empty = "### Start date (Europe/Rome)\n\n_No response_\n\n" + READY
+        self.assertEqual(rules([issue(1, body=empty, start=None)]), [(1, "start-date")])
+
+    def test_crlf_bodies_are_read_like_lf_bodies(self) -> None:
+        planned = "- Start date: 2026-11-02 (Europe/Rome)\r\n\r\n" + READY
+        self.assertEqual(check_issues.start_date(planned), "2026-11-02")
+        self.assertEqual(rules([issue(1, body=planned, start=None)]), [])
+
+    def test_planning_line_takes_precedence_even_when_invalid(self) -> None:
+        form = "### 🗓️ Start date (Europe/Rome)\n\n2026-11-02\n\n" + READY
+        self.assertEqual(rules([issue(1, body="- Start date: later\n\n" + form, start=None)]),
+                         [(1, "start-date")])
+        self.assertEqual(rules([issue(1, body="- Start date: 2026-11-03 (Europe/Rome)\n\n" + form,
+                                      start=None)]), [])
+
+    def test_missing_start_date_does_not_hide_a_target_date_finding(self) -> None:
+        self.assertEqual(rules([issue(1, start=None, target=None)]),
+                         [(1, "start-date"), (1, "target-date")])
+
+    def test_closed_issues_need_no_start_date(self) -> None:
+        self.assertEqual(rules([issue(1, state="closed", start=None)]), [])
+
+
 class ConfigTests(unittest.TestCase):
     def test_repository_configuration_passes(self) -> None:
         self.assertEqual(check_issues.config_findings(ROOT), [])
@@ -194,6 +236,16 @@ class ConfigTests(unittest.TestCase):
                 '"id": "target_end_date"', '"id": "planned_date"'), encoding="utf-8")
             self.assertEqual(check_issues.config_findings(root),
                              ["hub-improvement.yml has no target end date field"])
+
+    def test_forms_must_ask_for_the_start_date(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copytree(ROOT / ".github", root / ".github")
+            form = root / ".github/ISSUE_TEMPLATE/hub-bug.yml"
+            form.write_text(form.read_text(encoding="utf-8").replace(
+                '"id": "start_date"', '"id": "begin_date"'), encoding="utf-8")
+            self.assertEqual(check_issues.config_findings(root),
+                             ["hub-bug.yml has no start date field"])
 
     def test_forms_must_have_a_dependencies_field(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -239,7 +291,7 @@ class MainTests(unittest.TestCase):
         items = [
             {"number": 1, "state": "open", "labels": [{"name": "P3"}],
              "assignees": [{"login": "triage-person"}], "milestone": None,
-             "body": PLANNING.format("2026-11-04") + READY + "Delivered in #2, a pull request.\n"},
+             "body": STARTING.format("2026-11-02") + PLANNING.format("2026-11-04") + READY + "Delivered in #2, a pull request.\n"},
             {"number": 2, "state": "open", "labels": [], "assignees": [],
              "milestone": None, "body": READY, "pull_request": {}},
         ]

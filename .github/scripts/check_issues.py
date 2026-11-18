@@ -28,13 +28,16 @@ from typing import Any
 PRIORITIES = ("P1", "P2", "P3")
 BLOCKED = "blocked"
 FORM_PRIORITIES = {"hub-bug.yml": "P2", "hub-improvement.yml": "P3"}
-# Forms whose reporter proposes the target end date; triage adds it to the others.
+# Forms whose reporter proposes the start and target end dates; triage adds them to the others.
 TARGET_DATE_FORMS = ("hub-bug.yml", "hub-improvement.yml")
 # The planning line triage writes, or the field an issue form renders. Each
 # captures its whole value, so an invalid line never falls back to the form.
 PLANNED_TARGET = re.compile(r"^[ \t]*[-*][ \t]*Target end date:[ \t]*(.*?)[ \t]*$", re.I | re.M)
 FORM_TARGET = re.compile(
     r"^###\s+(?:🗓️\s*)?Target end date(?:\s*\(Europe/Rome\))?\s*$\n\s*(.*?)[ \t]*$", re.I | re.M)
+PLANNED_START = re.compile(r"^[ \t]*[-*][ \t]*Start date:[ \t]*(.*?)[ \t]*$", re.I | re.M)
+FORM_START = re.compile(
+    r"^###\s+(?:🗓️\s*)?Start date(?:\s*\(Europe/Rome\))?\s*$\n\s*(.*?)[ \t]*$", re.I | re.M)
 ROME_SUFFIX = re.compile(r"\s*\(Europe/Rome\)$", re.I)
 DEPENDENCY_STATUS_WORDS = re.compile(r"block|ready|waiting|depend|on[ -]hold|prerequisite", re.I)
 HEADING = re.compile(r"^#{2,3}\s+(.*)$")
@@ -111,6 +114,13 @@ def target_end_date(body: str) -> str | None:
     return ROME_SUFFIX.sub("", match.group(1)) if match else None
 
 
+def start_date(body: str) -> str | None:
+    """Read the planning line or the issue-form field for the start date."""
+    body = body.replace("\r\n", "\n").replace("\r", "\n")
+    match = PLANNED_START.search(body) or FORM_START.search(body)
+    return ROME_SUFFIX.sub("", match.group(1)) if match else None
+
+
 def iso_date(text: str | None) -> dt.date | None:
     if text is None or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
         return None
@@ -140,6 +150,19 @@ def target_date_findings(issue: Issue) -> list[Finding]:
     if target >= due:
         return [Finding(issue.number, "milestone-due",
                         f"target end date {target} must be before the milestone due date {due}")]
+    return []
+
+
+def start_date_findings(issue: Issue) -> list[Finding]:
+    """The start date must be a real ISO date, not later than the target end date."""
+    start = iso_date(start_date(issue.body))
+    if start is None:
+        return [Finding(issue.number, "start-date",
+                        "needs a valid ISO YYYY-MM-DD start date (Europe/Rome)")]
+    target = iso_date(target_end_date(issue.body))
+    if target is not None and start > target:
+        return [Finding(issue.number, "start-date",
+                        f"start date {start} must not be after the target end date {target}")]
     return []
 
 
@@ -202,6 +225,7 @@ def audit(issues: Sequence[Issue], states: Mapping[int, str], repository: str,
         if issue.state != "open":
             continue
         findings += metadata_findings(issue, assignee)
+        findings += start_date_findings(issue)
         findings += target_date_findings(issue)
         findings += dependency_findings(issue, states, repository, pulls)
         if catalogue is not None:
@@ -276,6 +300,8 @@ def config_findings(root: Path) -> list[str]:
         ids = field_ids(form)
         if "dependencies" not in ids:
             problems.append(f"{name} has no dependencies field")
+        if name in TARGET_DATE_FORMS and "start_date" not in ids:
+            problems.append(f"{name} has no start date field")
         if name in TARGET_DATE_FORMS and "target_end_date" not in ids:
             problems.append(f"{name} has no target end date field")
     config = forms / "config.yml"
