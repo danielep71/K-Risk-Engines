@@ -185,6 +185,60 @@ class DependencyTests(unittest.TestCase):
                          [(2, "dependencies"), (2, "blocked")])
 
 
+def cycles(issues: list[Issue], pulls: frozenset[int] = frozenset()) -> list[tuple[int, str]]:
+    return [(number, rule) for number, rule in rules(issues, pulls=pulls) if rule == "cycle"]
+
+
+class CycleTests(unittest.TestCase):
+    @staticmethod
+    def waiting(number: int, *prerequisites: int, state: str = "open") -> Issue:
+        return issue(number, "P3", BLOCKED_LABEL, state=state, body=blocked_by(*prerequisites))
+
+    def test_two_issues_waiting_for_each_other_are_both_reported(self) -> None:
+        self.assertEqual(cycles([self.waiting(1, 2), self.waiting(2, 1)]),
+                         [(1, "cycle"), (2, "cycle")])
+
+    def test_the_finding_names_the_other_issues_in_the_cycle(self) -> None:
+        issues = [self.waiting(1, 2), self.waiting(2, 3), self.waiting(3, 1)]
+        findings = check_issues.cycle_findings(issues, {1: "open", 2: "open", 3: "open"}, REPOSITORY)
+        self.assertEqual([(f.number, f.message) for f in findings],
+                         [(1, "is in a dependency cycle with #2, #3"),
+                          (2, "is in a dependency cycle with #1, #3"),
+                          (3, "is in a dependency cycle with #1, #2")])
+
+    def test_issues_that_only_wait_for_a_cycle_are_not_part_of_it(self) -> None:
+        issues = [self.waiting(1, 2), self.waiting(2, 3), self.waiting(3, 1), self.waiting(4, 1)]
+        self.assertEqual(cycles(issues), [(1, "cycle"), (2, "cycle"), (3, "cycle")])
+
+    def test_a_chain_without_a_loop_is_not_a_cycle(self) -> None:
+        self.assertEqual(cycles([self.waiting(1, 2), self.waiting(2, 3), self.waiting(3)]), [])
+
+    def test_two_separate_cycles_are_reported_each(self) -> None:
+        issues = [self.waiting(1, 2), self.waiting(2, 1), self.waiting(3, 4), self.waiting(4, 3)]
+        self.assertEqual(cycles(issues), [(1, "cycle"), (2, "cycle"), (3, "cycle"), (4, "cycle")])
+
+    def test_a_closed_issue_breaks_the_cycle(self) -> None:
+        issues = [self.waiting(1, 2), self.waiting(2, 3), self.waiting(3, 1, state="closed")]
+        self.assertEqual(cycles(issues), [])
+
+    def test_a_self_reference_is_not_a_cycle(self) -> None:
+        self.assertEqual(cycles([self.waiting(1, 1)]), [])
+
+    def test_pull_requests_and_missing_issues_are_not_in_the_graph(self) -> None:
+        issues = [self.waiting(1, 50), self.waiting(2, 99)]
+        self.assertEqual(cycles(issues, pulls=frozenset({50})), [])
+
+    def test_an_external_condition_adds_no_edge(self) -> None:
+        body = "## Dependencies\n\nExternal condition: an upstream release is published.\n"
+        issues = [issue(1, "P3", BLOCKED_LABEL, body=body), self.waiting(2, 1)]
+        self.assertEqual(cycles(issues), [])
+
+    def test_a_long_chain_does_not_exhaust_the_stack(self) -> None:
+        size = 3000
+        issues = [self.waiting(n, n + 1) for n in range(1, size)] + [self.waiting(size, 1)]
+        self.assertEqual(len(cycles(issues)), size)
+
+
 class StartDateTests(unittest.TestCase):
     def test_start_date_must_be_a_real_iso_date(self) -> None:
         for date in ("2026-02-30", "02/11/2026", "2026-11-2", "soon", ""):

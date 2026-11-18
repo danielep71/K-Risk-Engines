@@ -215,6 +215,81 @@ def dependency_findings(issue: Issue, states: Mapping[int, str], repository: str
     return findings
 
 
+def dependency_graph(issues: Sequence[Issue], states: Mapping[int, str],
+                     repository: str) -> dict[int, list[int]]:
+    """Edges from each open issue to the open issues its dependency section names."""
+    open_numbers = {issue.number for issue in issues if issue.state == "open"}
+    graph: dict[int, list[int]] = {}
+    for issue in issues:
+        if issue.state != "open":
+            continue
+        section = dependency_section(issue.body) or []
+        named = references(section, repository, issue.number)
+        graph[issue.number] = sorted(n for n in named
+                                     if n in open_numbers and states.get(n) == "open")
+    return graph
+
+
+def strongly_connected(graph: Mapping[int, Sequence[int]]) -> list[list[int]]:
+    """Tarjan's algorithm, iterative so that long chains cannot exhaust the stack."""
+    index: dict[int, int] = {}
+    low: dict[int, int] = {}
+    on_stack: set[int] = set()
+    stack: list[int] = []
+    components: list[list[int]] = []
+    counter = 0
+    for root in sorted(graph):
+        if root in index:
+            continue
+        work: list[tuple[int, int]] = [(root, 0)]
+        while work:
+            node, position = work.pop()
+            if position == 0:
+                index[node] = low[node] = counter
+                counter += 1
+                stack.append(node)
+                on_stack.add(node)
+            successors = graph[node]
+            advanced = False
+            for offset in range(position, len(successors)):
+                following = successors[offset]
+                if following not in index:
+                    work.append((node, offset + 1))
+                    work.append((following, 0))
+                    advanced = True
+                    break
+                if following in on_stack:
+                    low[node] = min(low[node], index[following])
+            if advanced:
+                continue
+            if low[node] == index[node]:
+                component = []
+                while True:
+                    member = stack.pop()
+                    on_stack.discard(member)
+                    component.append(member)
+                    if member == node:
+                        break
+                components.append(sorted(component))
+            if work:
+                parent = work[-1][0]
+                low[parent] = min(low[parent], low[node])
+    return components
+
+
+def cycle_findings(issues: Sequence[Issue], states: Mapping[int, str],
+                   repository: str) -> list[Finding]:
+    """Report every open issue in a group of two or more that depend on each other."""
+    findings = []
+    for component in strongly_connected(dependency_graph(issues, states, repository)):
+        if len(component) < 2:
+            continue
+        for number in component:
+            others = ", ".join(f"#{n}" for n in component if n != number)
+            findings.append(Finding(number, "cycle", f"is in a dependency cycle with {others}"))
+    return findings
+
+
 def audit(issues: Sequence[Issue], states: Mapping[int, str], repository: str,
           catalogue: set[str] | None = None, pulls: Collection[int] = (),
           *, assignee: str) -> list[Finding]:
@@ -232,7 +307,8 @@ def audit(issues: Sequence[Issue], states: Mapping[int, str], repository: str,
             findings += [Finding(issue.number, "catalogue", f"has label {label!r}, "
                                  "which is not in .github/labels.json")
                          for label in issue.labels if label not in catalogue]
-    return findings
+    findings += cycle_findings(issues, states, repository)
+    return sorted(findings, key=lambda finding: finding.number)
 
 
 def catalogue_labels(root: Path) -> set[str]:
