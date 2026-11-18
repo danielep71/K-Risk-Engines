@@ -61,7 +61,7 @@ available for traceability.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Changes arrive only through pull requests merged with a merge commit: integrations of the active release branch and automated portfolio-status proposals (below). |
-| `release/1.2.0` | **Active release branch**, opened from `main` after v1.1.0 on the owner's decision. Base for task branches and task pull requests; integration PRs target `main`. |
+| `release/1.2.0` | **Active release branch**, opened from `main` after v1.1.0 (#351). Base for task branches and task pull requests; integration PRs target `main`. |
 | `vX.Y.Z` tags | A published release is identified by its tag (`v1.0.0`, `v1.1.0`). Its release branch is deleted after publication; the ruleset that prevents deleting release branches needs a temporary exception for that. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `ci/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
@@ -244,6 +244,10 @@ milestone.
 
 Every open issue also has:
 
+- a start date: an ISO `YYYY-MM-DD` calendar date (Europe/Rome), not later
+  than the target end date. The issue forms ask for it; on other issues add a
+  line `- Start date: YYYY-MM-DD (Europe/Rome)`, which takes precedence over
+  the form field;
 - a target end date: an ISO `YYYY-MM-DD` calendar date (Europe/Rome) before
   its milestone's due date. The issue forms ask for it; on other issues add a
   line `- Target end date: YYYY-MM-DD (Europe/Rome)`, which takes precedence
