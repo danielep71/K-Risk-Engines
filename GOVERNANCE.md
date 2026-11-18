@@ -61,10 +61,8 @@ available for traceability.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Changes arrive only through pull requests merged with a merge commit: integrations of the active release branch and automated portfolio-status proposals (below). |
-| `release/1.2.0` | **Active release branch**, opened from `main` after v1.1.0 on the maintainer's decision. Base for task branches and task pull requests; integration PRs target `main`. |
-| `release/1.1.0` | Released as v1.1.0. Kept for reference; no task branches or pull requests target it. |
-| `release/1.0.1` | Maintenance queue that accumulated the work published in v1.1.0; v1.0.1 was not published. Kept for reference; no task branches or pull requests target it. |
-| `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
+| `release/1.2.0` | **Active release branch**, opened from `main` after v1.1.0 on the owner's decision. Base for task branches and task pull requests; integration PRs target `main`. |
+| `vX.Y.Z` tags | A published release is identified by its tag (`v1.0.0`, `v1.1.0`). Its release branch is deleted after publication; the ruleset that prevents deleting release branches needs a temporary exception for that. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `ci/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
 | `traffic-history` | Generated repository analytics. Not a release branch; never merged into `main` or a release branch. |
@@ -117,9 +115,11 @@ decisions).
 
 ### 📦 Release records
 
-v1.1.0 was published from `release/1.1.0` (tag `v1.1.0`). It carried the work
-tracked in the **v1.0.1 - Hub maintenance and security** and **v1.1.0 -
-Document Portal** milestones; v1.0.1 was not published as a separate release.
+v1.1.0 was published from `release/1.1.0`, which was deleted after publication;
+the tag `v1.1.0` identifies it, as `v1.0.0` identifies the first release. It
+carried the work tracked in the **v1.0.1 - Hub maintenance and security** and
+**v1.1.0 - Document Portal** milestones; v1.0.1 was not published as a separate
+release, and its branch is deleted too.
 `release/1.2.0` and the **v1.2.0 - Hub maintenance and security** milestone are
 the active queue. Another release happens only on an explicit decision, through
 a new release branch; the procedure below applies then. Because every milestone has a due date and
