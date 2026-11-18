@@ -26,6 +26,8 @@ repositories keep their own changelogs; this file covers the hub only.
   field, Issue triage reports a missing, invalid or late start date, its
   configuration check reports a form without the field, and the alert issues
   of the daily traffic export carry the line (#358).
+- The branch table of `GOVERNANCE.md` states impersonally that `release/1.2.0`
+  was opened from `main` after v1.1.0 and points to #351 (#360).
 
 ## [1.1.0] - 2026-11-18
 
