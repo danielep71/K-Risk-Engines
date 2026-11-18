@@ -333,6 +333,24 @@ class WorkflowControlTests(unittest.TestCase):
             with self.subTest(workflow=name, job=job_id):
                 self.assertIn(job_id, documents[name]["jobs"])
 
+    def test_settings_drift_is_a_daily_read_only_check(self) -> None:
+        document = workflows()["settings-drift.yml"]
+        triggers = document["on"]
+        self.assertEqual(triggers["schedule"], [{"cron": "41 4 * * *"}])
+        self.assertIn("workflow_dispatch", triggers)
+        self.assertEqual(set(triggers), {"schedule", "workflow_dispatch"})
+        self.assertEqual(document["permissions"], {"contents": "read"})
+        self.assertEqual(document["concurrency"]["cancel-in-progress"], True)
+        job = document["jobs"]["detect"]
+        self.assertEqual(job["timeout-minutes"], 5)
+        self.assertEqual(job["permissions"], {"contents": "read"})
+        run = next(step["run"] for step in job["steps"] if "setup_repository.py" in step.get("run", ""))
+        self.assertIn("--check --token-scope workflow", run)
+        for option in ("--apply", "--report", "--evidence", "--journal", "--approve-plan"):
+            self.assertNotIn(option, run)
+        # A partial result (3) passes; drift (1) and errors (2) fail the run.
+        self.assertIn('[ "$status" -eq 0 ] || [ "$status" -eq 3 ]', run)
+
     def test_dependabot_covers_each_pinned_dependency_once(self) -> None:
         document = yaml.safe_load((ROOT / ".github/dependabot.yml").read_text(encoding="utf-8"))
         self.assertEqual(document["version"], 2)
@@ -344,6 +362,7 @@ class WorkflowControlTests(unittest.TestCase):
             with self.subTest(ecosystem=update["package-ecosystem"], directory=update["directory"]):
                 self.assertEqual(update["target-branch"], release)
                 self.assertNotIn("milestone", update)
+                self.assertEqual(update.get("cooldown"), {"default-days": 14})
                 self.assertEqual([label for label in update["labels"]
                                   if label in {"P1", "P2", "P3"}], ["P3"])
 

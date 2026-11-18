@@ -28,6 +28,25 @@ repositories keep their own changelogs; this file covers the hub only.
   of the daily traffic export carry the line (#358).
 - The branch table of `GOVERNANCE.md` states impersonally that `release/1.2.0`
   was opened from `main` after v1.1.0 and points to #351 (#360).
+- Dependabot proposes a version update only 14 days after its release: each of
+  the three update entries sets `cooldown.default-days: 14`, and a test keeps
+  it. Security updates are not delayed by it (#364).
+- Issue triage reports a dependency cycle: every open issue in a group of two or
+  more that name each other as prerequisites, directly or through others, is
+  reported with the other issues of its group (rule `cycle`) (#365).
+- The label prune names what blocks it: `--dry-run` reads every use, marks each
+  blocked deletion and finishes with a complete preview, and a refusal lists up
+  to ten issue or pull request numbers per label, in ascending order, with "and
+  others". A label whose name contains a comma is no longer refused outright:
+  all issues and pull requests in every state are scanned and its literal name
+  compared, and the prune is allowed only when no use is found (#366).
+- Repository settings drift is checked daily and read-only: `setup_repository.py
+  --check --token-scope workflow` serves the limited `GITHUB_TOKEN` of a
+  workflow, reports each value it cannot read as `NOT CHECKED` instead of drift,
+  exits 3 for a partial result without drift, plans nothing and refuses
+  `--apply`, `--report` and `--evidence`; the new **Detect repository settings
+  drift** workflow runs it at 04:41 UTC and fails only on a real difference
+  (#367).
 
 ## [1.1.0] - 2026-11-18
 

@@ -1,0 +1,62 @@
+name: Detect repository settings drift
+run-name: "Settings drift — ${{ github.event_name }}"
+
+# Reads the repository settings with the limited GITHUB_TOKEN of this workflow and
+# compares them with docs/repository-settings.json. It never writes anything. The
+# token cannot read the administration settings, so those values are reported as
+# NOT CHECKED, which is neither a match nor drift: the run fails only when a value
+# it can read differs. Run setup_repository.py --check with administrator access
+# for the complete verification (docs/REPOSITORY_SETTINGS.md).
+
+on:
+  schedule:
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: settings-drift
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  detect:
+    name: Settings drift
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out the exact SHA to inspect
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Compare the readable settings with the configuration
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          python3 .github/scripts/setup_repository.py \
+            --repo "$GITHUB_REPOSITORY" --check --token-scope workflow | tee settings-drift.txt
+          status=${PIPESTATUS[0]}
+          set -e
+          {
+            echo "# Repository settings drift"
+            echo
+            echo "Exit status: $status (0 verified, 1 drift, 3 partial: some values NOT CHECKED, 2 error)"
+            echo
+            echo '```text'
+            cat settings-drift.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" -eq 0 ] || [ "$status" -eq 3 ]; then
+            exit 0
+          fi
+          exit "$status"
