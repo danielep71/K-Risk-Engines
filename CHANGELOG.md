@@ -2,7 +2,7 @@
 
 [![Keep a Changelog](https://img.shields.io/badge/Keep_a_Changelog-1.1.0-E05735?style=flat-square)](https://keepachangelog.com/en/1.1.0/)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-3F4551?style=flat-square)](https://semver.org/spec/v2.0.0.html)
-[![Maintenance](https://img.shields.io/badge/Maintenance-release%2F1.0.1-483698?style=flat-square)](GOVERNANCE.md#-release-records)
+[![Maintenance](https://img.shields.io/badge/Maintenance-release%2F1.1.0-483698?style=flat-square)](GOVERNANCE.md#-release-records)
 
 All notable changes to the K-Risk Engines hub are recorded here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
@@ -10,6 +10,15 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Engine
 repositories keep their own changelogs; this file covers the hub only.
 
 ## [Unreleased]
+
+## [1.1.0] - 2026-11-18
+
+Second hub release, prepared on `release/1.1.0` and tracked in the
+[v1.1.0 - Document Portal](https://github.com/danielep71/K-Risk-Engines/milestone/5)
+milestone. It publishes all the hub's work since v1.0.0, including the changes
+queued on `release/1.0.1` under the
+[v1.0.1 - Hub maintenance and security](https://github.com/danielep71/K-Risk-Engines/milestone/4)
+milestone; v1.0.1 was not published separately (#347).
 
 ### ✨ Added
 
@@ -469,6 +478,6 @@ milestone.
   has been closed: the workflow reopens it instead of failing on a duplicate
   title (#8).
 
-[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.1.0...HEAD
 [1.0.0]: https://github.com/danielep71/K-Risk-Engines/releases/tag/v1.0.0
 

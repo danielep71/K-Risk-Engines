@@ -32,10 +32,11 @@ source to GitHub Actions, as now recorded in
 [repository-settings.json](repository-settings.json) (below).
 
 [GOVERNANCE.md](../GOVERNANCE.md) assigns the hub presentation/navigation and
-each engine its methodology, implementation, evidence and releases. Task PRs
-currently target `release/1.0.1`. Creating the v1.1.0 planning milestone does not
-silently change the active branch, VERSION or publication policy. A release
-branch transition needs a coherent follow-up governance change.
+each engine its methodology, implementation, evidence and releases. The portal
+is published in hub release v1.1.0 (`release/1.1.0`, milestone
+[v1.1.0 - Document Portal](https://github.com/danielep71/K-Risk-Engines/milestone/5)).
+Task PRs target the active release branch that `GOVERNANCE.md` names; a release
+branch transition needs a coherent governance change.
 
 The existing [portfolio automation](PORTFOLIO_AUTOMATION.md) already reads
 source documents and release/milestone metadata, retains provenance and proposes
