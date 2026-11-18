@@ -145,7 +145,8 @@ options above, the five security features, the GitHub Pages source, the five
 GitHub Actions settings and the five rulesets with their full parameters. Its rulesets were read from GitHub on
 2026-11-01. [.github/scripts/setup_repository.py](../.github/scripts/setup_repository.py)
 compares the repository with that file through the GitHub CLI. I run it locally
-after each settings change; it never runs in CI.
+after each settings change; applying never runs in CI, and a daily read-only
+partial check runs in the workflow described below.
 
 ```sh
 # Read-only: exit 1 on drift; optional dated records in Markdown and JSON.
@@ -172,6 +173,24 @@ must report an explicit `bypass_actors` list; an omitted, null or malformed
 value is unknown, not an empty list. `--apply` refuses before any write while
 any managed value is unknown, when the token is not an administrator's, or when
 merge commits or squash merging are disabled (the release rulesets allow them).
+
+**Workflow token scope.** `--check --token-scope workflow` is the read-only
+variant for the limited `GITHUB_TOKEN` of a workflow, which cannot read the
+administration settings. A value the token cannot read is `NOT CHECKED`: it is
+neither a match nor drift, and the run lists each one with its source. A
+managed ruleset whose bypass list is not reported is `NOT CHECKED` too, unless
+a difference is already visible in its other parameters. The Pages site counts
+as `NOT CHECKED` when GitHub answers HTTP 404, which a token without access
+cannot tell from an unpublished site. Without a difference the result is
+`PARTIAL` and the exit status is 3; with one it is DRIFT (exit 1), and when
+every value is readable it is VERIFIED (exit 0). The mode plans and writes
+nothing, refuses `--apply`, `--report` and `--evidence`, and needs `--check`.
+The **Detect repository settings drift** workflow
+([.github/workflows/settings-drift.yml](../.github/workflows/settings-drift.yml))
+runs it every day at 04:41 UTC and on demand, with `contents: read`, a
+five-minute timeout and cancellation of superseded runs. It succeeds on exit 0
+or 3, fails on a difference or an error, and lists the values it did not check
+in its summary. Only `--check` with administrator access verifies everything.
 
 **Plan approval.** The `PLAN SHA-256` covers the repository and its default
 branch (the `~DEFAULT_BRANCH` ruleset protects whichever branch it is), the

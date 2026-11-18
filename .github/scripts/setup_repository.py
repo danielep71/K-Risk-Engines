@@ -9,8 +9,11 @@ and counts as drift. They print the differences and the plan with its SHA-256.
 --apply needs administrator access, writes only the approved plan
 (--approve-plan) and journals it (--journal) before the first write and after
 each, then reads everything back. The Actions settings are compared, never
-written. A live ruleset under another name counts for a managed one when it
-enforces every rule at least as strictly. It runs locally, never in CI.
+written. --check --token-scope workflow is the partial, read-only variant for the
+limited GITHUB_TOKEN of a workflow: a value it cannot read is NOT CHECKED, not drift,
+the result is PARTIAL (exit 3) when nothing differs, no write is planned and no
+record is written. A live ruleset under another name counts for a managed one when it
+enforces every rule at least as strictly. Apply runs locally, never in CI.
 Adapted from danielep71/MyTemplate's tools/setup_repository.py (see NOTICE.md).
 """
 import argparse
@@ -73,6 +76,8 @@ DIGEST_PATTERN = re.compile(r'[0-9a-fA-F]{64}')
 # Ruleset statuses that need no write and are not drift.
 SATISFIED = ('matches', 'covered')
 NOT_APPLIED = 'not applied (public repositories only)'
+# Exit status of a workflow-token check that found no drift but could not observe everything.
+PARTIAL_EXIT = 3
 
 # GitHub API values are JSON; a call takes a method, an endpoint and an optional payload.
 Json = Any
@@ -296,27 +301,40 @@ def actions_states(call: Call, root: str, public: bool) -> dict[str, Row]:
     return states
 
 
-def observe(call: Call, repo: str, config: dict[str, Json]) -> dict[str, Json]:
-    """Read every value the configuration manages. Read-only."""
+def observe(call: Call, repo: str, config: dict[str, Json], scope: str = 'admin') -> dict[str, Json]:
+    """Read every value the configuration manages. Read-only.
+
+    With the workflow scope, rulesets the token cannot read are reported as unreadable.
+    """
     root = f'repos/{repo}'
     metadata = call('GET', root)
     public = metadata.get('visibility') == 'public'
-    listed = pages(call, root + '/rulesets?includes_parents=true')
-    own = [r for r in listed if r.get('source_type', 'Repository') == 'Repository']
+    unreadable = False
+    try:
+        listed = pages(call, root + '/rulesets?includes_parents=true')
+        own = [r for r in listed if r.get('source_type', 'Repository') == 'Repository']
+        details = [call('GET', f'{root}/rulesets/{r["id"]}') for r in own]
+    except ApiError:
+        if scope != 'workflow':
+            raise
+        listed, own, details, unreadable = [], [], [], True
     managed = {rule['name'] for rule in config['rulesets']}
     names = [r['name'] for r in own if r['name'] in managed]
     duplicates = sorted({name for name in names if names.count(name) > 1})
     if duplicates:
         raise SetupError('Ambiguous duplicate ruleset name: ' + ', '.join(duplicates))
-    return {
+    state: dict[str, Json] = {
         'metadata': metadata,
         'public': public,
-        'rulesets': [call('GET', f'{root}/rulesets/{r["id"]}') for r in own],
+        'rulesets': details,
         'inherited': [r['name'] for r in listed if r.get('source_type', 'Repository') != 'Repository'],
         'security': security_states(call, root, metadata, public),
         'pages': pages_state(call, root),
         'actions': actions_states(call, root, public),
     }
+    if scope == 'workflow':
+        state['rulesets_unreadable'] = unreadable
+    return state
 
 
 # Comparison
@@ -532,8 +550,36 @@ def effective_rulesets(config: dict[str, Json], state: dict[str, Json], rows: li
             for live in state['rulesets']]
 
 
-def assess(config: dict[str, Json], state: dict[str, Json]) -> dict[str, Json]:
-    """Compare every managed value with what GitHub reports; an unknown value is drift."""
+NOT_CHECKED = 'not checked'
+
+
+def mark_unobserved(rows: list[Row]) -> list[Row]:
+    """Workflow scope: a value GitHub did not report to this token is NOT CHECKED, not drift."""
+    unobserved = [row for row in rows if row['matches'] is False and row['observed'] is None]
+    for row in unobserved:
+        row.update(matches=None, not_checked=True)
+    return unobserved
+
+
+def mark_unobserved_rulesets(rows: list[Row], state: dict[str, Json]) -> None:
+    """Workflow scope: a ruleset the token cannot fully read is NOT CHECKED unless it already differs."""
+    for row in rows:
+        if state.get('rulesets_unreadable'):
+            row.update(status=NOT_CHECKED, differences=['rulesets: not readable with this token'])
+        elif row['status'] == 'unknown':
+            # The last difference is the omitted bypass list; any other one is real drift.
+            if len(row['differences']) > 1:
+                row.update(status='differs', differences=row['differences'][:-1])
+            else:
+                row.update(status=NOT_CHECKED)
+
+
+def assess(config: dict[str, Json], state: dict[str, Json], scope: str = 'admin') -> dict[str, Json]:
+    """Compare every managed value with what GitHub reports; an unknown value is drift.
+
+    With the workflow scope an unreadable value is NOT CHECKED instead, and a result without
+    drift but with such values is PARTIAL.
+    """
     metadata = state['metadata']
     settings = setting_rows(config, metadata)
     security = [compare('feature', key, config['security'][key], state['security'][key])
@@ -542,6 +588,10 @@ def assess(config: dict[str, Json], state: dict[str, Json]) -> dict[str, Json]:
     actions = [compare('setting', key, config['actions'][key], state['actions'][key])
                for key in ACTIONS_SOURCES]
     rulesets = [assess_ruleset(desired, state) for desired in config['rulesets']]
+    if scope == 'workflow':
+        for rows in (settings, security, pages_report, actions):
+            mark_unobserved(rows)
+        mark_unobserved_rulesets(rulesets, state)
     effective = effective_rulesets(config, state, rulesets)
     for row, desired in zip(rulesets, config['rulesets']):
         if row['status'] == 'missing':
@@ -550,9 +600,11 @@ def assess(config: dict[str, Json], state: dict[str, Json]) -> dict[str, Json]:
                 row.update(status='covered', covered_by=names)
     managed = {r['name'] for r in config['rulesets']}
     drift = (any(row['matches'] is False for row in settings + security + pages_report + actions)
-             or any(row['status'] not in SATISFIED for row in rulesets))
+             or any(row['status'] not in SATISFIED + (NOT_CHECKED,) for row in rulesets))
+    partial = (any(row.get('not_checked') for row in settings + security + pages_report + actions)
+               or any(row['status'] == NOT_CHECKED for row in rulesets))
     return {
-        'result': 'DRIFT' if drift else 'VERIFIED',
+        'result': 'DRIFT' if drift else 'PARTIAL' if partial else 'VERIFIED',
         'settings': settings, 'security': security, 'pages': pages_report, 'actions': actions,
         'rulesets': rulesets,
         'unmanaged_rulesets': [r['name'] for r in state['rulesets'] if r.get('name') not in managed],
@@ -700,7 +752,16 @@ def difference_lines(report: dict[str, Json]) -> list[str]:
                 suffix = ' This tool never writes Actions settings.' if group == 'actions' else ''
                 lines.append(f'DIFF {group} {name}: observed {shown(row)}, '
                              f'configured {json.dumps(row["configured"])} [{row["source"]}].{suffix}')
+    for group, key in (('setting', 'settings'), ('security', 'security'), ('pages', 'pages'),
+                       ('actions', 'actions')):
+        lines += [f'NOT CHECKED {group} {row.get("setting", row.get("feature"))}: {row["source"]}.'
+                  for row in report[key] if row.get('not_checked')]
     for row in report['rulesets']:
+        if row['status'] == NOT_CHECKED:
+            lines.append(f'NOT CHECKED ruleset "{row["name"]}": '
+                         + (row['differences'][0] if row['differences'] else
+                            'the bypass list is not reported without write access to the ruleset.'))
+            continue
         if row['status'] == 'covered':
             names = ', '.join(f'"{name}"' for name in row['covered_by'])
             lines.append(f'NOTE: ruleset "{row["name"]}" is covered by {names}: every configured rule '
@@ -976,6 +1037,21 @@ def output_paths(args: argparse.Namespace, started: datetime) -> dict[str, Path]
     return paths
 
 
+def workflow_verdict(report: dict[str, Json]) -> int:
+    """The outcome of a workflow-token check: no plan, no record. 0 verified, 1 drift, 3 partial."""
+    print('No plan: a workflow-token check never writes or records anything.')
+    if report['result'] == 'DRIFT':
+        print('DRIFT: documented settings do not match.')
+        return 1
+    if report['result'] == 'PARTIAL':
+        print('PARTIAL: no difference was found in the values this token can read; the values listed '
+              'as NOT CHECKED were not observed and are neither matches nor drift. Run --check with '
+              'administrator access to verify them.')
+        return PARTIAL_EXIT
+    print('VERIFIED: all documented settings match. Unmanaged settings are outside this verification.')
+    return 0
+
+
 def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None) -> int:
     if not REPOSITORY_PATTERN.fullmatch(args.repo) or args.repo.split('/')[1] in ('.', '..'):
         raise SetupError('Destination must be an explicit owner/repository on github.com.')
@@ -986,11 +1062,14 @@ def run(args: argparse.Namespace, call: Call = api, now: datetime | None = None)
     outputs = output_paths(args, started)
     # Every later check, write and message uses the expanded paths.
     args = argparse.Namespace(**{**vars(args), **outputs})
-    state = observe(call, args.repo, config)
-    report = assess(config, state)
+    scope = getattr(args, 'token_scope', 'admin')
+    state = observe(call, args.repo, config, scope)
+    report = assess(config, state, scope)
     print_notes(config, state, report)
     for line in difference_lines(report):
         print(line)
+    if scope == 'workflow':
+        return workflow_verdict(report)
     steps = plan(config, report, args.repo)
     digest = plan_digest(state['metadata'].get('full_name', args.repo), config_sha256, report, steps,
                          state['rulesets'], state['metadata'].get('default_branch'))
@@ -1041,6 +1120,10 @@ def main() -> int:
     parser.add_argument('--journal', type=Path,
                         help='Write a JSON journal of the apply to this new path, before the first '
                              'write and after each ({date} becomes the start date, YYYY-MM-DD, UTC)')
+    parser.add_argument('--token-scope', choices=('admin', 'workflow'), default='admin',
+                        help='workflow: the limited GITHUB_TOKEN of a workflow, with --check only; a value it '
+                             'cannot read is NOT CHECKED (neither match nor drift), the result is PARTIAL '
+                             f'(exit {PARTIAL_EXIT}) without drift, and nothing is planned, applied or recorded')
     parser.add_argument('--update-existing', action='store_true', help='Allow replacement of differing named rulesets')
     parser.add_argument('--report', type=Path,
                         help='Write a dated Markdown evidence record of the managed settings ({date} becomes '
@@ -1052,6 +1135,12 @@ def main() -> int:
     for option in ('approve_plan', 'journal', 'update_existing'):
         if getattr(args, option) and not args.apply:
             parser.error(f'--{option.replace("_", "-")} requires --apply')
+    if args.token_scope == 'workflow':
+        if not args.check:
+            parser.error('--token-scope workflow requires --check')
+        for option in ('report', 'evidence'):
+            if getattr(args, option) is not None:
+                parser.error(f'--token-scope workflow cannot write --{option}: its values are partial')
     if args.apply and (args.approve_plan is None or args.journal is None):
         parser.error('--apply requires --approve-plan SHA256 and --journal PATH')
     if args.approve_plan is not None and not DIGEST_PATTERN.fullmatch(args.approve_plan):
