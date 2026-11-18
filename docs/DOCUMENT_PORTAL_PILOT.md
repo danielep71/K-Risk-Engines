@@ -33,7 +33,7 @@ source to GitHub Actions, as now recorded in
 
 [GOVERNANCE.md](../GOVERNANCE.md) assigns the hub presentation/navigation and
 each engine its methodology, implementation, evidence and releases. The portal
-is published in hub release v1.1.0 (`release/1.1.0`, milestone
+was published in hub release v1.1.0 (`release/1.1.0`, milestone
 [v1.1.0 - Document Portal](https://github.com/danielep71/K-Risk-Engines/milestone/5)).
 Task PRs target the active release branch that `GOVERNANCE.md` names; a release
 branch transition needs a coherent governance change.
