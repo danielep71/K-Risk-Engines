@@ -312,17 +312,26 @@ def observe(call: Call, repo: str, config: dict[str, Json], scope: str = 'admin'
     unreadable = False
     try:
         listed = pages(call, root + '/rulesets?includes_parents=true')
-        own = [r for r in listed if r.get('source_type', 'Repository') == 'Repository']
-        details = [call('GET', f'{root}/rulesets/{r["id"]}') for r in own]
     except ApiError:
         if scope != 'workflow':
             raise
-        listed, own, details, unreadable = [], [], [], True
+        listed, unreadable = [], True
+    own = [r for r in listed if r.get('source_type', 'Repository') == 'Repository']
     managed = {rule['name'] for rule in config['rulesets']}
     names = [r['name'] for r in own if r['name'] in managed]
     duplicates = sorted({name for name in names if names.count(name) > 1})
     if duplicates:
         raise SetupError('Ambiguous duplicate ruleset name: ' + ', '.join(duplicates))
+    # A ruleset whose detail cannot be read does not hide the ones that can: only it is unchecked.
+    details: list[Json] = []
+    unreadable_names: list[str] = []
+    for ruleset in own:
+        try:
+            details.append(call('GET', f'{root}/rulesets/{ruleset["id"]}'))
+        except ApiError:
+            if scope != 'workflow':
+                raise
+            unreadable_names.append(ruleset['name'])
     state: dict[str, Json] = {
         'metadata': metadata,
         'public': public,
@@ -334,6 +343,7 @@ def observe(call: Call, repo: str, config: dict[str, Json], scope: str = 'admin'
     }
     if scope == 'workflow':
         state['rulesets_unreadable'] = unreadable
+        state['unreadable_rulesets'] = unreadable_names
     return state
 
 
@@ -566,6 +576,8 @@ def mark_unobserved_rulesets(rows: list[Row], state: dict[str, Json]) -> None:
     for row in rows:
         if state.get('rulesets_unreadable'):
             row.update(status=NOT_CHECKED, differences=['rulesets: not readable with this token'])
+        elif row['name'] in state.get('unreadable_rulesets', ()):
+            row.update(status=NOT_CHECKED, differences=['ruleset: its definition could not be read'])
         elif row['status'] == 'unknown':
             # The last difference is the omitted bypass list; any other one is real drift.
             if len(row['differences']) > 1:

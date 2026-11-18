@@ -544,6 +544,27 @@ class SetupTests(unittest.TestCase):
         self.assertEqual(status, 1)
         self.assertIn('DIFF pages build_type: observed not published', output)
 
+    def test_one_unreadable_ruleset_does_not_hide_drift_in_the_others(self) -> None:
+        self.apply_baseline()
+        last = self.api.rules[-1]
+        self.api.refused[f'/rulesets/{last["id"]}'] = '403'
+        self.api.rules[0]['enforcement'] = 'disabled'
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF ruleset "Protect main" (1) enforcement: observed "disabled"', output)
+        self.assertIn(f'NOT CHECKED ruleset "{last["name"]}": ruleset: its definition could not be read', output)
+        self.assertNotIn('PARTIAL', output)
+        # Without a visible difference the same failure only makes the result partial.
+        self.api.rules[0]['enforcement'] = 'active'
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertNotIn('DIFF', output)
+        self.assertEqual(sum(line.startswith('NOT CHECKED ') for line in output.splitlines()), 1)
+        # An administrator's check fails instead of skipping the ruleset.
+        self.args.token_scope = 'admin'
+        with self.assertRaises(setup.ApiError):
+            self.run_output()
+
     def test_the_workflow_scope_refuses_apply_and_records_on_the_command_line(self) -> None:
         for extra in (['--apply', '--approve-plan', '0' * 64, '--journal', 'journal.json'],
                       ['--report', 'record.md', '--check'], ['--evidence', 'record.json', '--check'], []):
