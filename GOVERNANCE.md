@@ -1,7 +1,7 @@
 # 🏛️ Portfolio governance
 
-[![Active release branch](https://img.shields.io/badge/Active_branch-release%2F1.0.1-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/release/1.0.1)
-[![Milestone](https://img.shields.io/badge/Milestone-v1.0.1_Hub_maintenance_and_security-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/milestone/4)
+[![Active release branch](https://img.shields.io/badge/Active_branch-release%2F1.1.0-1f3a5f?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/tree/release/1.1.0)
+[![Milestone](https://img.shields.io/badge/Milestone-v1.1.0_Document_Portal-483698?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/milestone/5)
 [![Priorities](https://img.shields.io/badge/Priorities-P1_·_P2_·_P3-D93F0B?style=flat-square)](https://github.com/danielep71/K-Risk-Engines/labels)
 [![License](https://img.shields.io/badge/License-MPL--2.0-0078D6?style=flat-square)](LICENSE)
 
@@ -61,7 +61,8 @@ available for traceability.
 | Branch | Role |
 | --- | --- |
 | `main` | Published hub source; GitHub Pages deploys from it. Changes arrive only through pull requests merged with a merge commit: integrations of the active release branch and automated portfolio-status proposals (below). |
-| `release/1.0.1` | **Active release branch** and permanent maintenance queue; v1.0.1 will not be published (see Release records). Base for task branches and task pull requests; integration PRs target `main`. |
+| `release/1.1.0` | **Active release branch** for v1.1.0, the release that publishes the hub's work since v1.0.0. Holds the release commit; integration PRs target `main`. |
+| `release/1.0.1` | Maintenance queue that accumulated the work published in v1.1.0; v1.0.1 was not published. Kept for reference; no task branches or pull requests target it. |
 | `release/1.0.0` | Released as v1.0.0. Kept for reference; no task branches or pull requests target it. |
 | Other `release/X.Y.Z` | Opened only by maintainer decision, without a `v` prefix. Do not infer a new target from a version number. |
 | `fix/<issue>-<slug>`, `docs/<slug>`, `ci/<slug>`, `test/<slug>` | Short-lived task branches, created from the active release branch and deleted after merge. |
@@ -115,13 +116,14 @@ decisions).
 
 ### 📦 Release records
 
-The **v1.0.1 - Hub maintenance and security** milestone and the
-`release/1.0.1` branch are a permanent maintenance queue: v1.0.1 will not be
-published, and both stay open indefinitely. Keep maintenance follow-ups there.
-Because every milestone has a due date and issue triage requires target end
-dates before it, move the milestone's due date forward before it approaches,
-for example once a year. Another release happens only on an explicit
-decision, through a new release branch; the procedure below applies then.
+v1.1.0 is published from `release/1.1.0`, opened from `main` on the
+maintainer's decision. It carries the work tracked in the
+**v1.0.1 - Hub maintenance and security** and **v1.1.0 - Document Portal**
+milestones; v1.0.1 was not published as a separate release. Another release
+happens only on an explicit decision, through a new release branch; the
+procedure below applies then. Because every milestone has a due date and
+issue triage requires target end dates before it, move an open milestone's due
+date forward before it approaches.
 
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in
