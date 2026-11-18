@@ -128,9 +128,14 @@ date forward before it approaches.
 
 - [VERSION](VERSION) holds the version of the active release branch.
 - [CHANGELOG.md](CHANGELOG.md) records each change under the release in
-  progress; every task pull request adds its entry, newest first, citing its
-  pull request or issue. Interim integrations of the release branch into
-  `main` leave it unreleased.
+  progress. A task pull request does not edit it: it adds its entry as its own
+  file, `changelog.d/<issue>.<category>.md` (see
+  [changelog.d/README.md](changelog.d/README.md)), so that open pull requests
+  never conflict on the same lines. The release commit assembles the fragments
+  into `[Unreleased]`, newest first, citing each issue
+  (`python3 .github/scripts/changelog_fragments.py assemble --write`). Interim
+  integrations of the release branch into `main` leave it unreleased. Bot
+  proposals add no fragment.
 - When its milestone is complete and the maintainer approves publication, a
   release commit on the release branch sets the date. That commit is
   integrated into `main`, and the maintainer publishes a GitHub Release
@@ -205,13 +210,16 @@ Three further cases are recorded in the PR in the same place:
   that review when the integration PR's own review reports no commit. Record
   both SHAs and the shared tree, and do not claim a review of the head itself.
 - **Unchanged synchronization.** A synchronization from `main` (step 5)
-  needs no new Codex review when its head is the merge commit of the
-  integration into `main`, its diff against the release branch is empty, and
-  the integration's final-head review covered the same tree. Record the
-  integration pull request, its reviewed SHA and review permalink, and the
-  shared tree. The required `HTML and links` check still runs and must pass.
-  A synchronization that changes any file, such as one that brings a
-  portfolio refresh, is reviewed as usual.
+  needs no new Codex review when its diff against the release branch is empty,
+  so that it changes no file, and either its head is the merge commit of the
+  integration into `main` and the integration's final-head review covered the
+  same tree, or the release branch has commits `main` lacks and its head is
+  the merge of `main` into the short-lived branch, which has the tree of the
+  release branch tip. Record the integration pull request, the reviewed SHA
+  and review permalink where there is one, the shared tree and that the diff
+  is empty. The required `HTML and links` check still runs and must pass. A
+  synchronization that changes any file, such as one that brings a portfolio
+  refresh, is reviewed as usual.
 - **Maintainer-authorized exception.** The maintainer may decide to merge
   without a completed final-head review. Record the decision verbatim under
   "Explicitly authorized merge exception", what changed after the last
