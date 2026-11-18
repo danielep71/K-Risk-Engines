@@ -571,19 +571,31 @@ def mark_unobserved(rows: list[Row]) -> list[Row]:
     return unobserved
 
 
-def mark_unobserved_rulesets(rows: list[Row], state: dict[str, Json]) -> None:
-    """Workflow scope: a ruleset the token cannot fully read is NOT CHECKED unless it already differs."""
+def mark_unobserved_rulesets(rows: list[Row], state: dict[str, Json], config: dict[str, Json]) -> None:
+    """Workflow scope: a ruleset the token cannot fully read is NOT CHECKED unless it already differs.
+
+    A ruleset whose bypass list is not reported is judged on what is visible, with the
+    coverage rules of an administrator's check: a definition that enforces every configured
+    rule at least as strictly, or differs in nothing visible, leaves only the bypass list
+    unverified.
+    """
+    desired_by_name = {r['name']: r for r in config['rulesets']}
     for row in rows:
         if state.get('rulesets_unreadable'):
             row.update(status=NOT_CHECKED, differences=['rulesets: not readable with this token'])
         elif row['name'] in state.get('unreadable_rulesets', ()):
             row.update(status=NOT_CHECKED, differences=['ruleset: its definition could not be read'])
         elif row['status'] == 'unknown':
-            # The last difference is the omitted bypass list; any other one is real drift.
-            if len(row['differences']) > 1:
-                row.update(status='differs', differences=row['differences'][:-1])
+            # The last difference is the omitted bypass list; any other one is judged below.
+            visible_differences = row['differences'][:-1]
+            desired = desired_by_name[row['name']]
+            actual = next(r for r in state['rulesets'] if r.get('name') == row['name'])
+            visible = dict(actual, bypass_actors=desired['bypass_actors'])
+            names = covered_by(desired, [visible], str(state['metadata'].get('default_branch', '')))
+            if visible_differences and not names:
+                row.update(status='differs', differences=visible_differences)
             else:
-                row.update(status=NOT_CHECKED)
+                row.update(status=NOT_CHECKED, differences=row['differences'][-1:])
 
 
 def assess(config: dict[str, Json], state: dict[str, Json], scope: str = 'admin') -> dict[str, Json]:
@@ -603,7 +615,7 @@ def assess(config: dict[str, Json], state: dict[str, Json], scope: str = 'admin'
     if scope == 'workflow':
         for rows in (settings, security, pages_report, actions):
             mark_unobserved(rows)
-        mark_unobserved_rulesets(rulesets, state)
+        mark_unobserved_rulesets(rulesets, state, config)
     effective = effective_rulesets(config, state, rulesets)
     for row, desired in zip(rulesets, config['rulesets']):
         if row['status'] == 'missing':

@@ -565,6 +565,27 @@ class SetupTests(unittest.TestCase):
         with self.assertRaises(setup.ApiError):
             self.run_output()
 
+    def test_stronger_rules_with_an_unreported_bypass_list_are_not_drift_in_workflow_scope(self) -> None:
+        self.apply_baseline()
+        rule = next(r for r in self.api.rules if r['name'] == 'Protect main')
+        pull = next(r for r in rule['rules'] if r['type'] == 'pull_request')
+        pull['parameters']['required_approving_review_count'] = 1
+        # An administrator sees the stronger ruleset as covered: no drift.
+        self.args.check = True
+        self.assertEqual(self.run_output()[0], 0)
+        # The workflow token cannot read the bypass list: only that stays unverified.
+        self.api.hide_bypass = True
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": bypass_actors: not reported', output)
+        self.assertNotIn('DIFF', output)
+        # A weaker definition is still drift, whatever the bypass list is.
+        pull['parameters']['required_approving_review_count'] = 0
+        pull['parameters']['allowed_merge_methods'] = ['merge', 'squash']
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF ruleset "Protect main" (1) rules.pull_request.allowed_merge_methods', output)
+
     def test_the_workflow_scope_refuses_apply_and_records_on_the_command_line(self) -> None:
         for extra in (['--apply', '--approve-plan', '0' * 64, '--journal', 'journal.json'],
                       ['--report', 'record.md', '--check'], ['--evidence', 'record.json', '--check'], []):
