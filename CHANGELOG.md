@@ -478,6 +478,6 @@ milestone.
   has been closed: the workflow reopens it instead of failing on a duplicate
   title (#8).
 
-[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/danielep71/K-Risk-Engines/releases/tag/v1.0.0
 
