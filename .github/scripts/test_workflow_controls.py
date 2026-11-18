@@ -304,6 +304,29 @@ class WorkflowControlTests(unittest.TestCase):
         self.assertIn('-f due_on="${due}T08:00:00Z"', script.split('--method POST "$milestones_api"', 1)[1])
         self.assertIn('if [ -n "$set_due" ]', script)
 
+    def test_traffic_alert_reads_the_commit_its_collection_wrote(self) -> None:
+        jobs = workflows()["daily-traffic.yml"]["jobs"]
+        collect, alert = jobs["collect"], jobs["alert"]
+        self.assertEqual(collect["outputs"], {"history-sha": "${{ steps.push.outputs.sha }}"})
+        push = next(step for step in collect["steps"] if step.get("id") == "push")
+        # Both successful exits, pushed and nothing to commit, record the commit.
+        self.assertIn('echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"', push["run"])
+        self.assertEqual(push["run"].count("exit 0"), 1, "only recorded() exits successfully")
+        self.assertEqual(push["run"].count("recorded\n"), 2)
+        self.assertEqual(alert["needs"], "collect")
+        checkouts = [step for step in alert["steps"] if step.get("uses", "").startswith("actions/checkout@")
+                     and step["with"].get("path") == "history"]
+        self.assertEqual(len(checkouts), 1)
+        # Never the moving branch.
+        self.assertEqual(checkouts[0]["with"]["ref"], "${{ needs.collect.outputs.history-sha }}")
+        self.assertFalse(any("traffic-history" in str(step.get("with", {}).get("ref", ""))
+                             for step in alert["steps"]))
+        # An empty output must stop the job, not check out the default branch.
+        guard = alert["steps"][alert["steps"].index(checkouts[0]) - 1]
+        self.assertEqual(guard["env"], {"HISTORY_SHA": "${{ needs.collect.outputs.history-sha }}"})
+        self.assertIn("^[0-9a-f]{40}$", guard["run"])
+        self.assertIn("exit 1", guard["run"])
+
     def test_write_permission_entries_name_existing_jobs(self) -> None:
         documents = workflows()
         for name, job_id in WRITE_PERMISSIONS:
