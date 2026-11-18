@@ -586,6 +586,32 @@ class SetupTests(unittest.TestCase):
         self.assertEqual(status, 1)
         self.assertIn('DIFF ruleset "Protect main" (1) rules.pull_request.allowed_merge_methods', output)
 
+    def test_cover_under_another_name_with_an_unreported_bypass_list_is_not_checked(self) -> None:
+        self.apply_baseline()
+        self.api.rules[0]['name'] = 'Main protection'
+        self.args.check = True
+        self.assertEqual(self.run_output()[0], 0, 'an administrator sees the renamed ruleset cover it')
+        self.api.hide_bypass = True
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": covered by a ruleset under another name whose '
+                      'bypass list is not reported', output)
+        self.assertNotIn('DIFF', output)
+        # Nothing covers a ruleset that is really missing.
+        self.api.rules = [r for r in self.api.rules if r['name'] != 'Main protection']
+        status, output = self.workflow_check()
+        self.assertEqual(status, 1)
+        self.assertIn('DIFF ruleset "Protect main": missing', output)
+
+    def test_a_missing_ruleset_is_not_checked_while_another_cannot_be_read(self) -> None:
+        self.apply_baseline()
+        self.api.rules = [r for r in self.api.rules if r['name'] != 'Protect main']
+        self.api.refused['/rulesets/5'] = '403'
+        status, output = self.workflow_check()
+        self.assertEqual(status, setup.PARTIAL_EXIT)
+        self.assertIn('NOT CHECKED ruleset "Protect main": another ruleset could not be read and may cover it', output)
+        self.assertNotIn('DIFF', output)
+
     def test_the_workflow_scope_refuses_apply_and_records_on_the_command_line(self) -> None:
         for extra in (['--apply', '--approve-plan', '0' * 64, '--journal', 'journal.json'],
                       ['--report', 'record.md', '--check'], ['--evidence', 'record.json', '--check'], []):

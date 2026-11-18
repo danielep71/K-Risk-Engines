@@ -598,6 +598,26 @@ def mark_unobserved_rulesets(rows: list[Row], state: dict[str, Json], config: di
                 row.update(status=NOT_CHECKED, differences=row['differences'][-1:])
 
 
+def mark_unconfirmed_coverage(config: dict[str, Json], state: dict[str, Json], rows: list[Row],
+                              effective: list[Json]) -> None:
+    """Workflow scope: a ruleset that looks missing is NOT CHECKED when only unreadable data hides its cover.
+
+    Equivalent protection can live under another name whose bypass list the token cannot read, or
+    in a ruleset whose definition could not be read at all.
+    """
+    default_branch = str(state['metadata'].get('default_branch', ''))
+    optimistic = [r if isinstance(r.get('bypass_actors'), list) else dict(r, bypass_actors=[])
+                  for r in effective]
+    for row, desired in zip(rows, config['rulesets']):
+        if row['status'] != 'missing':
+            continue
+        if state.get('unreadable_rulesets'):
+            row.update(status=NOT_CHECKED, differences=['another ruleset could not be read and may cover it'])
+        elif covered_by(desired, optimistic, default_branch):
+            row.update(status=NOT_CHECKED, differences=['covered by a ruleset under another name whose '
+                                                        'bypass list is not reported'])
+
+
 def assess(config: dict[str, Json], state: dict[str, Json], scope: str = 'admin') -> dict[str, Json]:
     """Compare every managed value with what GitHub reports; an unknown value is drift.
 
@@ -622,6 +642,8 @@ def assess(config: dict[str, Json], state: dict[str, Json], scope: str = 'admin'
             names = covered_by(desired, effective, str(metadata.get('default_branch', '')))
             if names:
                 row.update(status='covered', covered_by=names)
+    if scope == 'workflow':
+        mark_unconfirmed_coverage(config, state, rulesets, effective)
     managed = {r['name'] for r in config['rulesets']}
     drift = (any(row['matches'] is False for row in settings + security + pages_report + actions)
              or any(row['status'] not in SATISFIED + (NOT_CHECKED,) for row in rulesets))
