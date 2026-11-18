@@ -2,7 +2,7 @@
 
 [![Keep a Changelog](https://img.shields.io/badge/Keep_a_Changelog-1.1.0-E05735?style=flat-square)](https://keepachangelog.com/en/1.1.0/)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-3F4551?style=flat-square)](https://semver.org/spec/v2.0.0.html)
-[![Maintenance](https://img.shields.io/badge/Maintenance-release%2F1.1.0-483698?style=flat-square)](GOVERNANCE.md#-release-records)
+[![Maintenance](https://img.shields.io/badge/Maintenance-release%2F1.2.0-483698?style=flat-square)](GOVERNANCE.md#-release-records)
 
 All notable changes to the K-Risk Engines hub are recorded here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
@@ -10,6 +10,14 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Engine
 repositories keep their own changelogs; this file covers the hub only.
 
 ## [Unreleased]
+
+### 🔧 Changed
+
+- `release/1.2.0` is the active release branch, with the **v1.2.0 - Hub
+  maintenance and security** milestone: `VERSION`, Dependabot's target branch,
+  the branch table and the badges follow, and `release/1.1.0` is kept for
+  reference. The changelog links v1.1.0 and compares `[Unreleased]` against its
+  tag (#351, #347).
 
 ## [1.1.0] - 2026-11-18
 
@@ -478,6 +486,7 @@ milestone.
   has been closed: the workflow reopens it instead of failing on a duplicate
   title (#8).
 
-[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/danielep71/K-Risk-Engines/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/danielep71/K-Risk-Engines/releases/tag/v1.1.0
 [1.0.0]: https://github.com/danielep71/K-Risk-Engines/releases/tag/v1.0.0
 
