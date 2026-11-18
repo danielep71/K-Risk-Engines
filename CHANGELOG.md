@@ -21,6 +21,11 @@ repositories keep their own changelogs; this file covers the hub only.
   `release/1.0.1` and `release/1.1.0` are gone and the `vX.Y.Z` tags identify
   the releases. `GOVERNANCE.md` and `docs/DOCUMENT_PORTAL_PILOT.md` describe
   the repository as it is (#354).
+- Every open issue needs a start date, not later than its target end date.
+  `GOVERNANCE.md` states the rule, both issue forms ask for it in a required
+  field, Issue triage reports a missing, invalid or late start date, its
+  configuration check reports a form without the field, and the alert issues
+  of the daily traffic export carry the line (#358).
 
 ## [1.1.0] - 2026-11-18
 

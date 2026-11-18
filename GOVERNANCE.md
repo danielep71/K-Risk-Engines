@@ -244,6 +244,10 @@ milestone.
 
 Every open issue also has:
 
+- a start date: an ISO `YYYY-MM-DD` calendar date (Europe/Rome), not later
+  than the target end date. The issue forms ask for it; on other issues add a
+  line `- Start date: YYYY-MM-DD (Europe/Rome)`, which takes precedence over
+  the form field;
 - a target end date: an ISO `YYYY-MM-DD` calendar date (Europe/Rome) before
   its milestone's due date. The issue forms ask for it; on other issues add a
   line `- Target end date: YYYY-MM-DD (Europe/Rome)`, which takes precedence
