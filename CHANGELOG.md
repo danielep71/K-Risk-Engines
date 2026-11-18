@@ -34,6 +34,12 @@ repositories keep their own changelogs; this file covers the hub only.
 - Issue triage reports a dependency cycle: every open issue in a group of two or
   more that name each other as prerequisites, directly or through others, is
   reported with the other issues of its group (rule `cycle`) (#365).
+- The label prune names what blocks it: `--dry-run` reads every use, marks each
+  blocked deletion and finishes with a complete preview, and a refusal lists up
+  to ten issue or pull request numbers per label, in ascending order, with "and
+  others". A label whose name contains a comma is no longer refused outright:
+  all issues and pull requests in every state are scanned and its literal name
+  compared, and the prune is allowed only when no use is found (#366).
 
 ## [1.1.0] - 2026-11-18
 
