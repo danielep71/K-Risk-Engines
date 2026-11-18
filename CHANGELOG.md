@@ -15,9 +15,12 @@ repositories keep their own changelogs; this file covers the hub only.
 
 - `release/1.2.0` is the active release branch, with the **v1.2.0 - Hub
   maintenance and security** milestone: `VERSION`, Dependabot's target branch,
-  the branch table and the badges follow, and `release/1.1.0` is kept for
-  reference. The changelog links v1.1.0 and compares `[Unreleased]` against its
-  tag (#351, #347).
+  the branch table and the badges follow. The changelog links v1.1.0 and
+  compares `[Unreleased]` against its tag (#351, #347).
+- The release branches of the published versions are deleted: `release/1.0.0`,
+  `release/1.0.1` and `release/1.1.0` are gone and the `vX.Y.Z` tags identify
+  the releases. `GOVERNANCE.md` and `docs/DOCUMENT_PORTAL_PILOT.md` describe
+  the repository as it is (#354).
 
 ## [1.1.0] - 2026-11-18
 
