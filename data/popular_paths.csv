@@ -247,3 +247,13 @@ snapshot_date,rank,path,title,count,uniques
 2026-11-18,8,/danielep71/K-Risk-Engines/security/code-scanning,/security/code-scanning,2,1
 2026-11-18,9,/danielep71/K-Risk-Engines/actions/runs/42459942373,/actions/runs/42459942373,1,1
 2026-11-18,10,/danielep71/K-Risk-Engines/actions/workflows/portfolio-refresh.yml,/actions/workflows/portfolio-refresh.yml,1,1
+2026-11-19,1,/danielep71/K-Risk-Engines,Overview,5,2
+2026-11-19,2,/danielep71/K-Risk-Engines/branches/all,/branches/all,3,1
+2026-11-19,3,/danielep71/K-Risk-Engines/pull/242,/pull/242,3,1
+2026-11-19,4,/danielep71/K-Risk-Engines/graphs/traffic,/graphs/traffic,2,1
+2026-11-19,5,/danielep71/K-Risk-Engines/milestones,/milestones,2,1
+2026-11-19,6,/danielep71/K-Risk-Engines/pull/242/conflicts,/pull/242/conflicts,2,1
+2026-11-19,7,/danielep71/K-Risk-Engines/pull/246,/pull/246,2,1
+2026-11-19,8,/danielep71/K-Risk-Engines/pull/247,/pull/247,2,1
+2026-11-19,9,/danielep71/K-Risk-Engines/security/code-scanning,/security/code-scanning,2,1
+2026-11-19,10,/danielep71/K-Risk-Engines/actions/runs/42459942373,/actions/runs/42459942373,1,1
