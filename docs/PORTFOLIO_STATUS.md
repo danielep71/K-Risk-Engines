@@ -11,8 +11,8 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/400871e8a7ed410709f6909326031262ad31f664/README.md) — content SHA-256 `8f1c764607e42be209d5a650db9961bcd669dfcbd9bdd1329b4f450d4d7048fc`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/400871e8a7ed410709f6909326031262ad31f664/docs/methodology/README.md) — content SHA-256 `ac01bc70797fc46ed354ea26bdf13c1f6c1299ae36c0e603abc187407e789431`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/b36b79dbde5c621e9cfbf93da2b2aeafdbd6f8dc/README.md) — content SHA-256 `a5a69a6454ab2d24114522e3b614665e6b09b173bd285ae3286628d987a1d392`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/b36b79dbde5c621e9cfbf93da2b2aeafdbd6f8dc/docs/methodology/README.md) — content SHA-256 `e690c0715a2fe00741130c23c656aa5571fd8785d27bbf5ba18f8d0f6a88ba41`
 - Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
@@ -21,7 +21,7 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
 - [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): closed; 32 closed / 0 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): closed; 14 closed / 0 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 24 closed / 7 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 37 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.

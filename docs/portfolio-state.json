@@ -50,8 +50,8 @@
         "number": 5,
         "title": "v1.3.0 - Diagnostics and Independent Validation",
         "state": "open",
-        "open_issues": 7,
-        "closed_issues": 24,
+        "open_issues": 6,
+        "closed_issues": 37,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-SACCR/milestone/5"
       },
@@ -162,13 +162,13 @@
     "sources": [
       {
         "path": "README.md",
-        "sha256": "8f1c764607e42be209d5a650db9961bcd669dfcbd9bdd1329b4f450d4d7048fc",
-        "url": "https://github.com/danielep71/K-SACCR/blob/400871e8a7ed410709f6909326031262ad31f664/README.md"
+        "sha256": "a5a69a6454ab2d24114522e3b614665e6b09b173bd285ae3286628d987a1d392",
+        "url": "https://github.com/danielep71/K-SACCR/blob/b36b79dbde5c621e9cfbf93da2b2aeafdbd6f8dc/README.md"
       },
       {
         "path": "docs/methodology/README.md",
-        "sha256": "ac01bc70797fc46ed354ea26bdf13c1f6c1299ae36c0e603abc187407e789431",
-        "url": "https://github.com/danielep71/K-SACCR/blob/400871e8a7ed410709f6909326031262ad31f664/docs/methodology/README.md"
+        "sha256": "e690c0715a2fe00741130c23c656aa5571fd8785d27bbf5ba18f8d0f6a88ba41",
+        "url": "https://github.com/danielep71/K-SACCR/blob/b36b79dbde5c621e9cfbf93da2b2aeafdbd6f8dc/docs/methodology/README.md"
       }
     ]
   },
