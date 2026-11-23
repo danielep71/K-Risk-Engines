@@ -11,8 +11,8 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-SACCR/blob/400871e8a7ed410709f6909326031262ad31f664/README.md) — content SHA-256 `8f1c764607e42be209d5a650db9961bcd669dfcbd9bdd1329b4f450d4d7048fc`
-- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/400871e8a7ed410709f6909326031262ad31f664/docs/methodology/README.md) — content SHA-256 `ac01bc70797fc46ed354ea26bdf13c1f6c1299ae36c0e603abc187407e789431`
+- [README.md](https://github.com/danielep71/K-SACCR/blob/b36b79dbde5c621e9cfbf93da2b2aeafdbd6f8dc/README.md) — content SHA-256 `a5a69a6454ab2d24114522e3b614665e6b09b173bd285ae3286628d987a1d392`
+- [docs/methodology/README.md](https://github.com/danielep71/K-SACCR/blob/b36b79dbde5c621e9cfbf93da2b2aeafdbd6f8dc/docs/methodology/README.md) — content SHA-256 `e690c0715a2fe00741130c23c656aa5571fd8785d27bbf5ba18f8d0f6a88ba41`
 - Published release: [v1.2.0](https://github.com/danielep71/K-SACCR/releases/tag/v1.2.0) (2026-11-07T09:46:22Z)
 
 ### 🏁 Milestones (tracking only)
@@ -21,7 +21,7 @@ Version 1.2.0 is the current release: the 1.2.0 GitHub Release carries the workb
 - [v1.0.0 - First Supported Excel Release](https://github.com/danielep71/K-SACCR/milestone/2): closed; 51 closed / 0 open issues.
 - [v1.1.0 - CSV Import, Staging and Workbook Protection](https://github.com/danielep71/K-SACCR/milestone/3): closed; 32 closed / 0 open issues.
 - [v1.2.0 - Excel Ribbon Interface](https://github.com/danielep71/K-SACCR/milestone/4): closed; 14 closed / 0 open issues.
-- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 24 closed / 7 open issues.
+- [v1.3.0 - Diagnostics and Independent Validation](https://github.com/danielep71/K-SACCR/milestone/5): open; 37 closed / 6 open issues.
 - [v1.4.0 - Advanced Products and FX Provenance](https://github.com/danielep71/K-SACCR/milestone/6): open; 0 closed / 3 open issues.
 - [v1.5.0 - Simplified SA-CCR](https://github.com/danielep71/K-SACCR/milestone/7): open; 0 closed / 0 open issues.
 - [v1.6.0 - Original Exposure Method](https://github.com/danielep71/K-SACCR/milestone/8): open; 0 closed / 0 open issues.
@@ -78,19 +78,19 @@ Version 0.2.0 is a prototype of the v0.2.0 — ASA prototype milestone (issue #2
 <a id="ssa"></a>
 ## 🧩 K-FRTB-SSA
 
-No version has been released. The repository holds a prototype of the calculation, which has not been compiled or run in Excel: Calculation: Prototype. The VBA source of a MAR40 engine for the four risk classes is under src/, with a macro-free template of 18 sheets and synthetic sample data (workbook contract). I have run it only in LibreOffice&#x27;s VBA mode: it is not compiled or run in Excel, no evidence of a run is recorded here, and it is not validated for regulatory reporting. Methodology: The Basel Framework&#x27;s chapter MAR40 is the registered source, and each calculation of the engine has a contract whose rules cite it, with every parameter compared with the text. The data contract defines every input field and how a cell is read. No rule is validated. Test cases: 18 cases cover the seven calculations: the sample portfolio, limits and invalid rows. One holds values published in MAR40; the others are derived within the project and validate nothing. The prototype&#x27;s test module, tests/modules/TEST_Suite.bas, has its own runner and does not use the test harness yet, so no case has run in Excel. Tooling and governance: In use: every change goes through a pull request that Repository integrity checks. The release state is recorded in one place: the Current status of RELEASING.md, which Repository integrity checks against CHANGELOG.md. Changes reach main through task branches and pull requests; only a release is versioned and tagged.
+No version has been released. The repository holds a prototype of the calculation, which has not been compiled or run in Excel: Calculation: Prototype. The VBA source of a MAR40 engine for the four risk classes is under src/, with a macro-free template of 18 sheets and synthetic sample data: the prototype says what it calculates, how to use and build it and what it does not do, and the workbook contract defines its layout. I have run it only in LibreOffice&#x27;s VBA mode: it is not compiled or run in Excel, no evidence of a run is recorded here, and it is not validated for regulatory reporting. Methodology: The Basel Framework&#x27;s chapter MAR40 is the registered source, and each calculation of the engine has a contract whose rules cite it, with every parameter compared with the text. The data contract defines every input field and how a cell is read. No rule is validated. Test cases: 20 cases cover the seven calculations: the sample portfolio, limits and invalid rows. Three hold values published in MAR40 and in the Basel Committee&#x27;s 2005 update of its 1996 market risk amendment; the others are derived within the project and validate nothing. The workbook&#x27;s VBA tests are four suites of the test harness, with a certification entry point each; one of them, generated from the cases, runs all 20 in the workbook, and one probes what the workbook relies on Excel to do. They have run only in LibreOffice: no case has run in Excel. Tooling and governance: In use: every change goes through a pull request that Repository integrity checks. The release state is recorded in one place: the Current status of RELEASING.md, which Repository integrity checks against CHANGELOG.md. Changes reach main through task branches and pull requests; only a release is versioned and tagged.
 
 ### 🔗 Sources
 
-- [README.md](https://github.com/danielep71/K-FRTB-SSA/blob/7ea77743eac8019d73acd4c8a5779730264c8d53/README.md) — content SHA-256 `27da17b83e115758b2c7d7990554cfcf7dbff1f7476f7f781b5c185d2d1f1cc0`
-- [docs/methodology/VALIDATION_PLAN.md](https://github.com/danielep71/K-FRTB-SSA/blob/7ea77743eac8019d73acd4c8a5779730264c8d53/docs/methodology/VALIDATION_PLAN.md) — content SHA-256 `a06be63dbb320380cc77833840f38c50a5d397e15a2b198b8636f24e7f09e8b9`
+- [README.md](https://github.com/danielep71/K-FRTB-SSA/blob/757e734c6718592600c819cdc5eeaac5516811a1/README.md) — content SHA-256 `e893da12f4adde95bd8462cf05f93a634c4c9adb5308ddc79f1fe0bfe14f0c97`
+- [docs/methodology/VALIDATION_PLAN.md](https://github.com/danielep71/K-FRTB-SSA/blob/757e734c6718592600c819cdc5eeaac5516811a1/docs/methodology/VALIDATION_PLAN.md) — content SHA-256 `e59bc2660d61b565f1dea54fccf09d813ed34b5cb366a1cc262c6824c74295b8`
 - No published stable release (drafts and prereleases excluded).
 
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Initial setup](https://github.com/danielep71/K-FRTB-SSA/milestone/1): closed; 8 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): open; 12 closed / 11 open issues.
-- [v0.3.0 - CRR regime](https://github.com/danielep71/K-FRTB-SSA/milestone/3): open; 0 closed / 0 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): open; 22 closed / 4 open issues.
+- [v0.3.0 - CRR regime](https://github.com/danielep71/K-FRTB-SSA/milestone/3): open; 8 closed / 10 open issues.
 
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models
