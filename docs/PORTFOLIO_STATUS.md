@@ -89,8 +89,8 @@ No version has been released. The repository holds a prototype of the calculatio
 ### 🏁 Milestones (tracking only)
 
 - [v0.1.0 - Initial setup](https://github.com/danielep71/K-FRTB-SSA/milestone/1): closed; 8 closed / 0 open issues.
-- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): open; 22 closed / 4 open issues.
-- [v0.3.0 - CRR regime](https://github.com/danielep71/K-FRTB-SSA/milestone/3): open; 8 closed / 10 open issues.
+- [v0.2.0 - Prototype setup](https://github.com/danielep71/K-FRTB-SSA/milestone/2): closed; 27 closed / 0 open issues.
+- [v0.3.0 - CRR regime](https://github.com/danielep71/K-FRTB-SSA/milestone/3): open; 20 closed / 3 open issues.
 
 <a id="prepayment"></a>
 ## 🧩 K-IRRBB Prepayment Models

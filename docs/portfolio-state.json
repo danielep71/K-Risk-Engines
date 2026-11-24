@@ -347,18 +347,18 @@
       {
         "number": 2,
         "title": "v0.2.0 - Prototype setup",
-        "state": "open",
-        "open_issues": 4,
-        "closed_issues": 22,
-        "closed_at": null,
+        "state": "closed",
+        "open_issues": 0,
+        "closed_issues": 27,
+        "closed_at": "2026-11-23T19:47:59Z",
         "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/2"
       },
       {
         "number": 3,
         "title": "v0.3.0 - CRR regime",
         "state": "open",
-        "open_issues": 10,
-        "closed_issues": 8,
+        "open_issues": 3,
+        "closed_issues": 20,
         "closed_at": null,
         "html_url": "https://github.com/danielep71/K-FRTB-SSA/milestone/3"
       }
