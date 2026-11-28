@@ -35,7 +35,7 @@
       "repo": "danielep71/K-FRTB-SSA",
       "name": "K-FRTB-SSA",
       "purpose": "Simplified standardised market-risk capital (MAR40)",
-      "selector": "status",
+      "selector": "important",
       "evidence": [
         "docs/methodology/VALIDATION_PLAN.md"
       ]
