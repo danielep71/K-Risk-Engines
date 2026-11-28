@@ -42,6 +42,22 @@ class PortfolioTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 refresh.status_excerpt(source, 'important')
 
+    def test_important_block_ignores_first_level_headings_around_it(self) -> None:
+        source = ('# Project\n\n> [!IMPORTANT]\n> **No version has been released.** Not run in Excel.\n\n'
+                  '# 📌 Status\n\nRecorded in RELEASING.md.\n\n# 📚 Documentation\n\nMany links.\n')
+        result = refresh.status_excerpt(source, 'important')
+        self.assertEqual(result, 'No version has been released. Not run in Excel.')
+        with self.assertRaises(ValueError):
+            refresh.status_excerpt(source, 'status')
+
+    def test_configured_selectors_are_known_and_ssa_uses_the_important_block(self) -> None:
+        config = json.loads(Path(__file__).parents[1].joinpath('portfolio.json').read_text(encoding='utf-8'))
+        projects = config['projects'] if isinstance(config, dict) else config
+        for project in projects:
+            self.assertIn(project['selector'], {'important', 'status', 'current'}, project['id'])
+        selectors = {project['id']: project['selector'] for project in projects}
+        self.assertEqual(selectors['ssa'], 'important')
+
     def test_latest_closed_uses_closure_date_not_number(self) -> None:
         milestones = [
             {'number': 12, 'state': 'closed', 'closed_at': '2026-01-01T00:00:00Z'},
